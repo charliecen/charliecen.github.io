@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <url>http://yoursite.com/2017/02/21/Lumen-user-register-and-login-auth/</url>
+      <content type="html"><![CDATA[<hr>
+<p>title: Lumen实现用户注册登录认证<br>date: 2017-02-21 06:47:10<br>categories: “PHP”<br>tags: </p>
+<ul>
+<li>Lumen</li>
+<li>Api</li>
+<li>PHP</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[thinkphp数据缓存]]></title>
       <url>http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/</url>
       <content type="html"><![CDATA[<p>由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；</p>

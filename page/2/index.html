@@ -139,6 +139,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-highcharts-export-csv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/27/highcharts-export-csv/">highcharts导出csv格式</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/27/highcharts-export-csv/" class="archive-article-date">
+  	<time datetime="2016-09-27T10:56:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js</p>
+<p>代码如下:</p>
+<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;</pre></p>
+<p>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;</p>
+<p>&lt;script&gt;<br>var chart = new Highcharts.StockChart({</p>
+<pre><code>chart: {
+    renderTo: &apos;container&apos;
+},
+
+navigator: {
+    series: {
+        includeInCSVExport: false
+    }
+},
+series: [{
+    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+    pointStart: Date.UTC(2016, 0, 1),
+    pointInterval: 24 * 36e5
+}],
+
+exporting: {
+    csv: {
+        dateFormat: &apos;%Y-%m-%d&apos;
+    }
+}
+</code></pre><p>});<br>&lt;/script&gt;<br>显示效果：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png" alt=""></p>
+<p>导出结果：</p>
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png" alt=""></p>
+<p>参考：<a href="https://github.com/highcharts/export-csv" target="_blank" rel="external">https://github.com/highcharts/export-csv</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">export-csv</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">exporting</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">highcharts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/JavaScript/" class="article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/27/highcharts-export-csv/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-ajax-setinterval" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1204,95 +1314,6 @@ tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LIST
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/11/16/zabbix-monitor-logstash-java/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysql-data-dir-move" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/16/mysql-data-dir-move/">mysql数据目录迁移</a>
-    </h1>
-  
-
-        
-        <a href="/2015/11/16/mysql-data-dir-move/" class="archive-article-date">
-  	<time datetime="2015-11-16T11:20:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>早上来看到磁盘容量不足而报警，看下目录数据，决定迁移mysql数据到另外空闲磁盘上。</p>
-<p>mysql的数据目录位置是/data/，需要迁移到/app/目录下</p>
-<p>实现步骤：</p>
-<h3 id="1-停止mysql服务"><a href="#1-停止mysql服务" class="headerlink" title="1. 停止mysql服务"></a>1. 停止mysql服务</h3><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld stop
-Shutting down MySQL.... SUCCESS!</pre>
-
-<h3 id="2-移动数据"><a href="#2-移动数据" class="headerlink" title="2. 移动数据"></a>2. 移动数据</h3><pre class="lang:sh decode:true ">[root@monitor ~]# mv /data/mysql/ /app/data/</pre>
-
-<h3 id="3-修改主配置文件"><a href="#3-修改主配置文件" class="headerlink" title="3. 修改主配置文件"></a>3. 修改主配置文件</h3><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/my.cnf
-[mysqld]
-basedir = /usr/local/mysql
-datadir = /app/data/mysql
-pid-file = /app/data/mysql/mysql.pid</pre>
-
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4. 启动服务"></a>4. 启动服务</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL. ERROR! The server quit without updating PID file (/app/data/mysql/mysql.pid).</pre><br>启动报错，解决办法，开启错误日志</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# vim /etc/my.cnf<br>log_error = /app/data/mysql/mysql-error.log<br>slow_query_log_file = /app/data/mysql/mysql-slow.log<br></pre><br>由于日志路径未修改，导致出错。所以改完启动就可以了。</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL… SUCCESS!</pre><br>&nbsp;</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Mysql/" class="article-tag-list-link color1">Mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/11/16/mysql-data-dir-move/">展开全文 >></a>
         </p>
       
 

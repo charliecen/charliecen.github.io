@@ -139,6 +139,48 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Lumen-user-register-and-login-auth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Lumen实现用户注册登录认证<br>date: 2017-02-21 06:47:10<br>categories: “PHP”<br>tags: </p>
+<ul>
+<li>Lumen</li>
+<li>Api</li>
+<li>PHP</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/21/Lumen-user-register-and-login-auth/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1258,116 +1300,6 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/11/29/php-array-add-value/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-highcharts-export-csv" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/27/highcharts-export-csv/">highcharts导出csv格式</a>
-    </h1>
-  
-
-        
-        <a href="/2016/09/27/highcharts-export-csv/" class="archive-article-date">
-  	<time datetime="2016-09-27T10:56:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js</p>
-<p>代码如下:</p>
-<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;</pre></p>
-<p>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;</p>
-<p>&lt;script&gt;<br>var chart = new Highcharts.StockChart({</p>
-<pre><code>chart: {
-    renderTo: &apos;container&apos;
-},
-
-navigator: {
-    series: {
-        includeInCSVExport: false
-    }
-},
-series: [{
-    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-    pointStart: Date.UTC(2016, 0, 1),
-    pointInterval: 24 * 36e5
-}],
-
-exporting: {
-    csv: {
-        dateFormat: &apos;%Y-%m-%d&apos;
-    }
-}
-</code></pre><p>});<br>&lt;/script&gt;<br>显示效果：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png" alt=""></p>
-<p>导出结果：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png" alt=""></p>
-<p>参考：<a href="https://github.com/highcharts/export-csv" target="_blank" rel="external">https://github.com/highcharts/export-csv</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">export-csv</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">exporting</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">highcharts</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/JavaScript/" class="article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/09/27/highcharts-export-csv/">展开全文 >></a>
         </p>
       
 

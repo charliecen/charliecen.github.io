@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-10T10:12:21.000Z</updated>
+  <updated>2017-02-21T08:02:56.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2017/02/21/Lumen-user-register-and-login-auth/"/>
+    <id>http://yoursite.com/2017/02/21/Lumen-user-register-and-login-auth/</id>
+    <published>2017-02-21T08:02:56.000Z</published>
+    <updated>2017-02-21T08:02:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: Lumen实现用户注册登录认证<br>date: 2017-02-21 06:47:10<br>categories: “PHP”<br>tags: </p>
+<ul>
+<li>Lumen</li>
+<li>Api</li>
+<li>PHP</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: Lumen实现用户注册登录认证&lt;br&gt;date: 2017-02-21 06:47:10&lt;br&gt;categories: “PHP”&lt;br&gt;tags: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lumen&lt;/li&gt;
+&lt;li&gt;Api&lt;/li&gt;
+&lt;li&gt;PHP&lt;/li&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>thinkphp数据缓存</title>
@@ -1322,48 +1352,6 @@ tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LIST
       <category term="JMX" scheme="http://yoursite.com/tags/JMX/"/>
     
       <category term="zabbix-java-gateway" scheme="http://yoursite.com/tags/zabbix-java-gateway/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql数据目录迁移</title>
-    <link href="http://yoursite.com/2015/11/16/mysql-data-dir-move/"/>
-    <id>http://yoursite.com/2015/11/16/mysql-data-dir-move/</id>
-    <published>2015-11-16T11:20:41.000Z</published>
-    <updated>2017-02-10T10:12:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>早上来看到磁盘容量不足而报警，看下目录数据，决定迁移mysql数据到另外空闲磁盘上。</p>
-<p>mysql的数据目录位置是/data/，需要迁移到/app/目录下</p>
-<p>实现步骤：</p>
-<h3 id="1-停止mysql服务"><a href="#1-停止mysql服务" class="headerlink" title="1. 停止mysql服务"></a>1. 停止mysql服务</h3><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld stop
-Shutting down MySQL.... SUCCESS!</pre>
-
-<h3 id="2-移动数据"><a href="#2-移动数据" class="headerlink" title="2. 移动数据"></a>2. 移动数据</h3><pre class="lang:sh decode:true ">[root@monitor ~]# mv /data/mysql/ /app/data/</pre>
-
-<h3 id="3-修改主配置文件"><a href="#3-修改主配置文件" class="headerlink" title="3. 修改主配置文件"></a>3. 修改主配置文件</h3><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/my.cnf
-[mysqld]
-basedir = /usr/local/mysql
-datadir = /app/data/mysql
-pid-file = /app/data/mysql/mysql.pid</pre>
-
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4. 启动服务"></a>4. 启动服务</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL. ERROR! The server quit without updating PID file (/app/data/mysql/mysql.pid).</pre><br>启动报错，解决办法，开启错误日志</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# vim /etc/my.cnf<br>log_error = /app/data/mysql/mysql-error.log<br>slow_query_log_file = /app/data/mysql/mysql-slow.log<br></pre><br>由于日志路径未修改，导致出错。所以改完启动就可以了。</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# /etc/init.d/mysqld start<br>Starting MySQL… SUCCESS!</pre><br>&nbsp;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;早上来看到磁盘容量不足而报警，看下目录数据，决定迁移mysql数据到另外空闲磁盘上。&lt;/p&gt;
-&lt;p&gt;mysql的数据目录位置是/data/，需要迁移到/app/目录下&lt;/p&gt;
-&lt;p&gt;实现步骤：&lt;/p&gt;
-&lt;h3 id=&quot;1-停止mysql服务&quot;&gt;&lt;a href=&quot;#1-停止m
-    
-    </summary>
-    
-      <category term="Mysql" scheme="http://yoursite.com/categories/Mysql/"/>
-    
-    
-      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
     
   </entry>
   
