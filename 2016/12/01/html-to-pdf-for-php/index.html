@@ -12,9 +12,7 @@
 之前找了很多插件，用下来wkhtmltopdf最好用；
 下面说下如何操作
 首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；
-http://wkhtmltopdf.org/downloads.html
-拷贝文件到命令目录
-tar xf wkhtmltox-0.12.4_linux-generic-amd">
+http://wkhtmltopdf.org/downloads.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html-to-pdf-for-php">
 <meta property="og:url" content="http://yoursite.com/2016/12/01/html-to-pdf-for-php/index.html">
@@ -23,21 +21,17 @@ tar xf wkhtmltox-0.12.4_linux-generic-amd">
 之前找了很多插件，用下来wkhtmltopdf最好用；
 下面说下如何操作
 首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；
-http://wkhtmltopdf.org/downloads.html
-拷贝文件到命令目录
-tar xf wkhtmltox-0.12.4_linux-generic-amd">
+http://wkhtmltopdf.org/downloads.html">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-1.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:24:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html-to-pdf-for-php">
 <meta name="twitter:description" content="需求：报表页面点击下载后转成pdf文件；
 之前找了很多插件，用下来wkhtmltopdf最好用；
 下面说下如何操作
 首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；
-http://wkhtmltopdf.org/downloads.html
-拷贝文件到命令目录
-tar xf wkhtmltox-0.12.4_linux-generic-amd">
+http://wkhtmltopdf.org/downloads.html">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -186,8 +180,7 @@ tar xf wkhtmltox-0.12.4_linux-generic-amd">
 <p>之前找了很多插件，用下来wkhtmltopdf最好用；</p>
 <p>下面说下如何操作</p>
 <p>首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；</p>
-<p><pre class="lang:sh decode:true"><a href="http://wkhtmltopdf.org/downloads.html" target="_blank" rel="external">http://wkhtmltopdf.org/downloads.html</a></pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png" alt=""></p>
-<p>拷贝文件到命令目录</p>
+<p><pre class="lang:sh decode:true"><a href="http://wkhtmltopdf.org/downloads.html" target="_blank" rel="external">http://wkhtmltopdf.org/downloads.html</a></pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png" alt=""><br><a id="more"></a><br>拷贝文件到命令目录</p>
 <p><pre class="lang:sh decode:true ">tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz<br>cd wkhtmltox/bin<br>cp wkhtmltopdf /usr/local/bin/<br></pre><br>html页面</p>
 <p><pre class="lang:xhtml decode:true ">&lt;button class=”btn-success btn button” style=”margin-left: 85%” onclick=”print_pdf()”&gt;下载PDF&lt;/button&gt;<br>&lt;form action=”&lt;?php echo U(‘Custorm/savePdf’) ?&gt;” method=”post” name=”hld_res” id=”hideform”&gt;<br>  &lt;input type=”hidden” id=”hide_content” name=”content” /&gt;<br>  &lt;input type=”hidden” name=”title” value=”&lt;?php echo $data[0][‘title’]?&gt;”/&gt;<br>&lt;/form&gt;</pre><br>JS方法</p>
 <p><pre class="lang:sh decode:true ">function print_pdf(){<br>            //下载范围<br>            bdhtml=window.document.body.innerHTML;<br>            sprnstr=”&lt;!–startprint–&gt;”;<br>            eprnstr=”&lt;!–endprint–&gt;”;<br>            prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);<br>            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));<br>//            将获取的html代码添加到隐藏域中传给php文件处理<br>            $(“#hide_content”).val(“”+prnhtml+””);<br>            $(“#hideform”).submit();<br>        }</pre><br>PHP方法</p>

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>zabbix使用微信报警 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。可以在URL里看到这个IDhttps://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid">
+  <meta name="description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zabbix使用微信报警">
 <meta property="og:url" content="http://yoursite.com/2015/10/15/zabbix-add-webchat-alarm/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。可以在URL里看到这个IDhttps://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid">
+<meta property="og:description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-7@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-10@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-11@2x.png">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-5@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-6@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-13@2x.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:36:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix使用微信报警">
-<meta name="twitter:description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。可以在URL里看到这个IDhttps://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid">
+<meta name="twitter:description" content="1.注册微信公众号首先到微信公众平台https://mp.weixin.qq.com申请然后登录，手机客户端扫描二维码，并加关注就可以了然后就可以看到用户数">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-7@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -173,7 +173,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-注册微信公众号"><a href="#1-注册微信公众号" class="headerlink" title="1.注册微信公众号"></a>1.注册微信公众号</h3><div></div><br><div>首先到微信公众平台<a href="https://mp.weixin.qq.com" target="_blank" rel="external">https://mp.weixin.qq.com</a>申请</div><br><div></div><br><div>然后登录，手机客户端扫描二维码，并加关注就可以了</div><br><div></div><br><div>然后就可以看到用户数</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-7@2x.png" alt=""></div><br><div>点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-10@2x.png" alt=""></div><br><div><br><div>可以在URL里看到这个ID</div><br><div><a href="https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=353131080&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN" target="_blank" rel="external">https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=<span style="color: #ff0000;">353131080</span>&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN</a></div><br><div></div><br></div><br><div><br><br>### 2.下载微信公众平台私有接口<br><br><div></div>
+        <h3 id="1-注册微信公众号"><a href="#1-注册微信公众号" class="headerlink" title="1.注册微信公众号"></a>1.注册微信公众号</h3><div>首先到微信公众平台<a href="https://mp.weixin.qq.com" target="_blank" rel="external">https://mp.weixin.qq.com</a>申请</div><br><div>然后登录，手机客户端扫描二维码，并加关注就可以了</div><br><div>然后就可以看到用户数</div><br><a id="more"></a><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-7@2x.png" alt=""></div><br><div>点击用户数，并点击用户，可以看到用户的tofakeid，这个ID就是zabbix将发送报警信息到这个账号。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-10@2x.png" alt=""></div><br><div>可以在URL里看到这个ID</div><br><div><a href="https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=353131080&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN" target="_blank" rel="external">https://mp.weixin.qq.com/cgi-bin/singlesendpage?tofakeid=<span style="color: #ff0000;">353131080</span>&amp;t=message/send&amp;action=index&amp;token=1007714535&amp;lang=zh_CN</a></div><br>
+
+<h3 id="2-下载微信公众平台私有接口"><a href="#2-下载微信公众平台私有接口" class="headerlink" title="2.下载微信公众平台私有接口"></a>2.下载微信公众平台私有接口</h3><div></div>
 
 <h4 id="2-1-进入zabbix报警目录，下载文件"><a href="#2-1-进入zabbix报警目录，下载文件" class="headerlink" title="2.1 进入zabbix报警目录，下载文件"></a>2.1 进入zabbix报警目录，下载文件</h4><pre class="lang:sh decode:true ">[root@monitor ~]# cd /usr/local/share/zabbix/alertscripts
 [root@monitor alertscripts]# git clone https://github.com/lealife/WeiXin-Private-API
@@ -243,7 +245,7 @@ stdClass Object
 )</pre>
 
 <h4 id="2-6-查看结果"><a href="#2-6-查看结果" class="headerlink" title="2.6 查看结果"></a>2.6 查看结果</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-11@2x.png" alt=""></p>
-<p></p></div><p></p>
+<p></p>
 <div></div><br><div><br><br>### 3.配置zabbix<br><br><div></div>
 
 <h4 id="3-1-创建媒体类型"><a href="#3-1-创建媒体类型" class="headerlink" title="3.1 创建媒体类型"></a>3.1 创建媒体类型</h4><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-0@2x.png" alt=""></p>
@@ -255,6 +257,7 @@ stdClass Object
 <p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-6@2x.png" alt=""></p>
 <p></p></div><p></p>
 <h3 id="4-测试报警"><a href="#4-测试报警" class="headerlink" title="4.测试报警"></a>4.测试报警</h3><div>停掉mongoldb服务</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151015-13@2x.png" alt=""></div>
+
       
 
       

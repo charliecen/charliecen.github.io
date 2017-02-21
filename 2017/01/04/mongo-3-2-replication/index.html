@@ -8,16 +8,25 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mongo-3.2主从配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.此外你可">
+  <meta name="description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.
+需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.
+当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.
+此">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongo-3.2主从配置">
 <meta property="og:url" content="http://yoursite.com/2017/01/04/mongo-3-2-replication/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.此外你可">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.
+需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.
+当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.
+此">
+<meta property="og:updated_time" content="2017-02-21T09:20:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongo-3.2主从配置">
-<meta name="twitter:description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.此外你可">
+<meta name="twitter:description" content="mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.
+需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.
+当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.
+此">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -161,8 +170,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.</div><br><div>需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.</div><br><div>当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.</div><br><div>此外你可以设置autoresync参数,当复制终止10秒后mongodb会自动重启复制,slave端会每隔10分钟自动重新同步一次.</div><br><div><strong>注意官方现在强烈不建议使用master-slave复制模式,建议使用replica sets复制.</strong></div>
-
+        <p><div>mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.</div></p>
+<p><div>需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.</div></p>
+<p><div>当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.</div></p>
+<p><div>此外你可以设置autoresync参数,当复制终止10秒后mongodb会自动重启复制,slave端会每隔10分钟自动重新同步一次.</div></p>
+<p><div><strong>注意官方现在强烈不建议使用master-slave复制模式,建议使用replica sets复制.</strong></div><br><a id="more"></a></p>
 <h3 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h3><p>这里介绍的mongodb的主从复制,并不是复制集replica sets,复制的参数如下:</p>
 <pre class="lang:sh decode:true ">Replication options:
   --oplogSize arg                       操作日志大小,单位M
@@ -370,7 +382,7 @@ db.test.find()</pre>
   
 <nav id="article-nav">
   
-    <a href="/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/02/04/thinkphp-data-cache/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         

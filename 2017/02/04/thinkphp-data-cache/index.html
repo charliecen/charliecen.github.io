@@ -10,59 +10,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；
 1.首先介绍数据缓存的用法
-// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：
-
-
-
-参数
-描述
-
-
-expire
-缓存有效期（时间为秒）
-
-prefix
-缓存标识前">
+// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="thinkphp数据缓存">
-<meta property="og:url" content="http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/thinkphp-data-cache/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；
 1.首先介绍数据缓存的用法
-// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：
-
-
-
-参数
-描述
-
-
-expire
-缓存有效期（时间为秒）
-
-prefix
-缓存标识前">
+// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-0.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-1.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-2.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:19:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thinkphp数据缓存">
 <meta name="twitter:description" content="由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；
 1.首先介绍数据缓存的用法
-// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：
-
-
-
-参数
-描述
-
-
-expire
-缓存有效期（时间为秒）
-
-prefix
-缓存标识前">
+// 缓存初始化S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -187,7 +151,7 @@ prefix
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-thinkphp-data-cache" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -199,7 +163,7 @@ prefix
   
 
         
-        <a href="/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/" class="archive-article-date">
+        <a href="/2017/02/04/thinkphp-data-cache/" class="archive-article-date">
   	<time datetime="2017-02-04T14:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
 </a>
         
@@ -209,22 +173,8 @@ prefix
       
         <p>由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；</p>
 <p>1.首先介绍数据缓存的用法</p>
-<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：</p>
-<p><table></table></p>
-<p><thead></thead></p>
-<p><tr></tr></p>
-<p><th>参数</th></p>
-<p><th>描述</th><br><br></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td>expire</td></p>
-<p><td>缓存有效期（时间为秒）</td><br></p>
-<p><tr></tr></p>
-<p><td>prefix</td></p>
-<p><td>缓存标识前缀</td><br></p>
-<p><tr></tr></p>
-<p><td>type</td></p>
-<p><td>缓存类型</td><br><br><br><br>系统目前已经支持的缓存类型包括：<code>Apachenote、Apc、Db、Eaccelerator、File、Memcache、Redis、Shmop、Sqlite、Wincache和Xcache</code>。</p>
+<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：<br><a id="more"></a><br>|参数|描述|<br>|—-|—-|<br>|expire|缓存有效期(时间为秒)|<br>|prefix|缓存标识前缀|<br>|type|缓存类型|</p>
+<p>系统目前已经支持的缓存类型包括：<code>Apachenote、Apc、Db、Eaccelerator、File、Memcache、Redis、Shmop、Sqlite、Wincache和Xcache</code>。</p>
 <p>如果S方法不传入type参数初始化的话，则读取配置文件中设置的<code>DATA_CACHE_TYPE</code>参数值作为默认类型。同样的道理，prefix参数如果没有传入会读取配置文件的<code>DATA_CACHE_PREFIX</code>参数值，expire参数没有传入则读取<code>DATA_CACHE_TIME</code>配置值作为默认。</p>
 <p>2.缓存设置</p>
 <p><pre class="lang:php decode:true ">// 设置缓存<br>S(‘name’,$value);<br>// 缓存数据300秒<br>S(‘name’,$value,300);<br>// 采用文件方式缓存数据300秒<br>S(‘name’,$value,array(‘type’=&gt;’file’,’expire’=&gt;300));</pre><br>3.缓存读取</p>
@@ -358,7 +308,7 @@ prefix
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/04/thinkphp-data-cache/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -397,7 +347,7 @@ prefix
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98" data-title="thinkphp数据缓存" data-url="http://yoursite.com/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/"></div>
+	<div class="ds-thread" data-thread-key="thinkphp-data-cache" data-title="thinkphp数据缓存" data-url="http://yoursite.com/2017/02/04/thinkphp-data-cache/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

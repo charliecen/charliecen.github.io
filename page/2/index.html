@@ -159,37 +159,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js</p>
-<p>代码如下:</p>
-<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;</pre></p>
-<p>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;</p>
-<p>&lt;script&gt;<br>var chart = new Highcharts.StockChart({</p>
-<pre><code>chart: {
-    renderTo: &apos;container&apos;
-},
-
-navigator: {
-    series: {
-        includeInCSVExport: false
-    }
-},
-series: [{
-    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-    pointStart: Date.UTC(2016, 0, 1),
-    pointInterval: 24 * 36e5
-}],
-
-exporting: {
-    csv: {
-        dateFormat: &apos;%Y-%m-%d&apos;
-    }
-}
-</code></pre><p>});<br>&lt;/script&gt;<br>显示效果：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png" alt=""></p>
-<p>导出结果：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png" alt=""></p>
-<p>参考：<a href="https://github.com/highcharts/export-csv" target="_blank" rel="external">https://github.com/highcharts/export-csv</a></p>
-
+        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js<br></p>
+        
+          <a class="article-more-a" href="/2016/09/27/highcharts-export-csv/#more">more >></a>
+        
       
 
       
@@ -269,7 +242,10 @@ exporting: {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br><div><br><pre class="lang:php decode:true ">index.php<br>&lt;div class=”count” id=”count” &gt;100&lt;/div&gt;<br>&lt;script src=”/js/jquery-2.1.1.min.js”&gt;&lt;/script&gt;<br>&lt;script type=”text/javascript”&gt;<br>    setInterval(function(){<br>        $.ajax({<br>            type:”post”,<br>            dataType:”json”,<br>            url: ‘index.php?r=test/getdata’,<br>            success:function(data){<br>                $(“#count”).html(data[0][‘id’]);<br>                //console.log(data[0][‘id’]);<br>            },<br>            error: function(){<br>                alert(‘wrong’);<br>            },<br>        });<br>    },3000);<br><br>&lt;/script&gt;</pre><br>后端处理页面，可以从数据库获取数据也可以中接口，这里自定义数组<br><pre class="lang:php decode:true ">public function actionGetdata()<br>    {<br>        $data = array(<br>            array(‘id’=&gt;4,’name’=&gt;’test1’<br>        );<br>        echo json_encode($data);<br><br>    }<br><br>    public function actionIndex(){<br>        return $this-&gt;render(‘index’);<br>    }</pre><br><div>浏览器访问</div><br><div><a href="http://test-advanced.com/index.php?r=test/index" target="_blank" rel="external">http://test-advanced.com/index.php?r=test/index</a>   #test表示控制器，index表示方法</div><br><div>更改数组里的id，前段页面数据实时变化</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png" alt=""></div><br></div>
+        <div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br>
+        
+          <a class="article-more-a" href="/2016/09/20/ajax-setinterval/#more">more >></a>
+        
       
 
       
@@ -350,14 +326,10 @@ exporting: {
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="API简介"><a href="#API简介" class="headerlink" title="API简介"></a>API简介</h3><p>Zabbix API开始扮演着越来越重要的角色，尤其是在集成第三方软件和自动化日常任务时。很难想象管理数千台服务器而没有自动化是多么的困难。Zabbix API为批量操作、第三方软件集成以及其他作用提供可编程接口。</p>
-<div><br><div>Zabbix API是在1.8版本中开始引进并且已经被广泛应用。所有的Zabbix移动客户端都是基于API，甚至原生的WEB前端部分也是建立在它之上。Zabbix API 中间件使得架构更加模块化也避免直接对数据库进行操作。它允许你通过JSON RPC协议来创建、更新和获取Zabbix对象并且做任何你喜欢的操作【当然前提是你拥有认证账户】。</div><br><div></div><br><div><br><br>Zabbix API提供两项主要功能：<br><br><em>   远程管理Zabbix配置
-</em>   远程检索配置和历史数据<br><br>#### <strong>使用JSON</strong><br><br>API 采用JSON-RPC实现。这意味着调用任何函数，都需要发送POST请求，输入输出数据都是以JSON格式。大致工作流如下：<br><br><em>   准备JSON对象，它描述了你想要做什么（创建主机，获取图像，更新监控项等）。
-</em>   采用POST方法向<a href="http://example.com/zabbix/api_jsonrpc.php%E5%8F%91%E9%80%81%E6%AD%A4JSON%E5%AF%B9%E8%B1%A1" target="_blank" rel="external">http://example.com/zabbix/api_jsonrpc.php发送此JSON对象</a>. <a href="http://example.com/zabbix/%E6%98%AFZabbix%E5%89%8D%E7%AB%AF%E5%9C%B0%E5%9D%80%E3%80%82api_jsonrpc.php%E6%98%AF%E8%B0%83%E7%94%A8API%E7%9A%84PHP%E8%84%9A%E6%9C%AC%E3%80%82%E5%8F%AF%E5%9C%A8%E5%AE%89%E8%A3%85%E5%8F%AF%E8%A7%86%E5%8C%96%E5%89%8D%E7%AB%AF%E7%9A%84%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%BE%E5%88%B0%E3%80%82" target="_blank" rel="external">http://example.com/zabbix/是Zabbix前端地址。api_jsonrpc.php是调用API的PHP脚本。可在安装可视化前端的目录下找到。</a><br><em>   获取JSON格式响应。
-</em>   注：请求除了必须是POST方法之外，HTTP Header Content-Type必须为【application/jsonrequest，application/json-rpc，application/json】其中之一。<br>可以采用脚本或者任何”手动”支持JSON RPC的工具来使用API。而首先需要了解的就是如何验证和如何使用验证ID来获取想要的信息。<br><br></div><br><div><br><br>#### <strong>基本请求格式</strong><br><br><div><br><div>Zabbix API 简化的JSON请求如下：</div><br><div><br><pre class="lang:sh decode:true ">{<br>“jsonrpc”: “2.0”,<br>“method”: “method.name”,<br>“params”: {<br>“param_1_name”: “param_1_value”,<br>“param_2_name”: “param_2<em>value”<br>},<br>“id”: 1,<br>“auth”: “159121b60d19a9b4b55d49e30cf12b81”,<br>}</em></pre><br>下面一行一行来看：<br><br><em>   “jsonrpc”: “2.0”-这是标准的JSON RPC参数以标示协议版本。所有的请求都会保持不变。
-</em>   “method”: “method.name”-这个参数定义了真实执行的操作。例如：host.create、item.update等等<br>*   “params”-这里通过传递JSON对象来作为特定方法的参数。如果你希望创建监控项，”name”和”key“参数是需要的，每个方法需要的参数在Zabbix API文档中都有描述。<br><em>   “id”: 1-这个字段用于绑定JSON请求和响应。响应会跟请求有相同的”id”。在一次性发送多个请求时很有用，这些也不需要唯一或者连续
-</em>   “auth”: “159121b60d19a9b4b55d49e30cf12b81”-这是一个认证令牌【authentication token】用以鉴别用户、访问API。这也是使用API进行相关操作的前提-获取认证ID。<br><br>### API 使用<br><br><em>   <strong>环境准备</strong><br>Zabbix API是基于JSON-RPC 2.0规格，具体实现可以选择任何你喜欢的编程语言或者手动方式。这里我们采用的Python和基于Curl的方式来做示例。Python 2.7版本已经支持JSON，所以不再需要其他模块组件。当然可以采用Perl、Ruby、PHP之类的语言，使用前先确保相应JSON模块的安装。
-
-</em>   <strong>身份验证</strong><br><div><br><div>任何Zabbix API客户端在真正工作之前都需要验证它自身。在这里是采用User.login方法。这个方法接受一个用户名和密码作为参数并返回验证ID，一个安全哈希串用于持续的API调用（在使用User.logout之前该验证ID均有效）。这里使用php代码获取</div><br><div><br><pre class="lang:php decode:true ">function Curl($url,$header,$info){<br>        $ch = curl_init();<br>        curl_setopt($ch,CURLOPT_URL, $url);<br>        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);<br>        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);<br>        curl_setopt($ch,CURLOPT_POST, 1);<br>        curl_setopt($ch,CURLOPT_POSTFIELDS, $info);<br>        $response = curl_exec($ch);<br>        curl_close($ch);<br>        return json_decode($response);<br>    }</pre><br><pre class="lang:php decode:true">//获取token<br>function GetToken() {<br><br>        $logininfo = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘user.login’,<br>            ‘params’ =&gt; [<br>                ‘user’ =&gt; ‘username’,<br>                ‘password’ =&gt; ‘password’,<br>            ],<br>            ‘id’ =&gt; 1,<br>        ];<br><br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $data = json_encode($logininfo);<br>        $header = [“Content-type: application/json”];<br>        //实例化模型<br>        $model = new GetZabbixToken();<br>        if (!$result = $model-&gt;Curl($url, $header, $data)) {<br>            echo ‘无法获取token’;<br>            exit;<br>        }<br><br>        $token = $result-&gt;result;<br>        return $token;<br>    }<br><br>//获取主机信息<br>function GetHosts() {<br>        $hostinfo = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘host.get’,<br>            ‘params’ =&gt; [<br>                ‘output’ =&gt; [‘hostid’, ‘name’],<br>                ‘filter’ =&gt; [‘host’ =&gt; ‘’],<br>            ],<br>            ‘auth’ =&gt; GetToken(),<br>            ‘id’ =&gt; 1<br>        ];<br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $data = json<em>encode($hostinfo);<br>        $header = [“Content-type: application/json”];<br>        if (!$result = Curl($url, $header, $data)) {<br>            echo ‘无法获取主机信息’;<br>            exit;<br>        }<br>        return $result-&gt;result;<br>    }</em></pre><br>这里我用前端页面渲染，效果如下<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/hostinfo.jpg" alt=""><br><br>查看详情页是具体主机硬件信息<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/info.jpg" alt=""><br><br></div><br>代码如下：<br><pre class="lang:php decode:true ">function GetInfo($hostid){<br>        $info = [<br>            ‘jsonrpc’ =&gt; ‘2.0’,<br>            ‘method’ =&gt; ‘item.get’,<br>            ‘params’ =&gt; [<br>                ‘output’    =&gt;  [‘key‘,’lastvalue’,’hostid’],<br>                ‘filter’    =&gt;  [<br>                    ‘hostid’ =&gt;  $hostid,<br>                    ‘key_’    =&gt;  [<br>                        ‘vfs.fs.size[/,total]’,<br>                        ‘vfs.fs.size[/,used]’,<br>                        ‘vfs.fs.size[/,free]’,<br>                        ‘vfs.fs.size[/data,total]’,<br>                        ‘vfs.fs.size[/data,used]’,<br>                        ‘vfs.fs.size[/data,free]’,<br>                        ‘system.cpu.load[percpu,avg15]’,<br>                        ‘system.cpu.load[percpu,avg5]’,<br>                        ‘system.cpu.load[percpu,avg1]’,<br>                        ‘system.cpu.util[,idle]’,<br>                        ‘system.cpu.switches’,<br>                        ‘system.cpu.util[,interrupt]’,<br>                        ‘system.cpu.util[,iowait]’,<br>                        ‘vm.memory.size[available]’,<br>                        ‘vm.memory.size[total]’,<br>                        ‘custom.vfs.dev.read.ms[sda]’,<br>                        ‘custom.vfs.dev.write.ms[sda]’,<br>                        ‘icmpping’,<br>                        ‘icmppingsec’,<br>                        ‘icmppingloss’,<br>                        ‘iptables.lines’,<br>                        ‘kernel.maxfiles’,<br>                        ‘net.if.in[em1]’,<br>                        ‘net.if.in[em2]’,<br>                        ‘net.if.in[em3]’,<br>                        ‘net.if.in[em4]’,<br>                        ‘net.if.out[em1]’,<br>                        ‘net.if.out[em2]’,<br>                        ‘net.if.out[em3]’,<br>                        ‘net.if.out[em4]’,<br>                        ‘proc.num[]’,<br>                        ‘system.boottime’,<br>                        ‘system.localtime’,<br>                        ‘system.swap.size[,free]’,<br>                        ‘system.swap.size[,pfree]’,<br>                        ‘system.swap.size[,total]’,<br>                        ‘system.uname’,<br>                        ‘system.uptime’,<br>                        ‘system.users.num’,<br>                        ‘vfs.fs.inode[/,pfree]’,<br>                        ‘vfs.fs.inode[/data,pfree]’,<br>                    ],<br>                ],<br>            ],<br>            ‘auth’  =&gt;  GetToken(),<br>            ‘id’    =&gt;  1,<br>        ];<br><br>        $url = ‘<a href="http://www.example.com/api_jsonrpc.php" target="_blank" rel="external">http://www.example.com/api_jsonrpc.php</a>‘;<br>        $info =  json_encode($info);<br>        $header = [“Content-type: application/json”];<br>        if(!$info = $model-&gt;Curl($url,$header,$info)){<br>            echo ‘无法获取信息’;<br>            exit;<br>        }<br>        return $info-&gt;result;<br>    }</pre><br>&nbsp;<br><br></div><br></div><br></div><br></div><br></div>
+<p>Zabbix API是在1.8版本中开始引进并且已经被广泛应用。所有的Zabbix移动客户端都是基于API，甚至原生的WEB前端部分也是建立在它之上。Zabbix API 中间件使得架构更加模块化也避免直接对数据库进行操作。它允许你通过JSON RPC协议来创建、更新和获取Zabbix对象并且做任何你喜欢的操作【当然前提是你拥有认证账户】。<br>Zabbix API提供两项主要功能：<br></p>
+        
+          <a class="article-more-a" href="/2016/09/12/zabbix-api-php/#more">more >></a>
+        
       
 
       
@@ -433,12 +405,10 @@ exporting: {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法</div><br><div>代码如下</div><br><div><br><pre class="lang:php decode:true ">&lt;?php<br><br>//数组数据<br>$data = array(<br>    array(‘id’=&gt;1,’name’=&gt;’test1’),<br>    array(‘id’=&gt;2,’name’=&gt;’test2’),<br>    array(‘id’=&gt;3,’name’=&gt;’test3’),<br>    array(‘id’=&gt;4,’name’=&gt;’test4’),<br>    array(‘id’=&gt;5,’name’=&gt;’test5’),<br>    array(‘id’=&gt;6,’name’=&gt;’test6’),<br>    array(‘id’=&gt;7,’name’=&gt;’test7’),<br>);<br><br>//获取当前页<br>$page = intval(isset($_GET[‘page’])) ? intval($_GET[‘page’]) : 1;<br>//排序order 0 - 不变     1- 反序<br>$order = 0;<br>//每页显示数<br>$count = 3;<br><br>$d = page_array($count,$page,$data,$order);<br>echo ‘&lt;pre&gt;’ ;<br>print_r($d);<br>//url地址<br>$url = ‘<a href="http://127.0.0.1:81/test.php" target="_blank" rel="external">http://127.0.0.1:81/test.php</a>‘;<br>echo show_array($countpage,$url);<br><br>/<strong><br> <em> 数组分页函数  核心函数  array_slice 
- </em> 用此函数之前要先将数据库里面的所有数据按一定的顺序查询出来存入数组中<br> <em> $count   每页多少条数据 
- </em> $page   当前第几页<br> <em> $array   查询出来的所有数组 
- </em> order 0 - 不变     1- 反序<br> <em>/<br><br>function page_array($count,$page,$array,$order){<br>    global $countpage; #定全局变量<br>    $page=(empty($page))?’1’:$page; #判断当前页面是否为空 如果为空就表示为第一页面<br>       $start=($page-1)</em>$count; #计算每次分页的开始位置<br>    if($order==1){<br>      $array=array_reverse($array);<br>    }<br>    $totals=count($array);<br>    $countpage=ceil($totals/$count); #计算总页面数<br>    $pagedata=array();<br>    $pagedata=array_slice($array,$start,$count);<br>    return $pagedata;  #返回查询数据<br>}<br>/</strong><br> <em> 分页及显示函数 
- </em> $countpage 全局变量，照写<br> <em> $url 当前url 
- </em>/<br>function show_array($countpage,$url){<br>     $page=empty($_GET[‘page’])?1:$_GET[‘page’];<br>     if($page &gt; 1){<br>        $uppage=$page-1;<br><br>     }else{<br>        $uppage=1;<br>     }<br><br>     if($page &lt; $countpage){<br>        $nextpage=$page+1;<br><br>     }else{<br>            $nextpage=$countpage;<br>     }<br><br>    $str=’&lt;div style=”border:1px; width:300px; height:30px; color:#9999CC”&gt;’;<br>    $str.=”&lt;span&gt;共  {$countpage}  页 / 第 {$page} 页&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page=1’&gt;   首页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$uppage}’&gt; 上一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$nextpage}’&gt;下一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$countpage}’&gt;尾页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=’&lt;/div&gt;’;<br>    return $str;<br>}<br>?&gt;</pre><br>结果如下：<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160912-0.png" alt=""><br><br></div>
+        <div>由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法</div><br><div>代码如下</div><br>
+        
+          <a class="article-more-a" href="/2016/09/12/php-array-page/#more">more >></a>
+        
       
 
       
@@ -522,127 +492,10 @@ exporting: {
 <p>mysql主从复制，主mysql版本为5.5，从mysql版本为5.7</p>
 <p>主库不需要操作，只在从数据库上配置</p>
 <p>由于需要同步18个数据库，由于主库的端口各不相同，从库同样要开启18个实例</p>
-<p><div>前面直接用脚本操作</div></p>
-<pre class="lang:sh decode:true">#!/bin/bash
-
-#多实例端口号
-port="3306 3312 3307 3319 3308 3309 3311 3330 3320 3321 3326 3327 3333 3314 3318 3323 3317 3316 3307"
-
-for i in $port
-do
-    #创建数据目录
-        mkdir /data/$i/dbdata -p
-
-        #修改权限
-        chown mysql:mysql /data/$i -R
-
-        #初始化数据库
-        /usr/local/mysql/bin/mysqld --initialize-insecure --user="mysql" --basedir="/usr/local/mysql" --datadir="/data/$i/dbdata"
-
-        #拷贝配置文件
-        cp /opt/my.cnf /data/$i/
-
-        #修改配置
-        sed -i "s/3312/$i/g" /data/$i/my.cnf
-
-        #启动
-        mysqld_safe --defaults-file="/data/$i/my.cnf" &amp;
-
-        #登录,第一次登录默认密码为空
-        mysql -S /tmp/mysql$i.sock &lt;&lt; EOF
-
-        #修改密码
-        use mysql;
-        set password = password('******');
-
-        #授予权限
-        grant all on *.* to root@'192.168.61.%' identified by '******';
-        flush privileges;
-        exit;
-EOF
-
-done</pre>
-脚本注释：
-
-#初始化，5.7版本废弃mysql_install_db命令，该用mysqld 来初始化，—initialize 参数来创建密码，默认保存在~/.mysql_secret 。 —initialize-insecure 参数创建空密码
-
-主配置文件
-<pre class="lang:sh decode:true ">[client]
-port = 3312
-socket = /tmp/mysql3312.sock
-default-character-set = utf8mb4
-
-[mysql]
-prompt="MySQL [\d]&gt; "
-no-auto-rehash
-
-[mysqld]
-port = 3370
-socket = /tmp/mysql3312.sock
-
-basedir = /usr/local/mysql
-datadir = /data/3312/dbdata
-pid-file = /data/3312/mysql.pid
-user = mysql
-bind-address = 0.0.0.0
-server-id = 5
-
-init-connect = 'SET NAMES utf8mb4'
-character-set-server = utf8mb4
-
-skip-name-resolve
-
-log_bin = mysql-bin
-binlog_format = mixed
-expire_logs_days = 7</pre>
-查看服务
-<pre class="lang:sh decode:true ">[root@host-192-168-150-202 ~]# netstat -lutnp |grep mysqld
-tcp        0      0 0.0.0.0:3307                0.0.0.0:*                   LISTEN      28591/mysqld
-tcp        0      0 0.0.0.0:3308                0.0.0.0:*                   LISTEN      30546/mysqld
-tcp        0      0 0.0.0.0:3309                0.0.0.0:*                   LISTEN      31062/mysqld
-tcp        0      0 0.0.0.0:3311                0.0.0.0:*                   LISTEN      31564/mysqld
-tcp        0      0 0.0.0.0:3312                0.0.0.0:*                   LISTEN      27792/mysqld
-tcp        0      0 0.0.0.0:3314                0.0.0.0:*                   LISTEN      2978/mysqld
-tcp        0      0 0.0.0.0:3316                0.0.0.0:*                   LISTEN      5322/mysqld
-tcp        0      0 0.0.0.0:3317                0.0.0.0:*                   LISTEN      4736/mysqld
-tcp        0      0 0.0.0.0:3318                0.0.0.0:*                   LISTEN      3564/mysqld
-tcp        0      0 0.0.0.0:3319                0.0.0.0:*                   LISTEN      11531/mysqld
-tcp        0      0 0.0.0.0:3320                0.0.0.0:*                   LISTEN      32591/mysqld
-tcp        0      0 0.0.0.0:3321                0.0.0.0:*                   LISTEN      661/mysqld
-tcp        0      0 0.0.0.0:3323                0.0.0.0:*                   LISTEN      4150/mysqld
-tcp        0      0 0.0.0.0:3326                0.0.0.0:*                   LISTEN      1229/mysqld
-tcp        0      0 0.0.0.0:3327                0.0.0.0:*                   LISTEN      1774/mysqld
-tcp        0      0 0.0.0.0:3330                0.0.0.0:*                   LISTEN      32066/mysqld
-tcp        0      0 0.0.0.0:3333                0.0.0.0:*                   LISTEN      2392/mysqld
-tcp        0      0 0.0.0.0:3370                0.0.0.0:*                   LISTEN      6497/mysqld
-tcp        0      0 0.0.0.0:3306                0.0.0.0:*                   LISTEN      5923/mysqld</pre>
-登录到主数据库上查看file,pos等信息，来配置从数据库
-<pre class="lang:sh decode:true">#指定主服务器
-mysql&gt; change master to master_host="192.168.101.22",master_port=3370,master_user="kfuser",master_password="kfpasswd",master_log_file="mysql-bin.000006",master_log_pos=246808818;
-mysql&gt; start slave;
-mysql&gt; show slave status\G
-*************************** 1\. row ***************************
-               Slave_IO_State: Waiting for master to send event
-                  Master_Host: 192.168.101.99
-                  Master_User: ****
-                  Master_Port: 3307
-                Connect_Retry: 60
-              Master_Log_File: mysql-bin.000007
-          Read_Master_Log_Pos: 326301199
-               Relay_Log_File: host-192-168-150-202-relay-bin.000002
-                Relay_Log_Pos: 164439916
-        Relay_Master_Log_File: mysql-bin.000007
-             Slave_IO_Running: Yes
-            Slave_SQL_Running: Yes</pre>
-
-<hr>
-<p>错误1：</p>
-<p><pre class="lang:sh decode:true ">Last_Errno: 1032<br>Last_Error: Could not execute Update_rows_v1 event on table InfoServer_HS.ONLINENUMREALTIME; Can’t find record in ‘ONLINENUMREALTIME’, Error_code: 1032; handler error HA_ERR_KEY_NOT_FOUND; the event’s master log mysql-bin.000006, end_log_pos 246506088</pre><br>造成1032错误的根本原因是主从数据库数据不一致,导致同步操作在从库上无法执行.</p>
-<p>解决办法：</p>
-<p><pre class="lang:sh decode:true ">vim /etc/my.cnf<br>slave-skip-errors = 1032 #跳过这个错误</pre><br>错误2:</p>
-<p><pre class="lang:sh decode:true ">Last_SQL_Errno: 1677<br>Last_SQL_Error: Column 5 of table ‘InfoServer_HS.ONLINENUM20160906’ cannot be converted from type ‘varchar(100)’ to type ‘varchar(100)’</pre><br>解决办法：</p>
-<p><pre class="lang:sh decode:true ">mysql&gt; stop slave;<br>mysql&gt; set global slave_type_conversions=ALL_NON_LOSSY;<br>mysql&gt; start slave;</pre><br>&nbsp;</p>
-
+<p><div>前面直接用脚本操作</div><br></p>
+        
+          <a class="article-more-a" href="/2016/09/06/mysql-many-instance/#more">more >></a>
+        
       
 
       
@@ -719,59 +572,9 @@ mysql&gt; show slave status\G
     <div class="article-entry" itemprop="articleBody">
       
         <p>MongoDB（来自于英文单词“Humongous”，中文含义为“庞大”）是可以应用于各种规模的企业、各个行业以及各类应用程序的开源数据库。作为一个适用于敏捷开发的数据库，MongoDB的数据模式可以随着应用程序的发展而灵活地更新。与此同时，它也为开发人员 提供了传统数据库的功能：二级索引，完整的查询系统以及严格一致性等等。 MongoDB能够使企业更加具有敏捷性和可扩展性，各种规模的企业都可以通过使用MongoDB来创建新的应用，提高与客户之间的工作效率，加快产品上市时间，以及降低企业成本.</p>
-<h3 id="1-下载模版"><a href="#1-下载模版" class="headerlink" title="1. 下载模版"></a>1. 下载模版</h3><pre class="lang:sh decode:true">cenhuqing@cenhuqingdeMBP ~$ wget http://mongoing.com/wp-content/uploads/2014/11/Mongodb_eshu.txt
-
-模版名后缀改成xml，导入web模版
-
-监控的参数有如下：
-connections
-BackgroundFlush
-curosor
-oplogstoragetime
-pagefaults
-queue
-index
-mem
-network
-Opcounters</pre>
-
-<h3 id="2，配置客户端"><a href="#2，配置客户端" class="headerlink" title="2，配置客户端"></a>2，配置客户端</h3><pre class="lang:sh decode:true">[root@zhishi ~]# vim /usr/local/etc/zabbix_agentd.conf
-Include=/usr/local/etc/zabbix.agentd.conf.d/*.conf
-
-取消该注释
-不取消也可以放在配置文件中。不过为了方便以后添加更多的参数所以创建文件</pre>
-
-<h3 id="3-配置文件中添加参数"><a href="#3-配置文件中添加参数" class="headerlink" title="3.配置文件中添加参数"></a>3.配置文件中添加参数</h3><p><span style="color: #ff0000;">注意：mongo带认证需要添加认证用户名和密码</span></p>
-<pre class="lang:sh decode:true">[root@zhishi ~]# vim /usr/local/etc/zabbix_agentd.conf.d/monitor_mongodb.conf
-UserParameter=mongo.service,ps -ef | grep mongo |grep -v grep |wc -l
-UserParameter=mongo.mem_resident,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep resident | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
-UserParameter=mongo.mem_virtual,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep virtual | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
-UserParameter=mongo.mem_mapped,echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep '\bmapped\b' | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
-UserParameter=mongo.network[*],echo "db.serverStatus().network"|mongo -u root -p passwd admin| grep $1 | cut -d ":" -f 2 |cut -d "," -f1 |cut -d " " -f 2
-UserParameter=mongo.index[*],echo "db.serverStatus().indexCounters"|mongo -u root -p passwd admin| grep $1| cut -d ":" -f 2 |cut -d "," -f1 |cut -d " " -f 2
-UserParameter=mongo.connection_current,echo "db.serverStatus().connections"| mongo -u root -p passwd admin| grep current|cut -d ":" -f 2|cut -d "," -f 1|cut -d " " -f 2
-UserParameter=mongo.connection_available,echo "db.serverStatus().connections"| mongo -u root -p passwd admin| grep current| cut -d ":" -f 3|cut -d "," -f 1 |cut -d " " -f 2
-UserParameter=mongo.opcounters[*],echo "db.serverStatus().opcounters" |mongo -u root -p passwd admin| grep $1|cut -d ":" -f 2|cut -d "," -f 1 |cut -d " " -f 2
-UserParameter=mongo.rpstatus,echo "rs.status()"| mongo -u root -p passwd admin| grep myState| cut -d ":" -f 2| cut -d "," -f 1 |cut -d " " -f 2
-UserParameter=mongo.queue_write,echo "db.serverStatus().globalLock.currentQueue.writers"|mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.queue_reader,echo "db.serverStatus().globalLock.currentQueue.readers"|mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.backgroundFlush,echo "db.serverStatus().backgroundFlushing.last_ms" |mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.curosor_Totalopen,echo "db.serverStatus().cursors.totalOpen" |mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.curospr_timedOu,echo "db.serverStatus().cursors.timedOut" |mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.pagefaults,echo "db.serverStatus().extra_info.page_faults" |mongo -u root -p passwd admin|sed -n 3p
-UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u root -p passwd admin|sed -n 4p|cut -d "(" -f 2|cut -d "h" -f 1</pre>
-
-<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4.测试"></a>4.测试</h3><p>4.1 客户端测试</p>
-<pre class="lang:sh decode:true ">[root@zhishi ~]#  echo "db.serverStatus().mem"| mongo -u root -p passwd admin|grep resident | cut -d ":" -f 2 |cut -d "," -f 1| cut -d " " -f 2
-93</pre>
-4.2 监控端测试
-<pre class="lang:sh decode:true ">[root@monitor ~]#  zabbix_get -s 10.168.210.56 -k mongo.mem_resident
-93</pre>
-
-<h3 id="5-zabbix配置"><a href="#5-zabbix配置" class="headerlink" title="5.zabbix配置"></a>5.zabbix配置</h3><p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-0@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-1@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-2@2x1.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151230-3@2x1.png" alt=""></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
+        
+          <a class="article-more-a" href="/2015/12/30/zabbix-monitor-mongodb/#more">more >></a>
+        
       
 
       
@@ -851,22 +654,10 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用</div><br><div>我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。</div><br><div>然后我就想用阿里云做通道，公司到国外vps之间到通道。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png" alt=""></div><br><div>实现步骤：</div>
-
-<h3 id="1-云主机启用通道"><a href="#1-云主机启用通道" class="headerlink" title="1.云主机启用通道"></a>1.云主机启用通道</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xo<br>root@xo.xo.xo.xo’s password:</pre><br>查看监控端口</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# netstat -lutnp |grep 12345<br>tcp        0      0 0.0.0.0:12345               0.0.0.0:*                   LISTEN      19633/ssh</pre><br>添加防火墙策略</p>
-<p><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/sysconfig/iptables<br>-A INPUT -s xx.xx.xx.xx -p tcp  –dport 12345 -j ACCEPT<br>[root@monitor ~]# iptables -nL |grep 12345<br>ACCEPT     tcp  –  xx.xx.xx.xx        0.0.0.0/0           tcp dpt:12345</pre></p>
-<div>注：xo.xo.xo.xo为vps地址，xx.xx.xx.xx为云主机地址</div><br><div></div><br><div>参数详解：</div><br><div><br><div><br><div>-q表示该命令进入安静模式</div><br></div><br></div><br><div><br><div><br><div>-T是指该命令不占用shell</div><br></div><br></div><br><div><br><div><br><div>-N是指该命令不执行远程命令</div><br></div><br></div><br><div><br><div><br><div>-f是指该命令在后台运行</div><br></div><br></div><br><div><br><div><br><div>-D是该命令重要参数，他的后面跟着socks5服务器的地址与端口</div><br></div><br></div><br><div><br><div><br><div>最后就是远程服务器用户名和地址</div><br><div></div><br></div><br></div><br><div><br><div>也可以使用端口映射</div><br><div>ssh -N -f -L 127.0.0.1:12345:10.21.0.34:22 test@12.3..4.5</div><br><div>其中-N，-f作用上面已经讲了，这里最重要的是-L命令，它作用是做本地映射，使得远程服务器的端口相当于本地某自定义的端口，如上面的命令，本地的12345端口就相当于10.21.0.34的22端口，以后我只需要使用ssh user@127.0.0.1 -p 12345命令就能登录10.21.0.34了，注意user是10.21.0.34的用户，最后就是我们所使用的中间服务器，这个地址需要是我们直接访问到的。其实上面所说的A主机就是127.0.0.1，B主机就是12.3.4.5，C主机就是10.21.0.34。当然了，有本地映射肯定有远程映射，就是把-L换成-R，这样我们访问远程主机的端口就相当于访问本地的端口，但我没发现该功能的更多用途。</div><br><div></div><br><div><br><div><br><div>如果你没有什么中间服务器，只是想做个端口映射，那也很简单，如下：</div><br></div><br></div><br><div><br><div><br><div>ssh -N -f -L 12345:12.3.4.5:22 test@12.3.4.5</div><br></div><br></div><br><div></div>
-
-<h3 id="2-本地Chrome浏览器设置"><a href="#2-本地Chrome浏览器设置" class="headerlink" title="2.本地Chrome浏览器设置"></a>2.本地Chrome浏览器设置</h3><p>首先需要插件SwitchyOmega，可以chrome—&gt;更多工具—&gt;扩展程序—&gt;更多扩展程序里获取</p>
-<p>也可以直接点击：<a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="external">https://chrome.google.com/webstore/category/extensions?hl=zh-CN</a></p>
-<p>添加完成后，选项里设置新建情景模式</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-3@2x.png" alt=""></p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-4@2x.png" alt=""></p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-5@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-7@2x.png" alt=""></p>
-<p></p></div><br>测试下效果<p></p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-8@2x.png" alt=""></p>
-
+        <div>最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用</div><br><div>我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。</div><br><div>然后我就想用阿里云做通道，公司到国外vps之间到通道。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png" alt=""></div><br><div>实现步骤：</div><br>
+        
+          <a class="article-more-a" href="/2015/12/18/ssh-tunnel-over-the-wall/#more">more >></a>
+        
       
 
       
@@ -948,19 +739,10 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
       
         <p>nginx日志里有一些来历不明的ip攻击或者是用ssh来尝试登录你的密码</p>
 <p>日志会记录这些来源的ip地址，根据ip地址来加入到iptables INPUT里，默认INPUT链为DROP</p>
-<p>下面是我写的一个脚本，可以放到计划任务里，每天来统计</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# vim add_iptables.sh </pre></p>
-<p>#!/bin/bash</p>
-<p>#日志文件<br>logfile=/data/app/nginx/logs/access.log</p>
-<p>#统计ip，可以根据时间统计<br>awk ‘/passport-send_vcode_sms.html/{print $1}’ $logfile |sort |uniq -c |sort -nr &gt; /root/ip.txt</p>
-<p>#已经在iptables中的地址<br>droped_ip=$(iptables -L -n |awk ‘/^DROP/{print $4}’)</p>
-<p>#未加入iptables中的地址<br>drop_ip=$(awk ‘{print $2}’ /root/ip.txt)</p>
-<p>#比较两个数组不同，把不同的ip加入到防火墙中<br>add_ip=$(awk ‘NR==1{for(i=1;i&lt;=NF;i++) B[$i]=1}NR==2{for(j=1;j&lt;=NF;j++) {if(B[$j]!=1) print $j}} ‘ &lt;(echo $droped_ip) &lt;(echo $drop_ip))<br>for i in $add_ip<br>do<br>        iptables -A INPUT -s $i -j DROP &amp;&amp; echo “已添加IP: $i 到防火墙丢弃策略中。”<br>done</p>
-<p>#保存新加入的策略<br>/etc/init.d/iptables save<br>/etc/init.d/iptables reload<br>执行前的iptables策略</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0</pre><br>执行脚本</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# bash add_iptables.sh<br>已添加IP: 218.88.85.184 到防火墙丢弃策略中。<br>已添加IP: 122.227.51.102 到防火墙丢弃策略中。<br>已添加IP: 122.235.180.60 到防火墙丢弃策略中。<br>已添加IP: 122.95.241.64 到防火墙丢弃策略中。<br>已添加IP: 210.21.220.68 到防火墙丢弃策略中。<br>已添加IP: 106.226.24.23 到防火墙丢弃策略中。<br>已添加IP: 60.184.47.12 到防火墙丢弃策略中。<br>已添加IP: 220.113.94.30 到防火墙丢弃策略中。<br>已添加IP: 58.253.150.96 到防火墙丢弃策略中。<br>已添加IP: 110.81.117.78 到防火墙丢弃策略中。<br>已添加IP: 119.132.156.176 到防火墙丢弃策略中。<br>已添加IP: 220.171.210.251 到防火墙丢弃策略中。<br>已添加IP: 101.233.125.137 到防火墙丢弃策略中。<br>已添加IP: 60.162.152.102 到防火墙丢弃策略中。<br>已添加IP: 123.97.164.49 到防火墙丢弃策略中。<br>已添加IP: 114.83.216.53 到防火墙丢弃策略中。<br>已添加IP: 171.117.124.119 到防火墙丢弃策略中。<br>已添加IP: 58.254.4.13 到防火墙丢弃策略中。</pre><br>执行脚本后的iptables策略</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0<br>DROP       all  –  218.88.85.184        0.0.0.0/0<br>DROP       all  –  122.227.51.102       0.0.0.0/0<br>DROP       all  –  122.235.180.60       0.0.0.0/0<br>DROP       all  –  122.95.241.64        0.0.0.0/0<br>DROP       all  –  210.21.220.68        0.0.0.0/0<br>DROP       all  –  106.226.24.23        0.0.0.0/0<br>DROP       all  –  60.184.47.12         0.0.0.0/0<br>DROP       all  –  220.113.94.30        0.0.0.0/0<br>DROP       all  –  58.253.150.96        0.0.0.0/0<br>DROP       all  –  110.81.117.78        0.0.0.0/0<br>DROP       all  –  119.132.156.176      0.0.0.0/0<br>DROP       all  –  220.171.210.251      0.0.0.0/0<br>DROP       all  –  101.233.125.137      0.0.0.0/0<br>DROP       all  –  60.162.152.102       0.0.0.0/0<br>DROP       all  –  123.97.164.49        0.0.0.0/0<br>DROP       all  –  114.83.216.53        0.0.0.0/0<br>DROP       all  –  171.117.124.119      0.0.0.0/0<br>DROP       all  –  58.254.4.13          0.0.0.0/0</pre><br>&nbsp;</p>
-
+<p>下面是我写的一个脚本，可以放到计划任务里，每天来统计<br></p>
+        
+          <a class="article-more-a" href="/2015/12/17/scripts-add-ip-to-iptables/#more">more >></a>
+        
       
 
       
@@ -1040,123 +822,10 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：</p>
-<p><table></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td valign="top">版本特性</td></p>
-<p><td valign="top">社区版本</td></p>
-<p><td valign="top">企业版本</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">JSON数据模型、自由模式</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">水平扩展的自动分片功能</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">内置副本以及高可用性</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">完整的、可扩展的索引支撑</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">丰富的文档查询功能</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">快速的文档内更新</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">聚合框架和MapReduce</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">使用GridFS存储大量多媒体数据</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">文本搜索</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">云、预置和混合部署</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">基于角色的权限控制</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">基于Kerberos先进的安全认证</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">预置监控</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">支持SNMP</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">操作系统认证</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br><br><br><br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。</p>
-<h3 id="1-添加仓库"><a href="#1-添加仓库" class="headerlink" title="1.添加仓库"></a>1.添加仓库</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# vim /etc/yum.repos.d/mongodb-enterprise.repo
-[mongodb-enterprise-2.6]
-name=MongoDB Enterprise 2.6 Repository
-baseurl=https://repo.mongodb.com/yum/redhat/$releasever/mongodb-enterprise/2.6/$basearch/
-gpgcheck=0
-enabled=1</pre>
-
-<h3 id="2-yum安装"><a href="#2-yum安装" class="headerlink" title="2.yum安装"></a>2.yum安装</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# yum install -y mongodb-enterprise
-[root@VM-248 ~]# rpm -qa |grep mongodb
-mongodb-enterprise-server-2.6.11-1.el6.x86_64
-mongodb-enterprise-tools-2.6.11-1.el6.x86_64
-mongodb-enterprise-2.6.11-1.el6.x86_64
-mongodb-enterprise-shell-2.6.11-1.el6.x86_64
-mongodb-enterprise-mongos-2.6.11-1.el6.x86_64</pre>
-
-<h3 id="3-修改配置"><a href="#3-修改配置" class="headerlink" title="3.修改配置"></a>3.修改配置</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# egrep -v '^$|^#' /etc/mongod.conf
-logpath=/var/log/mongodb/mongod.log
-logappend=true
-fork=true
-dbpath=/var/lib/mongo
-pidfilepath=/var/run/mongodb/mongod.pid
-bind_ip=0.0.0.0
-auth=true</pre>
-
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4.启动服务"></a>4.启动服务</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# /etc/init.d/mongod start
-[root@VM-248 ~]# chkconfig mongod  on</pre>
-
-<h3 id="5-添加密码"><a href="#5-添加密码" class="headerlink" title="5.添加密码"></a>5.添加密码</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# mongo
-MongoDB shell version: 2.6.11
-connecting to: test
-&gt; use admin
-switched to db admin
-&gt; db.addUser('root','password')
-WARNING: The 'addUser' shell helper is DEPRECATED. Please use 'createUser' instead
-Successfully added user: { "user" : "root", "roles" : [ "root" ] }
-&gt; db.system.users.find()
-{ "_id" : "admin.root", "user" : "root", "db" : "admin", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "root", "db" : "admin" } ] }
-&gt; exit
-bye</pre>
-
-<h3 id="6-删除密码"><a href="#6-删除密码" class="headerlink" title="6.删除密码"></a>6.删除密码</h3><pre class="lang:sh decode:true ">&gt; db.system.users.find()
-{ "_id" : "test.root", "user" : "root", "db" : "test", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "dbOwner", "db" : "test" } ] }
-&gt; db.system.users.remove({user:"root"})
-WriteResult({ "nRemoved" : 1 })
-&gt; db.system.users.find()
-&gt; exit
-bye</pre>
-
-<h3 id="7-远程连接"><a href="#7-远程连接" class="headerlink" title="7.远程连接"></a>7.远程连接</h3><p><pre class="lang:sh decode:true ">cenhuqing@cenhuqingdeMacBook-Pro ~$mongo vm248/admin -u root -p password<br>MongoDB shell version: 3.0.4<br>connecting to: vm248/admin<br>&gt; show dbs;<br>admin  0.078GB<br>local  0.078GB<br>&gt; exit<br>bye</pre><br>参考文章：<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/" target="_blank" rel="external">https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/</a></p>
-
+        <p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：<br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。<br></p>
+        
+          <a class="article-more-a" href="/2015/12/08/install-mongodb-enterprise-2-6/#more">more >></a>
+        
       
 
       
@@ -1228,46 +897,10 @@ bye</pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。</p>
-<p>在 ./bin/logstash.lib.sh 第 34 行 JAVA_OPTS=”$JAVA_OPTS -Djava.awt.headless=true” 下，添加如下几行：</p>
-<pre class="lang:sh decode:true ">[root@monitor logstash]# vim bin/logstash.lib.sh
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=9010"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.local.only=false"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false"</pre>
-<div>重启 logstash 服务，JMX 配置即可生效。</div>
-<div>有 JMX 以后，我们可以通过 jconsole 界面查看，也可以通过 zabbix 等监控系统做长期监控。甚至 logstash 自己也有插件 logstash-input-jmx 来读取远程 JMX 数据。</div>
-<div></div>
-<div>注意，zabbix-server 本身并不直接对 JMX 发起请求，而是单独有一个 Java Gateway 作为中间代理层角色。zabbix-server 的 java poller 连接 zabbix-java-gateway，由 zabbix-java-gateway 去获取远程 JMX 信息。所以，在 zabbix-web 配置之前，需要先配置 zabbix server 相关进程和设置：</div>
-<div></div>
-
-### 1\. 安装zabbix-java-gateway
-
-<div>
-<pre class="lang:sh decode:true">[root@monitor logstash]# yum install http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-java-gateway-2.4.7-1.el6.x86_64.rpm</pre>
-
-<h3 id="2-修改zabbix-server配置文件"><a href="#2-修改zabbix-server配置文件" class="headerlink" title="2. 修改zabbix_server配置文件"></a>2. 修改zabbix_server配置文件</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# vim /usr/local/etc/zabbix_server.conf
-JavaGateway=127.0.0.1
-JavaGatewayPort=10052
-StartJavaPollers=5</pre>
-
-<h3 id="3-启动zabbix-jtva-gateway服务，重启logstash服务"><a href="#3-启动zabbix-jtva-gateway服务，重启logstash服务" class="headerlink" title="3. 启动zabbix-jtva-gateway服务，重启logstash服务"></a>3. 启动zabbix-jtva-gateway服务，重启logstash服务</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# /etc/init.d/zabbix-java-gateway start
-[root@monitor logstash]# /etc/init.d/logstash restart</pre>
-<div>查看JMX监控端口</div>
-<div>
-<pre class="lang:sh decode:true ">[root@monitor logstash]# netstat -lutnp |grep 9010
-tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LISTEN      11842/java</pre>
-
-<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4. 配置zabbix"></a>4. 配置zabbix</h3><h5 id="4-1-选择监控JMX的主机"><a href="#4-1-选择监控JMX的主机" class="headerlink" title="4.1 选择监控JMX的主机"></a>4.1 选择监控JMX的主机</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png" alt=""></p>
-<h5 id="4-2-添加JMX"><a href="#4-2-添加JMX" class="headerlink" title="4.2 添加JMX"></a>4.2 添加JMX</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png" alt=""></p>
-<h5 id="4-3-添加项目"><a href="#4-3-添加项目" class="headerlink" title="4.3 添加项目"></a>4.3 添加项目</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png" alt=""></p>
-<h5 id="4-4-创建图形"><a href="#4-4-创建图形" class="headerlink" title="4.4 创建图形"></a>4.4 创建图形</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png" alt=""></p>
-<p></p></div><p></p>
-<hr>
-<p><span style="color: #ff0000;">错误如下：</span></p>
-<p></p></div><p></p>
-<div><img src="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>
+        <p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。<br></p>
+        
+          <a class="article-more-a" href="/2015/11/16/zabbix-monitor-logstash-java/#more">more >></a>
+        
       
 
       

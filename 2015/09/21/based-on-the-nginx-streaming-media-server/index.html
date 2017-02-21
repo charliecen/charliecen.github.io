@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>基于nginx流媒体服务器搭建 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。流媒体播放方式：HTTP方式这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流">
+  <meta name="description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于nginx流媒体服务器搭建">
 <meta property="og:url" content="http://yoursite.com/2015/09/21/based-on-the-nginx-streaming-media-server/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。流媒体播放方式：HTTP方式这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流">
+<meta property="og:description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150921-3@2x.jpg">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150921-4@2x.jpg">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:38:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于nginx流媒体服务器搭建">
-<meta name="twitter:description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。流媒体播放方式：HTTP方式这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流">
+<meta name="twitter:description" content="七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/QQ20150921-3@2x.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -164,7 +164,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。</div><br><div>到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。</div><br><div></div><br><div></div><br><div><br><div>流媒体播放方式：</div><br><div>HTTP方式</div><br><div><br><div>这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流媒体方式强大，很多视频网站都是用HTTP方式实现的，如：YouTube，土豆，酷6等</div><br><div></div><br></div><br><div>RTMP/RTMP流媒体方式</div><br><div>这种方式不用下载FLV视频文件到本地，可以实时的播放flv文件，可以任意拖拽播放进度条，但是比较消耗服务器的资源。</div><br></div><br><div></div><br><div></div><br><div><br><div>系统：centos6.5</div><br><div>软件：nginx-1.8</div>
+        <div>七牛云存储的流媒体服务，我申请了个测试帐号，在内容管理上传你的视频文件，生成外链。</div><br><div>到自己博客里把外链添加到文章里。貌似不能播放。应该是视频格式或者编码问题，问过他们技术，需要转码。但是MPS服务还要认证。然后自己在本地搭建个流媒体服务器。</div><br><a id="more"></a><br><div>流媒体播放方式：</div><br><div>HTTP方式</div><br><div>这种方式要下载FLV视频文件到本地播放，一旦FLV视频文件下载完成，就不会消耗服务器的资源和带宽，但是拖动功能没有RTMP/RTMP流媒体方式强大，很多视频网站都是用HTTP方式实现的，如：YouTube，土豆，酷6等</div><br><div></div><br><br><div>RTMP/RTMP流媒体方式</div><br><div>这种方式不用下载FLV视频文件到本地，可以实时的播放flv文件，可以任意拖拽播放进度条，但是比较消耗服务器的资源。</div><br><br><div></div><br><div></div><br><div><br><div>系统：centos6.5</div><br><div>软件：nginx-1.8</div>
 
 <h3 id="1-由于安装时很多依赖包，需要添加源"><a href="#1-由于安装时很多依赖包，需要添加源" class="headerlink" title="1.由于安装时很多依赖包，需要添加源"></a>1.由于安装时很多依赖包，需要添加源</h3><pre class="lang:sh decode:true ">[root@VM-242 src]# cd /usr/local/src
 [root@VM-242 src]# wget -c http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm

@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Ajax+setInterval实时更新 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面index.php&amp;lt;div class=”count” id=”count” &amp;gt;100&amp;lt;/div&amp;gt;&amp;lt;script src=”/js/jquery-2.1.1.min.js”&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=”text/javascr">
+  <meta name="description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ajax+setInterval实时更新">
 <meta property="og:url" content="http://yoursite.com/2016/09/20/ajax-setinterval/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面index.php&amp;lt;div class=”count” id=”count” &amp;gt;100&amp;lt;/div&amp;gt;&amp;lt;script src=”/js/jquery-2.1.1.min.js”&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=”text/javascr">
+<meta property="og:description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:27:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax+setInterval实时更新">
-<meta name="twitter:description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面index.php&amp;lt;div class=”count” id=”count” &amp;gt;100&amp;lt;/div&amp;gt;&amp;lt;script src=”/js/jquery-2.1.1.min.js”&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=”text/javascr">
+<meta name="twitter:description" content="要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)首先前段页面">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -163,7 +163,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br><div><br><pre class="lang:php decode:true ">index.php<br>&lt;div class=”count” id=”count” &gt;100&lt;/div&gt;<br>&lt;script src=”/js/jquery-2.1.1.min.js”&gt;&lt;/script&gt;<br>&lt;script type=”text/javascript”&gt;<br>    setInterval(function(){<br>        $.ajax({<br>            type:”post”,<br>            dataType:”json”,<br>            url: ‘index.php?r=test/getdata’,<br>            success:function(data){<br>                $(“#count”).html(data[0][‘id’]);<br>                //console.log(data[0][‘id’]);<br>            },<br>            error: function(){<br>                alert(‘wrong’);<br>            },<br>        });<br>    },3000);<br><br>&lt;/script&gt;</pre><br>后端处理页面，可以从数据库获取数据也可以中接口，这里自定义数组<br><pre class="lang:php decode:true ">public function actionGetdata()<br>    {<br>        $data = array(<br>            array(‘id’=&gt;4,’name’=&gt;’test1’<br>        );<br>        echo json_encode($data);<br><br>    }<br><br>    public function actionIndex(){<br>        return $this-&gt;render(‘index’);<br>    }</pre><br><div>浏览器访问</div><br><div><a href="http://test-advanced.com/index.php?r=test/index" target="_blank" rel="external">http://test-advanced.com/index.php?r=test/index</a>   #test表示控制器，index表示方法</div><br><div>更改数组里的id，前段页面数据实时变化</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png" alt=""></div><br></div>
+        <div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br><a id="more"></a><br><div><br><pre class="lang:php decode:true ">index.php<br>&lt;div class=”count” id=”count” &gt;100&lt;/div&gt;<br>&lt;script src=”/js/jquery-2.1.1.min.js”&gt;&lt;/script&gt;<br>&lt;script type=”text/javascript”&gt;<br>    setInterval(function(){<br>        $.ajax({<br>            type:”post”,<br>            dataType:”json”,<br>            url: ‘index.php?r=test/getdata’,<br>            success:function(data){<br>                $(“#count”).html(data[0][‘id’]);<br>                //console.log(data[0][‘id’]);<br>            },<br>            error: function(){<br>                alert(‘wrong’);<br>            },<br>        });<br>    },3000);<br><br>&lt;/script&gt;</pre><br>后端处理页面，可以从数据库获取数据也可以中接口，这里自定义数组<br><pre class="lang:php decode:true ">public function actionGetdata()<br>    {<br>        $data = array(<br>            array(‘id’=&gt;4,’name’=&gt;’test1’<br>        );<br>        echo json_encode($data);<br><br>    }<br><br>    public function actionIndex(){<br>        return $this-&gt;render(‘index’);<br>    }</pre><br><div>浏览器访问</div><br><div><a href="http://test-advanced.com/index.php?r=test/index" target="_blank" rel="external">http://test-advanced.com/index.php?r=test/index</a>   #test表示控制器，index表示方法</div><br><div>更改数组里的id，前段页面数据实时变化</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png" alt=""></div><br></div>
+
       
 
       

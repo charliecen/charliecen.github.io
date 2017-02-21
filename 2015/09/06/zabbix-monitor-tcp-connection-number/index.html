@@ -10,24 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="系统：centos6.5
 zabbix：2.4.4
-
-首先创建脚本
-
-[root@monitor scripts]# vim /usr/local/scripts/tcp_connections.sh
-#!/bin/bash
-stat() {        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’">
+首先创建脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zabbix监控tcp连接数">
 <meta property="og:url" content="http://yoursite.com/2015/09/06/zabbix-monitor-tcp-connection-number/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="系统：centos6.5
 zabbix：2.4.4
-
-首先创建脚本
-
-[root@monitor scripts]# vim /usr/local/scripts/tcp_connections.sh
-#!/bin/bash
-stat() {        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’">
+首先创建脚本">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/1.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/2.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/3.png">
@@ -37,17 +27,12 @@ stat() {        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a,
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/7.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/9.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/8.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:44:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix监控tcp连接数">
 <meta name="twitter:description" content="系统：centos6.5
 zabbix：2.4.4
-
-首先创建脚本
-
-[root@monitor scripts]# vim /usr/local/scripts/tcp_connections.sh
-#!/bin/bash
-stat() {        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’">
+首先创建脚本">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -194,13 +179,10 @@ stat() {        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a,
       
         <p><div>系统：centos6.5</div></p>
 <p><div>zabbix：2.4.4</div></p>
-<p><div></div></p>
-<p><div>首先创建脚本</div></p>
+<p><div>首先创建脚本</div><br><a id="more"></a></p>
 <p><div></div></p>
 <p><pre class="lang:sh decode:true ">[root@monitor scripts]# vim /usr/local/scripts/tcp_connections.sh</pre></p>
-<p>#!/bin/bash</p>
-<p>stat() {<br>        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’<br>        }</p>
-<p>case $1 in<br>        TIME_WAIT)<br>        stat |grep ‘TIME_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        CLOSE_WAIT)<br>        stat | grep ‘CLOSE_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        FIN_WAIT1)<br>        stat | grep ‘FIN_WAIT1’ |awk ‘{print $2}’<br>        ;;<br>        ESTABLISHED)<br>        stat | grep ‘ESTABLISHED’ |awk ‘{print $2}’<br>        ;;<br>        SYN_RECV)<br>        stat |grep ‘SYN_RECV’ |awk ‘{print $2}’<br>        ;;<br>        LAST_ACK)<br>        stat |grep ‘LAST_ACK’ |awk ‘{print $2}’<br>        ;;<br>        LISTEN)<br>        stat |grep ‘LISTEN’ |awk ‘{print $2}’<br>        ;;<br>        *)<br>        echo “Usage: TIME_WAIT CLOSE_WAIT FIN_WAIT1 ESTABLISHED SYN_RECV LAST_ACK LISTEN”<br>        ;;<br>esac<br>测试脚本是否可用</p>
+<p>#!/bin/bash<br>stat() {<br>        netstat -an | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’<br>        }<br>case $1 in<br>        TIME_WAIT)<br>        stat |grep ‘TIME_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        CLOSE_WAIT)<br>        stat | grep ‘CLOSE_WAIT’ |awk ‘{print $2}’<br>        ;;<br>        FIN_WAIT1)<br>        stat | grep ‘FIN_WAIT1’ |awk ‘{print $2}’<br>        ;;<br>        ESTABLISHED)<br>        stat | grep ‘ESTABLISHED’ |awk ‘{print $2}’<br>        ;;<br>        SYN_RECV)<br>        stat |grep ‘SYN_RECV’ |awk ‘{print $2}’<br>        ;;<br>        LAST_ACK)<br>        stat |grep ‘LAST_ACK’ |awk ‘{print $2}’<br>        ;;<br>        LISTEN)<br>        stat |grep ‘LISTEN’ |awk ‘{print $2}’<br>        ;;<br>        *)<br>        echo “Usage: TIME_WAIT CLOSE_WAIT FIN_WAIT1 ESTABLISHED SYN_RECV LAST_ACK LISTEN”<br>        ;;<br>esac<br>测试脚本是否可用</p>
 <p><pre class="lang:sh decode:true ">[root@monitor scripts]# chmod +x tcp_connections.sh<br>[root@monitor scripts]# ./tcp_connections.sh ESTABLISHED<br>125</pre><br>编辑zabbix_agentd配置</p>
 <p><pre class="lang:sh decode:true">[root@monitor scripts]# vim /usr/local/etc/zabbix_agentd.conf.d/monitor_tcp_connections.conf<br>UserParameter=tcp.time_wait,/usr/local/scripts/tcp_connections.sh TIME_WAIT<br>UserParameter=tcp.close_wait,/usr/local/scripts/tcp_connections.sh CLOSE_WAIT<br>UserParameter=tcp.fin_wait1,/usr/local/scripts/tcp_connections.sh FIN_WAIT1<br>UserParameter=tcp.established,/usr/local/scripts/tcp_connections.sh ESTABLISHED<br>UserParameter=tcp.syn_recv,/usr/local/scripts/tcp_connections.sh SYN_RECV<br>UserParameter=tcp.last_ack,/usr/local/scripts/tcp_connections.sh LAST_ACK<br>UserParameter=tcp.listen,/usr/local/scripts/tcp_connections.sh LISTEN</pre><br>重启服务</p>
 <p><pre class="lang:sh decode:true">[root@monitor scripts]# /etc/init.d/zabbix_agentd restart<br>Shutting down zabbix_agentd:                               [确定]<br>Starting zabbix_agentd:                                    [确定]</pre><br>测试监控是否有数据</p>

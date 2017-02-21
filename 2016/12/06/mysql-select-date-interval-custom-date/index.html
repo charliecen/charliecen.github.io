@@ -8,24 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mysql查询日期间隔自定义日期 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。
-这里要用到mysql函数，如下：
-DELIMITER $$create function getTimeSortId(timetype varchar(20),startTime datetime,usetime dateti">
+  <meta name="description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql查询日期间隔自定义日期">
 <meta property="og:url" content="http://yoursite.com/2016/12/06/mysql-select-date-interval-custom-date/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。
-这里要用到mysql函数，如下：
-DELIMITER $$create function getTimeSortId(timetype varchar(20),startTime datetime,usetime dateti">
+<meta property="og:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:24:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql查询日期间隔自定义日期">
-<meta name="twitter:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。
-这里要用到mysql函数，如下：
-DELIMITER $$create function getTimeSortId(timetype varchar(20),startTime datetime,usetime dateti">
+<meta name="twitter:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -170,8 +164,7 @@ DELIMITER $$create function getTimeSortId(timetype varchar(20),startTime datetim
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。</p>
-<p>这里要用到mysql函数，如下：</p>
+        <p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。<br><a id="more"></a><br>这里要用到mysql函数，如下：</p>
 <p><pre class="lang:mysql decode:true ">DELIMITER $$<br>create function getTimeSortId(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10))<br>returns int(10)<br>begin<br>declare sortId int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end $$<br>DELIMITER ;<br></pre><br>解释下函数内容：</p>
 <p>getTimeSortId为函数，timetype : 日期类型，startTime ： 开始时间，usetime : 字段时间，splitNum : 间隔数；</p>
 <p>如果传递的参数为天，间隔数 - 转化为天的开始时间 % 间隔数 + 转化为天的字段时间 / 间隔数 = 排序ID</p>

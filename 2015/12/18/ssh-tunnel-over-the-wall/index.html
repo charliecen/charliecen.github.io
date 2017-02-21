@@ -8,16 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ssh隧道翻墙 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：
-
-1.云主机启用通道[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xoroot@xo.xo.xo.x">
+  <meta name="description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh隧道翻墙">
 <meta property="og:url" content="http://yoursite.com/2015/12/18/ssh-tunnel-over-the-wall/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：
-
-1.云主机启用通道[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xoroot@xo.xo.xo.x">
+<meta property="og:description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-3@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-4@2x.png">
@@ -25,12 +21,10 @@
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-6@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-7@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-8@2x.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:29:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh隧道翻墙">
-<meta name="twitter:description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：
-
-1.云主机启用通道[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xoroot@xo.xo.xo.x">
+<meta name="twitter:description" content="最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。然后我就想用阿里云做通道，公司到国外vps之间到通道。实现步骤：">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -175,12 +169,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用</div><br><div>我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。</div><br><div>然后我就想用阿里云做通道，公司到国外vps之间到通道。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png" alt=""></div><br><div>实现步骤：</div>
-
-<h3 id="1-云主机启用通道"><a href="#1-云主机启用通道" class="headerlink" title="1.云主机启用通道"></a>1.云主机启用通道</h3><p><pre class="lang:sh decode:true ">[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xo<br>root@xo.xo.xo.xo’s password:</pre><br>查看监控端口</p>
-<p><pre class="lang:sh decode:true ">[root@monitor ~]# netstat -lutnp |grep 12345<br>tcp        0      0 0.0.0.0:12345               0.0.0.0:*                   LISTEN      19633/ssh</pre><br>添加防火墙策略</p>
-<p><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/sysconfig/iptables<br>-A INPUT -s xx.xx.xx.xx -p tcp  –dport 12345 -j ACCEPT<br>[root@monitor ~]# iptables -nL |grep 12345<br>ACCEPT     tcp  –  xx.xx.xx.xx        0.0.0.0/0           tcp dpt:12345</pre></p>
-<div>注：xo.xo.xo.xo为vps地址，xx.xx.xx.xx为云主机地址</div><br><div></div><br><div>参数详解：</div><br><div><br><div><br><div>-q表示该命令进入安静模式</div><br></div><br></div><br><div><br><div><br><div>-T是指该命令不占用shell</div><br></div><br></div><br><div><br><div><br><div>-N是指该命令不执行远程命令</div><br></div><br></div><br><div><br><div><br><div>-f是指该命令在后台运行</div><br></div><br></div><br><div><br><div><br><div>-D是该命令重要参数，他的后面跟着socks5服务器的地址与端口</div><br></div><br></div><br><div><br><div><br><div>最后就是远程服务器用户名和地址</div><br><div></div><br></div><br></div><br><div><br><div>也可以使用端口映射</div><br><div>ssh -N -f -L 127.0.0.1:12345:10.21.0.34:22 test@12.3..4.5</div><br><div>其中-N，-f作用上面已经讲了，这里最重要的是-L命令，它作用是做本地映射，使得远程服务器的端口相当于本地某自定义的端口，如上面的命令，本地的12345端口就相当于10.21.0.34的22端口，以后我只需要使用ssh user@127.0.0.1 -p 12345命令就能登录10.21.0.34了，注意user是10.21.0.34的用户，最后就是我们所使用的中间服务器，这个地址需要是我们直接访问到的。其实上面所说的A主机就是127.0.0.1，B主机就是12.3.4.5，C主机就是10.21.0.34。当然了，有本地映射肯定有远程映射，就是把-L换成-R，这样我们访问远程主机的端口就相当于访问本地的端口，但我没发现该功能的更多用途。</div><br><div></div><br><div><br><div><br><div>如果你没有什么中间服务器，只是想做个端口映射，那也很简单，如下：</div><br></div><br></div><br><div><br><div><br><div>ssh -N -f -L 12345:12.3.4.5:22 test@12.3.4.5</div><br></div><br></div><br><div></div>
+        <div>最近公司的网络到国外vps的路由丢包严重，国外vps上的shadowsocks无法使用</div><br><div>我就从公司阿里云服务器上面测试下到国外的vps路由是否正常，经测试可以访问。</div><br><div>然后我就想用阿里云做通道，公司到国外vps之间到通道。</div><br><div><img src="http://www.cenhq.com/wp-content/uploads/2015/12/QQ20151218-1@2x.png" alt=""></div><br><div>实现步骤：</div><br><a id="more"></a><br>### 1.云主机启用通道<br><br><pre class="lang:sh decode:true ">[root@monitor ~]# ssh -qTNf -D 0.0.0.0:12345 root@xo.xo.xo.xo<br>root@xo.xo.xo.xo’s password:</pre><br>查看监控端口<br><pre class="lang:sh decode:true ">[root@monitor ~]# netstat -lutnp |grep 12345<br>tcp        0      0 0.0.0.0:12345               0.0.0.0:*                   LISTEN      19633/ssh</pre><br>添加防火墙策略<br><pre class="lang:sh decode:true">[root@monitor ~]# vim /etc/sysconfig/iptables<br>-A INPUT -s xx.xx.xx.xx -p tcp  –dport 12345 -j ACCEPT<br>[root@monitor ~]# iptables -nL |grep 12345<br>ACCEPT     tcp  –  xx.xx.xx.xx        0.0.0.0/0           tcp dpt:12345</pre><br><div>注：xo.xo.xo.xo为vps地址，xx.xx.xx.xx为云主机地址</div><br><div></div><br><div>参数详解：</div><br><div><br><div><br><div>-q表示该命令进入安静模式</div><br></div><br></div><br><div><br><div><br><div>-T是指该命令不占用shell</div><br></div><br></div><br><div><br><div><br><div>-N是指该命令不执行远程命令</div><br></div><br></div><br><div><br><div><br><div>-f是指该命令在后台运行</div><br></div><br></div><br><div><br><div><br><div>-D是该命令重要参数，他的后面跟着socks5服务器的地址与端口</div><br></div><br></div><br><div><br><div><br><div>最后就是远程服务器用户名和地址</div><br><div></div><br></div><br></div><br><div><br><div>也可以使用端口映射</div><br><div>ssh -N -f -L 127.0.0.1:12345:10.21.0.34:22 test@12.3..4.5</div><br><div>其中-N，-f作用上面已经讲了，这里最重要的是-L命令，它作用是做本地映射，使得远程服务器的端口相当于本地某自定义的端口，如上面的命令，本地的12345端口就相当于10.21.0.34的22端口，以后我只需要使用ssh user@127.0.0.1 -p 12345命令就能登录10.21.0.34了，注意user是10.21.0.34的用户，最后就是我们所使用的中间服务器，这个地址需要是我们直接访问到的。其实上面所说的A主机就是127.0.0.1，B主机就是12.3.4.5，C主机就是10.21.0.34。当然了，有本地映射肯定有远程映射，就是把-L换成-R，这样我们访问远程主机的端口就相当于访问本地的端口，但我没发现该功能的更多用途。</div><br><div></div><br><div><br><div><br><div>如果你没有什么中间服务器，只是想做个端口映射，那也很简单，如下：</div><br></div><br></div><br><div><br><div><br><div>ssh -N -f -L 12345:12.3.4.5:22 test@12.3.4.5</div><br></div><br></div><br><div></div>
 
 <h3 id="2-本地Chrome浏览器设置"><a href="#2-本地Chrome浏览器设置" class="headerlink" title="2.本地Chrome浏览器设置"></a>2.本地Chrome浏览器设置</h3><p>首先需要插件SwitchyOmega，可以chrome—&gt;更多工具—&gt;扩展程序—&gt;更多扩展程序里获取</p>
 <p>也可以直接点击：<a href="https://chrome.google.com/webstore/category/extensions?hl=zh-CN" target="_blank" rel="external">https://chrome.google.com/webstore/category/extensions?hl=zh-CN</a></p>

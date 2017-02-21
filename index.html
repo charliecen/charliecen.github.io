@@ -220,19 +220,19 @@
 
 
   
-    <article id="post-thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-thinkphp-data-cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/">thinkphp数据缓存</a>
+      <a class="article-title" href="/2017/02/04/thinkphp-data-cache/">thinkphp数据缓存</a>
     </h1>
   
 
         
-        <a href="/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/" class="archive-article-date">
+        <a href="/2017/02/04/thinkphp-data-cache/" class="archive-article-date">
   	<time datetime="2017-02-04T14:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
 </a>
         
@@ -242,39 +242,10 @@
       
         <p>由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；</p>
 <p>1.首先介绍数据缓存的用法</p>
-<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：</p>
-<p><table></table></p>
-<p><thead></thead></p>
-<p><tr></tr></p>
-<p><th>参数</th></p>
-<p><th>描述</th><br><br></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td>expire</td></p>
-<p><td>缓存有效期（时间为秒）</td><br></p>
-<p><tr></tr></p>
-<p><td>prefix</td></p>
-<p><td>缓存标识前缀</td><br></p>
-<p><tr></tr></p>
-<p><td>type</td></p>
-<p><td>缓存类型</td><br><br><br><br>系统目前已经支持的缓存类型包括：<code>Apachenote、Apc、Db、Eaccelerator、File、Memcache、Redis、Shmop、Sqlite、Wincache和Xcache</code>。</p>
-<p>如果S方法不传入type参数初始化的话，则读取配置文件中设置的<code>DATA_CACHE_TYPE</code>参数值作为默认类型。同样的道理，prefix参数如果没有传入会读取配置文件的<code>DATA_CACHE_PREFIX</code>参数值，expire参数没有传入则读取<code>DATA_CACHE_TIME</code>配置值作为默认。</p>
-<p>2.缓存设置</p>
-<p><pre class="lang:php decode:true ">// 设置缓存<br>S(‘name’,$value);<br>// 缓存数据300秒<br>S(‘name’,$value,300);<br>// 采用文件方式缓存数据300秒<br>S(‘name’,$value,array(‘type’=&gt;’file’,’expire’=&gt;300));</pre><br>3.缓存读取</p>
-<p><pre class="lang:php decode:true ">// 读取缓存<br>$value = S(‘name’);</pre><br>4.缓存删除</p>
-<p><pre class="lang:sh decode:true ">// 删除缓存<br>S(‘name’,null);</pre><br>5.对象方式缓存</p>
-<p><pre class="lang:php decode:true ">// 初始化缓存<br>$cache = S(array(‘type’=&gt;’xcache’,’prefix’=&gt;’think’,’expire’=&gt;600));<br>$cache-&gt;name = ‘value’; // 设置缓存<br>$value = $cache-&gt;name; // 获取缓存<br>unset($cache-&gt;name); // 删除缓存</pre><br>6.缓存队列</p>
-<p><pre class="lang:php decode:true ">//设置了length参数后，系统只会缓存最近的100条缓存数据。<br>S(array(‘type’=&gt;’xcache’,’length’=&gt;100,’expire’=&gt;60));</pre><br>7.具体操作，我的代码如下</p>
-<p><pre class="lang:php decode:true ">  public function test()<br>    {<br>        $cacheConfig = array(<br>            ‘type’ =&gt; ‘file’,<br>            ‘expire’ =&gt; 60,<br>            ‘prefix’ =&gt; ‘order_db<em>cache</em>‘<br>        );<br>        if(!$num = S(‘test’,’’,$cacheConfig)){<br>            sleep(10);<br>            $num = 11;<br>            S(‘test’,$num, $cacheConfig);<br>        }<br>        echo $num;</pre></p>
-<pre><code>}&lt;/pre&gt;
-</code></pre><p>8.访问该方法,生成缓存文件</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-0.png" alt=""></p>
-<p>第一次访问时间</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-1.png" alt=""></p>
-<p>第二次访问时间</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2017/02/QQ20170204-2.png" alt=""></p>
-<p>说明已经使用上缓存了。</p>
-
+<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：<br></p>
+        
+          <a class="article-more-a" href="/2017/02/04/thinkphp-data-cache/#more">more >></a>
+        
       
 
       
@@ -324,7 +295,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/04/thinkphp-e6-95-b0-e6-8d-ae-e7-bc-93-e5-ad-98/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/04/thinkphp-data-cache/">展开全文 >></a>
         </p>
       
 
@@ -362,89 +333,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.</div><br><div>需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.</div><br><div>当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.</div><br><div>此外你可以设置autoresync参数,当复制终止10秒后mongodb会自动重启复制,slave端会每隔10分钟自动重新同步一次.</div><br><div><strong>注意官方现在强烈不建议使用master-slave复制模式,建议使用replica sets复制.</strong></div>
-
-<h3 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h3><p>这里介绍的mongodb的主从复制,并不是复制集replica sets,复制的参数如下:</p>
-<pre class="lang:sh decode:true ">Replication options:
-  --oplogSize arg                       操作日志大小,单位M
-
-Master/slave options (old; use replica sets instead):
-  --master                              指定角色为master mode
-  --slave                               指定角色为slave mode
-  --source arg                          当角色为slave的时候使用,格式为:&lt;server:port&gt;
-  --only arg                            当角色为slave的时候使用,指定单独同步的数据库,默认为同步所有数据库.
-  --slavedelay arg                      指定一个应用日志的延时,单位秒
-  --autoresync</pre>
-
-<h3 id="创建mongo仓库"><a href="#创建mongo仓库" class="headerlink" title="创建mongo仓库"></a>创建mongo仓库</h3><pre class="lang:sh decode:true ">vim /etc/yum.repos.d/mongodb-org-3.2.repo
-[mongodb-org-3.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc</pre>
-
-<h3 id="主从服务器配置"><a href="#主从服务器配置" class="headerlink" title="主从服务器配置"></a>主从服务器配置</h3><pre class="lang:sh decode:true">#安装
-yum install -y mongodb-org
-#修改配置
-egrep -v '^$|^#' /etc/mongod.conf
-systemLog:
-  destination: file
-  logAppend: true
-  path: /var/log/mongodb/mongod.log
-storage:
-  dbPath: /var/lib/mongo
-  journal:
-    enabled: true
-processManagement:
-  fork: true  # fork and run in background
-  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
-net:
-  port: 27017
-  bindIp: 0.0.0.0  # Listen to local interface only, comment to listen on all interfaces.
-security:
-  authorization: enabled
-</pre>
-
-<h3 id="配置keyFile文件"><a href="#配置keyFile文件" class="headerlink" title="配置keyFile文件"></a>配置keyFile文件</h3><p>（<a href="https://docs.mongodb.com/v3.2/tutorial/enforce-keyfile-access-control-in-existing-replica-set/" target="_blank" rel="external">官网介绍</a>）密钥文件的内容作为共享密码的成员复制集。密钥文件的内容必须相同副本集的所有成员。你可以使用任何方法生成一个密钥文件选择。密钥文件的内容必须是6 - 1024个字符长。</p>
-<pre class="lang:sh decode:true ">openssl rand -base64 512 &gt;&gt; /var/lib/mongo/mongo.key
-chmod 600 /var/lib/mongo/mongo.key</pre>
-
-<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><pre class="lang:sh decode:true">#主服务器启动
-mongod --master -f /etc/mongod.conf --keyFile /var/lib/mongo/mongo.key
-#从服务器启动
-mongod --slave --source master_ip:27017 -f /etc/mongod.conf --keyFile /var/lib/mongo/mongo.key</pre>
-
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>主服务器创建账号</p>
-<pre class="lang:sh decode:true ">#!/bin/bash
-mongo_connect="mongo 127.0.0.1/admin"  
-cmd_use_admin="db = db.getSiblingDB('admin');"  
-cmd_create_user="db.createUser({\"user\":\"sa\", \"pwd\":\"123456\", \"roles\":[\"root\"]});"  
-echo $cmd_use_admin &gt; dbcmd.js  
-echo $cmd_create_user &gt;&gt; dbcmd.js  
-execute="$mongo_connect dbcmd.js"  
-echo "#!/bin/sh" &gt; createDBUser.sh  
-echo $execute &gt;&gt; createDBUser.sh  
-sh createDBUser.sh &amp;&amp; rm -f createDBUser.sh</pre>
-主库插入一条数据
-<pre class="lang:sh decode:true ">use test
-db.xxoo.save({xx:00});</pre>
-从库查看是否同步
-<pre class="lang:sh decode:true ">use test
-db.test.find()</pre>
-
-<h3 id="主库宕机如何将从库切为主库"><a href="#主库宕机如何将从库切为主库" class="headerlink" title="主库宕机如何将从库切为主库"></a>主库宕机如何将从库切为主库</h3><h6 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h6><ul>
-<li>停止从库<br><code>kill -2 PID</code></li>
-<li>删除从数据目录中的 local.<em><br>`rm -rf /data/mongodb/data/db/local.</em>`</li>
-<li>以 –master 模式启动从库 (注意修改原有端口)<br><code>mongod --master -f /etc/mongod.master.conf</code></li>
-</ul>
-<h6 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h6><ul>
-<li>备份从库</li>
-<li>重建主库，导入新数据<br>参考：<a href="https://docs.mongodb.com/v3.2/replication/" target="_blank" rel="external">https://docs.mongodb.com/v3.2/replication/</a></li>
-</ul>
-<p><a href="https://blog.imdst.com/mongodb-yi-di-zhu-cong-tong-bu-pei-zhi/" target="_blank" rel="external">https://blog.imdst.com/mongodb-yi-di-zhu-cong-tong-bu-pei-zhi/</a></p>
-<p><a href="http://blog.csdn.net/su377486/article/details/51599255" target="_blank" rel="external">http://blog.csdn.net/su377486/article/details/51599255</a></p>
-
+        <p><div>mongodb的复制使用的oplog,类似于mysql复制的binlog,不同的是oplog是保存在local数据库中的.</div></p>
+<p><div>需要合理的设置oplog的大小,如果此大小没有设置那么mongodb将会使用可用空间的5%来存放oplog.官方建议64位系统至少分配1G大小.</div></p>
+<p><div>当slave端落后太多master端的时候,复制会终止,此时需要管理员手工来重启mongodb然后使用resync来重新同步.</div></p>
+<p><div>此外你可以设置autoresync参数,当复制终止10秒后mongodb会自动重启复制,slave端会每隔10分钟自动重新同步一次.</div></p>
+<p><div><strong>注意官方现在强烈不建议使用master-slave复制模式,建议使用replica sets复制.</strong></div><br></p>
+        
+          <a class="article-more-a" href="/2017/01/04/mongo-3-2-replication/#more">more >></a>
+        
       
 
       
@@ -528,113 +424,11 @@ db.test.find()</pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：</p>
-<p><table width="445"></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td width="445">一次性解决问题率=一次解决的对话量/接入量<br>一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话</td><br><br><br><br>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
-<p>例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。</p>
-<p>首先给出sql语句，间隔查询参考<a href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/" target="_blank" rel="external">mysql日期间隔查询</a></p>
-<p><pre class="lang:mysql decode:true ">– 间隔两天的记录<br>select<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId ,<br>  createUserId,<br>  createTime,<br>  endTime<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740 AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>order BY sortId,createUserId;</pre><br>结果如下</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png" alt=""></p>
-<p>下面把这些记录到php通过数组来处理</p>
-<p><pre class="lang:php decode:true">/**</pre></p>
-<pre><code> * 一次性问题解决率,用户对话结束后,24小时内不在有新的对话出现
- * @param $array array
- * return array
- */
-private function oneTimesQuesRate($array){
-    $len = count($array);
-    $arr = [];
-    $sortId = [];
-    $sortArr = [];
-    $id = [];
-    $count = [];
-    $total = [];
-
-    //遍历获取同一个sortId
-    foreach($array as $v){
-        $sortId[] = $v[&apos;sortid&apos;];
-    }
-
-    //取唯一sortId
-    $unique_sortId = array_unique($sortId);
-
-    //循环取出值
-    foreach($unique_sortId as $v){
-        $id[] = $v;
-    }
-
-    //循环取出间隔自定义时间内和24小时内不在发起的对话记录
-    for($i = 0; $i &amp;lt; $len; $i++){
-        for($j = $i+1; $j &amp;lt; $len; $j++){
-            foreach($id as $v){
-                if($v == $array[$i][&apos;sortid&apos;]){
-                    if($array[$i][&apos;createuserid&apos;] == $array[$j][&apos;createuserid&apos;]){
-                        if($array[$i][&apos;endtime&apos;] + 86400 &amp;lt;= $array[$j][&apos;createtime&apos;]){
-                            // $num++;
-                            $sortArr[] = $v;
-
-                        }
-                    }
-                }
-            }
-            //每次对比后跳出循环
-            break;
-        }
-        //获取每条的用户ID
-        $arr[$array[$i][&apos;sortid&apos;]][] = $array[$i][&apos;createuserid&apos;];
-    }
-    //循环每个sortId,去重获取总数
-    foreach($arr as $k=&amp;gt;$v){
-        $count[$k] = count(array_unique($v));
-    }
-    //取相同值得总数
-    $num = array_count_values($sortArr);
-
-    //合并两个数组的值
-    foreach($count as $k=&amp;gt;$v){
-        foreach($num as $k1=&amp;gt;$v1){
-            if($k == $k1){
-                $total[$k] = $v + $v1;
-            }else{
-                $total[$k] = $v;
-            }
-        }
-    }
-    return $total;
-}&lt;/pre&gt;
-</code></pre><p>返回的结果如下图：<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1.png" target="_blank" rel="external"><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1-300x138.png" alt="qq20161228-1"></a></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>然后用这个结果来除以接入量，也就是下面的sql语句，当然这个sql查询到的结果也需要通过php来处理。也可以把上面的结果插入到数据库的临时表，通过sql来相除。多种方式可以实现。</p>
-<p><pre class="lang:mysql decode:true ">– 获取每隔2天的接入量<br>SELECT<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId,<br>  min(date_format(from_unixtime(createTime),’%y-%m-%d’)) as mtime,<br>  count(kfUserId) as c<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740<br>  AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>GROUP BY sortId;</pre><br>结果如下：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" alt=""></p>
-<p>用php来处理刚查询出的数据<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" target="_blank" rel="external">
-</a></p>
-<p><pre class="lang:php decode:true ">    /**</pre></p>
-<pre><code> * @param $arr1 array 总接入量
- * @param $arr array 处理过的接入量
- * @return array 返回百分比
- */
-private function processData($arr1,$arr){
-    $result = [];
-    foreach($arr1 as $k1=&amp;gt;$v1){
-        foreach($arr as $k=&amp;gt;$v){
-            if($v1[&apos;sortid&apos;] == $k){
-                $result[$k1][&apos;mtime&apos;] = $v1[&apos;mtime&apos;];
-                $result[$k1][&apos;c&apos;] = floor($v/$v1[&apos;c&apos;]*100);
-            }
-        }
-    }
-    return $result;
-}&lt;/pre&gt;
-</code></pre><p>通过highcharts绘画出图形</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-3.png" alt=""></p>
-<p>&nbsp;</p>
-
+        <p>需求：<br>一次性解决问题率 = 一次解决的对话量/接入量<br>一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话</p>
+<p>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
+        
+          <a class="article-more-a" href="/2016/12/29/mysql-query-repeat-recodes-in-hours/#more">more >></a>
+        
       
 
       
@@ -714,15 +508,10 @@ private function processData($arr1,$arr){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。</p>
-<p>代码如下：</p>
-<p><pre class="lang:js decode:true">//检测标题是否存在<br>            var result = true;<br>            $.ajax({<br>                type: ‘POST’,<br>                url: ‘<strong>APP</strong>/Home/Custorm/chkTitle’,<br>                data: {‘title’:$(‘#title’).val()},<br>                success: function(data){<br>                    if(data.count &gt;= 1){<br>                        alert(‘标题已存在,请重新输入!’);<br>                        $(‘#title’).select();<br>                        result =  false;<br>                    }<br>                },<br>                error: function(e){<br>                    console.log(e);<br>                }<br>            });<br>            return result;</pre><br>上述代码是有问题的，返回的result一直true；</p>
-<p>后查到原因，是因为ajax默认是异步传输，也就是说，ajax并没有等待 success:function(data) 回调函数执行完，就已经向下执行了。于是 result的值永远只会等于其初始化的值，也就是true.</p>
-<p>解决办法， 设置为同步传输。</p>
-<p>//默认 async: true</p>
-<p>//同步 async: false</p>
-<p>参考：<a href="http://blog.csdn.net/zxstone/article/details/7297284" target="_blank" rel="external">http://blog.csdn.net/zxstone/article/details/7297284</a></p>
-
+        <p>需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。<br></p>
+        
+          <a class="article-more-a" href="/2016/12/16/ajax-unable-to-get-return-value/#more">more >></a>
+        
       
 
       
@@ -812,28 +601,10 @@ private function processData($arr1,$arr){
       
         <p>需求：报表生成后，需要发布报表浏览页，在发布的同时，需要设置权限；创建者有浏览该报表权限，所属部门有浏览权限，员工级别有浏览权限，只要包含其中就可；</p>
 <p>如图所示：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161208-0.png" alt=""></p>
-<p>用户信息在session里保存，所以当创建报表是，获取用户信息，当发布报表时，写入用户信息和用户设置的权限到mongo库里</p>
-<p>下面是显示的操作方法</p>
-<p><pre class="lang:php decode:true ">//获取用户名,只显示当前用户的报表<br>$info = $_SESSION[‘info’][‘data’];<br>$map[‘user’] = $info[‘user_name’];<br>$map = $this-&gt;getAuthInfo($map);<br>$where[‘_complex’] = array(‘_logic’=&gt;”or”, array(‘user’=&gt;$map[‘user’]), array(‘dept’=&gt;$map[‘dept’]),array(‘level’=&gt;$map[‘level’]));<br>$data = $model-&gt;order(‘ym desc’)-&gt;where($where)-&gt;limit($Page-&gt;firstRow.’,’.$Page-&gt;listRows)-&gt;select();</pre></p>
-<p><pre class="lang:php decode:true ">private function getAuthInfo($map)<br>    //获取当前用户的部门和级别<br>        $info = $_SESSION[‘title’];<br>        //判断用户所属部门<br>        if($info[‘department’] == ‘技术服务部’)<br>            $map[‘dept’] = ‘jw’;<br>        elseif ($info[‘department’] == ‘手游服务部’)<br>            $map[‘dept’] = ‘sy’;<br>        elseif ($info[‘department’] == ‘端游服务部’)<br>            $map[‘dept’] = ‘dy’;<br>        elseif ($info[‘department’] == ‘监控服务部’)<br>            $map[‘dept’] = ‘jk’;<br>        else<br>            $map[‘dept’] = ‘all’;</pre></p>
-<pre><code>    //判断用户的级别
-    if($info[&apos;powerTitle&apos;] == &apos;员工&apos;)
-        $map[&apos;level&apos;] = &apos;staff&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;组长&apos;)
-        $map[&apos;level&apos;] = &apos;leader&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;主管&apos;)
-        $map[&apos;level&apos;] = &apos;competent&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;经理&apos;)
-        $map[&apos;level&apos;] = &apos;manager&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;总监&apos;)
-        $map[&apos;level&apos;] = &apos;director&apos;;
-
-    return $map;
-}&lt;/pre&gt;
-</code></pre><p>显示效果如下：</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161208-1.png" alt=""></p>
-
+<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161208-0.png" alt=""><br></p>
+        
+          <a class="article-more-a" href="/2016/12/08/thinkphp-page-access-control/#more">more >></a>
+        
       
 
       
@@ -921,78 +692,10 @@ private function processData($arr1,$arr){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。</p>
-<p>这里要用到mysql函数，如下：</p>
-<p><pre class="lang:mysql decode:true ">DELIMITER $$<br>create function getTimeSortId(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10))<br>returns int(10)<br>begin<br>declare sortId int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end $$<br>DELIMITER ;<br></pre><br>解释下函数内容：</p>
-<p>getTimeSortId为函数，timetype : 日期类型，startTime ： 开始时间，usetime : 字段时间，splitNum : 间隔数；</p>
-<p>如果传递的参数为天，间隔数 - 转化为天的开始时间 % 间隔数 + 转化为天的字段时间 / 间隔数 = 排序ID</p>
-<p>下面周跟月就具体介绍了；</p>
-<p>具体运行如下：</p>
-<p><pre class="lang:mysql decode:true">select<br>  getTimeSortId(‘day’,from_unixtime(1470109260,’%y-%m-%d’),from_unixtime(createTime,’%y-%m-%d’),3) as sortId,<br>  min(from_unixtime(createTime,’%y-%m-%d’)) as mtime,<br>  count(*) from think_kf_chat_im_group<br>where createTime BETWEEN 1470109260 AND 1472442060<br>group by sortId;</pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png" alt=""></p>
-<p>到数据库中运行，查看生成的语法</p>
-<p><pre class="lang:mysql decode:true ">CREATE DEFINER=<code>root</code>@<code>localhost</code> FUNCTION <code>getTimeSortId</code>(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10)) RETURNS int(10)<br>begin<br>declare sortId int;<br>declare totalDay int;<br>declare totalMonth int;<br>declare totalYear int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end;</pre><br>如果不是root用户的话，会有权限问题；</p>
-<p>我这里数据库有的不是root用户，所以要把这个函数放到php里定义成一个方法，然后调用生成sql语句来执行；</p>
-<p><pre class="lang:php decode:true ">/**</pre></p>
-<pre><code> * @param type day week month
- * @param startTime 开始时间,必须是时间戳
- * @param key 时间字段
- * @param asName 生成的ID
- * @param isTimestamp key是否为时间戳
- * @param echo $this-&amp;gt;getSortId(&quot;week&quot;, 1477929600, &quot;intitime&quot;, 2, &quot;sortId&quot;, false);
- */
-protected function getSortId($type, $startTime, $key, $splitNum, $asName = &quot;sortId&quot;, $isTimestamp = false)
-{
-    if ($isTimestamp) {
-        $key = &quot;FROM_UNIXTIME(&quot; . $key . &quot;)&quot;;
-    }
-
-    $startTime = &quot;FROM_UNIXTIME(&quot; . $startTime . &quot;)&quot;;
-
-    if ($type == &quot;day&quot;) {
-        $sql = &quot;floor( (&quot; . $splitNum . &quot; - to_days(&quot; . $startTime . &quot;) % &quot; . $splitNum . &quot; + to_days(&quot; . $key . &quot;) )/&quot; . $splitNum . &quot; ) as &quot; . $asName . &quot; &quot;;
-    } else if ($type == &quot;week&quot;) {
-        $sql = &quot;floor((&quot; . $splitNum . &quot; - floor((TO_DAYS(&quot; . $startTime . &quot;) + 5 )/7) % &quot; . $splitNum . &quot; + floor((TO_DAYS(&quot; . $key . &quot;) + 5 )/7) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
-    } else if ($type == &quot;month&quot;) {
-        $sql = &quot;floor((&quot; . $splitNum . &quot; -  ( month(&quot; . $startTime . &quot;) + year(&apos;&quot; . $startTime . &quot;&apos;) * 12) % &quot; . $splitNum . &quot; + ( month(&quot; . $key . &quot;) + year(&apos;&quot; . $key . &quot;&apos;) * 12) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
-    } else {
-        $sql = &quot;(0) as &quot; . $asName . &quot; &quot;;
-    }
-    return $sql;
-}&lt;/pre&gt;
-</code></pre><p>调用次方法来生成field</p>
-<p><pre class="lang:php decode:true ">/**</pre></p>
-<pre><code> * 根据日期间隔统计数据
- * @param $dateFormat int 间隔数字
- * @param $dateUtil string 间隔单位,如:天,周,月,年
- * @param $sTime int | datetime 开始时间
- * @param $dateField string 日期字段名
- * @param $opertion string 统计数量
- * @param $groupType string 日期类型
- * echo $this-&amp;gt;setIntervalTime(3,&apos;day&apos;,1477929600,&apos;createTime&apos;,&apos;count(*)&apos;,&apos;day&apos;);
- */
-private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$opertion,$groupType,$isTimestamp = true)
-{
-    if(is_numeric($dateFormat) &amp;amp;&amp;amp; is_string($dateUtil)){
-        if(!is_int($sTime)){
-            $sTime =  strtotime($sTime);
-        }
-        $field = $this-&amp;gt;getSortId($dateUtil,$sTime,$dateField,$dateFormat,&quot;sortId&quot;,$isTimestamp) .
-            &quot;,min(date_format(&quot; .
-                ($isTimestamp ? &quot;from_unixtime(&quot; . $dateField . &quot;)&quot; : $dateField).
-            &quot;,&apos;&quot;.$this-&amp;gt;getGroupFormat($groupType).&quot;&apos;)) as mtime,&quot;.
-            $opertion.&quot; as c&quot;;
-    }else{
-        $this-&amp;gt;error(&apos;你输入的日期单位或日期格式不正确&apos;);
-        exit;
-    }
-    return $field;
-}&lt;/pre&gt;
-</code></pre><p>具体调用如下：</p>
-<p><pre class="lang:php decode:true ">$field = $this-&gt;setIntervalTime($dateFormat,$dateUnit,$sTime,’createTime’,’count(*)’,$groupType);<br>$where[‘createTime’] = array(‘between’,array($sTime,$eTime));<br>$model-&gt;field($field)-&gt;where($where)-&gt;group(‘sortId’)-&gt;select();</pre><br>获取的数据到通过highcharts到前端显示如下</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png" alt=""></p>
-<p>&nbsp;</p>
-<p>感谢同事鹏哥的帮助；大家有好的方法，求留言讨论；</p>
-
+        <p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。<br></p>
+        
+          <a class="article-more-a" href="/2016/12/06/mysql-select-date-interval-custom-date/#more">more >></a>
+        
       
 
       
@@ -1088,17 +791,10 @@ private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$operti
 <p>之前找了很多插件，用下来wkhtmltopdf最好用；</p>
 <p>下面说下如何操作</p>
 <p>首先下载插件，最好翻墙下载，不然很慢，最好下载tar.gz包，不要到github上clone,文件太大；</p>
-<p><pre class="lang:sh decode:true"><a href="http://wkhtmltopdf.org/downloads.html" target="_blank" rel="external">http://wkhtmltopdf.org/downloads.html</a></pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png" alt=""></p>
-<p>拷贝文件到命令目录</p>
-<p><pre class="lang:sh decode:true ">tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz<br>cd wkhtmltox/bin<br>cp wkhtmltopdf /usr/local/bin/<br></pre><br>html页面</p>
-<p><pre class="lang:xhtml decode:true ">&lt;button class=”btn-success btn button” style=”margin-left: 85%” onclick=”print_pdf()”&gt;下载PDF&lt;/button&gt;<br>&lt;form action=”&lt;?php echo U(‘Custorm/savePdf’) ?&gt;” method=”post” name=”hld_res” id=”hideform”&gt;<br>  &lt;input type=”hidden” id=”hide_content” name=”content” /&gt;<br>  &lt;input type=”hidden” name=”title” value=”&lt;?php echo $data[0][‘title’]?&gt;”/&gt;<br>&lt;/form&gt;</pre><br>JS方法</p>
-<p><pre class="lang:sh decode:true ">function print_pdf(){<br>            //下载范围<br>            bdhtml=window.document.body.innerHTML;<br>            sprnstr=”&lt;!–startprint–&gt;”;<br>            eprnstr=”&lt;!–endprint–&gt;”;<br>            prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);<br>            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));<br>//            将获取的html代码添加到隐藏域中传给php文件处理<br>            $(“#hide_content”).val(“”+prnhtml+””);<br>            $(“#hideform”).submit();<br>        }</pre><br>PHP方法</p>
-<p><pre class="lang:php decode:true">public function savePdf()<br>    {<br>        $html = $_REQUEST[‘content’];<br>        ob_start();<br>        $html=’<br>        &lt;html&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style.css" target="_blank" rel="external">http://your_domain_name/Public/css/style.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style-responsive.css" target="_blank" rel="external">http://your_domain_name/Public/css/style-responsive.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link type=”text/css” rel=”stylesheet” href=”<a href="http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt" target="_blank" rel="external">http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt</a>;<br>        &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>        &lt;body style=”background: white;”&gt; ‘.$html;<br>        $html .= ‘ &lt;/body&gt;&lt;/html&gt;’;<br>        $filename = $_REQUEST[‘title’] ? $_REQUEST[‘title’] : ‘报表-‘.date(‘Y-m-d’);<br>        file_put_contents(“{$filename}.html”, $html);<br>        ob_end_clean();<br>        //转换HTML TO PDF<br>        shell_exec(“/usr/local/bin/wkhtmltopdf -q -s A2 -O Landscape {$filename}.html {$filename}.pdf”);<br>        if(file_exists(“{$filename}.pdf”)){<br>            header(‘Content-type:application/octet-stream’);<br>            header(“Content-Disposition:attachment;filename={$filename}.pdf”);<br>            header(‘Content-Length:’.filesize(“{$filename}.pdf”));<br>            readfile(“{$filename}.pdf”);<br>            //删除本地的文件<br>            unlink(“{$filename}.pdf”);<br>            unlink(“{$filename}.html”);<br>        }else{<br>            exit;<br>        }<br>    }</pre><br>pdf文档效果</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-1.png" alt=""></p>
-<p>效果还是不错的；</p>
-<p>这里遇到一个问题，就是线上的shell_exec()函数不执行。改目录权限，改sudo配置等等，都没效果，然后去配置文件里查看php.ini, 里面添加了disable_functions，去掉你要用的函数就可以了。</p>
-<p>参考：<a href="http://blog.csdn.net/qq_14873105/article/details/51394026" target="_blank" rel="external">http://blog.csdn.net/qq_14873105/article/details/51394026</a></p>
-
+<p><pre class="lang:sh decode:true"><a href="http://wkhtmltopdf.org/downloads.html">http://wkhtmltopdf.org/downloads.html</a></pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png" alt=""><br></p>
+        
+          <a class="article-more-a" href="/2016/12/01/html-to-pdf-for-php/#more">more >></a>
+        
       
 
       
@@ -1196,17 +892,10 @@ private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$operti
       
         <p>由于需要修改mongo库的<code>status</code>的值，首先要找到这条记录的id；</p>
 <p>我这里的id在mysql库里有记录，每条记录里有<code>key_time</code>字段，所以需要获取这个字段的值；</p>
-<p>获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；</p>
-<p><pre class="lang:js decode:true ">function commit(){<br>        var url = self.location.href;<br>        var title = $(‘h2’).html().split(‘_’);<br>        $.ajax({<br>            type: ‘POST’,<br>            url: ‘&lt;?php echo U(“ReportBrowse/info”)?&gt;’,<br>            data : {url:url,title:title[0]},<br>            success: function (data) {<br>//                console.log(data);<br>            },<br>            error: function (e) {</pre></p>
-<pre><code>    }
-});
-</code></pre><p>}<br>后台会处理url，截取<code>key_time</code>的值</p>
-<p><pre class="lang:php decode:true">public function info()<br>{<br>        //截取url字符串<br>        $url = $_REQUEST[‘url’];<br>        if ($url) {<br>            $action = explode(‘&amp;’,$url);<br>            $params = array();<br>            foreach ($action as $param) {<br>                $item = explode(‘=’, $param);<br>                $params[$item[0]] = $item[1];<br>            }</pre></p>
-<pre><code>//根据预览页面的url中的key参数,从数据库yulan数据库中获取mongoId,然后到mongo库的template表中查找,修改status状态
-$this-&amp;gt;editMongoId($params[$item[0]]);
-</code></pre><p>}<br>这里调用了另外一个方法，这个方法就是查找mongoid, 然后根据mongoid修改<code>status</code>的值</p>
-<p><pre class="lang:php decode:true ">private function editMongoId($key_time)<br>{<br>        //实例化mysql库的yulan表,根据传递的key_time查找mongoid<br>        $yulan_mysql = new Model(‘yulan’,’’,’DB_MYSQL_KW’);<br>        //实例化mongo库的template表,根据mongoid查找status状态<br>        $temp_mongo = new MongoModel(‘template’,’’,’DB_MONGO’);<br>        if($key_time){<br>            //获取预览数据里的mongoid<br>            $where[‘key_time’] = array(‘eq’,$key_time);<br>            $yulan_data = $yulan_mysql-&gt;field(‘mongoId’)-&gt;where($where)-&gt;select();<br>            if($mid = $yulan_data[0][‘mongoid’]){<br>                //根据mongoid获取模板mongo里的所有数据<br>                $status = $temp_mongo-&gt;where(array(<br>                    ‘_id’   =&gt;  $mid,<br>                ))-&gt;select();<br>                //如果状态为”草稿”,则修改mongo库的template的状态<br>                if($status[$mid][‘status’] == ‘草稿’){<br>                    $data[‘status’] = ‘已发布’;<br>                    $temp_mongo-&gt;where(array(<br>                        ‘_id’   =&gt;  $mid,<br>                    ))-&gt;save($data);<br>                }<br>            }<br>        }<br>}</pre><br>&nbsp;</p>
-
+<p>获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；<br></p>
+        
+          <a class="article-more-a" href="/2016/11/29/thinkphp-update-mongo-data/#more">more >></a>
+        
       
 
       
@@ -1290,13 +979,10 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>获取的数据需要到highcharts中显示，所以格式如下，但是在显示的时候，会有时间不存在，导致在一起显示的无法正常显示。所以需要整理数组是同样长度，并且在无时间的值为0；</p>
-<p><pre class="lang:php decode:true ">array (size=3)<br>  0 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=16)<br>          0 =&gt; string ‘16-09-02’ (length=8)<br>          1 =&gt; string ‘16-09-03’ (length=8)<br>          2 =&gt; string ‘16-09-04’ (length=8)<br>          3 =&gt; string ‘16-09-05’ (length=8)<br>          4 =&gt; string ‘16-09-06’ (length=8)<br>          5 =&gt; string ‘16-09-07’ (length=8)<br>          6 =&gt; string ‘16-09-08’ (length=8)<br>          7 =&gt; string ‘16-09-09’ (length=8)<br>          8 =&gt; string ‘16-09-10’ (length=8)<br>          9 =&gt; string ‘16-09-11’ (length=8)<br>          10 =&gt; string ‘16-09-12’ (length=8)<br>          11 =&gt; string ‘16-09-13’ (length=8)<br>          12 =&gt; string ‘16-09-14’ (length=8)<br>          13 =&gt; string ‘16-09-15’ (length=8)<br>          14 =&gt; string ‘16-09-16’ (length=8)<br>          15 =&gt; string ‘16-09-17’ (length=8)<br>      ‘板块回复帖总数’ =&gt;<br>        array (size=16)<br>          0 =&gt; int 98<br>          1 =&gt; int 207<br>          2 =&gt; int 188<br>          3 =&gt; int 125<br>          4 =&gt; int 196<br>          5 =&gt; int 153<br>          6 =&gt; int 228<br>          7 =&gt; int 289<br>          8 =&gt; int 254<br>          9 =&gt; int 245<br>          10 =&gt; int 220<br>          11 =&gt; int 326<br>          12 =&gt; int 286<br>          13 =&gt; int 497<br>          14 =&gt; int 419<br>          15 =&gt; int 243<br>  1 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=13)<br>          0 =&gt; string ‘16-09-03’ (length=8)<br>          1 =&gt; string ‘16-09-05’ (length=8)<br>          2 =&gt; string ‘16-09-06’ (length=8)<br>          3 =&gt; string ‘16-09-07’ (length=8)<br>          4 =&gt; string ‘16-09-08’ (length=8)<br>          5 =&gt; string ‘16-09-09’ (length=8)<br>          6 =&gt; string ‘16-09-11’ (length=8)<br>          7 =&gt; string ‘16-09-12’ (length=8)<br>          8 =&gt; string ‘16-09-13’ (length=8)<br>          9 =&gt; string ‘16-09-14’ (length=8)<br>          10 =&gt; string ‘16-09-15’ (length=8)<br>          11 =&gt; string ‘16-09-16’ (length=8)<br>          12 =&gt; string ‘16-09-17’ (length=8)<br>      ‘版主回复帖数’ =&gt;<br>        array (size=13)<br>          0 =&gt; int 1<br>          1 =&gt; int 4<br>          2 =&gt; int 2<br>          3 =&gt; int 3<br>          4 =&gt; int 3<br>          5 =&gt; int 2<br>          6 =&gt; int 1<br>          7 =&gt; int 4<br>          8 =&gt; int 8<br>          9 =&gt; int 5<br>          10 =&gt; int 2<br>          11 =&gt; int 3<br>          12 =&gt; int 1<br>  2 =&gt;<br>    array (size=2)<br>      ‘day’ =&gt;<br>        array (size=16)<br>          0 =&gt; string ‘16-09-02’ (length=8)<br>          1 =&gt; string ‘16-09-03’ (length=8)<br>          2 =&gt; string ‘16-09-04’ (length=8)<br>          3 =&gt; string ‘16-09-05’ (length=8)<br>          4 =&gt; string ‘16-09-06’ (length=8)<br>          5 =&gt; string ‘16-09-07’ (length=8)<br>          6 =&gt; string ‘16-09-08’ (length=8)<br>          7 =&gt; string ‘16-09-09’ (length=8)<br>          8 =&gt; string ‘16-09-10’ (length=8)<br>          9 =&gt; string ‘16-09-11’ (length=8)<br>          10 =&gt; string ‘16-09-12’ (length=8)<br>          11 =&gt; string ‘16-09-13’ (length=8)<br>          12 =&gt; string ‘16-09-14’ (length=8)<br>          13 =&gt; string ‘16-09-15’ (length=8)<br>          14 =&gt; string ‘16-09-16’ (length=8)<br>          15 =&gt; string ‘16-09-17’ (length=8)<br>      ‘板块主题帖总数’ =&gt;<br>        array (size=16)<br>          0 =&gt; int 10<br>          1 =&gt; int 39<br>          2 =&gt; int 56<br>          3 =&gt; int 21<br>          4 =&gt; int 31<br>          5 =&gt; int 27<br>          6 =&gt; int 42<br>          7 =&gt; int 59<br>          8 =&gt; int 46<br>          9 =&gt; int 33<br>          10 =&gt; int 45<br>          11 =&gt; int 47<br>          12 =&gt; int 64<br>          13 =&gt; int 76<br>          14 =&gt; int 67<br>          15 =&gt; int 36</pre><br>这里写个私有方法，方便内部调用</p>
-<p><pre class="lang:php decode:true ">private function getDateLength($arr)<br>    {<br>        //数组映射<br>        $new_arr = [];<br>        foreach($arr as $k=&gt;$v){<br>            foreach($v as $k1=&gt;$v1){<br>                if($k1 != ‘day’){<br>                    foreach($v[‘day’] as $k2=&gt;$v2){<br>                        $new_arr[$k][$v2] = $v1[$k2];<br>                    }<br>                }<br>            }<br>        }<br>        //数组补值<br>        $data = [];<br>        $max = max($new_arr);<br>        foreach($new_arr as $k=&gt;$v){<br>            foreach($max as $k1=&gt;$v1){<br>                if(in_array($k1,array_keys($v))){<br>                    $data[$k][$k1] = $v[$k1];<br>                }else{<br>                    $data[$k][$k1] = 0;<br>                }<br>            }<br>        }<br>        //转化成原型<br>        $array = [];<br>        foreach($arr as $k=&gt;$v){<br>            foreach($v as $k1=&gt;$v1){<br>                if($k1 != ‘day’){<br>                    $array[$k][$k1] = array_values($data[$k]);<br>                }else{<br>                    $array[$k][$k1] = array_keys($data[$k]);<br>                }<br>            }<br>        }<br>        return $array;<br>    }</pre><br>显示效果如下：<a href="http://www.cenhq.com/wp-content/uploads/2016/11/2A8ADEDB-B2D0-483A-B014-09283F8B760A.jpg" target="_blank" rel="external">
-</a></p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/11/2A8ADEDB-B2D0-483A-B014-09283F8B760A.jpg" alt=""></p>
-<p>&nbsp;</p>
-
+        <p>获取的数据需要到highcharts中显示，所以格式如下，但是在显示的时候，会有时间不存在，导致在一起显示的无法正常显示。所以需要整理数组是同样长度，并且在无时间的值为0；<br></p>
+        
+          <a class="article-more-a" href="/2016/11/29/php-array-add-value/#more">more >></a>
+        
       
 
       

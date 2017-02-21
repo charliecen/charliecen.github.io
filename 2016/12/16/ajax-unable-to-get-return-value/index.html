@@ -8,22 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ajax作用域范围无法获取返回值 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。
-代码如下：
-//检测标题是否存在            var result = true;            $.ajax({                type: ‘POST’,                url: ‘APP/Home/Custorm/chkTitle’,">
+  <meta name="description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ajax作用域范围无法获取返回值">
 <meta property="og:url" content="http://yoursite.com/2016/12/16/ajax-unable-to-get-return-value/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。
-代码如下：
-//检测标题是否存在            var result = true;            $.ajax({                type: ‘POST’,                url: ‘APP/Home/Custorm/chkTitle’,">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。">
+<meta property="og:updated_time" content="2017-02-21T09:22:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ajax作用域范围无法获取返回值">
-<meta name="twitter:description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。
-代码如下：
-//检测标题是否存在            var result = true;            $.ajax({                type: ‘POST’,                url: ‘APP/Home/Custorm/chkTitle’,">
+<meta name="twitter:description" content="需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -167,8 +161,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。</p>
-<p>代码如下：</p>
+        <p>需求：判断title的值是否在mongo库里存在，如果不存在就继续，存在则返回false。<br><a id="more"></a><br>代码如下：</p>
 <p><pre class="lang:js decode:true">//检测标题是否存在<br>            var result = true;<br>            $.ajax({<br>                type: ‘POST’,<br>                url: ‘<strong>APP</strong>/Home/Custorm/chkTitle’,<br>                data: {‘title’:$(‘#title’).val()},<br>                success: function(data){<br>                    if(data.count &gt;= 1){<br>                        alert(‘标题已存在,请重新输入!’);<br>                        $(‘#title’).select();<br>                        result =  false;<br>                    }<br>                },<br>                error: function(e){<br>                    console.log(e);<br>                }<br>            });<br>            return result;</pre><br>上述代码是有问题的，返回的result一直true；</p>
 <p>后查到原因，是因为ajax默认是异步传输，也就是说，ajax并没有等待 success:function(data) 回调函数执行完，就已经向下执行了。于是 result的值永远只会等于其初始化的值，也就是true.</p>
 <p>解决办法， 设置为同步传输。</p>

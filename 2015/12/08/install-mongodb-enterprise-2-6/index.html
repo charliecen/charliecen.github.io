@@ -8,124 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>安装mongodb-enterprise-2.6 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：
-
-
-
-版本特性
-社区版本
-企业版本
-
-JSON数据模型、自由模式
-支持
-支持
-
-水平扩展的自动分片功能
-支持
-支持
-
-内置副本以及高可用性
-支持
-支持
-
-完整的、可扩展的索引支撑
-支持
-支持
-
-丰富的文档查询功能
-支持
-支持
-
-快速的文档内更新
-支持
-支持
-
-聚合框架和MapReduce
-支持
-支持
-
-使用">
+  <meta name="description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装mongodb-enterprise-2.6">
 <meta property="og:url" content="http://yoursite.com/2015/12/08/install-mongodb-enterprise-2-6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：
-
-
-
-版本特性
-社区版本
-企业版本
-
-JSON数据模型、自由模式
-支持
-支持
-
-水平扩展的自动分片功能
-支持
-支持
-
-内置副本以及高可用性
-支持
-支持
-
-完整的、可扩展的索引支撑
-支持
-支持
-
-丰富的文档查询功能
-支持
-支持
-
-快速的文档内更新
-支持
-支持
-
-聚合框架和MapReduce
-支持
-支持
-
-使用">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。">
+<meta property="og:updated_time" content="2017-02-21T09:31:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装mongodb-enterprise-2.6">
-<meta name="twitter:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：
-
-
-
-版本特性
-社区版本
-企业版本
-
-JSON数据模型、自由模式
-支持
-支持
-
-水平扩展的自动分片功能
-支持
-支持
-
-内置副本以及高可用性
-支持
-支持
-
-完整的、可扩展的索引支撑
-支持
-支持
-
-丰富的文档查询功能
-支持
-支持
-
-快速的文档内更新
-支持
-支持
-
-聚合框架和MapReduce
-支持
-支持
-
-使用">
+<meta name="twitter:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -269,73 +161,7 @@ JSON数据模型、自由模式
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：</p>
-<p><table></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td valign="top">版本特性</td></p>
-<p><td valign="top">社区版本</td></p>
-<p><td valign="top">企业版本</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">JSON数据模型、自由模式</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">水平扩展的自动分片功能</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">内置副本以及高可用性</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">完整的、可扩展的索引支撑</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">丰富的文档查询功能</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">快速的文档内更新</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">聚合框架和MapReduce</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">使用GridFS存储大量多媒体数据</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">文本搜索</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">云、预置和混合部署</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">基于角色的权限控制</td></p>
-<p><td valign="top">支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">基于Kerberos先进的安全认证</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">预置监控</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">支持SNMP</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top">操作系统认证</td></p>
-<p><td valign="top">不支持</td></p>
-<p><td valign="top">支持</td><br><br><br><br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。</p>
+        <p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：<br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。<br><a id="more"></a></p>
 <h3 id="1-添加仓库"><a href="#1-添加仓库" class="headerlink" title="1.添加仓库"></a>1.添加仓库</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# vim /etc/yum.repos.d/mongodb-enterprise.repo
 [mongodb-enterprise-2.6]
 name=MongoDB Enterprise 2.6 Repository

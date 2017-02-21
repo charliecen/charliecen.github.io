@@ -8,24 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>highcharts导出csv格式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js
-代码如下:
-&amp;lt;script src=”http://code.highcharts.com/stock/highstock.js&amp;quot;&amp;gt;&amp;lt;/script&amp;amp;gt;&amp;lt;script src=”http://code.highcharts.com/modules/expor">
+  <meta name="description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="highcharts导出csv格式">
 <meta property="og:url" content="http://yoursite.com/2016/09/27/highcharts-export-csv/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js
-代码如下:
-&amp;lt;script src=”http://code.highcharts.com/stock/highstock.js&amp;quot;&amp;gt;&amp;lt;/script&amp;amp;gt;&amp;lt;script src=”http://code.highcharts.com/modules/expor">
+<meta property="og:description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="highcharts导出csv格式">
-<meta name="twitter:description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js
-代码如下:
-&amp;lt;script src=”http://code.highcharts.com/stock/highstock.js&amp;quot;&amp;gt;&amp;lt;/script&amp;amp;gt;&amp;lt;script src=”http://code.highcharts.com/modules/expor">
+<meta name="twitter:description" content="业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -170,27 +164,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js</p>
-<p>代码如下:</p>
-<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;</pre></p>
-<p>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;</p>
-<p>&lt;script&gt;<br>var chart = new Highcharts.StockChart({</p>
-<pre><code>chart: {
-    renderTo: &apos;container&apos;
-},
-
-navigator: {
-    series: {
-        includeInCSVExport: false
-    }
-},
-series: [{
-    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-    pointStart: Date.UTC(2016, 0, 1),
-    pointInterval: 24 * 36e5
-}],
-
-exporting: {
+        <p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js<br><a id="more"></a><br>代码如下:</p>
+<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;<br>&lt;script&gt;<br>var chart = new Highcharts.StockChart({<br>    chart: {<br>        renderTo: ‘container’<br>    },<br>    navigator: {<br>        series: {<br>            includeInCSVExport: false<br>        }<br>    },<br>    series: [{<br>        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],<br>        pointStart: Date.UTC(2016, 0, 1),<br>        pointInterval: 24 * 36e5<br>    }],</pre></p>
+<pre><code>exporting: {
     csv: {
         dateFormat: &apos;%Y-%m-%d&apos;
     }

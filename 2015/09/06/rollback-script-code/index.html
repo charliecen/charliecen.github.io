@@ -9,36 +9,18 @@
   <title>脚本回滚代码 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上一篇写了发布代码脚本，下面是一篇回滚代码脚本，虽然不是很完善，至少可以方便使用。
-有发布就有回滚，防止代码问题能够快速回滚。
-下面贴代码：
-#!/bin/bash
-#Author: Charlie.cen
-#Email: cenhuqing@gmail.com
-#Date: 2015/08/27
-Check if user is root[ $(id -u) != “0” ] &amp;amp;&amp;amp">
+有发布就有回滚，防止代码问题能够快速回滚。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="脚本回滚代码">
 <meta property="og:url" content="http://yoursite.com/2015/09/06/rollback-script-code/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="上一篇写了发布代码脚本，下面是一篇回滚代码脚本，虽然不是很完善，至少可以方便使用。
-有发布就有回滚，防止代码问题能够快速回滚。
-下面贴代码：
-#!/bin/bash
-#Author: Charlie.cen
-#Email: cenhuqing@gmail.com
-#Date: 2015/08/27
-Check if user is root[ $(id -u) != “0” ] &amp;amp;&amp;amp">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+有发布就有回滚，防止代码问题能够快速回滚。">
+<meta property="og:updated_time" content="2017-02-21T09:45:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="脚本回滚代码">
 <meta name="twitter:description" content="上一篇写了发布代码脚本，下面是一篇回滚代码脚本，虽然不是很完善，至少可以方便使用。
-有发布就有回滚，防止代码问题能够快速回滚。
-下面贴代码：
-#!/bin/bash
-#Author: Charlie.cen
-#Email: cenhuqing@gmail.com
-#Date: 2015/08/27
-Check if user is root[ $(id -u) != “0” ] &amp;amp;&amp;amp">
+有发布就有回滚，防止代码问题能够快速回滚。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -183,16 +165,13 @@ Check if user is root[ $(id -u) != “0” ] &amp;amp;&amp;amp">
     <div class="article-entry" itemprop="articleBody">
       
         <p>上一篇写了发布代码脚本，下面是一篇回滚代码脚本，虽然不是很完善，至少可以方便使用。</p>
-<p>有发布就有回滚，防止代码问题能够快速回滚。</p>
-<p>下面贴代码：</p>
+<p>有发布就有回滚，防止代码问题能够快速回滚。<br><a id="more"></a><br>下面贴代码：</p>
 <p><pre class="lang:sh decode:true">#!/bin/bash</pre></p>
 <p>#Author: Charlie.cen</p>
 <p>#Email: cenhuqing@gmail.com</p>
 <p>#Date: 2015/08/27</p>
-<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1</p>
-<p>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear</p>
-<h1 id="Define-Var"><a href="#Define-Var" class="headerlink" title="Define Var"></a>Define Var</h1><p>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”<br>release_path=”/data/deploy”<br>Web_dir=”/app/server”</p>
-<p>while :<br>do<br>echo “请选择回滚服务器:”<br>echo -e “t�33[32m1�33[0m. 预发布”<br>echo -e “t�33[32m2�33[0m. 线上”<br>read -p “请输入你服务器的编号: “ Remote_server<br>if [ $Remote_server != 1 -a $Remote_server != 2 ];then<br>echo -e “�33[31m 输入错误,只能输入数字: 1 , 2�33[0m”<br>else<br>if [ $Remote_server == 1 ];then<br>echo  “请选择回滚时间:”<br>ssh root@$Server_pre “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入回滚时间目录: “ Time_dir<br>echo -e “t�33[32m 预发布241,你将回滚到$Time_dir……�33[0m”<br>ssh root@10.19.21.241 “rm -rf $Web_dir;ln -s $release_path/$Time_dir/server $Web_dir” &amp;&amp; echo  -e “t�33[32m 预发布241,你已经回滚到$Time_dir�33[0m” || echo -e “t�33[31m 预发布241,回滚失败,请查看原因�33[0m”<br>break<br>else<br>echo -e “请选择回滚时间:”<br>for i in ${Server_online[@]};do<br>if [ $i == “10.19.21.242” ];then<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上242回滚时间目录: “ Time_dir_242<br>echo -e “t�33[32m 线上242,你将回滚到$Time_dir_242……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_242/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上242,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上242回滚失败,请查看原因�33[0m”<br>echo<br>else<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上243回滚时间目录: “ Time_dir_243<br>echo -e “t�33[32m 线上243,你将回滚到$Time_dir_243……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_243/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上243,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上243回滚失败,请查看原因�33[0m”<br>echo<br>fi<br>done<br>break<br>fi<br>fi<br>done<br><br>首先看原来的软链接</p>
+<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1<br>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear</p>
+<h1 id="Define-Var"><a href="#Define-Var" class="headerlink" title="Define Var"></a>Define Var</h1><p>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”<br>release_path=”/data/deploy”<br>Web_dir=”/app/server”<br>while :<br>do<br>echo “请选择回滚服务器:”<br>echo -e “t�33[32m1�33[0m. 预发布”<br>echo -e “t�33[32m2�33[0m. 线上”<br>read -p “请输入你服务器的编号: “ Remote_server<br>if [ $Remote_server != 1 -a $Remote_server != 2 ];then<br>echo -e “�33[31m 输入错误,只能输入数字: 1 , 2�33[0m”<br>else<br>if [ $Remote_server == 1 ];then<br>echo  “请选择回滚时间:”<br>ssh root@$Server_pre “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入回滚时间目录: “ Time_dir<br>echo -e “t�33[32m 预发布241,你将回滚到$Time_dir……�33[0m”<br>ssh root@10.19.21.241 “rm -rf $Web_dir;ln -s $release_path/$Time_dir/server $Web_dir” &amp;&amp; echo  -e “t�33[32m 预发布241,你已经回滚到$Time_dir�33[0m” || echo -e “t�33[31m 预发布241,回滚失败,请查看原因�33[0m”<br>break<br>else<br>echo -e “请选择回滚时间:”<br>for i in ${Server_online[@]};do<br>if [ $i == “10.19.21.242” ];then<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上242回滚时间目录: “ Time_dir_242<br>echo -e “t�33[32m 线上242,你将回滚到$Time_dir_242……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_242/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上242,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上242回滚失败,请查看原因�33[0m”<br>echo<br>else<br>ssh root@$i “ls -l $release_path” |awk ‘{print $9}’<br>read -p “请输入线上243回滚时间目录: “ Time_dir_243<br>echo -e “t�33[32m 线上243,你将回滚到$Time_dir_243……�33[0m”<br>ssh root@$i “rm -rf $Web_dir;ln -s $release_path/$Time_dir_243/server $Web_dir” &amp;&amp; echo -e “t�33[32m 线上243,你已经回滚到$Time_dir_242�33[0m” || echo -e “t�33[31m 线上243回滚失败,请查看原因�33[0m”<br>echo<br>fi<br>done<br>break<br>fi<br>fi<br>done<br><br>首先看原来的软链接</p>
 <p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m shell -a “ls -l /app/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:06 server -&gt; /data/deploy/20150826_181338/server</pre></p>
 <p>10.19.21.242 | success | rc=0 &gt;&gt;<br>total 0<br>lrwxrwxrwx 1 root root 35 Aug 27 15:06 server -&gt; /data/deploy/20150826_181341/server<br>执行操作</p>
 <p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ./roll_back.sh<br>请选择回滚服务器:<br>1. 预发布<br>2. 线上<br>请输入你服务器的编号: 2<br>请选择回滚时间:</pre></p>

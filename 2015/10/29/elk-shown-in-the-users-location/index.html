@@ -8,24 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ELK中展示用户位置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。
-首先下载地图库
-[root@monitor src]# curl -O http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">
+  <meta name="description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELK中展示用户位置">
 <meta property="og:url" content="http://yoursite.com/2015/10/29/elk-shown-in-the-users-location/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。
-首先下载地图库
-[root@monitor src]# curl -O http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">
+<meta property="og:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:33:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK中展示用户位置">
-<meta name="twitter:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。
-首先下载地图库
-[root@monitor src]# curl -O http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">
+<meta name="twitter:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -170,8 +164,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。</p>
-<p>首先下载地图库</p>
+        <p>GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。<br><a id="more"></a><br>首先下载地图库</p>
 <p><pre class="lang:sh decode:true ">[root@monitor src]# curl -O <a href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz" target="_blank" rel="external">http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz</a></pre><br>解压并移动到指定目录</p>
 <p><pre class="lang:sh decode:true ">[root@monitor src]# gunzip GeoLiteCity.dat.gz<br>[root@monitor src]# mv GeoLiteCity.dat  /opt/logstash/vendor/geoip/</pre><br>编辑配置文件，filter里更改为如下内容：</p>
 <p><pre class="lang:sh decode:true ">  if [type] == “nginx” {<br>    grok {<br>      match =&gt; { “message” =&gt; “%{NGINXACCESS}” }<br>    }<br>    geoip {<br>      source =&gt; “remote_addr”<br>      target =&gt; “geoip”<br>      database =&gt; “/opt/logstash/vendor/geoip/GeoLiteCity.dat”<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][longitude]}” ]<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][latitude]}”  ]<br>      remove_field =&gt; [ “[geoip][latitude]”, “[geoip][longitude]” ]<br>    }<br>    mutate {<br>      convert =&gt; [ “[geoip][coordinates]”, “float”]<br>    }<br>  }</pre><br>重启logstash服务</p>

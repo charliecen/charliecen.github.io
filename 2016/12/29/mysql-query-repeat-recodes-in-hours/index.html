@@ -8,38 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mysql查询24小时内无重复的记录 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="需求：
-
-
-
-一次性解决问题率=一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。
-例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。
-首先给出sql语句，间隔查询参考mysql日期间隔查询">
+  <meta name="description" content="需求：一次性解决问题率 = 一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话
+由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql查询24小时内无重复的记录">
 <meta property="og:url" content="http://yoursite.com/2016/12/29/mysql-query-repeat-recodes-in-hours/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="需求：
-
-
-
-一次性解决问题率=一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。
-例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。
-首先给出sql语句，间隔查询参考mysql日期间隔查询">
+<meta property="og:description" content="需求：一次性解决问题率 = 一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话
+由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1-300x138.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-3.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:22:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql查询24小时内无重复的记录">
-<meta name="twitter:description" content="需求：
-
-
-
-一次性解决问题率=一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。
-例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。
-首先给出sql语句，间隔查询参考mysql日期间隔查询">
+<meta name="twitter:description" content="需求：一次性解决问题率 = 一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话
+由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -184,11 +169,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>需求：</p>
-<p><table width="445"></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td width="445">一次性解决问题率=一次解决的对话量/接入量<br>一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话</td><br><br><br><br>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
+        <p>需求：<br>一次性解决问题率 = 一次解决的对话量/接入量<br>一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话</p>
+<p>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
+<a id="more"></a>
 <p>例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。</p>
 <p>首先给出sql语句，间隔查询参考<a href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/" target="_blank" rel="external">mysql日期间隔查询</a></p>
 <p><pre class="lang:mysql decode:true ">– 间隔两天的记录<br>select<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId ,<br>  createUserId,<br>  createTime,<br>  endTime<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740 AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>order BY sortId,createUserId;</pre><br>结果如下</p>

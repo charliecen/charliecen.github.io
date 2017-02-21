@@ -11,11 +11,7 @@
   <meta name="description" content="十一7天假期，在家休6天。上班来什么都不想做，好无聊。
 到今天才想起来学点东西，还是把以前看过的知识再巩固下，顺便记录下来。
 本人学python以来，一直断断续续，没人带，自己慢慢摸索。还没入门，好悲剧。
-废话不多说，下面是记录的详细内容：
-1.把函数作为参数下面简单编写一个高阶函数：
-def add(x, y, f):
-    return f(x) + f(y)
-如果传入abs作为参数f的值：">
+废话不多说，下面是记录的详细内容：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python高阶函数">
 <meta property="og:url" content="http://yoursite.com/2015/10/10/python-higher-order-functions/index.html">
@@ -23,22 +19,14 @@ def add(x, y, f):
 <meta property="og:description" content="十一7天假期，在家休6天。上班来什么都不想做，好无聊。
 到今天才想起来学点东西，还是把以前看过的知识再巩固下，顺便记录下来。
 本人学python以来，一直断断续续，没人带，自己慢慢摸索。还没入门，好悲剧。
-废话不多说，下面是记录的详细内容：
-1.把函数作为参数下面简单编写一个高阶函数：
-def add(x, y, f):
-    return f(x) + f(y)
-如果传入abs作为参数f的值：">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+废话不多说，下面是记录的详细内容：">
+<meta property="og:updated_time" content="2017-02-21T09:37:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python高阶函数">
 <meta name="twitter:description" content="十一7天假期，在家休6天。上班来什么都不想做，好无聊。
 到今天才想起来学点东西，还是把以前看过的知识再巩固下，顺便记录下来。
 本人学python以来，一直断断续续，没人带，自己慢慢摸索。还没入门，好悲剧。
-废话不多说，下面是记录的详细内容：
-1.把函数作为参数下面简单编写一个高阶函数：
-def add(x, y, f):
-    return f(x) + f(y)
-如果传入abs作为参数f的值：">
+废话不多说，下面是记录的详细内容：">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -185,7 +173,7 @@ def add(x, y, f):
         <p>十一7天假期，在家休6天。上班来什么都不想做，好无聊。</p>
 <p>到今天才想起来学点东西，还是把以前看过的知识再巩固下，顺便记录下来。</p>
 <p>本人学python以来，一直断断续续，没人带，自己慢慢摸索。还没入门，好悲剧。</p>
-<p>废话不多说，下面是记录的详细内容：</p>
+<p>废话不多说，下面是记录的详细内容：<br><a id="more"></a></p>
 <h4 id="1-把函数作为参数"><a href="#1-把函数作为参数" class="headerlink" title="1.把函数作为参数"></a>1.把函数作为参数</h4><p>下面简单编写一个高阶函数：</p>
 <pre class="lang:python decode:true">def add(x, y, f):
     return f(x) + f(y)</pre>
@@ -220,6 +208,7 @@ print add(25, 9, math.sqrt)
  <em> </em><br><br>#### 7.闭包<br><br>在函数内部定义的函数和外部定义的函数是一样的，只是他们无法被外部访问：<br><pre class="lang:python decode:true ">def g():<br>    print ‘g()…’<br><br>def f():<br>    print ‘f()…’<br>    return g</pre><br>将<strong> g</strong> 的定义移入函数 <strong>f</strong> 内部，防止其他代码调用 <strong>g</strong>：<br><pre class="lang:python decode:true ">def f():<br>    print ‘f()…’<br>    def g():<br>        print ‘g()…’<br>    return g</pre><br>但是，考察上一小节定义的 <strong>calc_sum </strong>函数：<br><pre class="lang:python decode:true ">def calc_sum(lst):<br>    def lazy_sum():<br>        return sum(lst)<br>    return lazy_sum</pre><br><div><strong>注意: </strong>发现没法把 <strong>lazy_sum</strong> 移到 <strong>calc_sum</strong> 的外部，因为它引用了<strong>calc_sum</strong> 的参数 <strong>lst</strong>。</div><br><div></div><br><div>像这种内层函数引用了外层函数的变量（参数也算变量），然后返回内层函数的情况，称为<strong>闭包（Closure）</strong>。</div><br><div></div><br><div><strong>闭包的特点</strong>是返回的函数还引用了外层函数的局部变量，所以，要正确使用闭包，就要确保引用的局部变量在函数返回后不能变。举例如下：</div><br><pre class="lang:python decode:true "># 希望一次返回3个函数，分别计算1x1,2x2,3x3:<br>def count():<br>    fs = []<br>    for i in range(1, 4):<br>        def f():<br>            return i<em>i<br>        fs.append(f)<br>    return fs<br><br>f1, f2, f3 = count()</em></pre><br><div>你可能认为调用f1()，f2()和f3()结果应该是1，4，9，但实际结果全部都是 9（请自己动手验证）。</div><br><div></div><br><div>原因就是当count()函数返回了3个函数时，这3个函数所引用的变量 i 的值已经变成了3。由于f1、f2、f3并没有被调用，所以，此时他们并未计算 ii，当 f1 被调用时：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; f1()<br>9    # 因为f1现在才计算i<em>i，但现在i的值已经变为3</em></pre><br>因此，返回函数不要引用任何循环变量，或者后续会发生变化的变量。<br><br><strong>任务：</strong>返回闭包不能引用循环变量，请改写<strong>count()</strong>函数，让它正确返回能计算1x1、2x2、3x3的函数。<br><br>考察下面的函数<strong> f</strong>:<br><pre class="lang:python decode:true ">def f(j):<br>    def g():<br>        return jj<br>    return g</pre><br><div>它可以正确地返回一个闭包g，g所引用的变量j不是循环变量，因此将正常执行。</div><br><div></div><br><div>在count函数的循环内部，如果借助f函数，就可以避免引用循环变量i。</div><br><div></div><br><div><strong>解答：</strong></div><br></div><br><pre class="lang:python decode:true ">def count():<br>    fs = []<br>    for i in range(1, 4):<br>        def f(j):<br>            def g():<br>                return j<em>j<br>            return g<br>        r = f(i)<br>        fs.append(r)<br>    return fs<br><br>&gt;&gt;&gt; f1,f2,f3 = count()<br>&gt;&gt;&gt; print f1(), f2(), f3()<br>1 4 9</em></pre>
 
  <em> </em><br><br>#### 8.匿名函数<del></del><br><br><div>高阶函数可以接收函数做参数，有些时候，我们不需要显式地定义函数，直接传入匿名函数更方便。</div><br><div></div><br><div>在Python中，对匿名函数提供了有限支持。还是以map()函数为例，计算 f(x)=x2 时，除了定义一个f(x)的函数外，还可以直接传入匿名函数：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; map(lambda x: x <em> x, [1, 2, 3, 4, 5, 6, 7, 8, 9])<br>[1, 4, 9, 16, 25, 36, 49, 64, 81]</em></pre><br>通过对比可以看出，匿名函数 lambda x: x  x 实际上就是：<br><pre class="lang:python decode:true ">def f(x):<br>    return x <em> x</em></pre><br><div>关键字lambda 表示匿名函数，冒号前面的 x 表示函数参数。</div><br><div></div><br><div>匿名函数有个限制，就是<strong>只能有一个表达式</strong>，<strong>不写return</strong>，返回值就是该表达式的结果。</div><br><div></div><br><div>使用匿名函数，可以不必定义函数名，直接创建一个函数对象，很多时候可以简化代码：</div><br><div><br><pre class="lang:python decode:true ">&gt;&gt;&gt; sorted([1, 3, 9, 5, 0], lambda x,y: -cmp(x,y))<br>[9, 5, 3, 1, 0]</pre><br>返回函数的时候，也可以返回匿名函数：<br><pre class="lang:python decode:true ">&gt;&gt;&gt; myabs = lambda x: -x if x &lt; 0 else x<br>&gt;&gt;&gt; myabs(-1)<br>1<br>&gt;&gt;&gt; myabs(1)<br>1</pre><br><strong>任务：</strong>利用匿名函数简化以下代码：<br><pre class="lang:python decode:true ">def is_not_empty(s):<br>    return s and len(s.strip()) &gt; 0<br><br>filter(is_not_empty, [‘test’, None, ‘’, ‘str’, ‘  ‘, ‘END’])</pre><br><em>*解答：</em><br><pre class="lang:python decode:true ">print filter(lambda s:s and len(s.strip()) &gt; 0, [‘test’, None, ‘’, ‘str’, ‘  ‘, ‘END’])<br>[‘test’, ‘str’, ‘END’]</pre><br></div><br></div>
+
       
 
       

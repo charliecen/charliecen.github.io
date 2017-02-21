@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>PHP数组分页 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下&amp;lt;?php//数组数据$data = array(    array(‘id’=&amp;gt;1,’name’=&amp;gt;’test1’),    array(‘id’=&amp;gt;2,’name’=&amp;gt;’test2’),    array(‘id’=&amp;gt;3,’name’=&amp;gt;’test3’),    array(">
+  <meta name="description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP数组分页">
 <meta property="og:url" content="http://yoursite.com/2016/09/12/php-array-page/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下&amp;lt;?php//数组数据$data = array(    array(‘id’=&amp;gt;1,’name’=&amp;gt;’test1’),    array(‘id’=&amp;gt;2,’name’=&amp;gt;’test2’),    array(‘id’=&amp;gt;3,’name’=&amp;gt;’test3’),    array(">
+<meta property="og:description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160912-0.png">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:28:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP数组分页">
-<meta name="twitter:description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下&amp;lt;?php//数组数据$data = array(    array(‘id’=&amp;gt;1,’name’=&amp;gt;’test1’),    array(‘id’=&amp;gt;2,’name’=&amp;gt;’test2’),    array(‘id’=&amp;gt;3,’name’=&amp;gt;’test3’),    array(">
+<meta name="twitter:description" content="由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法代码如下">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160912-0.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -163,12 +163,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div>由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法</div><br><div>代码如下</div><br><div><br><pre class="lang:php decode:true ">&lt;?php<br><br>//数组数据<br>$data = array(<br>    array(‘id’=&gt;1,’name’=&gt;’test1’),<br>    array(‘id’=&gt;2,’name’=&gt;’test2’),<br>    array(‘id’=&gt;3,’name’=&gt;’test3’),<br>    array(‘id’=&gt;4,’name’=&gt;’test4’),<br>    array(‘id’=&gt;5,’name’=&gt;’test5’),<br>    array(‘id’=&gt;6,’name’=&gt;’test6’),<br>    array(‘id’=&gt;7,’name’=&gt;’test7’),<br>);<br><br>//获取当前页<br>$page = intval(isset($_GET[‘page’])) ? intval($_GET[‘page’]) : 1;<br>//排序order 0 - 不变     1- 反序<br>$order = 0;<br>//每页显示数<br>$count = 3;<br><br>$d = page_array($count,$page,$data,$order);<br>echo ‘&lt;pre&gt;’ ;<br>print_r($d);<br>//url地址<br>$url = ‘<a href="http://127.0.0.1:81/test.php" target="_blank" rel="external">http://127.0.0.1:81/test.php</a>‘;<br>echo show_array($countpage,$url);<br><br>/<strong><br> <em> 数组分页函数  核心函数  array_slice 
+        <div>由于从api获取的数据无法通过框架分页类来分页，所以需要自己写分页方法</div><br><div>代码如下</div><br><a id="more"></a><br><div><br><pre class="lang:php decode:true ">&lt;?php<br><br>//数组数据<br>$data = array(<br>    array(‘id’=&gt;1,’name’=&gt;’test1’),<br>    array(‘id’=&gt;2,’name’=&gt;’test2’),<br>    array(‘id’=&gt;3,’name’=&gt;’test3’),<br>    array(‘id’=&gt;4,’name’=&gt;’test4’),<br>    array(‘id’=&gt;5,’name’=&gt;’test5’),<br>    array(‘id’=&gt;6,’name’=&gt;’test6’),<br>    array(‘id’=&gt;7,’name’=&gt;’test7’),<br>);<br><br>//获取当前页<br>$page = intval(isset($_GET[‘page’])) ? intval($_GET[‘page’]) : 1;<br>//排序order 0 - 不变     1- 反序<br>$order = 0;<br>//每页显示数<br>$count = 3;<br><br>$d = page_array($count,$page,$data,$order);<br>echo ‘&lt;pre&gt;’ ;<br>print_r($d);<br>//url地址<br>$url = ‘<a href="http://127.0.0.1:81/test.php" target="_blank" rel="external">http://127.0.0.1:81/test.php</a>‘;<br>echo show_array($countpage,$url);<br><br>/<strong><br> <em> 数组分页函数  核心函数  array_slice 
  </em> 用此函数之前要先将数据库里面的所有数据按一定的顺序查询出来存入数组中<br> <em> $count   每页多少条数据 
  </em> $page   当前第几页<br> <em> $array   查询出来的所有数组 
  </em> order 0 - 不变     1- 反序<br> <em>/<br><br>function page_array($count,$page,$array,$order){<br>    global $countpage; #定全局变量<br>    $page=(empty($page))?’1’:$page; #判断当前页面是否为空 如果为空就表示为第一页面<br>       $start=($page-1)</em>$count; #计算每次分页的开始位置<br>    if($order==1){<br>      $array=array_reverse($array);<br>    }<br>    $totals=count($array);<br>    $countpage=ceil($totals/$count); #计算总页面数<br>    $pagedata=array();<br>    $pagedata=array_slice($array,$start,$count);<br>    return $pagedata;  #返回查询数据<br>}<br>/</strong><br> <em> 分页及显示函数 
  </em> $countpage 全局变量，照写<br> <em> $url 当前url 
  </em>/<br>function show_array($countpage,$url){<br>     $page=empty($_GET[‘page’])?1:$_GET[‘page’];<br>     if($page &gt; 1){<br>        $uppage=$page-1;<br><br>     }else{<br>        $uppage=1;<br>     }<br><br>     if($page &lt; $countpage){<br>        $nextpage=$page+1;<br><br>     }else{<br>            $nextpage=$countpage;<br>     }<br><br>    $str=’&lt;div style=”border:1px; width:300px; height:30px; color:#9999CC”&gt;’;<br>    $str.=”&lt;span&gt;共  {$countpage}  页 / 第 {$page} 页&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page=1’&gt;   首页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$uppage}’&gt; 上一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$nextpage}’&gt;下一页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=”&lt;span&gt;&lt;a href=’$url?page={$countpage}’&gt;尾页  &lt;/a&gt;&lt;/span&gt;&amp;nbsp;”;<br>    $str.=’&lt;/div&gt;’;<br>    return $str;<br>}<br>?&gt;</pre><br>结果如下：<br><br><img src="http://www.cenhq.com/wp-content/uploads/2016/09/QQ20160912-0.png" alt=""><br><br></div>
+
       
 
       

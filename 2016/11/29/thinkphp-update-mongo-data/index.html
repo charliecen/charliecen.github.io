@@ -10,23 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="由于需要修改mongo库的status的值，首先要找到这条记录的id；
 我这里的id在mysql库里有记录，每条记录里有key_time字段，所以需要获取这个字段的值；
-获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；
-function commit(){        var url = self.location.href;        var title = $(‘h2">
+获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="thinkphp修改mongo数据">
 <meta property="og:url" content="http://yoursite.com/2016/11/29/thinkphp-update-mongo-data/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="由于需要修改mongo库的status的值，首先要找到这条记录的id；
 我这里的id在mysql库里有记录，每条记录里有key_time字段，所以需要获取这个字段的值；
-获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；
-function commit(){        var url = self.location.href;        var title = $(‘h2">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；">
+<meta property="og:updated_time" content="2017-02-21T09:25:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thinkphp修改mongo数据">
 <meta name="twitter:description" content="由于需要修改mongo库的status的值，首先要找到这条记录的id；
 我这里的id在mysql库里有记录，每条记录里有key_time字段，所以需要获取这个字段的值；
-获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；
-function commit(){        var url = self.location.href;        var title = $(‘h2">
+获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -172,7 +169,7 @@ function commit(){        var url = self.location.href;        var title = $(‘
       
         <p>由于需要修改mongo库的<code>status</code>的值，首先要找到这条记录的id；</p>
 <p>我这里的id在mysql库里有记录，每条记录里有<code>key_time</code>字段，所以需要获取这个字段的值；</p>
-<p>获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；</p>
+<p>获取该字段的值需要从url里获取，通过ajax方式传递到后台来处理；<br><a id="more"></a></p>
 <p><pre class="lang:js decode:true ">function commit(){<br>        var url = self.location.href;<br>        var title = $(‘h2’).html().split(‘_’);<br>        $.ajax({<br>            type: ‘POST’,<br>            url: ‘&lt;?php echo U(“ReportBrowse/info”)?&gt;’,<br>            data : {url:url,title:title[0]},<br>            success: function (data) {<br>//                console.log(data);<br>            },<br>            error: function (e) {</pre></p>
 <pre><code>    }
 });

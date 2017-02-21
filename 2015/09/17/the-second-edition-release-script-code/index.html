@@ -10,41 +10,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。
 今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。
-脚本有很多注释，相信大家都能看懂。我大略写下流程。
-流程：
-1.先获取最新代码版本号。
-2.输入指定版本号。
-3.列出指定版本号之间的代码文件，并写入到文件中。
-4.发布之前备份远程服务器代码。
-5.最后上传代码。
-下面我贴下脚本和执行后的结果，如果各位有啥问题，">
+脚本有很多注释，相信大家都能看懂。我大略写下流程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="脚本发布代码第二版">
 <meta property="og:url" content="http://yoursite.com/2015/09/17/the-second-edition-release-script-code/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。
 今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。
-脚本有很多注释，相信大家都能看懂。我大略写下流程。
-流程：
-1.先获取最新代码版本号。
-2.输入指定版本号。
-3.列出指定版本号之间的代码文件，并写入到文件中。
-4.发布之前备份远程服务器代码。
-5.最后上传代码。
-下面我贴下脚本和执行后的结果，如果各位有啥问题，">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+脚本有很多注释，相信大家都能看懂。我大略写下流程。">
+<meta property="og:updated_time" content="2017-02-21T09:42:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="脚本发布代码第二版">
 <meta name="twitter:description" content="之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。
 今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。
-脚本有很多注释，相信大家都能看懂。我大略写下流程。
-流程：
-1.先获取最新代码版本号。
-2.输入指定版本号。
-3.列出指定版本号之间的代码文件，并写入到文件中。
-4.发布之前备份远程服务器代码。
-5.最后上传代码。
-下面我贴下脚本和执行后的结果，如果各位有啥问题，">
+脚本有很多注释，相信大家都能看懂。我大略写下流程。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -190,22 +169,13 @@
       
         <p>之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。</p>
 <p>今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。</p>
-<p>脚本有很多注释，相信大家都能看懂。我大略写下流程。</p>
-<p>流程：</p>
-<p>1.先获取最新代码版本号。</p>
-<p>2.输入指定版本号。</p>
-<p>3.列出指定版本号之间的代码文件，并写入到文件中。</p>
-<p>4.发布之前备份远程服务器代码。</p>
-<p>5.最后上传代码。</p>
+<p>脚本有很多注释，相信大家都能看懂。我大略写下流程。<br><a id="more"></a><br>流程：<br>1.先获取最新代码版本号。<br>2.输入指定版本号。<br>3.列出指定版本号之间的代码文件，并写入到文件中。<br>4.发布之前备份远程服务器代码。<br>5.最后上传代码。</p>
 <p>下面我贴下脚本和执行后的结果，如果各位有啥问题，可以留言给我。</p>
 <p><pre class="lang:sh decode:true  ">#!/bin/bash</pre></p>
 <p>#Author: Charlie.cen</p>
 <p>#Email: cenhuqing@gmail.com</p>
 <p>#Date: 2015/09/17</p>
-<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1</p>
-<p>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear</p>
-<p>dat=<code>date +%Y%m%d-%H%M</code><br>release_path=”/home/deploy/version”<br>svn_workdir=”/app/server”<br>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”</p>
-<p>cd $svn_workdir &amp;&amp; last_version=$(svn update | grep -E “版本|version|Version|At revision” | sed ‘s/[^0-9]//g’)<br>echo -e “\t\033[32m当前最新的版本号是:\033[0m \033[31m$last_version\033[0m, \033[32m请输入的数字不要超过此版本号!!!\033[0m”</p>
+<h1 id="Check-if-user-is-root"><a href="#Check-if-user-is-root" class="headerlink" title="Check if user is root"></a>Check if user is root</h1><p>[ $(id -u) != “0” ] &amp;&amp; echo “Error: You must be root to run this script” &amp;&amp; exit 1<br>export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin<br>clear<br>dat=<code>date +%Y%m%d-%H%M</code><br>release_path=”/home/deploy/version”<br>svn_workdir=”/app/server”<br>Server_pre=”10.19.21.241”<br>Server_online=”10.19.21.242 10.19.21.243”<br>cd $svn_workdir &amp;&amp; last_version=$(svn update | grep -E “版本|version|Version|At revision” | sed ‘s/[^0-9]//g’)<br>echo -e “\t\033[32m当前最新的版本号是:\033[0m \033[31m$last_version\033[0m, \033[32m请输入的数字不要超过此版本号!!!\033[0m”</p>
 <p>#指定起始和结束版本号<br>while :<br>do<br>    read -p “请输入起始版本号:” start_version</p>
 <pre><code>    #read -p &quot;请输入结束版本号:&quot; end_version
 while :

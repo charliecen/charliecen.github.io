@@ -8,14 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>zabbix监控logstash的java | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。
-在 ./bin/logstash.lib.sh 第 34 行 JAVA_O">
+  <meta name="description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zabbix监控logstash的java">
 <meta property="og:url" content="http://yoursite.com/2015/11/16/zabbix-monitor-logstash-java/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。
-在 ./bin/logstash.lib.sh 第 34 行 JAVA_O">
+<meta property="og:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png">
@@ -25,11 +23,10 @@
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg">
-<meta property="og:updated_time" content="2017-02-10T10:12:21.000Z">
+<meta property="og:updated_time" content="2017-02-21T09:31:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix监控logstash的java">
-<meta name="twitter:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。
-在 ./bin/logstash.lib.sh 第 34 行 JAVA_O">
+<meta name="twitter:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。">
 <meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -174,8 +171,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。</p>
-<p>在 ./bin/logstash.lib.sh 第 34 行 JAVA_OPTS=”$JAVA_OPTS -Djava.awt.headless=true” 下，添加如下几行：</p>
+        <p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。<br><a id="more"></a><br>在 ./bin/logstash.lib.sh 第 34 行 JAVA_OPTS=”$JAVA_OPTS -Djava.awt.headless=true” 下，添加如下几行：</p>
 <pre class="lang:sh decode:true ">[root@monitor logstash]# vim bin/logstash.lib.sh
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
 JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=9010"
@@ -214,6 +210,7 @@ tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LIST
 <p><span style="color: #ff0000;">错误如下：</span></p>
 <p></p></div><p></p>
 <div><img src="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>
+
       
 
       
