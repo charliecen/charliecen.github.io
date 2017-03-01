@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://charliecen.github.io/"/>
   <updated>2017-02-21T09:14:39.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://charliecen.github.io/</id>
   
   <author>
     <name>Charlie Cen</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Lumen实现用户注册登录认证</title>
-    <link href="http://yoursite.com/2017/02/21/Lumen-user-register-and-login-auth/"/>
-    <id>http://yoursite.com/2017/02/21/Lumen-user-register-and-login-auth/</id>
+    <link href="http://charliecen.github.io/2017/02/21/Lumen-user-register-and-login-auth/"/>
+    <id>http://charliecen.github.io/2017/02/21/Lumen-user-register-and-login-auth/</id>
     <published>2017-02-21T06:47:10.000Z</published>
     <updated>2017-02-21T09:14:39.000Z</updated>
     
@@ -59,19 +59,19 @@
     
     </summary>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
     
     
-      <category term="Lumen" scheme="http://yoursite.com/tags/Lumen/"/>
+      <category term="Lumen" scheme="http://charliecen.github.io/tags/Lumen/"/>
     
-      <category term="Api" scheme="http://yoursite.com/tags/Api/"/>
+      <category term="Api" scheme="http://charliecen.github.io/tags/Api/"/>
     
   </entry>
   
   <entry>
     <title>thinkphp数据缓存</title>
-    <link href="http://yoursite.com/2017/02/04/thinkphp-data-cache/"/>
-    <id>http://yoursite.com/2017/02/04/thinkphp-data-cache/</id>
+    <link href="http://charliecen.github.io/2017/02/04/thinkphp-data-cache/"/>
+    <id>http://charliecen.github.io/2017/02/04/thinkphp-data-cache/</id>
     <published>2017-02-04T14:34:07.000Z</published>
     <updated>2017-02-21T09:19:33.000Z</updated>
     
@@ -105,25 +105,25 @@
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/PHP/"/>
     
-      <category term="Thinkphp" scheme="http://yoursite.com/categories/Dev/PHP/Thinkphp/"/>
+      <category term="Thinkphp" scheme="http://charliecen.github.io/categories/Dev/PHP/Thinkphp/"/>
     
     
-      <category term="S方法" scheme="http://yoursite.com/tags/S%E6%96%B9%E6%B3%95/"/>
+      <category term="S方法" scheme="http://charliecen.github.io/tags/S%E6%96%B9%E6%B3%95/"/>
     
-      <category term="thinkphp" scheme="http://yoursite.com/tags/thinkphp/"/>
+      <category term="thinkphp" scheme="http://charliecen.github.io/tags/thinkphp/"/>
     
-      <category term="数据缓存" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98/"/>
+      <category term="数据缓存" scheme="http://charliecen.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
   <entry>
     <title>mongo-3.2主从配置</title>
-    <link href="http://yoursite.com/2017/01/04/mongo-3-2-replication/"/>
-    <id>http://yoursite.com/2017/01/04/mongo-3-2-replication/</id>
+    <link href="http://charliecen.github.io/2017/01/04/mongo-3-2-replication/"/>
+    <id>http://charliecen.github.io/2017/01/04/mongo-3-2-replication/</id>
     <published>2017-01-04T16:08:24.000Z</published>
     <updated>2017-02-21T09:20:34.000Z</updated>
     
@@ -224,23 +224,23 @@ db.test.find()</pre>
     
     </summary>
     
-      <category term="DB" scheme="http://yoursite.com/categories/DB/"/>
+      <category term="DB" scheme="http://charliecen.github.io/categories/DB/"/>
     
-      <category term="Linux" scheme="http://yoursite.com/categories/DB/Linux/"/>
+      <category term="Linux" scheme="http://charliecen.github.io/categories/DB/Linux/"/>
     
-      <category term="Mongo" scheme="http://yoursite.com/categories/DB/Linux/Mongo/"/>
+      <category term="Mongo" scheme="http://charliecen.github.io/categories/DB/Linux/Mongo/"/>
     
     
-      <category term="mongo-replcation" scheme="http://yoursite.com/tags/mongo-replcation/"/>
+      <category term="mongo-replcation" scheme="http://charliecen.github.io/tags/mongo-replcation/"/>
     
-      <category term="mongo主从" scheme="http://yoursite.com/tags/mongo%E4%B8%BB%E4%BB%8E/"/>
+      <category term="mongo主从" scheme="http://charliecen.github.io/tags/mongo%E4%B8%BB%E4%BB%8E/"/>
     
   </entry>
   
   <entry>
     <title>mysql查询24小时内无重复的记录</title>
-    <link href="http://yoursite.com/2016/12/29/mysql-query-repeat-recodes-in-hours/"/>
-    <id>http://yoursite.com/2016/12/29/mysql-query-repeat-recodes-in-hours/</id>
+    <link href="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/"/>
+    <id>http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/</id>
     <published>2016-12-29T11:21:55.000Z</published>
     <updated>2017-02-21T09:22:06.000Z</updated>
     
@@ -357,21 +357,21 @@ private function processData($arr1,$arr){
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/PHP/"/>
     
     
-      <category term="24小时内重复记录" scheme="http://yoursite.com/tags/24%E5%B0%8F%E6%97%B6%E5%86%85%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
+      <category term="24小时内重复记录" scheme="http://charliecen.github.io/tags/24%E5%B0%8F%E6%97%B6%E5%86%85%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
     
-      <category term="mysql查询重复记录" scheme="http://yoursite.com/tags/mysql%E6%9F%A5%E8%AF%A2%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
+      <category term="mysql查询重复记录" scheme="http://charliecen.github.io/tags/mysql%E6%9F%A5%E8%AF%A2%E9%87%8D%E5%A4%8D%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>ajax作用域范围无法获取返回值</title>
-    <link href="http://yoursite.com/2016/12/16/ajax-unable-to-get-return-value/"/>
-    <id>http://yoursite.com/2016/12/16/ajax-unable-to-get-return-value/</id>
+    <link href="http://charliecen.github.io/2016/12/16/ajax-unable-to-get-return-value/"/>
+    <id>http://charliecen.github.io/2016/12/16/ajax-unable-to-get-return-value/</id>
     <published>2016-12-16T16:15:46.000Z</published>
     <updated>2017-02-21T09:22:56.000Z</updated>
     
@@ -390,25 +390,25 @@ private function processData($arr1,$arr){
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://charliecen.github.io/categories/JavaScript/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/JavaScript/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/JavaScript/PHP/"/>
     
     
-      <category term="ajax作用域" scheme="http://yoursite.com/tags/ajax%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+      <category term="ajax作用域" scheme="http://charliecen.github.io/tags/ajax%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     
-      <category term="ajax同步" scheme="http://yoursite.com/tags/ajax%E5%90%8C%E6%AD%A5/"/>
+      <category term="ajax同步" scheme="http://charliecen.github.io/tags/ajax%E5%90%8C%E6%AD%A5/"/>
     
-      <category term="ajax异步" scheme="http://yoursite.com/tags/ajax%E5%BC%82%E6%AD%A5/"/>
+      <category term="ajax异步" scheme="http://charliecen.github.io/tags/ajax%E5%BC%82%E6%AD%A5/"/>
     
-      <category term="ajax返回值" scheme="http://yoursite.com/tags/ajax%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
+      <category term="ajax返回值" scheme="http://charliecen.github.io/tags/ajax%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
     
   </entry>
   
   <entry>
     <title>thinkphp页面显示权限控制</title>
-    <link href="http://yoursite.com/2016/12/08/thinkphp-page-access-control/"/>
-    <id>http://yoursite.com/2016/12/08/thinkphp-page-access-control/</id>
+    <link href="http://charliecen.github.io/2016/12/08/thinkphp-page-access-control/"/>
+    <id>http://charliecen.github.io/2016/12/08/thinkphp-page-access-control/</id>
     <published>2016-12-08T19:10:05.000Z</published>
     <updated>2017-02-21T09:23:33.000Z</updated>
     
@@ -444,25 +444,25 @@ private function processData($arr1,$arr){
     
     </summary>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
     
     
-      <category term="mongo or查询" scheme="http://yoursite.com/tags/mongo-or%E6%9F%A5%E8%AF%A2/"/>
+      <category term="mongo or查询" scheme="http://charliecen.github.io/tags/mongo-or%E6%9F%A5%E8%AF%A2/"/>
     
-      <category term="_complex" scheme="http://yoursite.com/tags/complex/"/>
+      <category term="_complex" scheme="http://charliecen.github.io/tags/complex/"/>
     
-      <category term="_logic=&amp;gt;&quot;or&quot;" scheme="http://yoursite.com/tags/logic-gt-or/"/>
+      <category term="_logic=&amp;gt;&quot;or&quot;" scheme="http://charliecen.github.io/tags/logic-gt-or/"/>
     
-      <category term="报表浏览权限" scheme="http://yoursite.com/tags/%E6%8A%A5%E8%A1%A8%E6%B5%8F%E8%A7%88%E6%9D%83%E9%99%90/"/>
+      <category term="报表浏览权限" scheme="http://charliecen.github.io/tags/%E6%8A%A5%E8%A1%A8%E6%B5%8F%E8%A7%88%E6%9D%83%E9%99%90/"/>
     
-      <category term="权限控制" scheme="http://yoursite.com/tags/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/"/>
+      <category term="权限控制" scheme="http://charliecen.github.io/tags/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/"/>
     
   </entry>
   
   <entry>
     <title>mysql查询日期间隔自定义日期</title>
-    <link href="http://yoursite.com/2016/12/06/mysql-select-date-interval-custom-date/"/>
-    <id>http://yoursite.com/2016/12/06/mysql-select-date-interval-custom-date/</id>
+    <link href="http://charliecen.github.io/2016/12/06/mysql-select-date-interval-custom-date/"/>
+    <id>http://charliecen.github.io/2016/12/06/mysql-select-date-interval-custom-date/</id>
     <published>2016-12-06T17:32:35.000Z</published>
     <updated>2017-02-21T09:24:27.000Z</updated>
     
@@ -544,27 +544,27 @@ private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$operti
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="Mysql" scheme="http://yoursite.com/categories/Dev/Mysql/"/>
+      <category term="Mysql" scheme="http://charliecen.github.io/categories/Dev/Mysql/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/Mysql/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/Mysql/PHP/"/>
     
     
-      <category term="mysql日期间隔查询" scheme="http://yoursite.com/tags/mysql%E6%97%A5%E6%9C%9F%E9%97%B4%E9%9A%94%E6%9F%A5%E8%AF%A2/"/>
+      <category term="mysql日期间隔查询" scheme="http://charliecen.github.io/tags/mysql%E6%97%A5%E6%9C%9F%E9%97%B4%E9%9A%94%E6%9F%A5%E8%AF%A2/"/>
     
-      <category term="todays" scheme="http://yoursite.com/tags/todays/"/>
+      <category term="todays" scheme="http://charliecen.github.io/tags/todays/"/>
     
-      <category term="天数排序" scheme="http://yoursite.com/tags/%E5%A4%A9%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+      <category term="天数排序" scheme="http://charliecen.github.io/tags/%E5%A4%A9%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
     
-      <category term="自定义时间间隔" scheme="http://yoursite.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94/"/>
+      <category term="自定义时间间隔" scheme="http://charliecen.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94/"/>
     
   </entry>
   
   <entry>
     <title>html-to-pdf-for-php</title>
-    <link href="http://yoursite.com/2016/12/01/html-to-pdf-for-php/"/>
-    <id>http://yoursite.com/2016/12/01/html-to-pdf-for-php/</id>
+    <link href="http://charliecen.github.io/2016/12/01/html-to-pdf-for-php/"/>
+    <id>http://charliecen.github.io/2016/12/01/html-to-pdf-for-php/</id>
     <published>2016-12-01T18:54:34.000Z</published>
     <updated>2017-02-21T09:24:57.000Z</updated>
     
@@ -593,29 +593,29 @@ private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$operti
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/Dev/JavaScript/"/>
+      <category term="JavaScript" scheme="http://charliecen.github.io/categories/Dev/JavaScript/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/JavaScript/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/JavaScript/PHP/"/>
     
     
-      <category term="highcharts to pdf" scheme="http://yoursite.com/tags/highcharts-to-pdf/"/>
+      <category term="highcharts to pdf" scheme="http://charliecen.github.io/tags/highcharts-to-pdf/"/>
     
-      <category term="html to pdf" scheme="http://yoursite.com/tags/html-to-pdf/"/>
+      <category term="html to pdf" scheme="http://charliecen.github.io/tags/html-to-pdf/"/>
     
-      <category term="shell_exec()" scheme="http://yoursite.com/tags/shell-exec/"/>
+      <category term="shell_exec()" scheme="http://charliecen.github.io/tags/shell-exec/"/>
     
-      <category term="wkhtmltopdf" scheme="http://yoursite.com/tags/wkhtmltopdf/"/>
+      <category term="wkhtmltopdf" scheme="http://charliecen.github.io/tags/wkhtmltopdf/"/>
     
-      <category term="页面生成pdf" scheme="http://yoursite.com/tags/%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90pdf/"/>
+      <category term="页面生成pdf" scheme="http://charliecen.github.io/tags/%E9%A1%B5%E9%9D%A2%E7%94%9F%E6%88%90pdf/"/>
     
   </entry>
   
   <entry>
     <title>thinkphp修改mongo数据</title>
-    <link href="http://yoursite.com/2016/11/29/thinkphp-update-mongo-data/"/>
-    <id>http://yoursite.com/2016/11/29/thinkphp-update-mongo-data/</id>
+    <link href="http://charliecen.github.io/2016/11/29/thinkphp-update-mongo-data/"/>
+    <id>http://charliecen.github.io/2016/11/29/thinkphp-update-mongo-data/</id>
     <published>2016-11-29T16:34:56.000Z</published>
     <updated>2017-02-21T09:25:25.000Z</updated>
     
@@ -641,23 +641,23 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/Dev/JavaScript/"/>
+      <category term="JavaScript" scheme="http://charliecen.github.io/categories/Dev/JavaScript/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/JavaScript/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/JavaScript/PHP/"/>
     
     
-      <category term="mongo" scheme="http://yoursite.com/tags/mongo/"/>
+      <category term="mongo" scheme="http://charliecen.github.io/tags/mongo/"/>
     
-      <category term="update_mongo" scheme="http://yoursite.com/tags/update-mongo/"/>
+      <category term="update_mongo" scheme="http://charliecen.github.io/tags/update-mongo/"/>
     
   </entry>
   
   <entry>
     <title>php多维数组整理</title>
-    <link href="http://yoursite.com/2016/11/29/php-array-add-value/"/>
-    <id>http://yoursite.com/2016/11/29/php-array-add-value/</id>
+    <link href="http://charliecen.github.io/2016/11/29/php-array-add-value/"/>
+    <id>http://charliecen.github.io/2016/11/29/php-array-add-value/</id>
     <published>2016-11-29T16:15:08.000Z</published>
     <updated>2017-02-21T09:25:52.000Z</updated>
     
@@ -675,21 +675,21 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/PHP/"/>
     
     
-      <category term="highcharts" scheme="http://yoursite.com/tags/highcharts/"/>
+      <category term="highcharts" scheme="http://charliecen.github.io/tags/highcharts/"/>
     
-      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+      <category term="php" scheme="http://charliecen.github.io/tags/php/"/>
     
   </entry>
   
   <entry>
     <title>highcharts导出csv格式</title>
-    <link href="http://yoursite.com/2016/09/27/highcharts-export-csv/"/>
-    <id>http://yoursite.com/2016/09/27/highcharts-export-csv/</id>
+    <link href="http://charliecen.github.io/2016/09/27/highcharts-export-csv/"/>
+    <id>http://charliecen.github.io/2016/09/27/highcharts-export-csv/</id>
     <published>2016-09-27T10:56:17.000Z</published>
     <updated>2017-02-21T09:26:38.000Z</updated>
     
@@ -713,21 +713,21 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://charliecen.github.io/categories/JavaScript/"/>
     
     
-      <category term="export-csv" scheme="http://yoursite.com/tags/export-csv/"/>
+      <category term="export-csv" scheme="http://charliecen.github.io/tags/export-csv/"/>
     
-      <category term="exporting" scheme="http://yoursite.com/tags/exporting/"/>
+      <category term="exporting" scheme="http://charliecen.github.io/tags/exporting/"/>
     
-      <category term="highcharts" scheme="http://yoursite.com/tags/highcharts/"/>
+      <category term="highcharts" scheme="http://charliecen.github.io/tags/highcharts/"/>
     
   </entry>
   
   <entry>
     <title>Ajax+setInterval实时更新</title>
-    <link href="http://yoursite.com/2016/09/20/ajax-setinterval/"/>
-    <id>http://yoursite.com/2016/09/20/ajax-setinterval/</id>
+    <link href="http://charliecen.github.io/2016/09/20/ajax-setinterval/"/>
+    <id>http://charliecen.github.io/2016/09/20/ajax-setinterval/</id>
     <published>2016-09-20T15:07:31.000Z</published>
     <updated>2017-02-21T09:27:00.000Z</updated>
     
@@ -740,21 +740,21 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="Dev" scheme="http://yoursite.com/categories/Dev/"/>
+      <category term="Dev" scheme="http://charliecen.github.io/categories/Dev/"/>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/Dev/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/Dev/PHP/"/>
     
     
-      <category term="ajax" scheme="http://yoursite.com/tags/ajax/"/>
+      <category term="ajax" scheme="http://charliecen.github.io/tags/ajax/"/>
     
-      <category term="setInterval" scheme="http://yoursite.com/tags/setInterval/"/>
+      <category term="setInterval" scheme="http://charliecen.github.io/tags/setInterval/"/>
     
   </entry>
   
   <entry>
     <title>zabbix-api使用php版本</title>
-    <link href="http://yoursite.com/2016/09/12/zabbix-api-php/"/>
-    <id>http://yoursite.com/2016/09/12/zabbix-api-php/</id>
+    <link href="http://charliecen.github.io/2016/09/12/zabbix-api-php/"/>
+    <id>http://charliecen.github.io/2016/09/12/zabbix-api-php/</id>
     <published>2016-09-12T14:28:24.000Z</published>
     <updated>2017-02-21T09:27:45.000Z</updated>
     
@@ -786,19 +786,19 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
     
-      <category term="Zabbix" scheme="http://yoursite.com/categories/PHP/Zabbix/"/>
+      <category term="Zabbix" scheme="http://charliecen.github.io/categories/PHP/Zabbix/"/>
     
     
-      <category term="zabbix-api" scheme="http://yoursite.com/tags/zabbix-api/"/>
+      <category term="zabbix-api" scheme="http://charliecen.github.io/tags/zabbix-api/"/>
     
   </entry>
   
   <entry>
     <title>PHP数组分页</title>
-    <link href="http://yoursite.com/2016/09/12/php-array-page/"/>
-    <id>http://yoursite.com/2016/09/12/php-array-page/</id>
+    <link href="http://charliecen.github.io/2016/09/12/php-array-page/"/>
+    <id>http://charliecen.github.io/2016/09/12/php-array-page/</id>
     <published>2016-09-12T13:52:29.000Z</published>
     <updated>2017-02-21T09:28:21.000Z</updated>
     
@@ -816,21 +816,21 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
     
     </summary>
     
-      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
     
     
-      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+      <category term="php" scheme="http://charliecen.github.io/tags/php/"/>
     
-      <category term="php_array" scheme="http://yoursite.com/tags/php-array/"/>
+      <category term="php_array" scheme="http://charliecen.github.io/tags/php-array/"/>
     
-      <category term="show_array" scheme="http://yoursite.com/tags/show-array/"/>
+      <category term="show_array" scheme="http://charliecen.github.io/tags/show-array/"/>
     
   </entry>
   
   <entry>
     <title>mysql多实例</title>
-    <link href="http://yoursite.com/2016/09/06/mysql-many-instance/"/>
-    <id>http://yoursite.com/2016/09/06/mysql-many-instance/</id>
+    <link href="http://charliecen.github.io/2016/09/06/mysql-many-instance/"/>
+    <id>http://charliecen.github.io/2016/09/06/mysql-many-instance/</id>
     <published>2016-09-06T16:37:37.000Z</published>
     <updated>2017-02-21T09:28:53.000Z</updated>
     
@@ -970,19 +970,19 @@ mysql&gt; show slave status\G
     
     </summary>
     
-      <category term="Mysql" scheme="http://yoursite.com/categories/Mysql/"/>
+      <category term="Mysql" scheme="http://charliecen.github.io/categories/Mysql/"/>
     
     
-      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+      <category term="mysql" scheme="http://charliecen.github.io/tags/mysql/"/>
     
-      <category term="replication" scheme="http://yoursite.com/tags/replication/"/>
+      <category term="replication" scheme="http://charliecen.github.io/tags/replication/"/>
     
   </entry>
   
   <entry>
     <title>zabbix监控mongodb</title>
-    <link href="http://yoursite.com/2015/12/30/zabbix-monitor-mongodb/"/>
-    <id>http://yoursite.com/2015/12/30/zabbix-monitor-mongodb/</id>
+    <link href="http://charliecen.github.io/2015/12/30/zabbix-monitor-mongodb/"/>
+    <id>http://charliecen.github.io/2015/12/30/zabbix-monitor-mongodb/</id>
     <published>2015-12-30T14:18:02.000Z</published>
     <updated>2017-02-21T09:29:28.000Z</updated>
     
@@ -1048,21 +1048,21 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
     
     </summary>
     
-      <category term="Mongo" scheme="http://yoursite.com/categories/Mongo/"/>
+      <category term="Mongo" scheme="http://charliecen.github.io/categories/Mongo/"/>
     
-      <category term="Zabbix" scheme="http://yoursite.com/categories/Mongo/Zabbix/"/>
+      <category term="Zabbix" scheme="http://charliecen.github.io/categories/Mongo/Zabbix/"/>
     
     
-      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
+      <category term="mongodb" scheme="http://charliecen.github.io/tags/mongodb/"/>
     
-      <category term="zabbix" scheme="http://yoursite.com/tags/zabbix/"/>
+      <category term="zabbix" scheme="http://charliecen.github.io/tags/zabbix/"/>
     
   </entry>
   
   <entry>
     <title>ssh隧道翻墙</title>
-    <link href="http://yoursite.com/2015/12/18/ssh-tunnel-over-the-wall/"/>
-    <id>http://yoursite.com/2015/12/18/ssh-tunnel-over-the-wall/</id>
+    <link href="http://charliecen.github.io/2015/12/18/ssh-tunnel-over-the-wall/"/>
+    <id>http://charliecen.github.io/2015/12/18/ssh-tunnel-over-the-wall/</id>
     <published>2015-12-18T13:21:32.000Z</published>
     <updated>2017-02-21T09:29:53.000Z</updated>
     
@@ -1084,21 +1084,21 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
     
     </summary>
     
-      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+      <category term="Linux" scheme="http://charliecen.github.io/categories/Linux/"/>
     
     
-      <category term="socks" scheme="http://yoursite.com/tags/socks/"/>
+      <category term="socks" scheme="http://charliecen.github.io/tags/socks/"/>
     
-      <category term="switchyOmega" scheme="http://yoursite.com/tags/switchyOmega/"/>
+      <category term="switchyOmega" scheme="http://charliecen.github.io/tags/switchyOmega/"/>
     
-      <category term="tunnel" scheme="http://yoursite.com/tags/tunnel/"/>
+      <category term="tunnel" scheme="http://charliecen.github.io/tags/tunnel/"/>
     
   </entry>
   
   <entry>
     <title>脚本自动添加ip到iptables</title>
-    <link href="http://yoursite.com/2015/12/17/scripts-add-ip-to-iptables/"/>
-    <id>http://yoursite.com/2015/12/17/scripts-add-ip-to-iptables/</id>
+    <link href="http://charliecen.github.io/2015/12/17/scripts-add-ip-to-iptables/"/>
+    <id>http://charliecen.github.io/2015/12/17/scripts-add-ip-to-iptables/</id>
     <published>2015-12-17T18:15:33.000Z</published>
     <updated>2017-02-21T09:30:21.000Z</updated>
     
@@ -1126,21 +1126,21 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
     
     </summary>
     
-      <category term="Iptables" scheme="http://yoursite.com/categories/Iptables/"/>
+      <category term="Iptables" scheme="http://charliecen.github.io/categories/Iptables/"/>
     
-      <category term="Scripts" scheme="http://yoursite.com/categories/Iptables/Scripts/"/>
+      <category term="Scripts" scheme="http://charliecen.github.io/categories/Iptables/Scripts/"/>
     
     
-      <category term="awk" scheme="http://yoursite.com/tags/awk/"/>
+      <category term="awk" scheme="http://charliecen.github.io/tags/awk/"/>
     
-      <category term="iptables" scheme="http://yoursite.com/tags/iptables/"/>
+      <category term="iptables" scheme="http://charliecen.github.io/tags/iptables/"/>
     
   </entry>
   
   <entry>
     <title>安装mongodb-enterprise-2.6</title>
-    <link href="http://yoursite.com/2015/12/08/install-mongodb-enterprise-2-6/"/>
-    <id>http://yoursite.com/2015/12/08/install-mongodb-enterprise-2-6/</id>
+    <link href="http://charliecen.github.io/2015/12/08/install-mongodb-enterprise-2-6/"/>
+    <id>http://charliecen.github.io/2015/12/08/install-mongodb-enterprise-2-6/</id>
     <published>2015-12-08T11:38:38.000Z</published>
     <updated>2017-02-21T09:31:33.000Z</updated>
     
@@ -1202,17 +1202,17 @@ bye</pre>
     
     </summary>
     
-      <category term="Mongo" scheme="http://yoursite.com/categories/Mongo/"/>
+      <category term="Mongo" scheme="http://charliecen.github.io/categories/Mongo/"/>
     
     
-      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
+      <category term="mongodb" scheme="http://charliecen.github.io/tags/mongodb/"/>
     
   </entry>
   
   <entry>
     <title>zabbix监控logstash的java</title>
-    <link href="http://yoursite.com/2015/11/16/zabbix-monitor-logstash-java/"/>
-    <id>http://yoursite.com/2015/11/16/zabbix-monitor-logstash-java/</id>
+    <link href="http://charliecen.github.io/2015/11/16/zabbix-monitor-logstash-java/"/>
+    <id>http://charliecen.github.io/2015/11/16/zabbix-monitor-logstash-java/</id>
     <published>2015-11-16T18:00:11.000Z</published>
     <updated>2017-02-21T09:31:57.000Z</updated>
     
@@ -1263,16 +1263,16 @@ tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LIST
     
     </summary>
     
-      <category term="Logstash" scheme="http://yoursite.com/categories/Logstash/"/>
+      <category term="Logstash" scheme="http://charliecen.github.io/categories/Logstash/"/>
     
-      <category term="Zabbix" scheme="http://yoursite.com/categories/Logstash/Zabbix/"/>
+      <category term="Zabbix" scheme="http://charliecen.github.io/categories/Logstash/Zabbix/"/>
     
     
-      <category term="logstash" scheme="http://yoursite.com/tags/logstash/"/>
+      <category term="logstash" scheme="http://charliecen.github.io/tags/logstash/"/>
     
-      <category term="JMX" scheme="http://yoursite.com/tags/JMX/"/>
+      <category term="JMX" scheme="http://charliecen.github.io/tags/JMX/"/>
     
-      <category term="zabbix-java-gateway" scheme="http://yoursite.com/tags/zabbix-java-gateway/"/>
+      <category term="zabbix-java-gateway" scheme="http://charliecen.github.io/tags/zabbix-java-gateway/"/>
     
   </entry>
   
