@@ -4,6 +4,83 @@
 
     
   <url>
+    <loc>http://charliecen.github.io/2017/03/06/lumen-avatar-upload/</loc>
+    <lastmod>2017-03-06T05:53:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>lumen 头像上传</title>
+        <pubTime>2017-03-06T05:50:17.000Z</pubTime>
+        
+        <tag>uploadFile</tag>
+         
+        <tag>avatar</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="http://charliecen.github.io/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://charliecen.github.io/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://charliecen.github.io/2017/03/03/lumen-form-validate/</loc>
+    <lastmod>2017-03-03T05:33:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>lumen表单验证</title>
+        <pubTime>2017-03-03T05:15:54.000Z</pubTime>
+        
+        <tag>form-validate</tag>
+         
+        <tag>validator</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="http://charliecen.github.io/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://charliecen.github.io/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://charliecen.github.io/2017/03/03/after-locking-verity-password-three-times-failure/</loc>
+    <lastmod>2017-03-03T05:32:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>密码错误3次锁定账号</title>
+        <pubTime>2017-03-03T05:23:11.000Z</pubTime>
+        
+        <tag>password-verity</tag>
+         
+        <tag>lock-user</tag>
+         
+        <tag>three-times</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="http://charliecen.github.io/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://charliecen.github.io/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://charliecen.github.io/2015/09/06/rollback-script-code/</loc>
     <lastmod>2017-02-21T09:45:38.000Z</lastmod>
     <data>
@@ -953,24 +1030,6 @@
 
     
   <url>
-    <loc>http://charliecen.github.io/2015/10/23/hero/</loc>
-    <lastmod>2017-02-10T10:12:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hero</title>
-        <pubTime>2015-10-23T13:47:42.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="生活随笔" url="http://charliecen.github.io/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://charliecen.github.io/2015/10/16/wordpress-add-clustrmaps/</loc>
     <lastmod>2017-02-10T10:12:21.000Z</lastmod>
     <data>
@@ -986,6 +1045,24 @@
            
              
               <breadCrumb title="Wordpress" url="http://charliecen.github.io/categories/Wordpress/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://charliecen.github.io/2015/10/23/hero/</loc>
+    <lastmod>2017-02-10T10:12:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hero</title>
+        <pubTime>2015-10-23T13:47:42.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="生活随笔" url="http://charliecen.github.io/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
           
         </display>
     </data>

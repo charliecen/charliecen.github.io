@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://charliecen.github.io/"/>
-  <updated>2017-02-21T09:14:39.000Z</updated>
+  <updated>2017-03-06T05:53:15.000Z</updated>
   <id>http://charliecen.github.io/</id>
   
   <author>
@@ -14,6 +14,145 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>lumen 头像上传</title>
+    <link href="http://charliecen.github.io/2017/03/06/lumen-avatar-upload/"/>
+    <id>http://charliecen.github.io/2017/03/06/lumen-avatar-upload/</id>
+    <published>2017-03-06T05:50:17.000Z</published>
+    <updated>2017-03-06T05:53:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h5><p><code>Lumen</code> 可以使用 <code>Illuminate\Http\Request</code> 实例中的 <code>file</code> 方法来获取上传文件。<code>file</code>方法返回的对象是 <code>Symfony\Component\HttpFoundation\File\UploadedFile</code> 类的实例，该类继承了 PHP 的 <code>SplFileInfo</code> 类，并提供了许多和文件交互的方法：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$file = $request-&gt;file(&apos;photo&apos;);</div></pre></td></tr></table></figure>
+<p>你可以使用请求的 <code>hasFile</code> 方法确认上传的文件是否存在：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ($request-&gt;hasFile(&apos;photo&apos;)) &#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除了检查上传的文件是否存在外，你也可以通过 <code>isValid</code> 方法验证上传的文件是否有效<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ($request-&gt;file(&apos;photo&apos;)-&gt;isValid()) &#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>移动上传的文件<br>若要移动上传的文件至新位置，则必须使用 <code>move</code> 方法。该方法会将文件从缓存位置（由你的 PHP 配置决定）移动至你指定的永久保存位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$request-&gt;file(&apos;photo&apos;)-&gt;move($destinationPath);</div><div class="line"></div><div class="line">$request-&gt;file(&apos;photo&apos;)-&gt;move($destinationPath, $fileName);</div></pre></td></tr></table></figure>
+<h5 id="2-代码如下"><a href="#2-代码如下" class="headerlink" title="2.代码如下"></a>2.代码如下</h5><p>创建保存文件的目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">protected function mk_dir($path)</div><div class="line">    &#123;</div><div class="line">        $dir = date(&apos;y/md&apos;, time());</div><div class="line">        if(is_dir($path . &apos;/&apos; . $dir))&#123;</div><div class="line">            return $path . &apos;/&apos; . $dir;</div><div class="line">        &#125;else&#123;</div><div class="line">            mkdir($path . &apos;/&apos; . $dir,0777,true);</div><div class="line">            return $path . &apos;/&apos; . $dir;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>上传文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">public function uploadAvatar(Request $request)</div><div class="line">    &#123;</div><div class="line">        $id = Auth::user()-&gt;id;</div><div class="line">        //获取文件</div><div class="line">        $avatar = $request-&gt;file(&apos;avatar&apos;);</div><div class="line">        //判断文件是否有效</div><div class="line">        if(!($request-&gt;hasFile(&apos;avatar&apos;) &amp;&amp; $avatar-&gt;isValid()))</div><div class="line">            return $this-&gt;formatOutput(1, &apos;&apos;, &apos;没有图片&apos;);</div><div class="line">        //表单验证</div><div class="line">        $userinfo = new Userinfo();</div><div class="line">        $validator_userinfo = $this-&gt;ruleValidator($request, $userinfo-&gt;rules([&apos;avatar&apos;]), $userinfo-&gt;message());</div><div class="line">        if($validator_userinfo)</div><div class="line">            return $validator_userinfo;</div><div class="line">        //获取文件后缀</div><div class="line">        $ext = $avatar-&gt;getClientMimeType();</div><div class="line">        $ext = explode(&apos;/&apos;,$ext);</div><div class="line">        //获取文件大小</div><div class="line">        $img_size = floor($avatar-&gt;getSize() / 1024) . &apos;KB&apos;;</div><div class="line">        if($img_size &gt;= 2048)&#123;</div><div class="line">            return $this-&gt;formatOutput(1, &apos;&apos;, &apos;文件大小不能超过2MB&apos;);</div><div class="line">        &#125;</div><div class="line">        //存储图片</div><div class="line">        $request-&gt;file(&apos;avatar&apos;)-&gt;move($this-&gt;mk_dir($this-&gt;path), &apos;/&apos; . $avatar-&gt;getFilename() . &apos;.&apos; . $ext[1]);</div><div class="line">        $src_img_path = $this-&gt;mk_dir($this-&gt;path) . &apos;/&apos; . $avatar-&gt;getFilename() . &apos;.&apos; . $ext[1];</div><div class="line">        $des_img_path = $this-&gt;mk_dir($this-&gt;small_path) . &apos;/&apos; . &apos;small_&apos; . $avatar-&gt;getFilename() . &apos;.&apos; . $ext[1];</div><div class="line">        //生成缩略图</div><div class="line">        $slt = $this-&gt;CreateImage($src_img_path, $des_img_path, 40,40);</div><div class="line">        if($slt)&#123;</div><div class="line">            //保存到数据库</div><div class="line">            $res = DB::update(&apos;update userinfo set avatar =&quot;&apos;. $des_img_path . &apos;&quot; where userid = &apos;.$id);</div><div class="line">            if($res)&#123;</div><div class="line">                $data[&apos;avatar&apos;] = $des_img_path;</div><div class="line">                return $this-&gt;formatOutput(0, $data, &apos;文件上传成功&apos;);</div><div class="line">            &#125;else&#123;</div><div class="line">                return $this-&gt;formatOutput(1, &apos;&apos;, &apos;文件上传失败&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;else&#123;</div><div class="line">            return $this-&gt;formatOutput(1, &apos;&apos;, &apos;生成缩略图失败&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>生成缩略图代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">protected  function CreateImage($SrcImageUrl, $DirImageUrl, $Width, $Height)</div><div class="line">    &#123;</div><div class="line">        // 图片类型</div><div class="line">        $type = substr(strrchr($SrcImageUrl, &quot;.&quot;), 1);</div><div class="line"></div><div class="line">        // 初始化图像</div><div class="line">        if ($type == &quot;jpg&quot;)</div><div class="line">            $img = imagecreatefromjpeg($SrcImageUrl);</div><div class="line">        if ($type == &quot;gif&quot;)</div><div class="line">            $img = imagecreatefromgif($SrcImageUrl);</div><div class="line">        if ($type == &quot;png&quot;)</div><div class="line">            $img = imagecreatefrompng($SrcImageUrl);</div><div class="line"></div><div class="line">        $srcw = imagesx($img);</div><div class="line">        $srch = imagesy($img);</div><div class="line"></div><div class="line">        if ($srcw / $srch &gt; $Width / $Height) &#123;</div><div class="line">            if ($srcw &gt; $Width) &#123;</div><div class="line">                $new_width = $Width;</div><div class="line">                $new_height = $srch * ($Width / $srcw);</div><div class="line">            &#125; else &#123;</div><div class="line">                $new_width = $srcw;</div><div class="line">                $new_height = $srch;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            if ($srch &gt; $Height) &#123;</div><div class="line">                $new_height = $Height;</div><div class="line">                $new_width = $srcw * ($Height / $srch);</div><div class="line">            &#125; else &#123;</div><div class="line">                $new_width = $srcw;</div><div class="line">                $new_height = $srch;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $new_image = imagecreatetruecolor($new_width, $new_height);</div><div class="line">        imagecopyresampled($new_image, $img, 0, 0, 0, 0, $new_width, $new_height, $srcw, $srch);</div><div class="line">        imagejpeg($new_image, $DirImageUrl);</div><div class="line"></div><div class="line">        imagedestroy($img);</div><div class="line">        imagedestroy($new_image);</div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="3-测试"><a href="#3-测试" class="headerlink" title="3.测试"></a>3.测试</h5><p>返回结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;code&quot;: 0,</div><div class="line">  &quot;data&quot;: &#123;</div><div class="line">    &quot;avatar&quot;: &quot;small_avatar/17/0302/small_phpXkcJAT.png&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;msg&quot;: &quot;文件上传成功&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h5&gt;&lt;p&gt;&lt;code&gt;Lumen&lt;/code&gt; 可以使用 &lt;code&gt;Illuminate\Http\Request&lt;/code&gt; 实
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
+    
+      <category term="Lumen" scheme="http://charliecen.github.io/categories/PHP/Lumen/"/>
+    
+    
+      <category term="uploadFile" scheme="http://charliecen.github.io/tags/uploadFile/"/>
+    
+      <category term="avatar" scheme="http://charliecen.github.io/tags/avatar/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>密码错误3次锁定账号</title>
+    <link href="http://charliecen.github.io/2017/03/03/after-locking-verity-password-three-times-failure/"/>
+    <id>http://charliecen.github.io/2017/03/03/after-locking-verity-password-three-times-failure/</id>
+    <published>2017-03-03T05:23:11.000Z</published>
+    <updated>2017-03-03T05:32:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1-逻辑简介"><a href="#1-逻辑简介" class="headerlink" title="1.逻辑简介"></a>1.逻辑简介</h5><p>创建数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `userlock` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;主键id&apos;,</div><div class="line">  `userid` int(10) unsigned NOT NULL COMMENT &apos;用户id&apos;,</div><div class="line">  `lock_time` int(11) unsigned NOT NULL DEFAULT &apos;14400&apos; COMMENT &apos;锁定时间，默认14400秒&apos;,</div><div class="line">  `error_times` tinyint(1) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;错误次数，默认0次&apos;,</div><div class="line">  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最新登录时间&apos;,</div><div class="line">  `created_at` timestamp NULL DEFAULT NULL,</div><div class="line">  `updated_at` timestamp NULL DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `userid` (`userid`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol>
+<li>判断用户是否在<code>userlock</code>表中；如果不存在，则继续验证登录密码；</li>
+<li>如果存在，则判断<code>userlock</code>中的当前时间<code>time()</code>减去<code>last_login</code>是否大于<code>lock_time</code>，如果大于，则继续验证密码；否则判断<code>error_times</code>是否大于等于3次，如果大于，返回<code>false</code>;</li>
+<li>回到第一步，验证密码，如果密码错误并且用户不存在<code>userlock</code>表中，则插入数据；<code>error_times</code>为1，<code>last_login</code>为当前时间；写入到<code>userlock</code>表中；</li>
+<li>如果用户已在<code>userlock</code>表中，则判断<code>time()</code>减去<code>last_login</code>是否大于<code>lock_time</code>,如果大于则<code>error_times</code>为1，否则<code>error_times</code>自加1, <code>last_login</code>为当前时间;写入到<code>userlock</code>表中；</li>
+<li>还是回到第一步，验证密码，如果密码正确，则判断该用户是否在<code>userlock</code>表中;如果存在，则<code>error_times</code>为0，<code>last_login</code>为当前时间，保存该表；</li>
+</ol>
+<h5 id="2-代码逻辑"><a href="#2-代码逻辑" class="headerlink" title="2.代码逻辑"></a>2.代码逻辑</h5><p>用户登录前,检测用户是否在锁表内</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public function checkLock($userid)</div><div class="line">    &#123;</div><div class="line">        $userlock = new UserLock();</div><div class="line">        $userlock_data = $userlock-&gt;where(&apos;userid&apos;, &apos;=&apos;, $userid)-&gt;first();</div><div class="line">        //用户不在锁表内</div><div class="line">        if(!$userlock_data) return true;</div><div class="line">        //用户在锁表内,并且锁定时间小于4小时,并且错误次数大于3;</div><div class="line">        $validTime = time() - strtotime($userlock_data[&apos;last_login&apos;]);</div><div class="line">        if($validTime &lt; $userlock_data[&apos;lock_time&apos;])&#123;</div><div class="line">            if($userlock_data[&apos;error_times&apos;] &gt;= 3)</div><div class="line">                return false;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>判断用户是否在<code>userlock</code>中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public function insertlock($id)</div><div class="line">    &#123;</div><div class="line">        $userlock = new UserLock();</div><div class="line">        $userlock_data = UserLock::where(&quot;userid&quot;,$id)-&gt;first();</div><div class="line">        if($userlock_data)&#123;</div><div class="line">            $userlock = UserLock::find($userlock_data[&apos;id&apos;]);</div><div class="line">            $userlock-&gt;userid = $id;</div><div class="line">            //如果锁表的时间在4小时之内,则error_times + 1;否则为1;</div><div class="line">            $validTime = time() - strtotime($userlock_data[&apos;last_login&apos;]);</div><div class="line">            if($validTime &lt; $userlock_data[&apos;lock_time&apos;]) &#123;</div><div class="line">                $userlock-&gt;error_times += 1;</div><div class="line">            &#125;else&#123;</div><div class="line">                $userlock-&gt;error_times = 1;</div><div class="line">            &#125;</div><div class="line">            $userlock-&gt;last_login = date(&apos;Y-m-d H:i:m&apos;, time());</div><div class="line">            if($userlock-&gt;save())</div><div class="line">                return $userlock;</div><div class="line">        &#125;else&#123;</div><div class="line">            //如果用户不在锁表内,则新增;</div><div class="line">            $userlock-&gt;userid = $id;</div><div class="line">            $userlock-&gt;error_times = 1;</div><div class="line">            $userlock-&gt;last_login = date(&apos;Y-m-d H:i:m&apos;, time());</div><div class="line">            if($userlock-&gt;save())</div><div class="line">                return $userlock;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>如果密码验证成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$userlock = $userlock-&gt;where(&apos;userid&apos;,&apos;=&apos;,$user_data[&apos;id&apos;])-&gt;first();</div><div class="line">if($userlock)&#123;</div><div class="line">    $userlock-&gt;error_times = 0;</div><div class="line">    $userlock-&gt;last_login = date(&apos;Y-m-d H:i:m&apos;, time());</div><div class="line">    $userlock-&gt;save();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;1-逻辑简介&quot;&gt;&lt;a href=&quot;#1-逻辑简介&quot; class=&quot;headerlink&quot; title=&quot;1.逻辑简介&quot;&gt;&lt;/a&gt;1.逻辑简介&lt;/h5&gt;&lt;p&gt;创建数据表&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;CREATE TABLE `userlock` (&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &amp;apos;主键id&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `userid` int(10) unsigned NOT NULL COMMENT &amp;apos;用户id&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `lock_time` int(11) unsigned NOT NULL DEFAULT &amp;apos;14400&amp;apos; COMMENT &amp;apos;锁定时间，默认14400秒&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `error_times` tinyint(1) unsigned NOT NULL DEFAULT &amp;apos;0&amp;apos; COMMENT &amp;apos;错误次数，默认0次&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &amp;apos;最新登录时间&amp;apos;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `created_at` timestamp NULL DEFAULT NULL,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  `updated_at` timestamp NULL DEFAULT NULL,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  PRIMARY KEY (`id`),&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  UNIQUE KEY `userid` (`userid`)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
+    
+      <category term="Lumen" scheme="http://charliecen.github.io/categories/PHP/Lumen/"/>
+    
+    
+      <category term="password-verity" scheme="http://charliecen.github.io/tags/password-verity/"/>
+    
+      <category term="lock-user" scheme="http://charliecen.github.io/tags/lock-user/"/>
+    
+      <category term="three-times" scheme="http://charliecen.github.io/tags/three-times/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>lumen表单验证</title>
+    <link href="http://charliecen.github.io/2017/03/03/lumen-form-validate/"/>
+    <id>http://charliecen.github.io/2017/03/03/lumen-form-validate/</id>
+    <published>2017-03-03T05:15:54.000Z</published>
+    <updated>2017-03-03T05:33:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h5><p>Lumen 提供了多种不同的处理方法来对应用程序传入的数据进行验证。默认情况下，Lumen 的基底控制器类使用了 ValidatesRequests trait，其提供了一种便利的方法来使用各种强大的验证规则验证传入的 HTTP 请求。</p>
+<p>Lumen 和 Laravel 验证功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 验证的使用，请参阅 Laravel 文档 。</p>
+<blockquote>
+<p>Lumen 与 Laravel 不同，表单请求验证需要Laravel支持。Lumen 可以使用<code>$this-validate</code>方法来验证。</p>
+<p>还有不同的是，Lumen 支持路由闭包的方式直接使用<code>validate</code>方法<br><a id="more"></a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">use Illuminate\Http\Request;</div><div class="line"></div><div class="line">$app-&gt;post(&apos;/user&apos;, function (Request $request) &#123;</div><div class="line">    $this-&gt;validate($request, [</div><div class="line">        &apos;name&apos; =&gt; &apos;required&apos;,</div><div class="line">        &apos;email&apos; =&gt; &apos;required|email|unique:users&apos;</div><div class="line">    ]);</div><div class="line"></div><div class="line">    // 存储用户...</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>同样可以使用<code>Validator::make()</code> facade方法来验证</p>
+</blockquote>
+<h5 id="2-添加验证规则"><a href="#2-添加验证规则" class="headerlink" title="2.添加验证规则"></a>2.添加验证规则</h5><p>验证规则可以放在路由下，也可以放在<code>Controller</code>方法下；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public function store(Request $request)</div><div class="line">&#123;</div><div class="line">    $this-&gt;validate($request, [</div><div class="line">        &apos;title&apos; =&gt; &apos;required|unique:posts|max:255&apos;,</div><div class="line">        &apos;body&apos; =&gt; &apos;required&apos;,</div><div class="line">    ]);</div><div class="line"></div><div class="line">    // The blog post is valid, store in database...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如你所见，我们将本次 HTTP 请求及所需的验证规则传递至 validate 方法中。另外再提醒一次，如果验证失败，将会自动生成一个对应的响应。如果验证通过，那我们的控制器将会继续正常运行。</p>
+<p>本人使用验证规则放在<code>Model</code>中的方法里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public function rules($array = [&apos;username&apos;, &apos;email&apos;, &apos;password&apos;, &apos;mobile_no&apos;, &apos;old_password&apos;])</div><div class="line">   &#123;</div><div class="line">       $rules =  [</div><div class="line">           &apos;username&apos; =&gt;  &apos;required|regex:/^[a-zA-Z][a-zA-Z0-9]&#123;5,11&#125;$/&apos;,</div><div class="line">           &apos;email&apos; =&gt;  &apos;required|email&apos;,</div><div class="line">           &apos;password&apos;  =&gt; &apos;required|min:6&apos;,</div><div class="line">           &apos;old_password&apos;  =&gt; &apos;required|min:6&apos;,</div><div class="line">           &apos;mobile_no&apos; =&gt; &apos;required|numeric|digits:11&apos;,</div><div class="line">       ];</div><div class="line">       foreach($array as $item)&#123;</div><div class="line">           $data[$item] =  $rules[$item];</div><div class="line">       &#125;</div><div class="line">       return $data;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>并且附上自定义错误信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public function message()</div><div class="line">    &#123;</div><div class="line">        return  [</div><div class="line">            &apos;username.required&apos; =&gt; &apos;请填写用户名&apos;,</div><div class="line">            &apos;username.unique&apos; =&gt; &apos;用户名已存在&apos;,</div><div class="line">            &apos;username.regex&apos; =&gt; &apos;用户名不合法&apos;,</div><div class="line">            &apos;email.required&apos; =&gt; &apos;请填写邮箱地址&apos;,</div><div class="line">            &apos;email.unique&apos;    =&gt;  &apos;邮箱名已存在&apos;,</div><div class="line">            &apos;email.email&apos; =&gt;  &apos;邮箱名不合法&apos;,</div><div class="line">            &apos;password.required&apos;    =&gt;  &apos;请填写密码&apos;,</div><div class="line">            &apos;password.min&apos;  =&gt;  &apos;密码至少需要 :min 位字符&apos;,</div><div class="line">            &apos;mobile_no.required&apos;    =&gt;  &apos;请填写手机号&apos;,</div><div class="line">            &apos;mobile_no.unique&apos;  =&gt;  &apos;手机号已存在&apos;,</div><div class="line">            &apos;mobile_no.numeric&apos; =&gt;  &apos;手机号必须为数字&apos;,</div><div class="line">            &apos;mobile_no.digits&apos;  =&gt;  &apos;手机号必须为 :digits 位&apos;,</div><div class="line">        ];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="3-添加规则"><a href="#3-添加规则" class="headerlink" title="3.添加规则"></a>3.添加规则</h5><p>在基础类里添加验证方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">use Illuminate\Support\Facades\Validator;</div><div class="line">use Illuminate\Http\Request;</div><div class="line"></div><div class="line">public function ruleValidator(Request $request, $rule=[], $message=[])</div><div class="line">    &#123;</div><div class="line">        $validator = Validator::make($request-&gt;all(), $rule, $message);</div><div class="line"></div><div class="line">        if($validator-&gt;fails())&#123;</div><div class="line">            foreach($validator-&gt;errors()-&gt;getMessages() as $message)&#123;</div><div class="line">                return $this-&gt;formatOutput(1, &apos;&apos;, $message[0]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return null;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>具体操作则调用此方法，验证方式灵活</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$validator_user = $this-&gt;ruleValidator($request, $user-&gt;rules([&apos;username&apos;,&apos;password&apos;]), $user-&gt;message());</div><div class="line">            if ($validator_user)</div><div class="line">                return $validator_user;</div></pre></td></tr></table></figure>
+<p>参考文档:<br><a href="https://lumen.laravel-china.org/docs/5.3/validation" target="_blank" rel="external">https://lumen.laravel-china.org/docs/5.3/validation</a><br><a href="https://www.kancloud.cn/iwzh/laravel-doc5_3/229847" target="_blank" rel="external">https://www.kancloud.cn/iwzh/laravel-doc5_3/229847</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h5&gt;&lt;p&gt;Lumen 提供了多种不同的处理方法来对应用程序传入的数据进行验证。默认情况下，Lumen 的基底控制器类使用了 ValidatesRequests trait，其提供了一种便利的方法来使用各种强大的验证规则验证传入的 HTTP 请求。&lt;/p&gt;
+&lt;p&gt;Lumen 和 Laravel 验证功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 验证的使用，请参阅 Laravel 文档 。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lumen 与 Laravel 不同，表单请求验证需要Laravel支持。Lumen 可以使用&lt;code&gt;$this-validate&lt;/code&gt;方法来验证。&lt;/p&gt;
+&lt;p&gt;还有不同的是，Lumen 支持路由闭包的方式直接使用&lt;code&gt;validate&lt;/code&gt;方法&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://charliecen.github.io/categories/PHP/"/>
+    
+      <category term="Lumen" scheme="http://charliecen.github.io/categories/PHP/Lumen/"/>
+    
+    
+      <category term="form-validate" scheme="http://charliecen.github.io/tags/form-validate/"/>
+    
+      <category term="validator" scheme="http://charliecen.github.io/tags/validator/"/>
+    
+  </entry>
   
   <entry>
     <title>Lumen实现用户注册登录认证</title>
@@ -1092,187 +1231,6 @@ UserParameter=mongo.oplog_storetime,echo "db.printReplicationInfo()"|mongo -u ro
       <category term="switchyOmega" scheme="http://charliecen.github.io/tags/switchyOmega/"/>
     
       <category term="tunnel" scheme="http://charliecen.github.io/tags/tunnel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>脚本自动添加ip到iptables</title>
-    <link href="http://charliecen.github.io/2015/12/17/scripts-add-ip-to-iptables/"/>
-    <id>http://charliecen.github.io/2015/12/17/scripts-add-ip-to-iptables/</id>
-    <published>2015-12-17T18:15:33.000Z</published>
-    <updated>2017-02-21T09:30:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>nginx日志里有一些来历不明的ip攻击或者是用ssh来尝试登录你的密码</p>
-<p>日志会记录这些来源的ip地址，根据ip地址来加入到iptables INPUT里，默认INPUT链为DROP</p>
-<p>下面是我写的一个脚本，可以放到计划任务里，每天来统计<br><a id="more"></a></p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# vim add_iptables.sh </pre></p>
-<p>#!/bin/bash</p>
-<p>#日志文件<br>logfile=/data/app/nginx/logs/access.log</p>
-<p>#统计ip，可以根据时间统计<br>awk ‘/passport-send_vcode_sms.html/{print $1}’ $logfile |sort |uniq -c |sort -nr &gt; /root/ip.txt</p>
-<p>#已经在iptables中的地址<br>droped_ip=$(iptables -L -n |awk ‘/^DROP/{print $4}’)</p>
-<p>#未加入iptables中的地址<br>drop_ip=$(awk ‘{print $2}’ /root/ip.txt)</p>
-<p>#比较两个数组不同，把不同的ip加入到防火墙中<br>add_ip=$(awk ‘NR==1{for(i=1;i&lt;=NF;i++) B[$i]=1}NR==2{for(j=1;j&lt;=NF;j++) {if(B[$j]!=1) print $j}} ‘ &lt;(echo $droped_ip) &lt;(echo $drop_ip))<br>for i in $add_ip<br>do<br>        iptables -A INPUT -s $i -j DROP &amp;&amp; echo “已添加IP: $i 到防火墙丢弃策略中。”<br>done</p>
-<p>#保存新加入的策略<br>/etc/init.d/iptables save<br>/etc/init.d/iptables reload<br>执行前的iptables策略</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0</pre><br>执行脚本</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# bash add_iptables.sh<br>已添加IP: 218.88.85.184 到防火墙丢弃策略中。<br>已添加IP: 122.227.51.102 到防火墙丢弃策略中。<br>已添加IP: 122.235.180.60 到防火墙丢弃策略中。<br>已添加IP: 122.95.241.64 到防火墙丢弃策略中。<br>已添加IP: 210.21.220.68 到防火墙丢弃策略中。<br>已添加IP: 106.226.24.23 到防火墙丢弃策略中。<br>已添加IP: 60.184.47.12 到防火墙丢弃策略中。<br>已添加IP: 220.113.94.30 到防火墙丢弃策略中。<br>已添加IP: 58.253.150.96 到防火墙丢弃策略中。<br>已添加IP: 110.81.117.78 到防火墙丢弃策略中。<br>已添加IP: 119.132.156.176 到防火墙丢弃策略中。<br>已添加IP: 220.171.210.251 到防火墙丢弃策略中。<br>已添加IP: 101.233.125.137 到防火墙丢弃策略中。<br>已添加IP: 60.162.152.102 到防火墙丢弃策略中。<br>已添加IP: 123.97.164.49 到防火墙丢弃策略中。<br>已添加IP: 114.83.216.53 到防火墙丢弃策略中。<br>已添加IP: 171.117.124.119 到防火墙丢弃策略中。<br>已添加IP: 58.254.4.13 到防火墙丢弃策略中。</pre><br>执行脚本后的iptables策略</p>
-<p><pre class="lang:sh decode:true ">[root@VM-241 ~]# iptables -L -n<br>Chain INPUT (policy DROP)<br>target     prot opt source               destination<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0<br>ACCEPT     all  –  0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:21<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:8080<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:3690<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:80<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:443<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 100/sec burst 100<br>ACCEPT     icmp –  0.0.0.0/0            0.0.0.0/0           limit: avg 1/sec burst 10<br>syn-flood  tcp  –  0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02<br>REJECT     all  –  0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited<br>DROP       all  –  114.116.14.47        0.0.0.0/0<br>DROP       all  –  1.58.120.217         0.0.0.0/0<br>DROP       all  –  218.88.85.184        0.0.0.0/0<br>DROP       all  –  122.227.51.102       0.0.0.0/0<br>DROP       all  –  122.235.180.60       0.0.0.0/0<br>DROP       all  –  122.95.241.64        0.0.0.0/0<br>DROP       all  –  210.21.220.68        0.0.0.0/0<br>DROP       all  –  106.226.24.23        0.0.0.0/0<br>DROP       all  –  60.184.47.12         0.0.0.0/0<br>DROP       all  –  220.113.94.30        0.0.0.0/0<br>DROP       all  –  58.253.150.96        0.0.0.0/0<br>DROP       all  –  110.81.117.78        0.0.0.0/0<br>DROP       all  –  119.132.156.176      0.0.0.0/0<br>DROP       all  –  220.171.210.251      0.0.0.0/0<br>DROP       all  –  101.233.125.137      0.0.0.0/0<br>DROP       all  –  60.162.152.102       0.0.0.0/0<br>DROP       all  –  123.97.164.49        0.0.0.0/0<br>DROP       all  –  114.83.216.53        0.0.0.0/0<br>DROP       all  –  171.117.124.119      0.0.0.0/0<br>DROP       all  –  58.254.4.13          0.0.0.0/0</pre><br>&nbsp;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;nginx日志里有一些来历不明的ip攻击或者是用ssh来尝试登录你的密码&lt;/p&gt;
-&lt;p&gt;日志会记录这些来源的ip地址，根据ip地址来加入到iptables INPUT里，默认INPUT链为DROP&lt;/p&gt;
-&lt;p&gt;下面是我写的一个脚本，可以放到计划任务里，每天来统计&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Iptables" scheme="http://charliecen.github.io/categories/Iptables/"/>
-    
-      <category term="Scripts" scheme="http://charliecen.github.io/categories/Iptables/Scripts/"/>
-    
-    
-      <category term="awk" scheme="http://charliecen.github.io/tags/awk/"/>
-    
-      <category term="iptables" scheme="http://charliecen.github.io/tags/iptables/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装mongodb-enterprise-2.6</title>
-    <link href="http://charliecen.github.io/2015/12/08/install-mongodb-enterprise-2-6/"/>
-    <id>http://charliecen.github.io/2015/12/08/install-mongodb-enterprise-2-6/</id>
-    <published>2015-12-08T11:38:38.000Z</published>
-    <updated>2017-02-21T09:31:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：<br>这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。<br><a id="more"></a></p>
-<h3 id="1-添加仓库"><a href="#1-添加仓库" class="headerlink" title="1.添加仓库"></a>1.添加仓库</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# vim /etc/yum.repos.d/mongodb-enterprise.repo
-[mongodb-enterprise-2.6]
-name=MongoDB Enterprise 2.6 Repository
-baseurl=https://repo.mongodb.com/yum/redhat/$releasever/mongodb-enterprise/2.6/$basearch/
-gpgcheck=0
-enabled=1</pre>
-
-<h3 id="2-yum安装"><a href="#2-yum安装" class="headerlink" title="2.yum安装"></a>2.yum安装</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# yum install -y mongodb-enterprise
-[root@VM-248 ~]# rpm -qa |grep mongodb
-mongodb-enterprise-server-2.6.11-1.el6.x86_64
-mongodb-enterprise-tools-2.6.11-1.el6.x86_64
-mongodb-enterprise-2.6.11-1.el6.x86_64
-mongodb-enterprise-shell-2.6.11-1.el6.x86_64
-mongodb-enterprise-mongos-2.6.11-1.el6.x86_64</pre>
-
-<h3 id="3-修改配置"><a href="#3-修改配置" class="headerlink" title="3.修改配置"></a>3.修改配置</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# egrep -v '^$|^#' /etc/mongod.conf
-logpath=/var/log/mongodb/mongod.log
-logappend=true
-fork=true
-dbpath=/var/lib/mongo
-pidfilepath=/var/run/mongodb/mongod.pid
-bind_ip=0.0.0.0
-auth=true</pre>
-
-<h3 id="4-启动服务"><a href="#4-启动服务" class="headerlink" title="4.启动服务"></a>4.启动服务</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# /etc/init.d/mongod start
-[root@VM-248 ~]# chkconfig mongod  on</pre>
-
-<h3 id="5-添加密码"><a href="#5-添加密码" class="headerlink" title="5.添加密码"></a>5.添加密码</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# mongo
-MongoDB shell version: 2.6.11
-connecting to: test
-&gt; use admin
-switched to db admin
-&gt; db.addUser('root','password')
-WARNING: The 'addUser' shell helper is DEPRECATED. Please use 'createUser' instead
-Successfully added user: { "user" : "root", "roles" : [ "root" ] }
-&gt; db.system.users.find()
-{ "_id" : "admin.root", "user" : "root", "db" : "admin", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "root", "db" : "admin" } ] }
-&gt; exit
-bye</pre>
-
-<h3 id="6-删除密码"><a href="#6-删除密码" class="headerlink" title="6.删除密码"></a>6.删除密码</h3><pre class="lang:sh decode:true ">&gt; db.system.users.find()
-{ "_id" : "test.root", "user" : "root", "db" : "test", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "dbOwner", "db" : "test" } ] }
-&gt; db.system.users.remove({user:"root"})
-WriteResult({ "nRemoved" : 1 })
-&gt; db.system.users.find()
-&gt; exit
-bye</pre>
-
-<h3 id="7-远程连接"><a href="#7-远程连接" class="headerlink" title="7.远程连接"></a>7.远程连接</h3><p><pre class="lang:sh decode:true ">cenhuqing@cenhuqingdeMacBook-Pro ~$mongo vm248/admin -u root -p password<br>MongoDB shell version: 3.0.4<br>connecting to: vm248/admin<br>&gt; show dbs;<br>admin  0.078GB<br>local  0.078GB<br>&gt; exit<br>bye</pre><br>参考文章：<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/" target="_blank" rel="external">https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：&lt;br&gt;这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Mongo" scheme="http://charliecen.github.io/categories/Mongo/"/>
-    
-    
-      <category term="mongodb" scheme="http://charliecen.github.io/tags/mongodb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>zabbix监控logstash的java</title>
-    <link href="http://charliecen.github.io/2015/11/16/zabbix-monitor-logstash-java/"/>
-    <id>http://charliecen.github.io/2015/11/16/zabbix-monitor-logstash-java/</id>
-    <published>2015-11-16T18:00:11.000Z</published>
-    <updated>2017-02-21T09:31:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。<br><a id="more"></a><br>在 ./bin/logstash.lib.sh 第 34 行 JAVA_OPTS=”$JAVA_OPTS -Djava.awt.headless=true” 下，添加如下几行：</p>
-<pre class="lang:sh decode:true ">[root@monitor logstash]# vim bin/logstash.lib.sh
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.port=9010"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.local.only=false"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false"
-JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false"</pre>
-<div>重启 logstash 服务，JMX 配置即可生效。</div>
-<div>有 JMX 以后，我们可以通过 jconsole 界面查看，也可以通过 zabbix 等监控系统做长期监控。甚至 logstash 自己也有插件 logstash-input-jmx 来读取远程 JMX 数据。</div>
-<div></div>
-<div>注意，zabbix-server 本身并不直接对 JMX 发起请求，而是单独有一个 Java Gateway 作为中间代理层角色。zabbix-server 的 java poller 连接 zabbix-java-gateway，由 zabbix-java-gateway 去获取远程 JMX 信息。所以，在 zabbix-web 配置之前，需要先配置 zabbix server 相关进程和设置：</div>
-<div></div>
-
-### 1\. 安装zabbix-java-gateway
-
-<div>
-<pre class="lang:sh decode:true">[root@monitor logstash]# yum install http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-java-gateway-2.4.7-1.el6.x86_64.rpm</pre>
-
-<h3 id="2-修改zabbix-server配置文件"><a href="#2-修改zabbix-server配置文件" class="headerlink" title="2. 修改zabbix_server配置文件"></a>2. 修改zabbix_server配置文件</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# vim /usr/local/etc/zabbix_server.conf
-JavaGateway=127.0.0.1
-JavaGatewayPort=10052
-StartJavaPollers=5</pre>
-
-<h3 id="3-启动zabbix-jtva-gateway服务，重启logstash服务"><a href="#3-启动zabbix-jtva-gateway服务，重启logstash服务" class="headerlink" title="3. 启动zabbix-jtva-gateway服务，重启logstash服务"></a>3. 启动zabbix-jtva-gateway服务，重启logstash服务</h3><pre class="lang:sh decode:true ">[root@monitor logstash]# /etc/init.d/zabbix-java-gateway start
-[root@monitor logstash]# /etc/init.d/logstash restart</pre>
-<div>查看JMX监控端口</div>
-<div>
-<pre class="lang:sh decode:true ">[root@monitor logstash]# netstat -lutnp |grep 9010
-tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LISTEN      11842/java</pre>
-
-<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4. 配置zabbix"></a>4. 配置zabbix</h3><h5 id="4-1-选择监控JMX的主机"><a href="#4-1-选择监控JMX的主机" class="headerlink" title="4.1 选择监控JMX的主机"></a>4.1 选择监控JMX的主机</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png" alt=""></p>
-<h5 id="4-2-添加JMX"><a href="#4-2-添加JMX" class="headerlink" title="4.2 添加JMX"></a>4.2 添加JMX</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png" alt=""></p>
-<h5 id="4-3-添加项目"><a href="#4-3-添加项目" class="headerlink" title="4.3 添加项目"></a>4.3 添加项目</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png" alt=""></p>
-<h5 id="4-4-创建图形"><a href="#4-4-创建图形" class="headerlink" title="4.4 创建图形"></a>4.4 创建图形</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png" alt=""></p>
-<p></p></div><p></p>
-<hr>
-<p><span style="color: #ff0000;">错误如下：</span></p>
-<p></p></div><p></p>
-<div><img src="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Logstash" scheme="http://charliecen.github.io/categories/Logstash/"/>
-    
-      <category term="Zabbix" scheme="http://charliecen.github.io/categories/Logstash/Zabbix/"/>
-    
-    
-      <category term="logstash" scheme="http://charliecen.github.io/tags/logstash/"/>
-    
-      <category term="JMX" scheme="http://charliecen.github.io/tags/JMX/"/>
-    
-      <category term="zabbix-java-gateway" scheme="http://charliecen.github.io/tags/zabbix-java-gateway/"/>
     
   </entry>
   
