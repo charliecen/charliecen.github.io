@@ -48,17 +48,35 @@
   
 
   
+    
+      
+    
 
-  
-
+    
   
 
   
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -77,7 +95,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="我的博客" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Charlie Blog" type="application/atom+xml" />
 
 
 
@@ -93,8 +111,8 @@
 由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql查询24小时内无重复的记录">
-<meta property="og:url" content="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/index.html">
-<meta property="og:site_name" content="我的博客">
+<meta property="og:url" content="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/index.html">
+<meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="需求：一次性解决问题率 = 一次解决的对话量/接入量一次解决的对话量：客户在接入人工客服对话结束后24小时（暂定）内未再次请求人工服务的对话
 由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。">
 <meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png">
@@ -134,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/"/>
+  <link rel="canonical" href="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/"/>
 
 
 
 
 
-  <title> mysql查询24小时内无重复的记录 | 我的博客 </title>
+  <title> mysql查询24小时内无重复的记录 | Charlie Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -182,7 +200,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">我的博客</span>
+        <span class="site-title">Charlie Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -317,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/">
+    <link itemprop="mainEntityOfPage" href="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Charlie Cen">
@@ -326,7 +344,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我的博客">
+      <meta itemprop="name" content="Charlie Blog">
     </span>
 
     
@@ -414,6 +432,17 @@
 
           
           
+             <span id="/2016/12/29/mysql-query-repeat-recodes-in-hours/" class="leancloud_visitors" data-flag-title="mysql查询24小时内无重复的记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -436,7 +465,7 @@
 <p>由于条件还要加上日期间隔，所以从mysql查询结果到PHP处理。</p>
 <a id="more"></a>
 <p>例如：每隔2天内，用户请求对话结束时间到下次发起时间的间隔超过24小时，即为一次性解决对话量。然后再除以接入量，就是一次性解决问题率。</p>
-<p>首先给出sql语句，间隔查询参考<a href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/" target="_blank" rel="external">mysql日期间隔查询</a></p>
+<p>首先给出sql语句，间隔查询参考<a href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/">mysql日期间隔查询</a></p>
 <p><pre class="lang:mysql decode:true ">– 间隔两天的记录<br>select<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId ,<br>  createUserId,<br>  createTime,<br>  endTime<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740 AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>order BY sortId,createUserId;</pre><br>结果如下</p>
 <p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-0.png" alt=""></p>
 <p>下面把这些记录到php通过数组来处理</p>
@@ -506,7 +535,7 @@ private function oneTimesQuesRate($array){
     }
     return $total;
 }&lt;/pre&gt;
-</code></pre><p>返回的结果如下图：<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1.png" target="_blank" rel="external"><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1-300x138.png" alt="qq20161228-1"></a></p>
+</code></pre><p>返回的结果如下图：<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1.png"><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-1-300x138.png" alt="qq20161228-1"></a></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -514,7 +543,7 @@ private function oneTimesQuesRate($array){
 <p>然后用这个结果来除以接入量，也就是下面的sql语句，当然这个sql查询到的结果也需要通过php来处理。也可以把上面的结果插入到数据库的临时表，通过sql来相除。多种方式可以实现。</p>
 <p><pre class="lang:mysql decode:true ">– 获取每隔2天的接入量<br>SELECT<br>  floor( (2 - to_days(FROM_UNIXTIME(1470022740)) % 2 + to_days(FROM_UNIXTIME(createTime)) )/2 ) as sortId,<br>  min(date_format(from_unixtime(createTime),’%y-%m-%d’)) as mtime,<br>  count(kfUserId) as c<br>FROM <code>think_kf_chat_im_group</code><br>  WHERE <code>endTime</code> &lt;&gt; 0<br>  AND <code>createTime</code> BETWEEN 1470022740<br>  AND 1470886740<br>  and kfUserId &lt;&gt; 0<br>GROUP BY sortId;</pre><br>结果如下：</p>
 <p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" alt=""></p>
-<p>用php来处理刚查询出的数据<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png" target="_blank" rel="external">
+<p>用php来处理刚查询出的数据<a href="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161228-2.png">
 </a></p>
 <p><pre class="lang:php decode:true ">    /**</pre></p>
 <pre><code> * @param $arr1 array 总接入量
@@ -625,7 +654,7 @@ private function processData($arr1,$arr){
         <div class="ds-share flat" data-thread-key="2016/12/29/mysql-query-repeat-recodes-in-hours/"
      data-title="mysql查询24小时内无重复的记录"
      data-content=""
-     data-url="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/">
+     data-url="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -653,10 +682,10 @@ private function processData($arr1,$arr){
   <div class="comments" id="comments">
     
      <!--<div class="ds-thread" data-thread-key="2016/12/29/mysql-query-repeat-recodes-in-hours/"
-           data-title="mysql查询24小时内无重复的记录" data-url="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/">
+           data-title="mysql查询24小时内无重复的记录" data-url="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/">
       </div>-->
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/29/mysql-query-repeat-recodes-in-hours/" data-title="mysql查询24小时内无重复的记录" data-url="http://charliecen.github.io/2016/12/29/mysql-query-repeat-recodes-in-hours/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/29/mysql-query-repeat-recodes-in-hours/" data-title="mysql查询24小时内无重复的记录" data-url="http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -814,12 +843,12 @@ var duoshuoQuery = {short_name:"cenhq"};
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
     NexT.Pisces
   </a>
 </div>
@@ -1084,6 +1113,113 @@ var duoshuoQuery = {short_name:"cenhq"};
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BEypaL7LaOVHY3z7R0JN410p-gzGzoHsz", "vnNkR6Dt0vtwFWaQjDRR8Q78");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
