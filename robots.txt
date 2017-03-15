@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+Allow: /about/
+Allow: /search/
 
 Disallow: /vendors/
 Disallow: /js/
@@ -9,8 +13,9 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://blog.cenhq.com/sitemap.xml
+Sitemap: http://cenhq.com/sitemap.xml
+Sitemap: http://www.cenhq.com/sitemap.xml
 Sitemap: http://charliecen.github.io/sitemap.xml
-Sitemap: http://blog.cenhq.com/baidusitemap.xml
+Sitemap: http://cenhq.com/baidusitemap.xml
+Sitemap: http://www.cenhq.com/baidusitemap.xml
 Sitemap: http://charliecen.github.io/baidusitemap.xml
-
