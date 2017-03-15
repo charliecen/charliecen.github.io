@@ -113,13 +113,13 @@
 <meta property="og:url" content="http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png">
-<meta property="og:updated_time" content="2017-02-21T09:33:10.000Z">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png">
+<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK中展示用户位置">
 <meta name="twitter:description" content="GeoIP 是最常见的免费 IP 地址归类查询库，同时也有收费版可以采购。GeoIP 库可以根据 IP 地址提供对应的地域信息，包括国别，省市，经纬度等，对于可视化地图和区域统计非常有用。">
-<meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
+<meta name="twitter:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png">
 
 
 
@@ -472,9 +472,9 @@
 <p><pre class="lang:sh decode:true ">[root@monitor src]# gunzip GeoLiteCity.dat.gz<br>[root@monitor src]# mv GeoLiteCity.dat  /opt/logstash/vendor/geoip/</pre><br>编辑配置文件，filter里更改为如下内容：</p>
 <p><pre class="lang:sh decode:true ">  if [type] == “nginx” {<br>    grok {<br>      match =&gt; { “message” =&gt; “%{NGINXACCESS}” }<br>    }<br>    geoip {<br>      source =&gt; “remote_addr”<br>      target =&gt; “geoip”<br>      database =&gt; “/opt/logstash/vendor/geoip/GeoLiteCity.dat”<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][longitude]}” ]<br>      add_field =&gt; [ “[geoip][coordinates]”, “%{[geoip][latitude]}”  ]<br>      remove_field =&gt; [ “[geoip][latitude]”, “[geoip][longitude]” ]<br>    }<br>    mutate {<br>      convert =&gt; [ “[geoip][coordinates]”, “float”]<br>    }<br>  }</pre><br>重启logstash服务</p>
 <p><pre class="lang:sh decode:true ">[root@monitor geoip]# /etc/init.d/logstash restart<br>Killing logstash (pid 29959) with SIGTERM<br>Waiting logstash (pid 29959) to die…<br>Waiting logstash (pid 29959) to die…<br>logstash stopped.<br>logstash started.</pre><br>打开浏览器，查看日志新加入的field</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-0@2x.png" alt=""></p>
 <p>创建可视化</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-1@2x.png" alt=""></p>
 
       
     </div>

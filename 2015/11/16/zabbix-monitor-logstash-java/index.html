@@ -113,20 +113,20 @@
 <meta property="og:url" content="http://www.cenhq.com/2015/11/16/zabbix-monitor-logstash-java/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg">
-<meta property="og:updated_time" content="2017-02-21T09:31:57.000Z">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/1.jpg">
+<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix监控logstash的java">
 <meta name="twitter:description" content="Logstash 是一个运行在 JVM 上的软件，也就意味着 JMX 这种对 JVM 的通用监控方式对 Logstash 也是一样有效果的。要给 Logstash 启用 JMX，需要修改 ./bin/logstash.lib.sh 中 $JAVA_OPTS 变量的定义，或者在运行时设置 LS_JAVA_OPTS 环境变量。">
-<meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
+<meta name="twitter:image" content="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png">
 
 
 
@@ -493,15 +493,15 @@ StartJavaPollers=5</pre>
 <pre class="lang:sh decode:true ">[root@monitor logstash]# netstat -lutnp |grep 9010
 tcp        0      0 0.0.0.0:9010                0.0.0.0:*                   LISTEN      11842/java</pre>
 
-<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4. 配置zabbix"></a>4. 配置zabbix</h3><h5 id="4-1-选择监控JMX的主机"><a href="#4-1-选择监控JMX的主机" class="headerlink" title="4.1 选择监控JMX的主机"></a>4.1 选择监控JMX的主机</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png" alt=""></p>
-<h5 id="4-2-添加JMX"><a href="#4-2-添加JMX" class="headerlink" title="4.2 添加JMX"></a>4.2 添加JMX</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png" alt=""></p>
-<h5 id="4-3-添加项目"><a href="#4-3-添加项目" class="headerlink" title="4.3 添加项目"></a>4.3 添加项目</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png" alt=""></p>
-<h5 id="4-4-创建图形"><a href="#4-4-创建图形" class="headerlink" title="4.4 创建图形"></a>4.4 创建图形</h5><p><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png" alt=""></p>
+<h3 id="4-配置zabbix"><a href="#4-配置zabbix" class="headerlink" title="4. 配置zabbix"></a>4. 配置zabbix</h3><h5 id="4-1-选择监控JMX的主机"><a href="#4-1-选择监控JMX的主机" class="headerlink" title="4.1 选择监控JMX的主机"></a>4.1 选择监控JMX的主机</h5><p><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-0@2x.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-1@2x.png" alt=""></p>
+<h5 id="4-2-添加JMX"><a href="#4-2-添加JMX" class="headerlink" title="4.2 添加JMX"></a>4.2 添加JMX</h5><p><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-2@2x.png" alt=""></p>
+<h5 id="4-3-添加项目"><a href="#4-3-添加项目" class="headerlink" title="4.3 添加项目"></a>4.3 添加项目</h5><p><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-4@2x.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-5@2x.png" alt=""></p>
+<h5 id="4-4-创建图形"><a href="#4-4-创建图形" class="headerlink" title="4.4 创建图形"></a>4.4 创建图形</h5><p><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-6@2x.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-7@2x.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/QQ20151116-8@2x.png" alt=""></p>
 <p></p></div><p></p>
 <hr>
 <p><span style="color: #ff0000;">错误如下：</span></p>
 <p></p></div><p></p>
-<div><img src="http://www.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>
+<div><img src="http://blog.cenhq.com/wp-content/uploads/2015/11/1.jpg" alt=""></div><br><div><br><div>貌似无法连接java的9010端口，所以手动检测下</div><br><div>检测需要cmdline-jmxclient-0.10.3.jar</div><br><div>所以要先下载</div><br><div><br><pre class="lang:sh decode:true ">[root@monitor src]# wget <a href="http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar" target="_blank" rel="external">http://crawler.archive.org/cmdline-jmxclient/cmdline-jmxclient-0.10.3.jar</a></pre><br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>Exception in thread “main” java.io.IOException: Failed to retrieve RMIServer stub: javax.naming.ServiceUnavailableException [Root exception is java.rmi.ConnectException: Connection refused to host: 127.0.0.1; nested exception is:<br>    java.net.ConnectException: 拒绝连接]<br>    at javax.management.remote.rmi.RMIConnector.connect(RMIConnector.java:369)<br>    at javax.management.remote.JMXConnectorFactory.connect(JMXConnectorFactory.java:270)<br>    at org.archive.jmx.Client.execute(Client.java:225)</pre><br>果然无法连接，最后查看端口没有监听。所以重启logstash服务，并实时查看错误日志。<br><pre class="lang:sh decode:true ">[root@monitor ~]# tailf /var/log/logstash/logstash.err<br>Errno::EACCES: Permission denied - /app/logstash-log/local6-5160-2015.11.16.log<br>     initialize at org/jruby/RubyFile.java:363<br>            new at org/jruby/RubyIO.java:853<br>           open at /opt/logstash/vendor/bundle/</pre><br>后来检查出来是自定义的配置文件有问题，移动配置文件，然后重启就可以了。<br><pre class="lang:sh decode:true ">[root@monitor src]# java -jar cmdline-jmxclient-0.10.3.jar - 127.0.0.1:9010 java.lang:type=Memory NonHeapMemoryUsage<br>11/16/2015 17:02:27 +0800 org.archive.jmx.Client NonHeapMemoryUsage:<br>committed: 62205952<br>init: 2555904<br>max: -1<br>used: 58527992</pre><br></div><br></div>
 
       
     </div>

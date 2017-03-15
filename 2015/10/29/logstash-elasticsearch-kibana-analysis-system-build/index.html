@@ -113,13 +113,13 @@
 <meta property="og:url" content="http://www.cenhq.com/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="Logstash：负责日志的收集，处理和储存Elasticsearch：负责日志检索和分析Kibana：负责日志的可视化">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-3@2x.png">
-<meta property="og:updated_time" content="2017-02-21T09:33:33.000Z">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-3@2x.png">
+<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建ELK(Logstash+Elasticsearch+Kibana)日志分析系统">
 <meta name="twitter:description" content="Logstash：负责日志的收集，处理和储存Elasticsearch：负责日志检索和分析Kibana：负责日志的可视化">
-<meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png">
+<meta name="twitter:image" content="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png">
 
 
 
@@ -718,8 +718,8 @@ nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
 </code></pre><p>  },</p>
 <p>  “files”: [<br>    {<br>      “paths”: [<br>        “/var/log/messages”,<br>        “/var/log/secure”<br>      ],<br>      “fields”: { “type”: “syslog” }<br>    }, {<br>      “paths”: [<br>        “/home/wwwlogs/access_nginx.log”<br>      ],<br>      “fields”: { “type”: “nginx” }<br>    }<br>  ]<br>}<br>启动服务</p>
 <p><pre class="lang:sh decode:true ">[root@baicare src]# /etc/init.d/logstash-forwarder start<br>logstash-forwarder started</pre><br>然后打开浏览器，访问服务器（域名解析提前做好）</p>
-<h3 id="7-配置索引模式"><a href="#7-配置索引模式" class="headerlink" title="7. 配置索引模式"></a>7. 配置索引模式</h3><p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png" alt=""></p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/10/QQ20151029-3@2x.png" alt=""></p>
+<h3 id="7-配置索引模式"><a href="#7-配置索引模式" class="headerlink" title="7. 配置索引模式"></a>7. 配置索引模式</h3><p><img src="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-2@2x.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/10/QQ20151029-3@2x.png" alt=""></p>
 <p>&nbsp;</p>
 <p>参考文章：</p>
 <p>ELKstack 中文指南 - <a href="http://kibana.logstash.es/" target="_blank" rel="external">http://kibana.logstash.es/</a><br>三斗室 - <a href="http://chenlinux.com/" target="_blank" rel="external">http://chenlinux.com/</a><br>elastic - <a href="https://www.elastic.co/guide" target="_blank" rel="external">https://www.elastic.co/guide</a><br>LTMP索引 - <a href="http://wsgzao.github.io/index/#LTMP" target="_blank" rel="external">http://wsgzao.github.io/index/#LTMP</a></p>

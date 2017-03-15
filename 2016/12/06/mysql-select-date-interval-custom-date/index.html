@@ -113,13 +113,13 @@
 <meta property="og:url" content="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png">
-<meta property="og:updated_time" content="2017-02-21T09:24:27.000Z">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png">
+<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql查询日期间隔自定义日期">
 <meta name="twitter:description" content="需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。">
-<meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
+<meta name="twitter:image" content="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png">
 
 
 
@@ -473,7 +473,7 @@
 <p>如果传递的参数为天，间隔数 - 转化为天的开始时间 % 间隔数 + 转化为天的字段时间 / 间隔数 = 排序ID</p>
 <p>下面周跟月就具体介绍了；</p>
 <p>具体运行如下：</p>
-<p><pre class="lang:mysql decode:true">select<br>  getTimeSortId(‘day’,from_unixtime(1470109260,’%y-%m-%d’),from_unixtime(createTime,’%y-%m-%d’),3) as sortId,<br>  min(from_unixtime(createTime,’%y-%m-%d’)) as mtime,<br>  count(*) from think_kf_chat_im_group<br>where createTime BETWEEN 1470109260 AND 1472442060<br>group by sortId;</pre><br><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png" alt=""></p>
+<p><pre class="lang:mysql decode:true">select<br>  getTimeSortId(‘day’,from_unixtime(1470109260,’%y-%m-%d’),from_unixtime(createTime,’%y-%m-%d’),3) as sortId,<br>  min(from_unixtime(createTime,’%y-%m-%d’)) as mtime,<br>  count(*) from think_kf_chat_im_group<br>where createTime BETWEEN 1470109260 AND 1472442060<br>group by sortId;</pre><br><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png" alt=""></p>
 <p>到数据库中运行，查看生成的语法</p>
 <p><pre class="lang:mysql decode:true ">CREATE DEFINER=<code>root</code>@<code>localhost</code> FUNCTION <code>getTimeSortId</code>(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10)) RETURNS int(10)<br>begin<br>declare sortId int;<br>declare totalDay int;<br>declare totalMonth int;<br>declare totalYear int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end;</pre><br>如果不是root用户的话，会有权限问题；</p>
 <p>我这里数据库有的不是root用户，所以要把这个函数放到php里定义成一个方法，然后调用生成sql语句来执行；</p>
@@ -534,7 +534,7 @@ private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$operti
 }&lt;/pre&gt;
 </code></pre><p>具体调用如下：</p>
 <p><pre class="lang:php decode:true ">$field = $this-&gt;setIntervalTime($dateFormat,$dateUnit,$sTime,’createTime’,’count(*)’,$groupType);<br>$where[‘createTime’] = array(‘between’,array($sTime,$eTime));<br>$model-&gt;field($field)-&gt;where($where)-&gt;group(‘sortId’)-&gt;select();</pre><br>获取的数据到通过highcharts到前端显示如下</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png" alt=""></p>
 <p>&nbsp;</p>
 <p>感谢同事鹏哥的帮助；大家有好的方法，求留言讨论；</p>
 

@@ -117,22 +117,22 @@ zabbix：2.4.4
 <meta property="og:description" content="系统：centos6.5
 zabbix：2.4.4
 首先创建脚本">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/1.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/2.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/3.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/4.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/5.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/6.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/7.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/9.png">
-<meta property="og:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/8.png">
-<meta property="og:updated_time" content="2017-02-21T09:44:58.000Z">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/1.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/2.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/3.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/4.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/5.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/6.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/7.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/9.png">
+<meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/8.png">
+<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix监控tcp连接数">
 <meta name="twitter:description" content="系统：centos6.5
 zabbix：2.4.4
 首先创建脚本">
-<meta name="twitter:image" content="http://www.cenhq.com/wp-content/uploads/2015/09/1.png">
+<meta name="twitter:image" content="http://blog.cenhq.com/wp-content/uploads/2015/09/1.png">
 
 
 
@@ -479,21 +479,21 @@ zabbix：2.4.4
 <p><pre class="lang:sh decode:true">[root@monitor scripts]# vim /usr/local/etc/zabbix_agentd.conf.d/monitor_tcp_connections.conf<br>UserParameter=tcp.time_wait,/usr/local/scripts/tcp_connections.sh TIME_WAIT<br>UserParameter=tcp.close_wait,/usr/local/scripts/tcp_connections.sh CLOSE_WAIT<br>UserParameter=tcp.fin_wait1,/usr/local/scripts/tcp_connections.sh FIN_WAIT1<br>UserParameter=tcp.established,/usr/local/scripts/tcp_connections.sh ESTABLISHED<br>UserParameter=tcp.syn_recv,/usr/local/scripts/tcp_connections.sh SYN_RECV<br>UserParameter=tcp.last_ack,/usr/local/scripts/tcp_connections.sh LAST_ACK<br>UserParameter=tcp.listen,/usr/local/scripts/tcp_connections.sh LISTEN</pre><br>重启服务</p>
 <p><pre class="lang:sh decode:true">[root@monitor scripts]# /etc/init.d/zabbix_agentd restart<br>Shutting down zabbix_agentd:                               [确定]<br>Starting zabbix_agentd:                                    [确定]</pre><br>测试监控是否有数据</p>
 <p><pre class="lang:sh decode:true ">[root@monitor scripts]# zabbix_get -s localhost -k tcp.established<br>126</pre><br>然后在web里创建模版，方便以后多台添加</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/1.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/1.png" alt=""></p>
 <p><br>填写模版名称</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/2.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/2.png" alt=""></p>
 <p>&nbsp;</p>
 <p>创建监控项</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/3.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/4.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/5.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/3.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/4.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/5.png" alt=""></p>
 <p>&nbsp;</p>
 <p>创建图形</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/6.png" alt=""><img src="http://www.cenhq.com/wp-content/uploads/2015/09/7.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/6.png" alt=""><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/7.png" alt=""></p>
 <p>&nbsp;</p>
 <p><div>模版创建完成后，要关联到监控主机</div></p>
 <p><div>点击主机，选择模版</div></p>
-<p><div><img src="http://www.cenhq.com/wp-content/uploads/2015/09/9.png" alt=""></div></p>
+<p><div><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/9.png" alt=""></div></p>
 <p><div></div><br>等一会儿数据图形就会出现</p>
-<p><img src="http://www.cenhq.com/wp-content/uploads/2015/09/8.png" alt=""></p>
+<p><img src="http://blog.cenhq.com/wp-content/uploads/2015/09/8.png" alt=""></p>
 <p>&nbsp;</p>
 
       
