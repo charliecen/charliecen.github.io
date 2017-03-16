@@ -1,0 +1,1199 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="sendEmail,queue,supervisord," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Charlie Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简介Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。
+Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 队列的使用，请参阅 Laravel 文档 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lumen 队列发送邮件">
+<meta property="og:url" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/index.html">
+<meta property="og:site_name" content="Charlie Blog">
+<meta property="og:description" content="简介Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。
+Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 队列的使用，请参阅 Laravel 文档 。">
+<meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-0.png">
+<meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-1.png">
+<meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-2.png">
+<meta property="og:updated_time" content="2017-03-16T02:39:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lumen 队列发送邮件">
+<meta name="twitter:description" content="简介Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。
+Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 队列的使用，请参阅 Laravel 文档 。">
+<meta name="twitter:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '9667906',
+      author: 'charlie'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/"/>
+
+
+
+
+
+  <title> lumen 队列发送邮件 | Charlie Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1256550401&web_id=1256550401" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Charlie Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charlie Cen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/6268321?v=3&u=9a7e8f17793429a6009083c23956dcfadf170fc2&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charlie Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                lumen 队列发送邮件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-16T02:34:44+00:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lumen/" itemprop="url" rel="index">
+                    <span itemprop="name">Lumen</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lumen/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/16/lumen-queue-sendEmail/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/lumen-queue-sendEmail/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/16/lumen-queue-sendEmail/" class="leancloud_visitors" data-flag-title="lumen 队列发送邮件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。</p>
+<p>Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 队列的使用，请参阅 <a href="http://laravelacademy.org/post/6922.html" target="_blank" rel="external">Laravel</a> 文档 。</p>
+<a id="more"></a>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>队列的配置在 <code>.env</code> 中 <code>QUEUE_DRIVER</code> 选项里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">QUEUE_DRIVER=database</div></pre></td></tr></table></figure>
+<p>如果你想完全自定义配置信息，你可以复制 <code>vendor/laravel/lumen-framework/config/queue.php</code> 整个文件到 <code>config/queue.php</code> 中，根目录如果没有 <code>config</code> 的话你应该创建一个。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'default'</span> =&gt; env(<span class="string">'QUEUE_DRIVER'</span>, <span class="string">'database'</span>),</div><div class="line"></div><div class="line">    <span class="string">'connections'</span> =&gt; [</div><div class="line"></div><div class="line">        <span class="string">'sync'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'sync'</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'database'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'database'</span>,</div><div class="line">            <span class="string">'table'</span> =&gt; <span class="string">'jobs'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'beanstalkd'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'beanstalkd'</span>,</div><div class="line">            <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'sqs'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'sqs'</span>,</div><div class="line">            <span class="string">'key'</span> =&gt; <span class="string">'your-public-key'</span>,</div><div class="line">            <span class="string">'secret'</span> =&gt; <span class="string">'your-secret-key'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'your-queue-url'</span>,</div><div class="line">            <span class="string">'region'</span> =&gt; <span class="string">'us-east-1'</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'redis'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'redis'</span>,</div><div class="line">            <span class="string">'connection'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">    ],</div><div class="line"></div><div class="line">    <span class="string">'failed'</span> =&gt; [</div><div class="line">        <span class="string">'database'</span> =&gt; env(<span class="string">'DB_CONNECTION'</span>, <span class="string">'mysql'</span>),</div><div class="line">        <span class="string">'table'</span> =&gt; env(<span class="string">'QUEUE_FAILED_TABLE'</span>, <span class="string">'failed_jobs'</span>),</div><div class="line">    ],</div><div class="line">];</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p>要使用 <code>database</code> 这个队列驱动的话，则需要创建一个数据表来记住任务:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Schema::create(<span class="string">'jobs'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">    $table-&gt;bigIncrements(<span class="string">'id'</span>);</div><div class="line">    $table-&gt;string(<span class="string">'queue'</span>);</div><div class="line">    $table-&gt;longText(<span class="string">'payload'</span>);</div><div class="line">    $table-&gt;tinyInteger(<span class="string">'attempts'</span>)-&gt;unsigned();</div><div class="line">    $table-&gt;tinyInteger(<span class="string">'reserved'</span>)-&gt;unsigned();</div><div class="line">    $table-&gt;unsignedInteger(<span class="string">'reserved_at'</span>)-&gt;nullable();</div><div class="line">    $table-&gt;unsignedInteger(<span class="string">'available_at'</span>);</div><div class="line">    $table-&gt;unsignedInteger(<span class="string">'created_at'</span>);</div><div class="line">    $table-&gt;index([<span class="string">'queue'</span>, <span class="string">'reserved'</span>, <span class="string">'reserved_at'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="生成任务类"><a href="#生成任务类" class="headerlink" title="生成任务类"></a>生成任务类</h3><p>Lumen 中没有可用来生成事件监听器的命令，你可以复制 <code>ExampleJob</code> 文件，这个示例文件提供了基础的类结构，你可以作为参考。基类 <code>Job</code> 已经加载了我们需要的 traits <code>InteractsWithQueue</code>, <code>Queueable</code>, 和 <code>SerializesModels</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Jobs</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Mail</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SendReminderEmail</span> <span class="keyword">extends</span> <span class="title">Job</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $email;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $active;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $subject;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 创建一个新的任务实例</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> $email</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($email, $active, $subject)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;email = $email;</div><div class="line">        <span class="keyword">$this</span>-&gt;active = $active;</div><div class="line">        <span class="keyword">$this</span>-&gt;subject = $subject;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 执行任务</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Mail::send(<span class="string">'emails.welcome'</span>, [<span class="string">'active'</span> =&gt; <span class="keyword">$this</span>-&gt;active, <span class="string">'subject'</span> =&gt; <span class="keyword">$this</span>-&gt;subject], <span class="function"><span class="keyword">function</span> <span class="params">($message)</span></span>&#123;</div><div class="line">            $message-&gt;to(<span class="keyword">$this</span>-&gt;email)-&gt;subject(<span class="keyword">$this</span>-&gt;subject);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="将任务推送到队列上"><a href="#将任务推送到队列上" class="headerlink" title="将任务推送到队列上"></a>将任务推送到队列上</h3><p>就如 Laravel 一样，你可使用 <code>dispatch</code> 辅助函数来推送任务到队列上:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch(<span class="keyword">new</span> ExampleJob);</div></pre></td></tr></table></figure>
+<p>当然，你也可以使用 <code>Queue</code> facade。 如果你想使用 facade 的话，你需要在 <code>bootstrap/app.php</code> 中把 <code>$app-&gt;withFacades()</code> 这行调用的注释去除掉。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue::push(<span class="keyword">new</span> SendReminderEmail($user[<span class="string">'email'</span>], <span class="keyword">$this</span>-&gt;active($user[<span class="string">'email'</span>],$user[<span class="string">'id'</span>]),<span class="string">'注册成功'</span>));</div></pre></td></tr></table></figure>
+<h4 id="延迟分发"><a href="#延迟分发" class="headerlink" title="延迟分发"></a>延迟分发</h4><p>有时候你可能想要延迟队列任务的执行，可以通过在任务实例使用 <code>delay</code> 方法。该方法由<code>Illuminate\Bus\Queueable</code> trait提供，已经自动添加在通过命令行生成的任务类中。例如你希望将某个任务在创建 10 分钟以后才执行：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue::push(<span class="keyword">new</span> SendReminderEmail($user[<span class="string">'email'</span>], <span class="keyword">$this</span>-&gt;active($user[<span class="string">'email'</span>],$user[<span class="string">'id'</span>])-&gt;delay(Carbon::now())-&gt;addMinute(<span class="number">10</span>),<span class="string">'注册成功'</span>));</div></pre></td></tr></table></figure>
+<h4 id="自定义队列和连接"><a href="#自定义队列和连接" class="headerlink" title="自定义队列和连接"></a>自定义队列和连接</h4><p>通过推送任务到不同队列，你可以将队列任务进行“分类”，甚至根据优先级来分配每个队列的进程数。请注意，这并不意味着使用了配置项中那些不同的连接来管理队列，实际上只有单一连接会被用到。要指定队列，请在任务实例使用 <code>onQueue</code> 方法。要指定连接设备可以用 <code>onConnection</code> 方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Queue::push(<span class="keyword">new</span> SendReminderEmail($user[<span class="string">'email'</span>], <span class="keyword">$this</span>-&gt;active($user[<span class="string">'email'</span>],$user[<span class="string">'id'</span>])-&gt;onConnection(<span class="string">'redis'</span>)-&gt;onQueue(<span class="string">'emails'</span>),<span class="string">'注册成功'</span>));</div></pre></td></tr></table></figure>
+<h4 id="指定最大失败次数-超时时间"><a href="#指定最大失败次数-超时时间" class="headerlink" title="指定最大失败次数/超时时间"></a>指定最大失败次数/超时时间</h4><p>指定队列任务最大失败次数的一种实现方式是通过 Artisan 命令 <code>--tries</code> 切换：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan queue:work --tries=<span class="number">3</span></div></pre></td></tr></table></figure>
+<p>类似的，队列任务最大运行时长（秒）可以通过 Artisan 命令 <code>--timeout</code> 来指定</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan queue:work --timeout=<span class="number">30</span></div></pre></td></tr></table></figure>
+<h3 id="运行队列任务"><a href="#运行队列任务" class="headerlink" title="运行队列任务"></a>运行队列任务</h3><p>Laravel 包含了一个队列进程用来处理被推送到队列的新任务。你可以使用 <code>queue:work</code> 命令运行队列进程。请注意，队列进程开始运行后，会持续监听队列，直至你手动停止或关闭终端：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan queue:work</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：为了保持队列进程 <code>queue:work</code> 持续在后台运行，需要使用进程守护程序，比如 <code>Supervisor</code> 来确保队列进程持续运行。</p>
+</blockquote>
+<p>请记住，队列进程是长生命周期的进程，会在启动后驻留内存。若应用有任何改动将不会影响到已经启动的进程。所以请在发布程序后，重启队列进程。</p>
+<h3 id="配置Supervisor"><a href="#配置Supervisor" class="headerlink" title="配置Supervisor"></a>配置Supervisor</h3><p>Supervisor 是 Linux 系统中常用的进程守护程序。如果队列进程 <code>queue:work</code> 意外关闭，它会自动重启启动队列进程。在 Mac 安装Supervisor 非常简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew search |grep supervisor                                                                                                                       </div><div class="line">supervisor</div><div class="line">$ brew install supervisor</div></pre></td></tr></table></figure>
+<h4 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h4><p>Supervisor 配置文件通常存放在 <code>/usr/local/etc/supervisord.conf</code> 目录，在该目录中，可以创建多个配置文件指示 <code>Supervisor</code> 如何监视进程，例如，让我们创建一个开启并监视<code>queue:work</code> 进程的 <code>laravel-worker.conf</code> 文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[program:laravel-worker]</div><div class="line">process_name=%(program_name)s_%(process_num)<span class="number">02</span>d</div><div class="line">command=php /Users/zt<span class="number">-2203315</span>/www/gametest/artisan queue:work  --sleep=<span class="number">3</span> --tries=<span class="number">3</span></div><div class="line">autostart=<span class="keyword">true</span></div><div class="line">autorestart=<span class="keyword">true</span></div><div class="line">numprocs=<span class="number">8</span></div><div class="line">redirect_stderr=<span class="keyword">true</span></div><div class="line">stdout_logfile=/tmp/worker.log</div></pre></td></tr></table></figure>
+<p>在本例中，<code>numprocs</code> 指令让 Supervisor 运行 8 个 <code>queue:work</code> 进程并监视它们，如果失败的话自动重启。当然，你需要修改 <code>queue:work</code> <code>database</code> 的 <code>command</code> 指令来映射你的队列连接。</p>
+<h4 id="启动Supervisor"><a href="#启动Supervisor" class="headerlink" title="启动Supervisor"></a>启动Supervisor</h4><p>当你成功创建配置文件后，你需要刷新 Supervisor 的配置信息并使用如下命令启动进程:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ ps aux |grep supervisord |grep -v grep</div><div class="line">zt-2203315       94458   0.0  0.0  2470732   6320   ??  Ss    6:12PM   0:01.65 /usr/local/Cellar/supervisor/3.3.1/libexec/bin/python /usr/local/bin/supervisord</div><div class="line">$ supervisorctl</div><div class="line">laravel-worker:laravel-worker_00   RUNNING   pid 94546, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_01   RUNNING   pid 94547, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_02   RUNNING   pid 94548, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_03   RUNNING   pid 94549, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_04   RUNNING   pid 94550, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_05   RUNNING   pid 94551, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_06   RUNNING   pid 94552, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_07   RUNNING   pid 94553, uptime 0:35:28</div></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
+<p>请注意：要先停止supervisor的laravel-work服务</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">supervisor&gt; shutdown</div><div class="line">Really shut the remote supervisord process down y/N? y</div><div class="line">Shut down</div></pre></td></tr></table></figure>
+<p>发送邮件给用户</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"data"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"msg"</span>: <span class="string">"邮件已重新发送"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-0.png" alt=""></p>
+<p>启动supervisor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ tail -f /tmp/worker.log</div><div class="line">[2017-03-15 18:56:46] Processed: App\Jobs\SendReminderEmail</div></pre></td></tr></table></figure>
+<p>再次查看数据表,已经为空<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-1.png" alt=""></p>
+<p>查看邮箱<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-2.png" alt=""></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://lumen.laravel-china.org/docs/5.3/queues" target="_blank" rel="external">https://lumen.laravel-china.org/docs/5.3/queues</a></p>
+<p><a href="http://laravelacademy.org/post/6922.html" target="_blank" rel="external">http://laravelacademy.org/post/6922.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="wx.jpg" alt="Charlie Cen WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="zfb.jpg" alt="Charlie Cen Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sendEmail/" rel="tag"># sendEmail</a>
+          
+            <a href="/tags/queue/" rel="tag"># queue</a>
+          
+            <a href="/tags/supervisord/" rel="tag"># supervisord</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/06/lumen-avatar-upload/" rel="next" title="lumen 头像上传">
+                <i class="fa fa-chevron-left"></i> lumen 头像上传
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/16/lumen-queue-sendEmail/"
+     data-title="lumen 队列发送邮件"
+     data-content=""
+     data-url="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+     <!--<div class="ds-thread" data-thread-key="2017/03/16/lumen-queue-sendEmail/"
+           data-title="lumen 队列发送邮件" data-url="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/">
+      </div>-->
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/16/lumen-queue-sendEmail/" data-title="lumen 队列发送邮件" data-url="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cenhq"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/6268321?v=3&u=9a7e8f17793429a6009083c23956dcfadf170fc2&s=400"
+               alt="Charlie Cen" />
+          <p class="site-author-name" itemprop="name">Charlie Cen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">87</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/charliecen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cenhuqing" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2139635283/home" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置信息"><span class="nav-number">2.</span> <span class="nav-text">配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">3.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成任务类"><span class="nav-number">4.</span> <span class="nav-text">生成任务类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将任务推送到队列上"><span class="nav-number">5.</span> <span class="nav-text">将任务推送到队列上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#延迟分发"><span class="nav-number">5.1.</span> <span class="nav-text">延迟分发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义队列和连接"><span class="nav-number">5.2.</span> <span class="nav-text">自定义队列和连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指定最大失败次数-超时时间"><span class="nav-number">5.3.</span> <span class="nav-text">指定最大失败次数/超时时间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行队列任务"><span class="nav-number">6.</span> <span class="nav-text">运行队列任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Supervisor"><span class="nav-number">7.</span> <span class="nav-text">配置Supervisor</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加配置文件"><span class="nav-number">7.1.</span> <span class="nav-text">添加配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动Supervisor"><span class="nav-number">7.2.</span> <span class="nav-text">启动Supervisor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">8.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cenhq"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BEypaL7LaOVHY3z7R0JN410p-gzGzoHsz", "vnNkR6Dt0vtwFWaQjDRR8Q78");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

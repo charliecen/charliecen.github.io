@@ -4,6 +4,33 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</loc>
+    <lastmod>2017-03-16T02:39:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>lumen 队列发送邮件</title>
+        <pubTime>2017-03-16T02:34:44.000Z</pubTime>
+        
+        <tag>sendEmail</tag>
+         
+        <tag>queue</tag>
+         
+        <tag>supervisord</tag>
+         
+         
+           
+             
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/Lumen/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Lumen/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
     <lastmod>2017-03-15T05:52:52.000Z</lastmod>
     <data>
@@ -22,30 +49,6 @@
           
              
               <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>脚本发布代码</title>
-        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
-        
-        <tag>ansible</tag>
-         
-        <tag>ssh</tag>
-         
-        <tag>svn</tag>
-         
-         
-           
-             
-              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
           
         </display>
     </data>
@@ -186,24 +189,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/23/hero/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hero</title>
-        <pubTime>2015-10-23T13:47:42.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="生活随笔" url="http://www.cenhq.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -255,6 +240,24 @@
           
              
               <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/JavaScript/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/10/23/hero/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hero</title>
+        <pubTime>2015-10-23T13:47:42.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="生活随笔" url="http://www.cenhq.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
           
         </display>
     </data>
@@ -355,6 +358,30 @@
           
              
               <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>脚本发布代码</title>
+        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+        <tag>ssh</tag>
+         
+        <tag>svn</tag>
+         
+         
+           
+             
+              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
           
         </display>
     </data>
@@ -607,28 +634,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/06/rollback-script-code/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>脚本回滚代码</title>
-        <pubTime>2015-09-06T11:46:30.000Z</pubTime>
-        
-        <tag>ansible</tag>
-         
-        <tag>ssh</tag>
-         
-         
-           
-             
-              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2015/10/23/samba-service-build/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -654,6 +659,28 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2015/09/06/rollback-script-code/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>脚本回滚代码</title>
+        <pubTime>2015-09-06T11:46:30.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+        <tag>ssh</tag>
+         
+         
+           
+             
+              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/12/17/scripts-add-ip-to-iptables/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -672,30 +699,6 @@
           
              
               <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Iptables/Scripts/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/12/18/ssh-tunnel-over-the-wall/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>ssh隧道翻墙</title>
-        <pubTime>2015-12-18T13:21:32.000Z</pubTime>
-        
-        <tag>socks</tag>
-         
-        <tag>switchyOmega</tag>
-         
-        <tag>tunnel</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
           
         </display>
     </data>
@@ -1055,9 +1058,9 @@
         <title>zabbix使用sendEmail脚本发送邮件</title>
         <pubTime>2015-09-09T12:01:55.000Z</pubTime>
         
-        <tag>zabbix</tag>
-         
         <tag>sendEmail</tag>
+         
+        <tag>zabbix</tag>
          
          
            
@@ -1066,6 +1069,30 @@
           
              
               <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Scripts/Zabbix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/12/18/ssh-tunnel-over-the-wall/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>ssh隧道翻墙</title>
+        <pubTime>2015-12-18T13:21:32.000Z</pubTime>
+        
+        <tag>socks</tag>
+         
+        <tag>switchyOmega</tag>
+         
+        <tag>tunnel</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
           
         </display>
     </data>
