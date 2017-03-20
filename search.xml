@@ -206,13 +206,6 @@
 
     
     <entry>
-      <title><![CDATA[Hero]]></title>
-      <url>%2F2015%2F10%2F23%2Fhero%2F</url>
-      <content type="text"><![CDATA[在网易云音乐里偶然听见这首歌，第一遍感觉还不错，多听几遍也许你会喜欢，旋律很美。 共享出来，给大家欣赏下 [embed]http://blog.cenhq.com/wp-content/uploads/2015/10/Family-of-the-Year-Hero.mp3[/embed]]]></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[wordpress添加ClustrMaps]]></title>
       <url>%2F2015%2F10%2F16%2Fwordpress-add-clustrmaps%2F</url>
       <content type="text"><![CDATA[首先到http://www.clustrmaps.com/zh/index.htm生成自己的地图 然后注册登录账号，获取地图代码根据主题布局放置代码位置，这里我放在右侧。编辑文件sidebar-right.php,添加以下内容：&lt;!–ClusterMap–&gt;&lt;aside class=”widget”&gt;&lt;h3 class=”widget-title”&gt;统计&lt;/h3&gt;&lt;div id=”clustrmaps-widget”&gt;&lt;/div&gt;&lt;script type=”text/javascript”&gt;var _clustrmaps = {‘url’ : ‘http://blog.cenhq.com‘, ‘user’ : 1181037, ‘server’ : ‘3’, ‘id’ : ‘clustrmaps-widget’, ‘version’ : 1, ‘date’ : ‘2015-10-16’, ‘lang’ : ‘zh’, ‘corners’ : ‘square’ };(function (){ var s = document.createElement(‘script’); s.type = ‘text/javascript’; s.async = true; s.src = ‘http://www3.clustrmaps.com/counter/map.js‘; var x = document.getElementsByTagName(‘script’)[0]; x.parentNode.insertBefore(s, x);})();&lt;/script&gt;&lt;noscript&gt;&lt;a href=”http://www3.clustrmaps.com/user/f5e12056d&quot;&gt;&lt;img src=”http://www3.clustrmaps.com/stats/maps-no_clusters/blog.cenhq.com-thumb.jpg“ alt=”Locations of visitors to this page” /&gt;&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/aside&gt;效果显示：]]></content>
