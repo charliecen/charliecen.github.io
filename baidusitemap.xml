@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
+    <lastmod>2017-03-22T05:21:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel 5.4 事件操作</title>
+        <pubTime>2017-03-22T05:18:14.000Z</pubTime>
+        
+        <tag>Events</tag>
+         
+        <tag>Listeners</tag>
+         
+        <tag>EventServiceProvider</tag>
+         
+         
+           
+             
+              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/</loc>
     <lastmod>2017-03-17T08:59:04.000Z</lastmod>
     <data>
@@ -88,35 +112,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>ajax作用域范围无法获取返回值</title>
-        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
-        
-        <tag>ajax作用域</tag>
-         
-        <tag>ajax同步</tag>
-         
-        <tag>ajax异步</tag>
-         
-        <tag>ajax返回值</tag>
-         
-         
-           
-             
-              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -146,6 +141,34 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>ELK中展示用户位置</title>
+        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
+        
+        <tag>geoip</tag>
+         
+        <tag>kibana</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
+          
+             
+              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
+          
+             
+              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -168,27 +191,23 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>ELK中展示用户位置</title>
-        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
+        <title>脚本发布代码</title>
+        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
         
-        <tag>geoip</tag>
+        <tag>ansible</tag>
          
-        <tag>kibana</tag>
+        <tag>ssh</tag>
+         
+        <tag>svn</tag>
          
          
            
              
-              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
-          
-             
-              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
-          
-             
-              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
+              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
           
         </display>
     </data>
@@ -354,23 +373,26 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
+    <loc>http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>脚本发布代码</title>
-        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
+        <title>密码错误3次锁定账号</title>
+        <pubTime>2017-03-03T05:23:11.000Z</pubTime>
         
-        <tag>ansible</tag>
+        <tag>password-verity</tag>
          
-        <tag>ssh</tag>
+        <tag>lock-user</tag>
          
-        <tag>svn</tag>
+        <tag>three-times</tag>
          
          
            
              
-              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
           
         </display>
     </data>
@@ -473,24 +495,28 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>Ajax+setInterval实时更新</title>
-        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
+        <title>ajax作用域范围无法获取返回值</title>
+        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
         
-        <tag>ajax</tag>
+        <tag>ajax作用域</tag>
          
-        <tag>setInterval</tag>
+        <tag>ajax同步</tag>
+         
+        <tag>ajax异步</tag>
+         
+        <tag>ajax返回值</tag>
          
          
            
              
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
           
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
           
         </display>
     </data>
@@ -589,26 +615,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/</loc>
+    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>密码错误3次锁定账号</title>
-        <pubTime>2017-03-03T05:23:11.000Z</pubTime>
+        <title>Ajax+setInterval实时更新</title>
+        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
         
-        <tag>password-verity</tag>
+        <tag>ajax</tag>
          
-        <tag>lock-user</tag>
-         
-        <tag>three-times</tag>
+        <tag>setInterval</tag>
          
          
            
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
           
              
-              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
           
         </display>
     </data>
@@ -712,33 +736,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/17/the-second-edition-release-script-code/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>脚本发布代码第二版</title>
-        <pubTime>2015-09-17T18:16:48.000Z</pubTime>
-        
-        <tag>ansible</tag>
-         
-        <tag>svn</tag>
-         
-        <tag>svn update</tag>
-         
-         
-           
-             
-              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
-          
-             
-              <breadCrumb title="Svn" url="http://www.cenhq.com/categories/Scripts/Svn/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2017/02/04/thinkphp-data-cache/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -818,6 +815,33 @@
           
              
               <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/JavaScript/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/09/17/the-second-edition-release-script-code/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>脚本发布代码第二版</title>
+        <pubTime>2015-09-17T18:16:48.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+        <tag>svn</tag>
+         
+        <tag>svn update</tag>
+         
+         
+           
+             
+              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
+          
+             
+              <breadCrumb title="Svn" url="http://www.cenhq.com/categories/Scripts/Svn/"/>
           
         </display>
     </data>
@@ -976,31 +1000,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/12/30/zabbix-monitor-mongodb/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>zabbix监控mongodb</title>
-        <pubTime>2015-12-30T14:18:02.000Z</pubTime>
-        
-        <tag>mongodb</tag>
-         
-        <tag>zabbix</tag>
-         
-         
-           
-             
-              <breadCrumb title="Mongo" url="http://www.cenhq.com/categories/Mongo/"/>
-          
-             
-              <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Mongo/Zabbix/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2015/11/16/zabbix-monitor-logstash-java/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -1021,6 +1020,31 @@
           
              
               <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Logstash/Zabbix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/12/30/zabbix-monitor-mongodb/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>zabbix监控mongodb</title>
+        <pubTime>2015-12-30T14:18:02.000Z</pubTime>
+        
+        <tag>mongodb</tag>
+         
+        <tag>zabbix</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mongo" url="http://www.cenhq.com/categories/Mongo/"/>
+          
+             
+              <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Mongo/Zabbix/"/>
           
         </display>
     </data>
