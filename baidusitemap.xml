@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</loc>
+    <lastmod>2017-03-28T10:15:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel 安装第三方包 Mongodb报错</title>
+        <pubTime>2017-03-28T10:03:19.000Z</pubTime>
+        
+        <tag>mongodb</tag>
+         
+        <tag>php56-mongodb</tag>
+         
+        <tag>php56-mongo</tag>
+         
+        <tag>_clock_gettime</tag>
+         
+        <tag>mongodb-1.2.8</tag>
+         
+         
+           
+             
+              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
     <lastmod>2017-03-22T05:21:39.000Z</lastmod>
     <data>
@@ -105,35 +133,6 @@
           
              
               <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>基于nginx流媒体服务器搭建</title>
-        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
-        
-        <tag>ffmpeg</tag>
-         
-        <tag>mencoder</tag>
-         
-        <tag>nginx</tag>
-         
-        <tag>x.264</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
-          
-             
-              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
           
         </display>
     </data>
@@ -269,23 +268,46 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
+    <loc>http://www.cenhq.com/2015/11/12/redis-crackit-leak-testing/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>脚本发布代码</title>
-        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
+        <title>Redis-Crackit漏洞测试</title>
+        <pubTime>2015-11-12T13:57:58.000Z</pubTime>
         
-        <tag>ansible</tag>
+        <tag>redis-crackit</tag>
          
-        <tag>ssh</tag>
-         
-        <tag>svn</tag>
+        <tag>redis漏洞</tag>
          
          
            
              
-              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
+              <breadCrumb title="Redis" url="http://www.cenhq.com/categories/Redis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>Ajax+setInterval实时更新</title>
+        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
+        
+        <tag>ajax</tag>
+         
+        <tag>setInterval</tag>
+         
+         
+           
+             
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
           
         </display>
     </data>
@@ -373,24 +395,28 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>Ajax+setInterval实时更新</title>
-        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
+        <title>ajax作用域范围无法获取返回值</title>
+        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
         
-        <tag>ajax</tag>
+        <tag>ajax作用域</tag>
          
-        <tag>setInterval</tag>
+        <tag>ajax同步</tag>
+         
+        <tag>ajax异步</tag>
+         
+        <tag>ajax返回值</tag>
          
          
            
              
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
           
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
           
         </display>
     </data>
@@ -493,28 +519,28 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
+    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
         <display>
-        <title>ajax作用域范围无法获取返回值</title>
-        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
+        <title>基于nginx流媒体服务器搭建</title>
+        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
         
-        <tag>ajax作用域</tag>
+        <tag>ffmpeg</tag>
          
-        <tag>ajax同步</tag>
+        <tag>mencoder</tag>
          
-        <tag>ajax异步</tag>
+        <tag>nginx</tag>
          
-        <tag>ajax返回值</tag>
+        <tag>x.264</tag>
          
          
            
              
-              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
           
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
+              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
           
         </display>
     </data>
@@ -591,28 +617,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/11/12/redis-crackit-leak-testing/</loc>
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>Redis-Crackit漏洞测试</title>
-        <pubTime>2015-11-12T13:57:58.000Z</pubTime>
-        
-        <tag>redis-crackit</tag>
-         
-        <tag>redis漏洞</tag>
-         
-         
-           
-             
-              <breadCrumb title="Redis" url="http://www.cenhq.com/categories/Redis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/</loc>
     <lastmod>2017-03-15T05:47:15.000Z</lastmod>
     <data>
@@ -633,6 +637,30 @@
           
              
               <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
+    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <data>
+        <display>
+        <title>脚本发布代码</title>
+        <pubTime>2015-09-06T11:33:48.000Z</pubTime>
+        
+        <tag>ansible</tag>
+         
+        <tag>ssh</tag>
+         
+        <tag>svn</tag>
+         
+         
+           
+             
+              <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
           
         </display>
     </data>

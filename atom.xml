@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cenhq.com/"/>
-  <updated>2017-03-22T05:21:39.000Z</updated>
+  <updated>2017-03-28T10:15:28.000Z</updated>
   <id>http://www.cenhq.com/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Laravel 安装第三方包 Mongodb报错</title>
+    <link href="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/"/>
+    <id>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</id>
+    <published>2017-03-28T10:03:19.000Z</published>
+    <updated>2017-03-28T10:15:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用<code>composer</code>来安装。</p>
+<h4 id="安装jenssegers-mongodb报错"><a href="#安装jenssegers-mongodb报错" class="headerlink" title="安装jenssegers/mongodb报错"></a>安装<code>jenssegers/mongodb</code>报错</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"> $ composer require jenssegers/mongodb:3.2.*</div><div class="line">./composer.json has been updated</div><div class="line">Loading composer repositories with package information</div><div class="line">Updating dependencies (including require-dev)</div><div class="line">Your requirements could not be resolved to an installable set of packages.</div><div class="line"></div><div class="line">  Problem 1</div><div class="line">    - jenssegers/mongodb v3.2.0 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - jenssegers/mongodb v3.2.1 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - jenssegers/mongodb v3.2.2 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - mongodb/mongodb v1.1.x-dev requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb v1.0.x-dev requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.2.x-dev requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.2.0-alpha1 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.2 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.1 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.0-alpha1 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.0 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.5 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.4 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.3 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.2 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.1 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-beta2 requires ext-mongodb ^1.1.1 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-beta1 requires ext-mongodb ^1.0.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-alpha1 requires ext-mongodb ^1.0.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - Installation request for jenssegers/mongodb 3.2.* -&gt; satisfiable by jenssegers/mongodb[v3.2.0, v3.2.1, v3.2.2].</div><div class="line"></div><div class="line">  To enable extensions, verify that they are enabled in your .ini files:</div><div class="line">    - /usr/local/etc/php/5.6/php.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-igbinary.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-memcached.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-mongo.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-redis.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-ssh2.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini</div><div class="line">  You can also run `php --ini` inside terminal to see which files are used by PHP in CLI mode.</div><div class="line"></div><div class="line">Installation failed, reverting ./composer.json to its original content.</div></pre></td></tr></table></figure>
+<h5 id="报错解析"><a href="#报错解析" class="headerlink" title="报错解析"></a>报错解析</h5><p>第三方包需要<code>php56-mongodb</code>扩展，本机只有<code>php56-mongo</code>扩展，所以需要继续安装 <code>php56-mongodb</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew install php56-mongodb                                                                                                                                 </div><div class="line">Error: /usr/local/opt/php56-mongodb is not a valid keg</div></pre></td></tr></table></figure>
+<p>这个错误说明<code>php56-mongodb</code>目录不是有效的桶， 所以删除这个目录继续安装就可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /usr/local/opt/php56-mongodb</div><div class="line">$ brew install php56-mongodb</div><div class="line">$ php -i &quot;(command-line &apos;phpinfo()&apos;)&quot; |grep mongodb</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongodb.ini,</div><div class="line">mongodb</div><div class="line">mongodb.debug =&gt; no value =&gt; no value</div></pre></td></tr></table></figure>
+<p>再次安装第三方包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ composer require jenssegers/mongodb</div><div class="line">cUsing version ^3.2 for jenssegers/mongodb</div><div class="line">./composer.json has been updated</div><div class="line">Loading composer repositories with package information</div><div class="line">Updating dependencies (including require-dev)</div><div class="line">Package operations: 2 installs, 0 updates, 0 removals</div><div class="line">  - Installing mongodb/mongodb (1.1.2): Downloading (100%)         </div><div class="line">  - Installing jenssegers/mongodb (v3.2.2): Downloading (100%)         </div><div class="line">jenssegers/mongodb suggests installing jenssegers/mongodb-session (Add MongoDB session support to Laravel-MongoDB)</div><div class="line">jenssegers/mongodb suggests installing jenssegers/mongodb-sentry (Add Sentry support to Laravel-MongoDB)</div><div class="line">Writing lock file</div><div class="line">Generating autoload files</div></pre></td></tr></table></figure>
+<h4 id="php调用mongodb挂掉"><a href="#php调用mongodb挂掉" class="headerlink" title="php调用mongodb挂掉"></a>php调用mongodb挂掉</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dyld: lazy symbol binding failed: Symbol not found: _clock_gettime</div><div class="line">  Referenced from: /usr/local/opt/php56-mongodb/mongodb.so</div><div class="line">  Expected in: /usr/lib/libSystem.B.dylib</div><div class="line"></div><div class="line">dyld: Symbol not found: _clock_gettime</div><div class="line">  Referenced from: /usr/local/opt/php56-mongodb/mongodb.so</div><div class="line">  Expected in: /usr/lib/libSystem.B.dylib</div><div class="line"></div><div class="line">[1]    29551 trace trap  php -S 192.168.82.195:8989</div></pre></td></tr></table></figure>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><a href="https://github.com/Homebrew/homebrew-php/issues/3737" target="_blank" rel="external">https://github.com/Homebrew/homebrew-php/issues/3737</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">make sure you have the latest version of xcode-select,mine is 2343 xcode-select -v,if not update then restart your mac</div><div class="line"></div><div class="line"> brew edit &#123;formula&#125; #formula likes php71-mongodb</div><div class="line"></div><div class="line"> edit it，add lines after “install”, may like this</div><div class="line">def install</div><div class="line">Dir.chdir &quot;mongodb-#&#123;version&#125;&quot; unless build.head?</div><div class="line">if MacOS.version == &quot;10.11&quot; &amp;&amp; MacOS::Xcode.installed? &amp;&amp; MacOS::Xcode.version &gt;= &quot;8.0&quot;</div><div class="line">inreplace %w[src/libbson/src/bson/bson-clock.c], &quot;HAVE_CLOCK_GETTIME&quot;, &quot;UNDEFINED_GIBBERISH&quot;`</div><div class="line">end</div><div class="line"></div><div class="line"> reinstall php71-mongodb from source brew reinstall -s php71-mongodb</div></pre></td></tr></table></figure>
+<p>上面的英文解释下：</p>
+<ul>
+<li><code>xcode-select</code> 最新的版本为：2343，如果不是需要升级</li>
+<li>编辑<code>php56-mongodb</code>,修改位置大概在20行下面，添加此内容 <code>if MacOS.version == &quot;10.11&quot; &amp;&amp; MacOS::Xcode.installed? &amp;&amp; MacOS::Xcode.version &gt;= &quot;8.0&quot;
+inreplace %w[src/libbson/src/bson/bson-clock.c], &quot;HAVE_CLOCK_GETTIME&quot;, &quot;UNDEFINED_GIBBERISH&quot;
+end</code></li>
+<li>然后重新安装 <code>php56-mongodb</code></li>
+</ul>
+<blockquote>
+<p>但是重装会无法执行，报错timeout超时。而且下载的是版本为<code>mongodb-1.2.5</code>，所以我们需要最新版本<code>mongodb-1.2.8</code>需要手动下载。</p>
+</blockquote>
+<p><a href="https://github.com/mongodb/mongo-php-driver/releases/download/1.2.8/mongodb-1.2.8.tgz" target="_blank" rel="external">下载地址</a></p>
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ tar xf mongodb-1.2.8.tgz</div><div class="line">$ cd mongodb-1.2.8</div><div class="line">$ phpize</div><div class="line">$ ./configure</div><div class="line">$ make</div></pre></td></tr></table></figure>
+<h6 id="报如下错误"><a href="#报如下错误" class="headerlink" title="报如下错误"></a>报如下错误</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/Users/zt-2203315/Downloads/资源包/mongodb-1.2.8/src/libmongoc/src/mongoc/mongoc-crypto-openssl.c:24:10: fatal error: &apos;openssl/sha.h&apos; file not found</div><div class="line">#include &lt;openssl/sha.h&gt;</div></pre></td></tr></table></figure>
+<h6 id="需要升级openssl-并且执行软连接"><a href="#需要升级openssl-并且执行软连接" class="headerlink" title="需要升级openssl,并且执行软连接"></a>需要升级openssl,并且执行软连接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew install openssl --force</div><div class="line">$ cd /usr/local/include </div><div class="line">$ ln -s ../opt/openssl/include/openssl .</div></pre></td></tr></table></figure>
+<h6 id="继续安装"><a href="#继续安装" class="headerlink" title="继续安装"></a>继续安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ make clean</div><div class="line">$ make</div><div class="line">$ make install</div><div class="line">Installing shared extensions:     /usr/local/Cellar/php56/5.6.30_6/lib/php/extensions/no-debug-non-zts-20131226/</div><div class="line"></div><div class="line">$ php --ini</div><div class="line">Configuration File (php.ini) Path: /usr/local/etc/php/5.6</div><div class="line">Loaded Configuration File:         /usr/local/etc/php/5.6/php.ini</div><div class="line">Scan for additional .ini files in: /usr/local/etc/php/5.6/conf.d</div><div class="line">Additional .ini files parsed:      /usr/local/etc/php/5.6/conf.d/ext-igbinary.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-memcached.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongo.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongodb.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-redis.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-ssh2.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-xdebug.ini</div></pre></td></tr></table></figure>
+<h6 id="修改扩展配置"><a href="#修改扩展配置" class="headerlink" title="修改扩展配置"></a>修改扩展配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ vim /usr/local/etc/php/5.6/conf.d/ext-mongodb.ini</div><div class="line">extension=&quot;/usr/local/Cellar/php56/5.6.30_6/lib/php/extensions/no-debug-non-zts-20131226/mongodb.so&quot;</div></pre></td></tr></table></figure>
+<h6 id="保存后重启服务"><a href="#保存后重启服务" class="headerlink" title="保存后重启服务"></a>保存后重启服务</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ killall php-fpm</div><div class="line">$ php-pfm -D</div></pre></td></tr></table></figure>
+<h6 id="数据库配置config-database-php"><a href="#数据库配置config-database-php" class="headerlink" title="数据库配置config/database.php"></a>数据库配置<code>config/database.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'default'</span> =&gt; env(<span class="string">'DB_CONNECTION'</span>, <span class="string">'mysql'</span>),</div><div class="line"></div><div class="line">    <span class="string">'connections'</span> =&gt; [</div><div class="line">        <span class="string">'mysql'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</div><div class="line">            <span class="string">'host'</span>      =&gt; env(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>),</div><div class="line">            <span class="string">'database'</span>  =&gt; env(<span class="string">'DB_DATABASE'</span>, <span class="string">'lumen'</span>),</div><div class="line">            <span class="string">'username'</span>  =&gt; env(<span class="string">'DB_USERNAME'</span>, <span class="string">'root'</span>),</div><div class="line">            <span class="string">'password'</span>  =&gt; env(<span class="string">'DB_PASSWORD'</span>, <span class="string">'charlie'</span>),</div><div class="line">            <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</div><div class="line">            <span class="string">'collation'</span> =&gt; <span class="string">'utf8_unicode_ci'</span>,</div><div class="line">            <span class="string">'prefix'</span>    =&gt; <span class="string">''</span>,</div><div class="line">            <span class="string">'strict'</span>    =&gt; <span class="keyword">false</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'mongodb'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span>   =&gt; <span class="string">'mongodb'</span>,</div><div class="line">            <span class="string">'host'</span>     =&gt; <span class="string">'localhost'</span>,</div><div class="line">            <span class="string">'port'</span>     =&gt; <span class="number">27017</span>,</div><div class="line">            <span class="string">'database'</span> =&gt; <span class="string">'test'</span>,</div><div class="line">            <span class="string">'username'</span> =&gt; env(<span class="string">''</span>),</div><div class="line">            <span class="string">'password'</span> =&gt; env(<span class="string">''</span>),</div><div class="line">            <span class="string">'options'</span>  =&gt; [</div><div class="line">                <span class="string">'database'</span> =&gt; <span class="string">'admin'</span> <span class="comment">// sets the authentication database required by mongo 3</span></div><div class="line">            ]</div><div class="line">        ],</div><div class="line"></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h6 id="注册服务bootstrap-app-php"><a href="#注册服务bootstrap-app-php" class="headerlink" title="注册服务bootstrap/app.php"></a>注册服务<code>bootstrap/app.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$app-&gt;configure(<span class="string">'database'</span>);</div><div class="line"></div><div class="line">$app-&gt;register(\Jenssegers\Mongodb\MongodbServiceProvider::class);</div><div class="line"></div><div class="line">$app-&gt;withEloquent();</div></pre></td></tr></table></figure>
+<h6 id="创建测试模型app-Model-Test-php"><a href="#创建测试模型app-Model-Test-php" class="headerlink" title="创建测试模型app/Model/Test.php"></a>创建测试模型<code>app/Model/Test.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Jenssegers</span>\<span class="title">Mongodb</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Model</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $connection = <span class="string">'mongodb'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $collection = <span class="string">'c2'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="创建测试控制器app-Http-Controllers-TestController-php"><a href="#创建测试控制器app-Http-Controllers-TestController-php" class="headerlink" title="创建测试控制器app/Http/Controllers/TestController.php"></a>创建测试控制器<code>app/Http/Controllers/TestController.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Model</span>\<span class="title">Test</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">DB</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line"><span class="comment">//        $test = DB::connection('mongodb')-&gt;collection('c2')-&gt;get();</span></div><div class="line">        $test = Test::all()-&gt;toArray();</div><div class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</div><div class="line">        print_r($test);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="创建路由routes-web-php"><a href="#创建路由routes-web-php" class="headerlink" title="创建路由routes/web.php"></a>创建路由<code>routes/web.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$app-&gt;get(<span class="string">'aa'</span>, <span class="string">'TestController@index'</span>);</div></pre></td></tr></table></figure>
+<h6 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span></div><div class="line">(</div><div class="line">    [<span class="number">0</span>] =&gt; <span class="keyword">Array</span></div><div class="line">        (</div><div class="line">            [_id] =&gt; <span class="number">5837</span>d39d05045864010041bd</div><div class="line">            [ym] =&gt; <span class="number">2016</span>年/<span class="number">11</span>月</div><div class="line">            [date] =&gt; <span class="number">2016</span>/<span class="number">11</span>/<span class="number">25</span></div><div class="line">            [key_time] =&gt; tmp_look_1480047736</div><div class="line">            [title] =&gt; test18</div><div class="line">            [status] =&gt; 已发布</div><div class="line">        )</div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用&lt;code&gt;composer&lt;/code&gt;来安装。&lt;/p&gt;
+&lt;h4 id=&quot;安装jenssegers-mongodb报错&quot;&gt;&lt;a href=&quot;#安装jenssegers-mongodb报错&quot; class=&quot;headerlink&quot; title=&quot;安装jenssegers/mongodb报错&quot;&gt;&lt;/a&gt;安装&lt;code&gt;jenssegers/mongodb&lt;/code&gt;报错&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://www.cenhq.com/categories/Laravel/"/>
+    
+    
+      <category term="mongodb" scheme="http://www.cenhq.com/tags/mongodb/"/>
+    
+      <category term="php56-mongodb" scheme="http://www.cenhq.com/tags/php56-mongodb/"/>
+    
+      <category term="php56-mongo" scheme="http://www.cenhq.com/tags/php56-mongo/"/>
+    
+      <category term="_clock_gettime" scheme="http://www.cenhq.com/tags/clock-gettime/"/>
+    
+      <category term="mongodb-1.2.8" scheme="http://www.cenhq.com/tags/mongodb-1-2-8/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel 5.4 事件操作</title>
@@ -1142,158 +1209,6 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
       <category term="php_array" scheme="http://www.cenhq.com/tags/php-array/"/>
     
       <category term="show_array" scheme="http://www.cenhq.com/tags/show-array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql多实例</title>
-    <link href="http://www.cenhq.com/2016/09/06/mysql-many-instance/"/>
-    <id>http://www.cenhq.com/2016/09/06/mysql-many-instance/</id>
-    <published>2016-09-06T16:37:37.000Z</published>
-    <updated>2017-03-15T05:47:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>需求：</p>
-<p>mysql主从复制，主mysql版本为5.5，从mysql版本为5.7</p>
-<p>主库不需要操作，只在从数据库上配置</p>
-<p>由于需要同步18个数据库，由于主库的端口各不相同，从库同样要开启18个实例</p>
-<p><div>前面直接用脚本操作</div><br><a id="more"></a></p>
-<pre class="lang:sh decode:true">#!/bin/bash
-
-#多实例端口号
-port="3306 3312 3307 3319 3308 3309 3311 3330 3320 3321 3326 3327 3333 3314 3318 3323 3317 3316 3307"
-
-for i in $port
-do
-    #创建数据目录
-        mkdir /data/$i/dbdata -p
-
-        #修改权限
-        chown mysql:mysql /data/$i -R
-
-        #初始化数据库
-        /usr/local/mysql/bin/mysqld --initialize-insecure --user="mysql" --basedir="/usr/local/mysql" --datadir="/data/$i/dbdata"
-
-        #拷贝配置文件
-        cp /opt/my.cnf /data/$i/
-
-        #修改配置
-        sed -i "s/3312/$i/g" /data/$i/my.cnf
-
-        #启动
-        mysqld_safe --defaults-file="/data/$i/my.cnf" &amp;
-
-        #登录,第一次登录默认密码为空
-        mysql -S /tmp/mysql$i.sock &lt;&lt; EOF
-
-        #修改密码
-        use mysql;
-        set password = password('******');
-
-        #授予权限
-        grant all on *.* to root@'192.168.61.%' identified by '******';
-        flush privileges;
-        exit;
-EOF
-
-done</pre>
-脚本注释：
-
-#初始化，5.7版本废弃mysql_install_db命令，该用mysqld 来初始化，—initialize 参数来创建密码，默认保存在~/.mysql_secret 。 —initialize-insecure 参数创建空密码
-
-主配置文件
-<pre class="lang:sh decode:true ">[client]
-port = 3312
-socket = /tmp/mysql3312.sock
-default-character-set = utf8mb4
-
-[mysql]
-prompt="MySQL [\d]&gt; "
-no-auto-rehash
-
-[mysqld]
-port = 3370
-socket = /tmp/mysql3312.sock
-
-basedir = /usr/local/mysql
-datadir = /data/3312/dbdata
-pid-file = /data/3312/mysql.pid
-user = mysql
-bind-address = 0.0.0.0
-server-id = 5
-
-init-connect = 'SET NAMES utf8mb4'
-character-set-server = utf8mb4
-
-skip-name-resolve
-
-log_bin = mysql-bin
-binlog_format = mixed
-expire_logs_days = 7</pre>
-查看服务
-<pre class="lang:sh decode:true ">[root@host-192-168-150-202 ~]# netstat -lutnp |grep mysqld
-tcp        0      0 0.0.0.0:3307                0.0.0.0:*                   LISTEN      28591/mysqld
-tcp        0      0 0.0.0.0:3308                0.0.0.0:*                   LISTEN      30546/mysqld
-tcp        0      0 0.0.0.0:3309                0.0.0.0:*                   LISTEN      31062/mysqld
-tcp        0      0 0.0.0.0:3311                0.0.0.0:*                   LISTEN      31564/mysqld
-tcp        0      0 0.0.0.0:3312                0.0.0.0:*                   LISTEN      27792/mysqld
-tcp        0      0 0.0.0.0:3314                0.0.0.0:*                   LISTEN      2978/mysqld
-tcp        0      0 0.0.0.0:3316                0.0.0.0:*                   LISTEN      5322/mysqld
-tcp        0      0 0.0.0.0:3317                0.0.0.0:*                   LISTEN      4736/mysqld
-tcp        0      0 0.0.0.0:3318                0.0.0.0:*                   LISTEN      3564/mysqld
-tcp        0      0 0.0.0.0:3319                0.0.0.0:*                   LISTEN      11531/mysqld
-tcp        0      0 0.0.0.0:3320                0.0.0.0:*                   LISTEN      32591/mysqld
-tcp        0      0 0.0.0.0:3321                0.0.0.0:*                   LISTEN      661/mysqld
-tcp        0      0 0.0.0.0:3323                0.0.0.0:*                   LISTEN      4150/mysqld
-tcp        0      0 0.0.0.0:3326                0.0.0.0:*                   LISTEN      1229/mysqld
-tcp        0      0 0.0.0.0:3327                0.0.0.0:*                   LISTEN      1774/mysqld
-tcp        0      0 0.0.0.0:3330                0.0.0.0:*                   LISTEN      32066/mysqld
-tcp        0      0 0.0.0.0:3333                0.0.0.0:*                   LISTEN      2392/mysqld
-tcp        0      0 0.0.0.0:3370                0.0.0.0:*                   LISTEN      6497/mysqld
-tcp        0      0 0.0.0.0:3306                0.0.0.0:*                   LISTEN      5923/mysqld</pre>
-登录到主数据库上查看file,pos等信息，来配置从数据库
-<pre class="lang:sh decode:true">#指定主服务器
-mysql&gt; change master to master_host="192.168.101.22",master_port=3370,master_user="kfuser",master_password="kfpasswd",master_log_file="mysql-bin.000006",master_log_pos=246808818;
-mysql&gt; start slave;
-mysql&gt; show slave status\G
-*************************** 1\. row ***************************
-               Slave_IO_State: Waiting for master to send event
-                  Master_Host: 192.168.101.99
-                  Master_User: ****
-                  Master_Port: 3307
-                Connect_Retry: 60
-              Master_Log_File: mysql-bin.000007
-          Read_Master_Log_Pos: 326301199
-               Relay_Log_File: host-192-168-150-202-relay-bin.000002
-                Relay_Log_Pos: 164439916
-        Relay_Master_Log_File: mysql-bin.000007
-             Slave_IO_Running: Yes
-            Slave_SQL_Running: Yes</pre>
-
-<hr>
-<p>错误1：</p>
-<p><pre class="lang:sh decode:true ">Last_Errno: 1032<br>Last_Error: Could not execute Update_rows_v1 event on table InfoServer_HS.ONLINENUMREALTIME; Can’t find record in ‘ONLINENUMREALTIME’, Error_code: 1032; handler error HA_ERR_KEY_NOT_FOUND; the event’s master log mysql-bin.000006, end_log_pos 246506088</pre><br>造成1032错误的根本原因是主从数据库数据不一致,导致同步操作在从库上无法执行.</p>
-<p>解决办法：</p>
-<p><pre class="lang:sh decode:true ">vim /etc/my.cnf<br>slave-skip-errors = 1032 #跳过这个错误</pre><br>错误2:</p>
-<p><pre class="lang:sh decode:true ">Last_SQL_Errno: 1677<br>Last_SQL_Error: Column 5 of table ‘InfoServer_HS.ONLINENUM20160906’ cannot be converted from type ‘varchar(100)’ to type ‘varchar(100)’</pre><br>解决办法：</p>
-<p><pre class="lang:sh decode:true ">mysql&gt; stop slave;<br>mysql&gt; set global slave_type_conversions=ALL_NON_LOSSY;<br>mysql&gt; start slave;</pre><br>&nbsp;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;需求：&lt;/p&gt;
-&lt;p&gt;mysql主从复制，主mysql版本为5.5，从mysql版本为5.7&lt;/p&gt;
-&lt;p&gt;主库不需要操作，只在从数据库上配置&lt;/p&gt;
-&lt;p&gt;由于需要同步18个数据库，由于主库的端口各不相同，从库同样要开启18个实例&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;前面直接用脚本操作&lt;/div&gt;&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Mysql" scheme="http://www.cenhq.com/categories/Mysql/"/>
-    
-    
-      <category term="mysql" scheme="http://www.cenhq.com/tags/mysql/"/>
-    
-      <category term="replication" scheme="http://www.cenhq.com/tags/replication/"/>
     
   </entry>
   

@@ -1,0 +1,1175 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mongodb,php56-mongodb,php56-mongo,_clock_gettime,mongodb-1.2.8," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Charlie Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用composer来安装。
+安装jenssegers/mongodb报错">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 安装第三方包 Mongodb报错">
+<meta property="og:url" content="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/index.html">
+<meta property="og:site_name" content="Charlie Blog">
+<meta property="og:description" content="由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用composer来安装。
+安装jenssegers/mongodb报错">
+<meta property="og:updated_time" content="2017-03-28T10:15:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel 安装第三方包 Mongodb报错">
+<meta name="twitter:description" content="由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用composer来安装。
+安装jenssegers/mongodb报错">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '9667906',
+      author: 'charlie'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/"/>
+
+
+
+
+
+  <title> Laravel 安装第三方包 Mongodb报错 | Charlie Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1256550401&web_id=1256550401" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Charlie Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Charlie Cen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/6268321?v=3&u=9a7e8f17793429a6009083c23956dcfadf170fc2&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charlie Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Laravel 安装第三方包 Mongodb报错
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T10:03:19+00:00">
+                2017-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/28/laravel-use-mongodb-error-info/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/28/laravel-use-mongodb-error-info/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/28/laravel-use-mongodb-error-info/" class="leancloud_visitors" data-flag-title="Laravel 安装第三方包 Mongodb报错">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用<code>composer</code>来安装。</p>
+<h4 id="安装jenssegers-mongodb报错"><a href="#安装jenssegers-mongodb报错" class="headerlink" title="安装jenssegers/mongodb报错"></a>安装<code>jenssegers/mongodb</code>报错</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"> $ composer require jenssegers/mongodb:3.2.*</div><div class="line">./composer.json has been updated</div><div class="line">Loading composer repositories with package information</div><div class="line">Updating dependencies (including require-dev)</div><div class="line">Your requirements could not be resolved to an installable set of packages.</div><div class="line"></div><div class="line">  Problem 1</div><div class="line">    - jenssegers/mongodb v3.2.0 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - jenssegers/mongodb v3.2.1 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - jenssegers/mongodb v3.2.2 requires mongodb/mongodb ^1.0.0 -&gt; satisfiable by mongodb/mongodb[1.0.0, 1.0.0-alpha1, 1.0.0-beta1, 1.0.0-beta2, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.0.5, 1.1.0, 1.1.0-alpha1, 1.1.1, 1.1.2, 1.2.0-alpha1, 1.2.x-dev, v1.0.x-dev, v1.1.x-dev].</div><div class="line">    - mongodb/mongodb v1.1.x-dev requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb v1.0.x-dev requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.2.x-dev requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.2.0-alpha1 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.2 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.1 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.0-alpha1 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.1.0 requires ext-mongodb ^1.2.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.5 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.4 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.3 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.2 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.1 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-beta2 requires ext-mongodb ^1.1.1 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-beta1 requires ext-mongodb ^1.0.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0-alpha1 requires ext-mongodb ^1.0.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - mongodb/mongodb 1.0.0 requires ext-mongodb ^1.1.0 -&gt; the requested PHP extension mongodb is missing from your system.</div><div class="line">    - Installation request for jenssegers/mongodb 3.2.* -&gt; satisfiable by jenssegers/mongodb[v3.2.0, v3.2.1, v3.2.2].</div><div class="line"></div><div class="line">  To enable extensions, verify that they are enabled in your .ini files:</div><div class="line">    - /usr/local/etc/php/5.6/php.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-igbinary.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-memcached.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-mongo.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-redis.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-ssh2.ini</div><div class="line">    - /usr/local/etc/php/5.6/conf.d/ext-xdebug.ini</div><div class="line">  You can also run `php --ini` inside terminal to see which files are used by PHP in CLI mode.</div><div class="line"></div><div class="line">Installation failed, reverting ./composer.json to its original content.</div></pre></td></tr></table></figure>
+<h5 id="报错解析"><a href="#报错解析" class="headerlink" title="报错解析"></a>报错解析</h5><p>第三方包需要<code>php56-mongodb</code>扩展，本机只有<code>php56-mongo</code>扩展，所以需要继续安装 <code>php56-mongodb</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew install php56-mongodb                                                                                                                                 </div><div class="line">Error: /usr/local/opt/php56-mongodb is not a valid keg</div></pre></td></tr></table></figure>
+<p>这个错误说明<code>php56-mongodb</code>目录不是有效的桶， 所以删除这个目录继续安装就可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /usr/local/opt/php56-mongodb</div><div class="line">$ brew install php56-mongodb</div><div class="line">$ php -i &quot;(command-line &apos;phpinfo()&apos;)&quot; |grep mongodb</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongodb.ini,</div><div class="line">mongodb</div><div class="line">mongodb.debug =&gt; no value =&gt; no value</div></pre></td></tr></table></figure>
+<p>再次安装第三方包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ composer require jenssegers/mongodb</div><div class="line">cUsing version ^3.2 for jenssegers/mongodb</div><div class="line">./composer.json has been updated</div><div class="line">Loading composer repositories with package information</div><div class="line">Updating dependencies (including require-dev)</div><div class="line">Package operations: 2 installs, 0 updates, 0 removals</div><div class="line">  - Installing mongodb/mongodb (1.1.2): Downloading (100%)         </div><div class="line">  - Installing jenssegers/mongodb (v3.2.2): Downloading (100%)         </div><div class="line">jenssegers/mongodb suggests installing jenssegers/mongodb-session (Add MongoDB session support to Laravel-MongoDB)</div><div class="line">jenssegers/mongodb suggests installing jenssegers/mongodb-sentry (Add Sentry support to Laravel-MongoDB)</div><div class="line">Writing lock file</div><div class="line">Generating autoload files</div></pre></td></tr></table></figure>
+<h4 id="php调用mongodb挂掉"><a href="#php调用mongodb挂掉" class="headerlink" title="php调用mongodb挂掉"></a>php调用mongodb挂掉</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">dyld: lazy symbol binding failed: Symbol not found: _clock_gettime</div><div class="line">  Referenced from: /usr/local/opt/php56-mongodb/mongodb.so</div><div class="line">  Expected in: /usr/lib/libSystem.B.dylib</div><div class="line"></div><div class="line">dyld: Symbol not found: _clock_gettime</div><div class="line">  Referenced from: /usr/local/opt/php56-mongodb/mongodb.so</div><div class="line">  Expected in: /usr/lib/libSystem.B.dylib</div><div class="line"></div><div class="line">[1]    29551 trace trap  php -S 192.168.82.195:8989</div></pre></td></tr></table></figure>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><a href="https://github.com/Homebrew/homebrew-php/issues/3737" target="_blank" rel="external">https://github.com/Homebrew/homebrew-php/issues/3737</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">make sure you have the latest version of xcode-select,mine is 2343 xcode-select -v,if not update then restart your mac</div><div class="line"></div><div class="line"> brew edit &#123;formula&#125; #formula likes php71-mongodb</div><div class="line"></div><div class="line"> edit it，add lines after “install”, may like this</div><div class="line">def install</div><div class="line">Dir.chdir &quot;mongodb-#&#123;version&#125;&quot; unless build.head?</div><div class="line">if MacOS.version == &quot;10.11&quot; &amp;&amp; MacOS::Xcode.installed? &amp;&amp; MacOS::Xcode.version &gt;= &quot;8.0&quot;</div><div class="line">inreplace %w[src/libbson/src/bson/bson-clock.c], &quot;HAVE_CLOCK_GETTIME&quot;, &quot;UNDEFINED_GIBBERISH&quot;`</div><div class="line">end</div><div class="line"></div><div class="line"> reinstall php71-mongodb from source brew reinstall -s php71-mongodb</div></pre></td></tr></table></figure>
+<p>上面的英文解释下：</p>
+<ul>
+<li><code>xcode-select</code> 最新的版本为：2343，如果不是需要升级</li>
+<li>编辑<code>php56-mongodb</code>,修改位置大概在20行下面，添加此内容 <code>if MacOS.version == &quot;10.11&quot; &amp;&amp; MacOS::Xcode.installed? &amp;&amp; MacOS::Xcode.version &gt;= &quot;8.0&quot;
+inreplace %w[src/libbson/src/bson/bson-clock.c], &quot;HAVE_CLOCK_GETTIME&quot;, &quot;UNDEFINED_GIBBERISH&quot;
+end</code></li>
+<li>然后重新安装 <code>php56-mongodb</code></li>
+</ul>
+<blockquote>
+<p>但是重装会无法执行，报错timeout超时。而且下载的是版本为<code>mongodb-1.2.5</code>，所以我们需要最新版本<code>mongodb-1.2.8</code>需要手动下载。</p>
+</blockquote>
+<p><a href="https://github.com/mongodb/mongo-php-driver/releases/download/1.2.8/mongodb-1.2.8.tgz" target="_blank" rel="external">下载地址</a></p>
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ tar xf mongodb-1.2.8.tgz</div><div class="line">$ cd mongodb-1.2.8</div><div class="line">$ phpize</div><div class="line">$ ./configure</div><div class="line">$ make</div></pre></td></tr></table></figure>
+<h6 id="报如下错误"><a href="#报如下错误" class="headerlink" title="报如下错误"></a>报如下错误</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/Users/zt-2203315/Downloads/资源包/mongodb-1.2.8/src/libmongoc/src/mongoc/mongoc-crypto-openssl.c:24:10: fatal error: &apos;openssl/sha.h&apos; file not found</div><div class="line">#include &lt;openssl/sha.h&gt;</div></pre></td></tr></table></figure>
+<h6 id="需要升级openssl-并且执行软连接"><a href="#需要升级openssl-并且执行软连接" class="headerlink" title="需要升级openssl,并且执行软连接"></a>需要升级openssl,并且执行软连接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew install openssl --force</div><div class="line">$ cd /usr/local/include </div><div class="line">$ ln -s ../opt/openssl/include/openssl .</div></pre></td></tr></table></figure>
+<h6 id="继续安装"><a href="#继续安装" class="headerlink" title="继续安装"></a>继续安装</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ make clean</div><div class="line">$ make</div><div class="line">$ make install</div><div class="line">Installing shared extensions:     /usr/local/Cellar/php56/5.6.30_6/lib/php/extensions/no-debug-non-zts-20131226/</div><div class="line"></div><div class="line">$ php --ini</div><div class="line">Configuration File (php.ini) Path: /usr/local/etc/php/5.6</div><div class="line">Loaded Configuration File:         /usr/local/etc/php/5.6/php.ini</div><div class="line">Scan for additional .ini files in: /usr/local/etc/php/5.6/conf.d</div><div class="line">Additional .ini files parsed:      /usr/local/etc/php/5.6/conf.d/ext-igbinary.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-memcached.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongo.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-mongodb.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-redis.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-ssh2.ini,</div><div class="line">/usr/local/etc/php/5.6/conf.d/ext-xdebug.ini</div></pre></td></tr></table></figure>
+<h6 id="修改扩展配置"><a href="#修改扩展配置" class="headerlink" title="修改扩展配置"></a>修改扩展配置</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ vim /usr/local/etc/php/5.6/conf.d/ext-mongodb.ini</div><div class="line">extension=&quot;/usr/local/Cellar/php56/5.6.30_6/lib/php/extensions/no-debug-non-zts-20131226/mongodb.so&quot;</div></pre></td></tr></table></figure>
+<h6 id="保存后重启服务"><a href="#保存后重启服务" class="headerlink" title="保存后重启服务"></a>保存后重启服务</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ killall php-fpm</div><div class="line">$ php-pfm -D</div></pre></td></tr></table></figure>
+<h6 id="数据库配置config-database-php"><a href="#数据库配置config-database-php" class="headerlink" title="数据库配置config/database.php"></a>数据库配置<code>config/database.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'default'</span> =&gt; env(<span class="string">'DB_CONNECTION'</span>, <span class="string">'mysql'</span>),</div><div class="line"></div><div class="line">    <span class="string">'connections'</span> =&gt; [</div><div class="line">        <span class="string">'mysql'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</div><div class="line">            <span class="string">'host'</span>      =&gt; env(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>),</div><div class="line">            <span class="string">'database'</span>  =&gt; env(<span class="string">'DB_DATABASE'</span>, <span class="string">'lumen'</span>),</div><div class="line">            <span class="string">'username'</span>  =&gt; env(<span class="string">'DB_USERNAME'</span>, <span class="string">'root'</span>),</div><div class="line">            <span class="string">'password'</span>  =&gt; env(<span class="string">'DB_PASSWORD'</span>, <span class="string">'charlie'</span>),</div><div class="line">            <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</div><div class="line">            <span class="string">'collation'</span> =&gt; <span class="string">'utf8_unicode_ci'</span>,</div><div class="line">            <span class="string">'prefix'</span>    =&gt; <span class="string">''</span>,</div><div class="line">            <span class="string">'strict'</span>    =&gt; <span class="keyword">false</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'mongodb'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span>   =&gt; <span class="string">'mongodb'</span>,</div><div class="line">            <span class="string">'host'</span>     =&gt; <span class="string">'localhost'</span>,</div><div class="line">            <span class="string">'port'</span>     =&gt; <span class="number">27017</span>,</div><div class="line">            <span class="string">'database'</span> =&gt; <span class="string">'test'</span>,</div><div class="line">            <span class="string">'username'</span> =&gt; env(<span class="string">''</span>),</div><div class="line">            <span class="string">'password'</span> =&gt; env(<span class="string">''</span>),</div><div class="line">            <span class="string">'options'</span>  =&gt; [</div><div class="line">                <span class="string">'database'</span> =&gt; <span class="string">'admin'</span> <span class="comment">// sets the authentication database required by mongo 3</span></div><div class="line">            ]</div><div class="line">        ],</div><div class="line"></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h6 id="注册服务bootstrap-app-php"><a href="#注册服务bootstrap-app-php" class="headerlink" title="注册服务bootstrap/app.php"></a>注册服务<code>bootstrap/app.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$app-&gt;configure(<span class="string">'database'</span>);</div><div class="line"></div><div class="line">$app-&gt;register(\Jenssegers\Mongodb\MongodbServiceProvider::class);</div><div class="line"></div><div class="line">$app-&gt;withEloquent();</div></pre></td></tr></table></figure>
+<h6 id="创建测试模型app-Model-Test-php"><a href="#创建测试模型app-Model-Test-php" class="headerlink" title="创建测试模型app/Model/Test.php"></a>创建测试模型<code>app/Model/Test.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Jenssegers</span>\<span class="title">Mongodb</span>\<span class="title">Eloquent</span>\<span class="title">Model</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Model</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $connection = <span class="string">'mongodb'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $collection = <span class="string">'c2'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="创建测试控制器app-Http-Controllers-TestController-php"><a href="#创建测试控制器app-Http-Controllers-TestController-php" class="headerlink" title="创建测试控制器app/Http/Controllers/TestController.php"></a>创建测试控制器<code>app/Http/Controllers/TestController.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Model</span>\<span class="title">Test</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">DB</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line"><span class="comment">//        $test = DB::connection('mongodb')-&gt;collection('c2')-&gt;get();</span></div><div class="line">        $test = Test::all()-&gt;toArray();</div><div class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</div><div class="line">        print_r($test);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="创建路由routes-web-php"><a href="#创建路由routes-web-php" class="headerlink" title="创建路由routes/web.php"></a>创建路由<code>routes/web.php</code></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$app-&gt;get(<span class="string">'aa'</span>, <span class="string">'TestController@index'</span>);</div></pre></td></tr></table></figure>
+<h6 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span></div><div class="line">(</div><div class="line">    [<span class="number">0</span>] =&gt; <span class="keyword">Array</span></div><div class="line">        (</div><div class="line">            [_id] =&gt; <span class="number">5837</span>d39d05045864010041bd</div><div class="line">            [ym] =&gt; <span class="number">2016</span>年/<span class="number">11</span>月</div><div class="line">            [date] =&gt; <span class="number">2016</span>/<span class="number">11</span>/<span class="number">25</span></div><div class="line">            [key_time] =&gt; tmp_look_1480047736</div><div class="line">            [title] =&gt; test18</div><div class="line">            [status] =&gt; 已发布</div><div class="line">        )</div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="wx.jpg" alt="Charlie Cen WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="zfb.jpg" alt="Charlie Cen Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+            <a href="/tags/php56-mongodb/" rel="tag"># php56-mongodb</a>
+          
+            <a href="/tags/php56-mongo/" rel="tag"># php56-mongo</a>
+          
+            <a href="/tags/clock-gettime/" rel="tag"># _clock_gettime</a>
+          
+            <a href="/tags/mongodb-1-2-8/" rel="tag"># mongodb-1.2.8</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/laravel-event/" rel="next" title="Laravel 5.4 事件操作">
+                <i class="fa fa-chevron-left"></i> Laravel 5.4 事件操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/28/laravel-use-mongodb-error-info/"
+     data-title="Laravel 安装第三方包 Mongodb报错"
+     data-content=""
+     data-url="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+     <!--<div class="ds-thread" data-thread-key="2017/03/28/laravel-use-mongodb-error-info/"
+           data-title="Laravel 安装第三方包 Mongodb报错" data-url="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/">
+      </div>-->
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/03/28/laravel-use-mongodb-error-info/" data-title="Laravel 安装第三方包 Mongodb报错" data-url="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"cenhq"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+<!-- 多说公共JS代码 end -->
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/6268321?v=3&u=9a7e8f17793429a6009083c23956dcfadf170fc2&s=400"
+               alt="Charlie Cen" />
+          <p class="site-author-name" itemprop="name">Charlie Cen</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/charliecen" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/cenhuqing" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2139635283/home" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装jenssegers-mongodb报错"><span class="nav-number">1.</span> <span class="nav-text">安装jenssegers/mongodb报错</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#报错解析"><span class="nav-number">1.1.</span> <span class="nav-text">报错解析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php调用mongodb挂掉"><span class="nav-number">2.</span> <span class="nav-text">php调用mongodb挂掉</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决办法"><span class="nav-number">2.1.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#报如下错误"><span class="nav-number">2.1.2.</span> <span class="nav-text">报如下错误</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#需要升级openssl-并且执行软连接"><span class="nav-number">2.1.3.</span> <span class="nav-text">需要升级openssl,并且执行软连接</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#继续安装"><span class="nav-number">2.1.4.</span> <span class="nav-text">继续安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#修改扩展配置"><span class="nav-number">2.1.5.</span> <span class="nav-text">修改扩展配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#保存后重启服务"><span class="nav-number">2.1.6.</span> <span class="nav-text">保存后重启服务</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库配置config-database-php"><span class="nav-number">2.1.7.</span> <span class="nav-text">数据库配置config/database.php</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注册服务bootstrap-app-php"><span class="nav-number">2.1.8.</span> <span class="nav-text">注册服务bootstrap/app.php</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建测试模型app-Model-Test-php"><span class="nav-number">2.1.9.</span> <span class="nav-text">创建测试模型app/Model/Test.php</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建测试控制器app-Http-Controllers-TestController-php"><span class="nav-number">2.1.10.</span> <span class="nav-text">创建测试控制器app/Http/Controllers/TestController.php</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建路由routes-web-php"><span class="nav-number">2.1.11.</span> <span class="nav-text">创建路由routes/web.php</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#访问页面"><span class="nav-number">2.1.12.</span> <span class="nav-text">访问页面</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"cenhq"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("BEypaL7LaOVHY3z7R0JN410p-gzGzoHsz", "vnNkR6Dt0vtwFWaQjDRR8Q78");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
