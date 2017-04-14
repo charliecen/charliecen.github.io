@@ -117,7 +117,7 @@
 <meta property="og:description" content="之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。
 今天这个脚本会比上次那个要好很多，只上传指定范围内的版本号。
 脚本有很多注释，相信大家都能看懂。我大略写下流程。">
-<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
+<meta property="og:updated_time" content="2017-03-28T10:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="脚本发布代码第二版">
 <meta name="twitter:description" content="之前写的脚本发布代码，每次发布都会checkout所有的代码，数据太多。
@@ -523,10 +523,10 @@ break
 正在同步数据到10.19.21.243。。。
 数据同步完成&lt;/pre&gt;
 </code></pre><p>可以查看远程服务器里是否备份过文件</p>
-<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m shell -a “ls -l /app/bak/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 4<br>drwxr-xr-x 9 root root 4096 Sep 17 17:44 server-20150917-1745</pre></p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# ansible online -m sh -a “ls -l /app/bak/“<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>total 4<br>drwxr-xr-x 9 root root 4096 Sep 17 17:44 server-20150917-1745</pre></p>
 <p>10.19.21.242 | success | rc=0 &gt;&gt;<br>total 4<br>drwxr-xr-x 9 root root 4096 Sep 17 17:44 server-20150917-1745<br>检查是否发布最新版本到远程服务器，可以打开刚列出的指定版本号文件(2440_2441.txt)</p>
 <p><pre class="lang:sh decode:true">[root@VM-249 scripts]# cat /home/deploy/version/2440_2441.txt<br>/admin/apps/api/controllers/CommunityController.php<br>/admin/apps/admin/controllers/SchoolController.php<br>/admin/apps/api/controllers/CommunityController.php<br></pre><br>检查其中一个文件</p>
-<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# md5sum /app/server/admin/apps/api/controllers/CommunityController.php<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php<br>[root@VM-249 scripts]# ansible online -m shell -a “md5sum /app/server/admin/apps/api/controllers/CommunityController.php”<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php</pre></p>
+<p><pre class="lang:sh decode:true ">[root@VM-249 scripts]# md5sum /app/server/admin/apps/api/controllers/CommunityController.php<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php<br>[root@VM-249 scripts]# ansible online -m sh -a “md5sum /app/server/admin/apps/api/controllers/CommunityController.php”<br>10.19.21.243 | success | rc=0 &gt;&gt;<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php</pre></p>
 <p>10.19.21.242 | success | rc=0 &gt;&gt;<br>a420fa01054605aba3122cda01d8da1f  /app/server/admin/apps/api/controllers/CommunityController.php<br>&nbsp;</p>
 
       
@@ -712,7 +712,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -730,7 +730,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -787,6 +787,7 @@ var duoshuoQuery = {short_name:"cenhq"};
         
 
         
+<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=lVT4KKJvHZUIBdsx2AMnSvqY3lvVn_xHfOphciXSMRM"></script>
 
 
       </section>
@@ -830,7 +831,6 @@ var duoshuoQuery = {short_name:"cenhq"};
   </span>
   <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
 </div>
-
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动

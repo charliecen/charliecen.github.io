@@ -108,18 +108,18 @@
 
 
 <meta name="description" content="逻辑简介创建数据表
-1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &amp;apos;主键id&amp;apos;,  `userid` int(10) unsigned NOT NULL COMMENT &amp;apos;用户id&amp;apos;,  `lock_time` int">
+1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;主键id&apos;,  `userid` int(10) unsigned NOT NULL COMMENT &apos;用户id&apos;,  `lock_time` int(11) unsigned NOT NU">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码错误3次锁定账号">
 <meta property="og:url" content="http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="逻辑简介创建数据表
-1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &amp;apos;主键id&amp;apos;,  `userid` int(10) unsigned NOT NULL COMMENT &amp;apos;用户id&amp;apos;,  `lock_time` int">
-<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
+1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;主键id&apos;,  `userid` int(10) unsigned NOT NULL COMMENT &apos;用户id&apos;,  `lock_time` int(11) unsigned NOT NU">
+<meta property="og:updated_time" content="2017-03-28T10:42:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码错误3次锁定账号">
 <meta name="twitter:description" content="逻辑简介创建数据表
-1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &amp;apos;主键id&amp;apos;,  `userid` int(10) unsigned NOT NULL COMMENT &amp;apos;用户id&amp;apos;,  `lock_time` int">
+1234567891011CREATE TABLE `userlock` (  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;主键id&apos;,  `userid` int(10) unsigned NOT NULL COMMENT &apos;用户id&apos;,  `lock_time` int(11) unsigned NOT NU">
 
 
 
@@ -457,7 +457,7 @@
 
       
         <h5 id="逻辑简介"><a href="#逻辑简介" class="headerlink" title="逻辑简介"></a>逻辑简介</h5><p>创建数据表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE `userlock` (</div><div class="line">  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT &apos;主键id&apos;,</div><div class="line">  `userid` int(10) unsigned NOT NULL COMMENT &apos;用户id&apos;,</div><div class="line">  `lock_time` int(11) unsigned NOT NULL DEFAULT &apos;14400&apos; COMMENT &apos;锁定时间，默认14400秒&apos;,</div><div class="line">  `error_times` tinyint(1) unsigned NOT NULL DEFAULT &apos;0&apos; COMMENT &apos;错误次数，默认0次&apos;,</div><div class="line">  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &apos;最新登录时间&apos;,</div><div class="line">  `created_at` timestamp NULL DEFAULT NULL,</div><div class="line">  `updated_at` timestamp NULL DEFAULT NULL,</div><div class="line">  PRIMARY KEY (`id`),</div><div class="line">  UNIQUE KEY `userid` (`userid`)</div><div class="line">) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`userlock`</span> (</div><div class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'主键id'</span>,</div><div class="line">  <span class="string">`userid`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'用户id'</span>,</div><div class="line">  <span class="string">`lock_time`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'14400'</span> <span class="keyword">COMMENT</span> <span class="string">'锁定时间，默认14400秒'</span>,</div><div class="line">  <span class="string">`error_times`</span> tinyint(<span class="number">1</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'错误次数，默认0次'</span>,</div><div class="line">  <span class="string">`last_login`</span> <span class="keyword">timestamp</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">COMMENT</span> <span class="string">'最新登录时间'</span>,</div><div class="line">  <span class="string">`created_at`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`updated_at`</span> <span class="keyword">timestamp</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</div><div class="line">  <span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> <span class="string">`userid`</span> (<span class="string">`userid`</span>)</div><div class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">23</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <ol>
 <li>判断用户是否在<code>userlock</code>表中；如果不存在，则继续验证登录密码；</li>
@@ -656,7 +656,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -674,7 +674,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -731,6 +731,7 @@ var duoshuoQuery = {short_name:"cenhq"};
         
 
         
+<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=lVT4KKJvHZUIBdsx2AMnSvqY3lvVn_xHfOphciXSMRM"></script>
 
 
       </section>
@@ -774,7 +775,6 @@ var duoshuoQuery = {short_name:"cenhq"};
   </span>
   <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
 </div>
-
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动

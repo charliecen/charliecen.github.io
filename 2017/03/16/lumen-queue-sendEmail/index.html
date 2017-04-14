@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sendEmail,queue,supervisord," />
+  <meta name="keywords" content="supervisord,sendEmail,queue," />
 
 
 
@@ -118,7 +118,7 @@ Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外�
 <meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-0.png">
 <meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-1.png">
 <meta property="og:image" content="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/QQ20170315-2.png">
-<meta property="og:updated_time" content="2017-03-16T02:39:59.000Z">
+<meta property="og:updated_time" content="2017-03-28T10:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lumen 队列发送邮件">
 <meta name="twitter:description" content="简介Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。
@@ -464,7 +464,7 @@ Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外�
 <p>Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 队列的使用，请参阅 <a href="http://laravelacademy.org/post/6922.html" target="_blank" rel="external">Laravel</a> 文档 。</p>
 <a id="more"></a>
 <h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>队列的配置在 <code>.env</code> 中 <code>QUEUE_DRIVER</code> 选项里。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">QUEUE_DRIVER=database</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">QUEUE_DRIVER=database</div></pre></td></tr></table></figure>
 <p>如果你想完全自定义配置信息，你可以复制 <code>vendor/laravel/lumen-framework/config/queue.php</code> 整个文件到 <code>config/queue.php</code> 中，根目录如果没有 <code>config</code> 的话你应该创建一个。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'default'</span> =&gt; env(<span class="string">'QUEUE_DRIVER'</span>, <span class="string">'database'</span>),</div><div class="line"></div><div class="line">    <span class="string">'connections'</span> =&gt; [</div><div class="line"></div><div class="line">        <span class="string">'sync'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'sync'</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'database'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'database'</span>,</div><div class="line">            <span class="string">'table'</span> =&gt; <span class="string">'jobs'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'beanstalkd'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'beanstalkd'</span>,</div><div class="line">            <span class="string">'host'</span> =&gt; <span class="string">'localhost'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'sqs'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'sqs'</span>,</div><div class="line">            <span class="string">'key'</span> =&gt; <span class="string">'your-public-key'</span>,</div><div class="line">            <span class="string">'secret'</span> =&gt; <span class="string">'your-secret-key'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'your-queue-url'</span>,</div><div class="line">            <span class="string">'region'</span> =&gt; <span class="string">'us-east-1'</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">        <span class="string">'redis'</span> =&gt; [</div><div class="line">            <span class="string">'driver'</span> =&gt; <span class="string">'redis'</span>,</div><div class="line">            <span class="string">'connection'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'queue'</span> =&gt; <span class="string">'default'</span>,</div><div class="line">            <span class="string">'retry_after'</span> =&gt; <span class="number">60</span>,</div><div class="line">        ],</div><div class="line"></div><div class="line">    ],</div><div class="line"></div><div class="line">    <span class="string">'failed'</span> =&gt; [</div><div class="line">        <span class="string">'database'</span> =&gt; env(<span class="string">'DB_CONNECTION'</span>, <span class="string">'mysql'</span>),</div><div class="line">        <span class="string">'table'</span> =&gt; env(<span class="string">'QUEUE_FAILED_TABLE'</span>, <span class="string">'failed_jobs'</span>),</div><div class="line">    ],</div><div class="line">];</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p>要使用 <code>database</code> 这个队列驱动的话，则需要创建一个数据表来记住任务:</p>
@@ -490,21 +490,21 @@ Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外�
 </blockquote>
 <p>请记住，队列进程是长生命周期的进程，会在启动后驻留内存。若应用有任何改动将不会影响到已经启动的进程。所以请在发布程序后，重启队列进程。</p>
 <h3 id="配置Supervisor"><a href="#配置Supervisor" class="headerlink" title="配置Supervisor"></a>配置Supervisor</h3><p>Supervisor 是 Linux 系统中常用的进程守护程序。如果队列进程 <code>queue:work</code> 意外关闭，它会自动重启启动队列进程。在 Mac 安装Supervisor 非常简单：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew search |grep supervisor                                                                                                                       </div><div class="line">supervisor</div><div class="line">$ brew install supervisor</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew search |grep supervisor                                                                                                                       </div><div class="line">supervisor</div><div class="line">$ brew install supervisor</div></pre></td></tr></table></figure>
 <h4 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h4><p>Supervisor 配置文件通常存放在 <code>/usr/local/etc/supervisord.conf</code> 目录，在该目录中，可以创建多个配置文件指示 <code>Supervisor</code> 如何监视进程，例如，让我们创建一个开启并监视<code>queue:work</code> 进程的 <code>laravel-worker.conf</code> 文件：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[program:laravel-worker]</div><div class="line">process_name=%(program_name)s_%(process_num)<span class="number">02</span>d</div><div class="line">command=php /Users/zt<span class="number">-2203315</span>/www/gametest/artisan queue:work  --sleep=<span class="number">3</span> --tries=<span class="number">3</span></div><div class="line">autostart=<span class="keyword">true</span></div><div class="line">autorestart=<span class="keyword">true</span></div><div class="line">numprocs=<span class="number">8</span></div><div class="line">redirect_stderr=<span class="keyword">true</span></div><div class="line">stdout_logfile=/tmp/worker.log</div></pre></td></tr></table></figure>
 <p>在本例中，<code>numprocs</code> 指令让 Supervisor 运行 8 个 <code>queue:work</code> 进程并监视它们，如果失败的话自动重启。当然，你需要修改 <code>queue:work</code> <code>database</code> 的 <code>command</code> 指令来映射你的队列连接。</p>
 <h4 id="启动Supervisor"><a href="#启动Supervisor" class="headerlink" title="启动Supervisor"></a>启动Supervisor</h4><p>当你成功创建配置文件后，你需要刷新 Supervisor 的配置信息并使用如下命令启动进程:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ ps aux |grep supervisord |grep -v grep</div><div class="line">zt-2203315       94458   0.0  0.0  2470732   6320   ??  Ss    6:12PM   0:01.65 /usr/local/Cellar/supervisor/3.3.1/libexec/bin/python /usr/local/bin/supervisord</div><div class="line">$ supervisorctl</div><div class="line">laravel-worker:laravel-worker_00   RUNNING   pid 94546, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_01   RUNNING   pid 94547, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_02   RUNNING   pid 94548, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_03   RUNNING   pid 94549, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_04   RUNNING   pid 94550, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_05   RUNNING   pid 94551, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_06   RUNNING   pid 94552, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_07   RUNNING   pid 94553, uptime 0:35:28</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ ps aux |grep supervisord |grep -v grep</div><div class="line">zt-2203315       94458   0.0  0.0  2470732   6320   ??  Ss    6:12PM   0:01.65 /usr/<span class="built_in">local</span>/Cellar/supervisor/3.3.1/libexec/bin/python /usr/<span class="built_in">local</span>/bin/supervisord</div><div class="line">$ supervisorctl</div><div class="line">laravel-worker:laravel-worker_00   RUNNING   pid 94546, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_01   RUNNING   pid 94547, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_02   RUNNING   pid 94548, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_03   RUNNING   pid 94549, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_04   RUNNING   pid 94550, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_05   RUNNING   pid 94551, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_06   RUNNING   pid 94552, uptime 0:35:28</div><div class="line">laravel-worker:laravel-worker_07   RUNNING   pid 94553, uptime 0:35:28</div></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><blockquote>
 <p>请注意：要先停止supervisor的laravel-work服务</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">supervisor&gt; shutdown</div><div class="line">Really shut the remote supervisord process down y/N? y</div><div class="line">Shut down</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">supervisor&gt; shutdown</div><div class="line">Really shut the remote supervisord process down y/N? y</div><div class="line">Shut down</div></pre></td></tr></table></figure>
 <p>发送邮件给用户</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"code"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"data"</span>: <span class="string">""</span>,</div><div class="line">  <span class="string">"msg"</span>: <span class="string">"邮件已重新发送"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>测试结果<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-0.png" alt=""></p>
 <p>启动supervisor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ tail -f /tmp/worker.log</div><div class="line">[2017-03-15 18:56:46] Processed: App\Jobs\SendReminderEmail</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ supervisord</div><div class="line">$ tail <span class="_">-f</span> /tmp/worker.log</div><div class="line">[2017-03-15 18:56:46] Processed: App\Jobs\SendReminderEmail</div></pre></td></tr></table></figure>
 <p>再次查看数据表,已经为空<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-1.png" alt=""></p>
 <p>查看邮箱<br><img src="/2017/03/16/lumen-queue-sendEmail/QQ20170315-2.png" alt=""></p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://lumen.laravel-china.org/docs/5.3/queues" target="_blank" rel="external">https://lumen.laravel-china.org/docs/5.3/queues</a></p>
@@ -553,11 +553,11 @@ Lumen 和 Laravel 的队列功能除了接下来会列出来的不同点以外�
       
         <div class="post-tags">
           
+            <a href="/tags/supervisord/" rel="tag"># supervisord</a>
+          
             <a href="/tags/sendEmail/" rel="tag"># sendEmail</a>
           
             <a href="/tags/queue/" rel="tag"># queue</a>
-          
-            <a href="/tags/supervisord/" rel="tag"># supervisord</a>
           
         </div>
       
@@ -693,7 +693,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -711,7 +711,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -768,6 +768,7 @@ var duoshuoQuery = {short_name:"cenhq"};
         
 
         
+<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=lVT4KKJvHZUIBdsx2AMnSvqY3lvVn_xHfOphciXSMRM"></script>
 
 
       </section>
@@ -811,7 +812,6 @@ var duoshuoQuery = {short_name:"cenhq"};
   </span>
   <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
 </div>
-
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动

@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="highcharts to pdf,html to pdf,shell_exec(),wkhtmltopdf,页面生成pdf," />
+  <meta name="keywords" content="highcharts to pdf,html to pdf,sh_exec(),wkhtmltopdf,页面生成pdf," />
 
 
 
@@ -123,7 +123,7 @@ http://wkhtmltopdf.org/downloads.html">
 http://wkhtmltopdf.org/downloads.html">
 <meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161201-0.png">
 <meta property="og:image" content="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161201-1.png">
-<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
+<meta property="og:updated_time" content="2017-03-28T10:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html-to-pdf-for-php">
 <meta name="twitter:description" content="需求：报表页面点击下载后转成pdf文件；
@@ -487,10 +487,10 @@ http://wkhtmltopdf.org/downloads.html">
 <p><pre class="lang:sh decode:true ">tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz<br>cd wkhtmltox/bin<br>cp wkhtmltopdf /usr/local/bin/<br></pre><br>html页面</p>
 <p><pre class="lang:xhtml decode:true ">&lt;button class=”btn-success btn button” style=”margin-left: 85%” onclick=”print_pdf()”&gt;下载PDF&lt;/button&gt;<br>&lt;form action=”&lt;?php echo U(‘Custorm/savePdf’) ?&gt;” method=”post” name=”hld_res” id=”hideform”&gt;<br>  &lt;input type=”hidden” id=”hide_content” name=”content” /&gt;<br>  &lt;input type=”hidden” name=”title” value=”&lt;?php echo $data[0][‘title’]?&gt;”/&gt;<br>&lt;/form&gt;</pre><br>JS方法</p>
 <p><pre class="lang:sh decode:true ">function print_pdf(){<br>            //下载范围<br>            bdhtml=window.document.body.innerHTML;<br>            sprnstr=”&lt;!–startprint–&gt;”;<br>            eprnstr=”&lt;!–endprint–&gt;”;<br>            prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);<br>            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));<br>//            将获取的html代码添加到隐藏域中传给php文件处理<br>            $(“#hide_content”).val(“”+prnhtml+””);<br>            $(“#hideform”).submit();<br>        }</pre><br>PHP方法</p>
-<p><pre class="lang:php decode:true">public function savePdf()<br>    {<br>        $html = $_REQUEST[‘content’];<br>        ob_start();<br>        $html=’<br>        &lt;html&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style.css" target="_blank" rel="external">http://your_domain_name/Public/css/style.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style-responsive.css" target="_blank" rel="external">http://your_domain_name/Public/css/style-responsive.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link type=”text/css” rel=”stylesheet” href=”<a href="http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt" target="_blank" rel="external">http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt</a>;<br>        &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>        &lt;body style=”background: white;”&gt; ‘.$html;<br>        $html .= ‘ &lt;/body&gt;&lt;/html&gt;’;<br>        $filename = $_REQUEST[‘title’] ? $_REQUEST[‘title’] : ‘报表-‘.date(‘Y-m-d’);<br>        file_put_contents(“{$filename}.html”, $html);<br>        ob_end_clean();<br>        //转换HTML TO PDF<br>        shell_exec(“/usr/local/bin/wkhtmltopdf -q -s A2 -O Landscape {$filename}.html {$filename}.pdf”);<br>        if(file_exists(“{$filename}.pdf”)){<br>            header(‘Content-type:application/octet-stream’);<br>            header(“Content-Disposition:attachment;filename={$filename}.pdf”);<br>            header(‘Content-Length:’.filesize(“{$filename}.pdf”));<br>            readfile(“{$filename}.pdf”);<br>            //删除本地的文件<br>            unlink(“{$filename}.pdf”);<br>            unlink(“{$filename}.html”);<br>        }else{<br>            exit;<br>        }<br>    }</pre><br>pdf文档效果</p>
+<p><pre class="lang:php decode:true">public function savePdf()<br>    {<br>        $html = $_REQUEST[‘content’];<br>        ob_start();<br>        $html=’<br>        &lt;html&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style.css" target="_blank" rel="external">http://your_domain_name/Public/css/style.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link href=”<a href="http://your_domain_name/Public/css/style-responsive.css" target="_blank" rel="external">http://your_domain_name/Public/css/style-responsive.css</a>“ rel=”stylesheet”&gt;<br>        &lt;link type=”text/css” rel=”stylesheet” href=”<a href="http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt" target="_blank" rel="external">http://your_domain_name/Public/js/bootstrap-table/bootstrap-table.css&quot;&amp;gt</a>;<br>        &lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8” /&gt;<br>        &lt;body style=”background: white;”&gt; ‘.$html;<br>        $html .= ‘ &lt;/body&gt;&lt;/html&gt;’;<br>        $filename = $_REQUEST[‘title’] ? $_REQUEST[‘title’] : ‘报表-‘.date(‘Y-m-d’);<br>        file_put_contents(“{$filename}.html”, $html);<br>        ob_end_clean();<br>        //转换HTML TO PDF<br>        sh_exec(“/usr/local/bin/wkhtmltopdf -q -s A2 -O Landscape {$filename}.html {$filename}.pdf”);<br>        if(file_exists(“{$filename}.pdf”)){<br>            header(‘Content-type:application/octet-stream’);<br>            header(“Content-Disposition:attachment;filename={$filename}.pdf”);<br>            header(‘Content-Length:’.filesize(“{$filename}.pdf”));<br>            readfile(“{$filename}.pdf”);<br>            //删除本地的文件<br>            unlink(“{$filename}.pdf”);<br>            unlink(“{$filename}.html”);<br>        }else{<br>            exit;<br>        }<br>    }</pre><br>pdf文档效果</p>
 <p><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161201-1.png" alt=""></p>
 <p>效果还是不错的；</p>
-<p>这里遇到一个问题，就是线上的shell_exec()函数不执行。改目录权限，改sudo配置等等，都没效果，然后去配置文件里查看php.ini, 里面添加了disable_functions，去掉你要用的函数就可以了。</p>
+<p>这里遇到一个问题，就是线上的sh_exec()函数不执行。改目录权限，改sudo配置等等，都没效果，然后去配置文件里查看php.ini, 里面添加了disable_functions，去掉你要用的函数就可以了。</p>
 <p>参考：<a href="http://blog.csdn.net/qq_14873105/article/details/51394026" target="_blank" rel="external">http://blog.csdn.net/qq_14873105/article/details/51394026</a></p>
 
       
@@ -540,7 +540,7 @@ http://wkhtmltopdf.org/downloads.html">
           
             <a href="/tags/html-to-pdf/" rel="tag"># html to pdf</a>
           
-            <a href="/tags/shell-exec/" rel="tag"># shell_exec()</a>
+            <a href="/tags/sh-exec/" rel="tag"># sh_exec()</a>
           
             <a href="/tags/wkhtmltopdf/" rel="tag"># wkhtmltopdf</a>
           
@@ -671,7 +671,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -689,7 +689,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -746,6 +746,7 @@ var duoshuoQuery = {short_name:"cenhq"};
         
 
         
+<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=lVT4KKJvHZUIBdsx2AMnSvqY3lvVn_xHfOphciXSMRM"></script>
 
 
       </section>
@@ -773,7 +774,6 @@ var duoshuoQuery = {short_name:"cenhq"};
   </span>
   <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
 </div>
-
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动

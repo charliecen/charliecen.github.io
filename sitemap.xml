@@ -2,317 +2,331 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</loc>
+    <loc>http://www.cenhq.com/2017/04/14/lumen-deploy-problems-to-online/</loc>
     
-    <lastmod>2017-03-28T10:15:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
-    
-    <lastmod>2017-03-22T05:21:39.000Z</lastmod>
+    <lastmod>2017-04-14T06:20:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/</loc>
+    <loc>http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/</loc>
     
-    <lastmod>2017-03-17T08:59:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</loc>
-    
-    <lastmod>2017-03-16T02:39:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
-    
-    <lastmod>2017-03-15T05:52:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/12/01/html-to-pdf-for-php/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/12/08/install-mongodb-enterprise-2-6/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/11/12/redis-crackit-leak-testing/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/03/06/lumen-avatar-upload/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/03/03/lumen-form-validate/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2017/01/04/mongo-3-2-replication/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/11/16/mysql-data-dir-move/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/09/06/mysql-many-instance/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.cenhq.com/2015/10/10/python-higher-order-functions/</loc>
-    
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-04-14T06:20:14.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:42:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/10/10/python-higher-order-functions/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/12/01/html-to-pdf-for-php/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/12/08/install-mongodb-enterprise-2-6/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/03/06/lumen-avatar-upload/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/03/03/lumen-form-validate/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2017/01/04/mongo-3-2-replication/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/11/16/mysql-data-dir-move/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/09/06/mysql-many-instance/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.cenhq.com/2015/11/12/redis-crackit-leak-testing/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/06/rollback-script-code/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/23/samba-service-build/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/12/17/scripts-add-ip-to-iptables/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/12/18/ssh-tunnel-over-the-wall/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/17/the-second-edition-release-script-code/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2017/02/04/thinkphp-data-cache/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2016/12/08/thinkphp-page-access-control/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2016/11/29/thinkphp-update-mongo-data/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/16/wordpress-add-clustrmaps/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/16/wordpress-add-cnzz/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/15/wordpress-add-suspended-the-index/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/12/wp-postviews-method-of-use/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/08/zabbix-2-4-4-upgrade-to-zabbix-2-5-0/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/10/15/zabbix-add-webchat-alarm/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2016/09/12/zabbix-api-php/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/11/16/zabbix-monitor-logstash-java/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/12/30/zabbix-monitor-mongodb/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/06/zabbix-monitor-tcp-connection-number/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.cenhq.com/2015/09/09/zabbix-uses-sendemail-script-to-send-mail/</loc>
     
-    <lastmod>2017-03-15T05:47:15.000Z</lastmod>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
   </url>
   

@@ -113,7 +113,7 @@
 <meta property="og:url" content="http://www.cenhq.com/2015/12/08/install-mongodb-enterprise-2-6/index.html">
 <meta property="og:site_name" content="Charlie Blog">
 <meta property="og:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。">
-<meta property="og:updated_time" content="2017-03-15T05:47:15.000Z">
+<meta property="og:updated_time" content="2017-03-28T10:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装mongodb-enterprise-2.6">
 <meta name="twitter:description" content="MongoDB社区版本和企业版本差异主要体现在安全认证、系统认证等方面，具体信息参考下表：这里使用的是企业版，版本是2.6，新版3.2还在开发中。。。">
@@ -455,7 +455,7 @@ enabled=1</pre>
 mongodb-enterprise-server-2.6.11-1.el6.x86_64
 mongodb-enterprise-tools-2.6.11-1.el6.x86_64
 mongodb-enterprise-2.6.11-1.el6.x86_64
-mongodb-enterprise-shell-2.6.11-1.el6.x86_64
+mongodb-enterprise-sh-2.6.11-1.el6.x86_64
 mongodb-enterprise-mongos-2.6.11-1.el6.x86_64</pre>
 
 <h3 id="3-修改配置"><a href="#3-修改配置" class="headerlink" title="3.修改配置"></a>3.修改配置</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# egrep -v '^$|^#' /etc/mongod.conf
@@ -471,12 +471,12 @@ auth=true</pre>
 [root@VM-248 ~]# chkconfig mongod  on</pre>
 
 <h3 id="5-添加密码"><a href="#5-添加密码" class="headerlink" title="5.添加密码"></a>5.添加密码</h3><pre class="lang:sh decode:true ">[root@VM-248 ~]# mongo
-MongoDB shell version: 2.6.11
+MongoDB sh version: 2.6.11
 connecting to: test
 &gt; use admin
 switched to db admin
 &gt; db.addUser('root','password')
-WARNING: The 'addUser' shell helper is DEPRECATED. Please use 'createUser' instead
+WARNING: The 'addUser' sh helper is DEPRECATED. Please use 'createUser' instead
 Successfully added user: { "user" : "root", "roles" : [ "root" ] }
 &gt; db.system.users.find()
 { "_id" : "admin.root", "user" : "root", "db" : "admin", "credentials" : { "MONGODB-CR" : "29e87d0a8716c4ae20efbcdd9d252f5b" }, "roles" : [ { "role" : "root", "db" : "admin" } ] }
@@ -491,7 +491,7 @@ WriteResult({ "nRemoved" : 1 })
 &gt; exit
 bye</pre>
 
-<h3 id="7-远程连接"><a href="#7-远程连接" class="headerlink" title="7.远程连接"></a>7.远程连接</h3><p><pre class="lang:sh decode:true ">cenhuqing@cenhuqingdeMacBook-Pro ~$mongo vm248/admin -u root -p password<br>MongoDB shell version: 3.0.4<br>connecting to: vm248/admin<br>&gt; show dbs;<br>admin  0.078GB<br>local  0.078GB<br>&gt; exit<br>bye</pre><br>参考文章：<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/" target="_blank" rel="external">https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/</a></p>
+<h3 id="7-远程连接"><a href="#7-远程连接" class="headerlink" title="7.远程连接"></a>7.远程连接</h3><p><pre class="lang:sh decode:true ">cenhuqing@cenhuqingdeMacBook-Pro ~$mongo vm248/admin -u root -p password<br>MongoDB sh version: 3.0.4<br>connecting to: vm248/admin<br>&gt; show dbs;<br>admin  0.078GB<br>local  0.078GB<br>&gt; exit<br>bye</pre><br>参考文章：<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/" target="_blank" rel="external">https://docs.mongodb.org/manual/tutorial/install-mongodb-enterprise-on-red-hat/</a></p>
 
       
     </div>
@@ -672,7 +672,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -690,7 +690,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">102</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -747,6 +747,7 @@ var duoshuoQuery = {short_name:"cenhq"};
         
 
         
+<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?d=lVT4KKJvHZUIBdsx2AMnSvqY3lvVn_xHfOphciXSMRM"></script>
 
 
       </section>
@@ -790,7 +791,6 @@ var duoshuoQuery = {short_name:"cenhq"};
   </span>
   <span class="author" itemprop="copyrightHolder">Charlie Cen</span>
 </div>
-
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
