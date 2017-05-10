@@ -4,6 +4,83 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/</loc>
+    <lastmod>2017-05-10T09:40:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel log 无法写入问题</title>
+        <pubTime>2017-05-10T09:38:04.000Z</pubTime>
+        
+        <tag>logs</tag>
+         
+        <tag>queue</tag>
+         
+        <tag>日志无法写入</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2017/04/24/laravel-array-use-paginate/</loc>
+    <lastmod>2017-04-24T03:37:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel 数组分页（带搜索功能）</title>
+        <pubTime>2017-04-24T03:27:32.000Z</pubTime>
+        
+        <tag>paginate</tag>
+         
+        <tag>LengthAwarePaginator</tag>
+         
+        <tag>Collection</tag>
+         
+        <tag>links</tag>
+         
+        <tag>分页</tag>
+         
+        <tag>数组分页</tag>
+         
+         
+           
+             
+              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/</loc>
+    <lastmod>2017-04-14T06:29:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>CentOS 7 安装配置Supervisor</title>
+        <pubTime>2017-04-14T06:17:54.000Z</pubTime>
+        
+        <tag>supervisor</tag>
+         
+        <tag>supervisord</tag>
+         
+        <tag>supervisorctl</tag>
+         
+        <tag>easy_install</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/04/14/lumen-deploy-problems-to-online/</loc>
     <lastmod>2017-04-14T06:20:50.000Z</lastmod>
     <data>
@@ -23,32 +100,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/</loc>
-    <lastmod>2017-04-14T06:20:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>CentOS 7 安装配置Supervisor</title>
-        <pubTime>2017-04-14T06:17:54.000Z</pubTime>
-        
-        <tag>supervisor</tag>
-         
-        <tag>supervisord</tag>
-         
-        <tag>supervisorctl</tag>
-         
-        <tag>easy_install</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
-          
         </display>
     </data>
     </url>
@@ -82,73 +133,23 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/10/python-higher-order-functions/</loc>
+    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>python高阶函数</title>
-        <pubTime>2015-10-10T17:33:39.000Z</pubTime>
+        <title>PHP数组分页</title>
+        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
         
-        <tag>python</tag>
+        <tag>php</tag>
          
+        <tag>php_array</tag>
          
-           
-             
-              <breadCrumb title="Python" url="http://www.cenhq.com/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>基于nginx流媒体服务器搭建</title>
-        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
-        
-        <tag>ffmpeg</tag>
-         
-        <tag>mencoder</tag>
-         
-        <tag>nginx</tag>
-         
-        <tag>x.264</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
-          
-             
-              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>Lumen实现用户注册登录认证</title>
-        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
-        
-        <tag>access_token</tag>
-         
-        <tag>Api</tag>
+        <tag>show_array</tag>
          
          
            
              
               <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
-          
-             
-              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
           
         </display>
     </data>
@@ -284,6 +285,60 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Ajax+setInterval实时更新</title>
+        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
+        
+        <tag>ajax</tag>
+         
+        <tag>setInterval</tag>
+         
+         
+           
+             
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>ajax作用域范围无法获取返回值</title>
+        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
+        
+        <tag>ajax作用域</tag>
+         
+        <tag>ajax同步</tag>
+         
+        <tag>ajax异步</tag>
+         
+        <tag>ajax返回值</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -391,24 +446,28 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
+    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>Ajax+setInterval实时更新</title>
-        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
+        <title>基于nginx流媒体服务器搭建</title>
+        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
         
-        <tag>ajax</tag>
+        <tag>ffmpeg</tag>
          
-        <tag>setInterval</tag>
+        <tag>mencoder</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>x.264</tag>
          
          
            
              
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
           
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
           
         </display>
     </data>
@@ -450,9 +509,9 @@
         
         <tag>supervisord</tag>
          
-        <tag>sendEmail</tag>
-         
         <tag>queue</tag>
+         
+        <tag>sendEmail</tag>
          
          
            
@@ -620,23 +679,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
+    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>PHP数组分页</title>
-        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
+        <title>Lumen实现用户注册登录认证</title>
+        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
         
-        <tag>php</tag>
+        <tag>access_token</tag>
          
-        <tag>php_array</tag>
-         
-        <tag>show_array</tag>
+        <tag>Api</tag>
          
          
            
              
               <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
           
         </display>
     </data>
@@ -644,28 +704,19 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
+    <loc>http://www.cenhq.com/2015/10/10/python-higher-order-functions/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>ajax作用域范围无法获取返回值</title>
-        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
+        <title>python高阶函数</title>
+        <pubTime>2015-10-10T17:33:39.000Z</pubTime>
         
-        <tag>ajax作用域</tag>
-         
-        <tag>ajax同步</tag>
-         
-        <tag>ajax异步</tag>
-         
-        <tag>ajax返回值</tag>
+        <tag>python</tag>
          
          
            
              
-              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
+              <breadCrumb title="Python" url="http://www.cenhq.com/categories/Python/"/>
           
         </display>
     </data>

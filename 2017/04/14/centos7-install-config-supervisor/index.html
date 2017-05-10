@@ -107,16 +107,19 @@
 
 
 
-<meta name="description" content="简介Supervisor（http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的">
+<meta name="description" content="简介Supervisor 是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。
+因为S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 7 安装配置Supervisor">
 <meta property="og:url" content="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/index.html">
 <meta property="og:site_name" content="Charlie Blog">
-<meta property="og:description" content="简介Supervisor（http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的">
-<meta property="og:updated_time" content="2017-04-14T06:20:14.000Z">
+<meta property="og:description" content="简介Supervisor 是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。
+因为S">
+<meta property="og:updated_time" content="2017-04-14T06:29:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS 7 安装配置Supervisor">
-<meta name="twitter:description" content="简介Supervisor（http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的">
+<meta name="twitter:description" content="简介Supervisor 是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。
+因为S">
 
 
 
@@ -129,8 +132,8 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '9667906',
-      author: 'charlie'
+      userId: 'undefined',
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -399,16 +402,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/14/centos7-install-config-supervisor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/14/centos7-install-config-supervisor/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -442,7 +435,7 @@
       
 
       
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Supervisor（<a href="http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。" target="_blank" rel="external">http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。</a></p>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://supervisord.org/" target="_blank" rel="external">Supervisor</a> 是用<code>Python</code>开发的一个<code>client/server</code>服务，是<code>Linux/Unix</code>系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用<code>Supervisor</code>管理的进程，当一个进程意外被杀死，<code>supervisort</code>监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写<code>shell</code>脚本来控制。</p>
 <p>因为<code>Supervisor</code>是Python开发的，安装前先检查一下系统否安装了<code>Python2.4</code>以上版本。下面以<code>CentOS7</code>，<code>Python2.7</code>版本环境下，介绍<code>Supervisor</code>的安装与配置步聚：<br><a id="more"></a></p>
 <h3 id="安装Python包管理工具（easy-install）"><a href="#安装Python包管理工具（easy-install）" class="headerlink" title="安装Python包管理工具（easy_install）"></a>安装Python包管理工具（easy_install）</h3><p><code>easy_install</code>是<code>setuptools</code>包里带的一个命令，使用<code>easy_install</code>实际上是在调用<code>setuptools</code>来完成安装模块的工作,所以安装<code>setuptools</code>即可。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py -O - | sudo python</div></pre></td></tr></table></figure>
@@ -572,6 +565,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/04/24/laravel-array-use-paginate/" rel="prev" title="Laravel 数组分页（带搜索功能）">
+                Laravel 数组分页（带搜索功能） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -585,25 +582,6 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/04/14/centos7-install-config-supervisor/"
-     data-title="CentOS 7 安装配置Supervisor"
-     data-content=""
-     data-url="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
@@ -614,26 +592,6 @@
 
           
   <div class="comments" id="comments">
-    
-     <!--<div class="ds-thread" data-thread-key="2017/04/14/centos7-install-config-supervisor/"
-           data-title="CentOS 7 安装配置Supervisor" data-url="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/">
-      </div>-->
-<!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/14/centos7-install-config-supervisor/" data-title="CentOS 7 安装配置Supervisor" data-url="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"cenhq"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-<!-- 多说公共JS代码 end -->
     
   </div>
 
@@ -681,7 +639,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -699,7 +657,7 @@ var duoshuoQuery = {short_name:"cenhq"};
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">102</span>
+                <span class="site-state-item-count">110</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -902,43 +860,32 @@ var duoshuoQuery = {short_name:"cenhq"};
 
   
 
-  
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"cenhq"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
   
-    
-      
-      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
-    
-    
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+
+
+
+
+	
+
+
+
+
+
   
 
 
 
 
 
+  
 
 
 
 
 
+  
 
 
 

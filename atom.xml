@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cenhq.com/"/>
-  <updated>2017-04-14T06:20:14.000Z</updated>
+  <updated>2017-05-10T09:40:41.000Z</updated>
   <id>http://www.cenhq.com/</id>
   
   <author>
@@ -16,13 +16,97 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Laravel log 无法写入问题</title>
+    <link href="http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/"/>
+    <id>http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/</id>
+    <published>2017-05-10T09:38:04.000Z</published>
+    <updated>2017-05-10T09:40:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>账号登录报500错误，也没有返回错误信息，没办法只能使用原始方法，到现在一行一行打印。到 <code>Log::info()</code> 后面就无法正常显示了，那么问题就找到了。</p>
+<p>导致无法写入日志的问题，是由于代码更新时添加了文件是<code>root</code>用户，所以创建日志文件也是<code>root</code>权限，导致其它用户的<code>www</code>权限无法写入日志文件中。<br><a id="more"></a><br>所以修改<code>storage/logs/</code>的用户权限为<code>www</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown www:www storage/logs -R</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果用户使用supervisord服务运行队列的话，如果队列里有日志记录，那么运行的用户也需要改成<code>www</code>用户。</p>
+</blockquote>
+<h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>同样是日志无法记录问题，这里是本地环境使用<code>php artisan queue:work --sleep=3 --tries=3</code>运行。</p>
+<p>同样在<code>job</code>中写日志，权限也是正确，就是无法记录日志，任务也正常执行。</p>
+<p>最后想到重启队列解决此问题，不知道是什么原因导致。如果有知道的同学请告知一声。</p>
+<p>重启队列命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan queue:restart</div></pre></td></tr></table></figure>
+<h3 id="其它与日志无关的问题"><a href="#其它与日志无关的问题" class="headerlink" title="其它与日志无关的问题"></a>其它与日志无关的问题</h3><h4 id="问题1-1"><a href="#问题1-1" class="headerlink" title="问题1"></a>问题1</h4><p>最近在使用 Zizaco\Entrust 这个权限包…</p>
+<p>再添加角色的时候… 报了一个错..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BadMethodCallException in Repository.php line 391:</div><div class="line">This cache store does not support tagging.</div></pre></td></tr></table></figure>
+<p>应该是这个包里 有个地方用了 laravel 的cache,默认的cache是file</p>
+<p>把.env 里的 CACHE_DRIVER 改成</p>
+<p>CACHE_DRIVER=array</p>
+<h4 id="问题2-1"><a href="#问题2-1" class="headerlink" title="问题2"></a>问题2</h4><p>页面出现此错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">View [.] not found.</div></pre></td></tr></table></figure>
+<p>解决办法，优化，清除配置缓存，路由缓存</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">php artisan optimize --force</div><div class="line">php artisan config:cache</div><div class="line">php artisan route:cache</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;问题1&quot;&gt;&lt;a href=&quot;#问题1&quot; class=&quot;headerlink&quot; title=&quot;问题1&quot;&gt;&lt;/a&gt;问题1&lt;/h3&gt;&lt;p&gt;账号登录报500错误，也没有返回错误信息，没办法只能使用原始方法，到现在一行一行打印。到 &lt;code&gt;Log::info()&lt;/code&gt; 后面就无法正常显示了，那么问题就找到了。&lt;/p&gt;
+&lt;p&gt;导致无法写入日志的问题，是由于代码更新时添加了文件是&lt;code&gt;root&lt;/code&gt;用户，所以创建日志文件也是&lt;code&gt;root&lt;/code&gt;权限，导致其它用户的&lt;code&gt;www&lt;/code&gt;权限无法写入日志文件中。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="logs" scheme="http://www.cenhq.com/tags/logs/"/>
+    
+      <category term="queue" scheme="http://www.cenhq.com/tags/queue/"/>
+    
+      <category term="日志无法写入" scheme="http://www.cenhq.com/tags/%E6%97%A5%E5%BF%97%E6%97%A0%E6%B3%95%E5%86%99%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Laravel 数组分页（带搜索功能）</title>
+    <link href="http://www.cenhq.com/2017/04/24/laravel-array-use-paginate/"/>
+    <id>http://www.cenhq.com/2017/04/24/laravel-array-use-paginate/</id>
+    <published>2017-04-24T03:27:32.000Z</published>
+    <updated>2017-04-24T03:37:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>由于数据是从mysql和mongodb里的两个表中取数据，并且根据两个表中的字段关联来获取数据，所有没有直接的sql获取。只有通过循环获取。然而获取的数据是数组，无法使用<code>laravel</code>自带的<code>paginate</code>分页方法。下面是解决办法：</p>
+<a id="more"></a>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> $name</div><div class="line">     * <span class="doctag">@param</span> $user</div><div class="line">     * <span class="doctag">@return</span> array</div><div class="line">     * 获取所有被拒绝的子任务</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">getRejectSubTasks</span><span class="params">($name,$user)</span></span></div><div class="line">    &#123;</div><div class="line">        $data = [];</div><div class="line">        <span class="comment">//未提交的子任务</span></div><div class="line">        $subTask = SubTask::where(<span class="string">'status'</span>,<span class="number">-1</span>)-&gt;get();</div><div class="line">        <span class="comment">//获取所有拒绝的子任务并且去除重复</span></div><div class="line">        $reject = RejectReason::select(<span class="string">'subTaskId'</span>)-&gt;distinct()-&gt;get();</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(!$name &amp;&amp; !$user)&#123;</div><div class="line">            <span class="keyword">foreach</span>($subTask <span class="keyword">as</span> $item)&#123;</div><div class="line">                <span class="keyword">foreach</span>($reject <span class="keyword">as</span> $value)&#123;</div><div class="line">                    <span class="keyword">if</span>($item-&gt;_id == $value-&gt;subTaskId)&#123;</div><div class="line">                        $data[] = Task::where(<span class="string">'taskId'</span>,$item-&gt;taskId)-&gt;first();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>($name)&#123;</div><div class="line">            <span class="keyword">foreach</span>($subTask <span class="keyword">as</span> $item)&#123;</div><div class="line">                <span class="keyword">foreach</span>($reject <span class="keyword">as</span> $value)&#123;</div><div class="line">                    <span class="keyword">if</span>($item-&gt;_id == $value-&gt;subTaskId)&#123;</div><div class="line">                        $data[] = Task::where(<span class="string">'taskId'</span>,$item-&gt;taskId)-&gt;where(<span class="string">'name'</span>,<span class="string">'like'</span>,<span class="string">"%$name%"</span>)-&gt;first();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>($user)&#123;</div><div class="line">            <span class="keyword">foreach</span>($subTask <span class="keyword">as</span> $item)&#123;</div><div class="line">                <span class="keyword">foreach</span>($reject <span class="keyword">as</span> $value)&#123;</div><div class="line">                    <span class="keyword">if</span>($item-&gt;_id == $value-&gt;subTaskId)&#123;</div><div class="line">                        $data[] = Task::where(<span class="string">'taskId'</span>,$item-&gt;taskId)-&gt;where(<span class="string">'user'</span>,<span class="string">'like'</span>,<span class="string">"%$user%"</span>)-&gt;first();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>($name &amp;&amp; $user)&#123;</div><div class="line">            <span class="keyword">foreach</span>($subTask <span class="keyword">as</span> $item)&#123;</div><div class="line">                <span class="keyword">foreach</span>($reject <span class="keyword">as</span> $value)&#123;</div><div class="line">                    <span class="keyword">if</span>($item-&gt;_id == $value-&gt;subTaskId)&#123;</div><div class="line">                        $data[] = Task::where(<span class="string">'taskId'</span>,$item-&gt;taskId)</div><div class="line">                            -&gt;where(<span class="string">'name'</span>,<span class="string">'like'</span>,<span class="string">"%$name%"</span>)</div><div class="line">                            -&gt;where(<span class="string">'user'</span>,<span class="string">'like'</span>,<span class="string">"%$user%"</span>)</div><div class="line">                            -&gt;first();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>  $data;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="数组分页"><a href="#数组分页" class="headerlink" title="数组分页"></a>数组分页</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@param</span> $searchResults 数组</div><div class="line"> * <span class="doctag">@return</span> LengthAwarePaginator</div><div class="line"> * 给数组分页</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">arrayPage</span><span class="params">($searchResults)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//获取当前的分页数，就是第6这样的</span></div><div class="line">    $currentPage = LengthAwarePaginator::resolveCurrentPage();</div><div class="line"></div><div class="line">    <span class="comment">//实例化collect方法</span></div><div class="line">    $collection = <span class="keyword">new</span> Collection($searchResults);</div><div class="line"></div><div class="line">    <span class="comment">//定义一下每页显示多少个数据</span></div><div class="line"><span class="comment">//        $perPage = 5;</span></div><div class="line"></div><div class="line">    <span class="comment">//获取当前需要显示的数据列表$currentPage * $this-&gt;prePage</span></div><div class="line">    $currentPageSearchResults = $collection-&gt;slice(($currentPage - <span class="number">1</span>) * <span class="keyword">$this</span>-&gt;prePage, <span class="keyword">$this</span>-&gt;prePage)-&gt;all();</div><div class="line"></div><div class="line">    <span class="comment">//创建一个新的分页方法</span></div><div class="line">    $paginatedSearchResults= <span class="keyword">new</span> LengthAwarePaginator($currentPageSearchResults, count($collection), <span class="keyword">$this</span>-&gt;prePage);</div><div class="line"></div><div class="line">    <span class="comment">//给分页加自定义url</span></div><div class="line">    $paginatedSearchResults = $paginatedSearchResults-&gt;setPath(env(<span class="string">"APP_HOST"</span>) . <span class="string">'/home'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> $paginatedSearchResults;</div><div class="line"><span class="comment">//        return view('search', ['results' =&gt; $paginatedSearchResults]);</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="前台页面显示"><a href="#前台页面显示" class="headerlink" title="前台页面显示"></a>前台页面显示</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2 col-md-offset-10"</span>&gt;</span></div><div class="line">        @if(empty($_GET['task_name']) &amp;&amp; empty($_GET['create_user']) &amp;&amp; empty($_GET['task_status']))</div><div class="line">            &#123;&#123; $task-&gt;links() &#125;&#125;</div><div class="line">        @endif</div><div class="line">        @if(isset($_GET['task_name']) &amp;&amp; isset($_GET['create_user']) &amp;&amp; isset($_GET['task_status']) &amp;&amp; $_GET['task_status'] != 0 )</div><div class="line">            &#123;&#123; $task-&gt;appends([</div><div class="line">                'task_name' =&gt; $_GET['task_name'],</div><div class="line">                'create_user' =&gt; $_GET['create_user'],</div><div class="line">                'task_status' =&gt; $_GET['task_status']</div><div class="line">                ])-&gt;links() &#125;&#125;</div><div class="line">        @endif</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h3><p><img src="/2017/04/24/laravel-array-use-paginate/QQ20170424-105225.jpg" alt=""><br><img src="/2017/04/24/laravel-array-use-paginate/QQ20170424-105313.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h3&gt;&lt;p&gt;由于数据是从mysql和mongodb里的两个表中取数据，并且根据两个表中的字段关联来获取数据，所有没有直接的sql获取。只有通过循环获取。然而获取的数据是数组，无法使用&lt;code&gt;laravel&lt;/code&gt;自带的&lt;code&gt;paginate&lt;/code&gt;分页方法。下面是解决办法：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://www.cenhq.com/categories/Laravel/"/>
+    
+    
+      <category term="paginate" scheme="http://www.cenhq.com/tags/paginate/"/>
+    
+      <category term="LengthAwarePaginator" scheme="http://www.cenhq.com/tags/LengthAwarePaginator/"/>
+    
+      <category term="Collection" scheme="http://www.cenhq.com/tags/Collection/"/>
+    
+      <category term="links" scheme="http://www.cenhq.com/tags/links/"/>
+    
+      <category term="分页" scheme="http://www.cenhq.com/tags/%E5%88%86%E9%A1%B5/"/>
+    
+      <category term="数组分页" scheme="http://www.cenhq.com/tags/%E6%95%B0%E7%BB%84%E5%88%86%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS 7 安装配置Supervisor</title>
     <link href="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/"/>
     <id>http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/</id>
     <published>2017-04-14T06:17:54.000Z</published>
-    <updated>2017-04-14T06:20:14.000Z</updated>
+    <updated>2017-04-14T06:29:20.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Supervisor（<a href="http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。" target="_blank" rel="external">http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。</a></p>
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://supervisord.org/" target="_blank" rel="external">Supervisor</a> 是用<code>Python</code>开发的一个<code>client/server</code>服务，是<code>Linux/Unix</code>系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用<code>Supervisor</code>管理的进程，当一个进程意外被杀死，<code>supervisort</code>监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写<code>shell</code>脚本来控制。</p>
 <p>因为<code>Supervisor</code>是Python开发的，安装前先检查一下系统否安装了<code>Python2.4</code>以上版本。下面以<code>CentOS7</code>，<code>Python2.7</code>版本环境下，介绍<code>Supervisor</code>的安装与配置步聚：<br><a id="more"></a></p>
 <h3 id="安装Python包管理工具（easy-install）"><a href="#安装Python包管理工具（easy-install）" class="headerlink" title="安装Python包管理工具（easy_install）"></a>安装Python包管理工具（easy_install）</h3><p><code>easy_install</code>是<code>setuptools</code>包里带的一个命令，使用<code>easy_install</code>实际上是在调用<code>setuptools</code>来完成安装模块的工作,所以安装<code>setuptools</code>即可。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py -O - | sudo python</div></pre></td></tr></table></figure>
@@ -83,7 +167,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;Supervisor（&lt;a href=&quot;http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。&quot;&gt;http://supervisord.org/）是用`Python`开发的一个`client/server`服务，是`Linux/Unix`系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用`Supervisor`管理的进程，当一个进程意外被杀死，`supervisort`监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写`shell`脚本来控制。&lt;/a&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://supervisord.org/&quot;&gt;Supervisor&lt;/a&gt; 是用&lt;code&gt;Python&lt;/code&gt;开发的一个&lt;code&gt;client/server&lt;/code&gt;服务，是&lt;code&gt;Linux/Unix&lt;/code&gt;系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用&lt;code&gt;Supervisor&lt;/code&gt;管理的进程，当一个进程意外被杀死，&lt;code&gt;supervisort&lt;/code&gt;监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写&lt;code&gt;shell&lt;/code&gt;脚本来控制。&lt;/p&gt;
 &lt;p&gt;因为&lt;code&gt;Supervisor&lt;/code&gt;是Python开发的，安装前先检查一下系统否安装了&lt;code&gt;Python2.4&lt;/code&gt;以上版本。下面以&lt;code&gt;CentOS7&lt;/code&gt;，&lt;code&gt;Python2.7&lt;/code&gt;版本环境下，介绍&lt;code&gt;Supervisor&lt;/code&gt;的安装与配置步聚：&lt;br&gt;&lt;/p&gt;
     
     </summary>
@@ -328,9 +412,9 @@ end</code></li>
     
       <category term="supervisord" scheme="http://www.cenhq.com/tags/supervisord/"/>
     
-      <category term="sendEmail" scheme="http://www.cenhq.com/tags/sendEmail/"/>
-    
       <category term="queue" scheme="http://www.cenhq.com/tags/queue/"/>
+    
+      <category term="sendEmail" scheme="http://www.cenhq.com/tags/sendEmail/"/>
     
   </entry>
   
@@ -1194,71 +1278,6 @@ $this-&amp;gt;editMongoId($params[$item[0]]);
       <category term="highcharts" scheme="http://www.cenhq.com/tags/highcharts/"/>
     
       <category term="php" scheme="http://www.cenhq.com/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>highcharts导出csv格式</title>
-    <link href="http://www.cenhq.com/2016/09/27/highcharts-export-csv/"/>
-    <id>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</id>
-    <published>2016-09-27T10:56:17.000Z</published>
-    <updated>2017-03-28T10:39:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js<br><a id="more"></a><br>代码如下:</p>
-<p><pre class="lang:js decode:true ">&lt;script src=”<a href="http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/stock/highstock.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://code.highcharts.com/modules/exporting.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;script src=”<a href="http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt" target="_blank" rel="external">http://highcharts.github.io/export-csv/export-csv.js&quot;&gt;&lt;/script&amp;gt</a>;<br>&lt;div id=”container” style=”height: 300px; margin-top: 2em”&gt;&lt;/div&gt;<br>&lt;script&gt;<br>var chart = new Highcharts.StockChart({<br>    chart: {<br>        renderTo: ‘container’<br>    },<br>    navigator: {<br>        series: {<br>            includeInCSVExport: false<br>        }<br>    },<br>    series: [{<br>        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],<br>        pointStart: Date.UTC(2016, 0, 1),<br>        pointInterval: 24 * 36e5<br>    }],</pre></p>
-<pre><code>exporting: {
-    csv: {
-        dateFormat: &apos;%Y-%m-%d&apos;
-    }
-}
-</code></pre><p>});<br>&lt;/script&gt;<br>显示效果：</p>
-<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/09/QQ20160927-0.png" alt=""></p>
-<p>导出结果：</p>
-<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/09/QQ20160927-1.png" alt=""></p>
-<p>参考：<a href="https://github.com/highcharts/export-csv" target="_blank" rel="external">https://github.com/highcharts/export-csv</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;业务需求报表导出格式为CSV，所以需要引用export-csv.js和exporting.js&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://www.cenhq.com/categories/JavaScript/"/>
-    
-    
-      <category term="export-csv" scheme="http://www.cenhq.com/tags/export-csv/"/>
-    
-      <category term="exporting" scheme="http://www.cenhq.com/tags/exporting/"/>
-    
-      <category term="highcharts" scheme="http://www.cenhq.com/tags/highcharts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ajax+setInterval实时更新</title>
-    <link href="http://www.cenhq.com/2016/09/20/ajax-setinterval/"/>
-    <id>http://www.cenhq.com/2016/09/20/ajax-setinterval/</id>
-    <published>2016-09-20T15:07:31.000Z</published>
-    <updated>2017-03-28T10:39:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<div>要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)</div><br><div>首先前段页面</div><br><a id="more"></a><br><div><br><pre class="lang:php decode:true ">index.php<br>&lt;div class=”count” id=”count” &gt;100&lt;/div&gt;<br>&lt;script src=”/js/jquery-2.1.1.min.js”&gt;&lt;/script&gt;<br>&lt;script type=”text/javascript”&gt;<br>    setInterval(function(){<br>        $.ajax({<br>            type:”post”,<br>            dataType:”json”,<br>            url: ‘index.php?r=test/getdata’,<br>            success:function(data){<br>                $(“#count”).html(data[0][‘id’]);<br>                //console.log(data[0][‘id’]);<br>            },<br>            error: function(){<br>                alert(‘wrong’);<br>            },<br>        });<br>    },3000);<br><br>&lt;/script&gt;</pre><br>后端处理页面，可以从数据库获取数据也可以中接口，这里自定义数组<br><pre class="lang:php decode:true ">public function actionGetdata()<br>    {<br>        $data = array(<br>            array(‘id’=&gt;4,’name’=&gt;’test1’<br>        );<br>        echo json_encode($data);<br><br>    }<br><br>    public function actionIndex(){<br>        return $this-&gt;render(‘index’);<br>    }</pre><br><div>浏览器访问</div><br><div><a href="http://test-advanced.com/index.php?r=test/index" target="_blank" rel="external">http://test-advanced.com/index.php?r=test/index</a>   #test表示控制器，index表示方法</div><br><div>更改数组里的id，前段页面数据实时变化</div><br><div><img src="http://blog.cenhq.com/wp-content/uploads/2016/09/QQ20160920-0.png" alt=""></div><br></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;div&gt;要求页面部分数据更新，具有实时性。需要用到定时器(setInter)和异步技术(Ajax)&lt;/div&gt;&lt;br&gt;&lt;div&gt;首先前段页面&lt;/div&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Dev" scheme="http://www.cenhq.com/categories/Dev/"/>
-    
-      <category term="PHP" scheme="http://www.cenhq.com/categories/Dev/PHP/"/>
-    
-    
-      <category term="ajax" scheme="http://www.cenhq.com/tags/ajax/"/>
-    
-      <category term="setInterval" scheme="http://www.cenhq.com/tags/setInterval/"/>
     
   </entry>
   
