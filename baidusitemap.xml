@@ -4,6 +4,53 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/06/30/mysql-master-and-slave-replication/</loc>
+    <lastmod>2017-06-30T06:11:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL 主从复制（内外网）</title>
+        <pubTime>2017-06-30T06:04:37.000Z</pubTime>
+        
+        <tag>replication</tag>
+         
+        <tag>mysql主从</tag>
+         
+         
+           
+             
+              <breadCrumb title="Mysql" url="http://www.cenhq.com/categories/Mysql/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2017/06/15/laravel-lumen-send-mail/</loc>
+    <lastmod>2017-06-15T07:53:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel/Lumen 5.4 发送邮件</title>
+        <pubTime>2017-06-15T07:47:51.000Z</pubTime>
+        
+        <tag>sendMail</tag>
+         
+        <tag>mail</tag>
+         
+         
+           
+             
+              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/Laravel/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/</loc>
     <lastmod>2017-05-10T09:40:41.000Z</lastmod>
     <data>
@@ -133,73 +180,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
+    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>PHP数组分页</title>
-        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
+        <title>php多维数组整理</title>
+        <pubTime>2016-11-29T16:15:08.000Z</pubTime>
         
+        <tag>highcharts</tag>
+         
         <tag>php</tag>
          
-        <tag>php_array</tag>
-         
-        <tag>show_array</tag>
-         
          
            
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>codis集群搭建</title>
-        <pubTime>2015-09-15T17:40:24.000Z</pubTime>
-        
-        <tag>codis</tag>
-         
-        <tag>redis-cli</tag>
-         
-         
-           
-             
-              <breadCrumb title="Codis" url="http://www.cenhq.com/categories/Codis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>ELK中展示用户位置</title>
-        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
-        
-        <tag>geoip</tag>
-         
-        <tag>kibana</tag>
-         
-         
-           
-             
-              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
           
              
-              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
-          
-             
-              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
           
         </display>
     </data>
@@ -363,6 +361,35 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>基于nginx流媒体服务器搭建</title>
+        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
+        
+        <tag>ffmpeg</tag>
+         
+        <tag>mencoder</tag>
+         
+        <tag>nginx</tag>
+         
+        <tag>x.264</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
+          
+             
+              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -446,28 +473,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/21/based-on-the-nginx-streaming-media-server/</loc>
+    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>基于nginx流媒体服务器搭建</title>
-        <pubTime>2015-09-21T09:50:00.000Z</pubTime>
+        <title>Lumen实现用户注册登录认证</title>
+        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
         
-        <tag>ffmpeg</tag>
+        <tag>access_token</tag>
          
-        <tag>mencoder</tag>
-         
-        <tag>nginx</tag>
-         
-        <tag>x.264</tag>
+        <tag>Api</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
           
              
-              <breadCrumb title="Nginx" url="http://www.cenhq.com/categories/Linux/Nginx/"/>
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
           
         </display>
     </data>
@@ -597,6 +620,28 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>codis集群搭建</title>
+        <pubTime>2015-09-15T17:40:24.000Z</pubTime>
+        
+        <tag>codis</tag>
+         
+        <tag>redis-cli</tag>
+         
+         
+           
+             
+              <breadCrumb title="Codis" url="http://www.cenhq.com/categories/Codis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2016/12/29/mysql-query-repeat-recodes-in-hours/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -654,24 +699,27 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
+    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>php多维数组整理</title>
-        <pubTime>2016-11-29T16:15:08.000Z</pubTime>
+        <title>ELK中展示用户位置</title>
+        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
         
-        <tag>highcharts</tag>
+        <tag>geoip</tag>
          
-        <tag>php</tag>
+        <tag>kibana</tag>
          
          
            
              
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
           
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
+          
+             
+              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
           
         </display>
     </data>
@@ -679,24 +727,23 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>Lumen实现用户注册登录认证</title>
-        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
+        <title>PHP数组分页</title>
+        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
         
-        <tag>access_token</tag>
+        <tag>php</tag>
          
-        <tag>Api</tag>
+        <tag>php_array</tag>
+         
+        <tag>show_array</tag>
          
          
            
              
               <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
-          
-             
-              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
           
         </display>
     </data>
