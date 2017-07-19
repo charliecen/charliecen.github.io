@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.cenhq.com/2017/07/19/laravel-passport-usage/</loc>
+    
+    <lastmod>2017-07-19T05:33:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.cenhq.com/2017/06/30/mysql-master-and-slave-replication/</loc>
     
     <lastmod>2017-06-30T06:11:49.000Z</lastmod>
@@ -58,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
-    
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.cenhq.com/2016/12/01/html-to-pdf-for-php/</loc>
     
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
@@ -107,6 +107,13 @@
   </url>
   
   <url>
+    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</loc>
     
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
@@ -128,7 +135,7 @@
   </url>
   
   <url>
-    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
     
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
@@ -170,7 +177,7 @@
   </url>
   
   <url>
-    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
+    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
     
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
@@ -191,7 +198,7 @@
   </url>
   
   <url>
-    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
     
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     
