@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cenhq.com/"/>
-  <updated>2017-07-19T05:33:40.000Z</updated>
+  <updated>2017-09-19T07:44:34.000Z</updated>
   <id>http://www.cenhq.com/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ELK 安装配置</title>
+    <link href="http://www.cenhq.com/2017/09/19/elk-installation-configuration/"/>
+    <id>http://www.cenhq.com/2017/09/19/elk-installation-configuration/</id>
+    <published>2017-09-19T07:39:54.000Z</published>
+    <updated>2017-09-19T07:44:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p><a href="https://www.elastic.co/cn/downloads" target="_blank" rel="external">下载地址</a> </p>
+<p>当前版本使用的全部是 5.6.0</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="elasticsearch-配置"><a href="#elasticsearch-配置" class="headerlink" title="elasticsearch 配置"></a>elasticsearch 配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ tar xf elasticsearch-5.6.0.tar.gz</div><div class="line">$ <span class="built_in">cd</span>  elasticsearch-5.6.0</div><div class="line">$ vim config/jvm.options</div><div class="line"><span class="comment"># 根据自己的服务器的内存定义此大小</span></div><div class="line">-Xms32g</div><div class="line">-Xmx32g</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>注意： 由于运行<code>elasticsearch</code> 需要普通用户，所以这里要创建个普通用户</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ useradd elk</div><div class="line">$ su elk</div><div class="line"><span class="comment"># 启动服务</span></div><div class="line">$ bin/elasticseach</div></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$ curl http://127.0.0.1:9200 -u admin:xxxxxx</div><div class="line">  <span class="string">"name"</span> : <span class="string">"sUOfDTU"</span>,</div><div class="line">  <span class="string">"cluster_name"</span> : <span class="string">"elasticsearch"</span>,</div><div class="line">  <span class="string">"cluster_uuid"</span> : <span class="string">"48mAG5SaTAuI-ajfh5cPxw"</span>,</div><div class="line">  <span class="string">"version"</span> : &#123;</div><div class="line">    <span class="string">"number"</span> : <span class="string">"5.6.0"</span>,</div><div class="line">    <span class="string">"build_hash"</span> : <span class="string">"781a835"</span>,</div><div class="line">    <span class="string">"build_date"</span> : <span class="string">"2017-09-07T03:09:58.087Z"</span>,</div><div class="line">    <span class="string">"build_snapshot"</span> : <span class="literal">false</span>,</div><div class="line">    <span class="string">"lucene_version"</span> : <span class="string">"6.6.0"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"tagline"</span> : <span class="string">"You Know, for Search"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="logstash-配置"><a href="#logstash-配置" class="headerlink" title="logstash 配置"></a>logstash 配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div></pre></td><td class="code"><pre><div class="line">$ tar xf logstash-5.6.0.tar.gz</div><div class="line">$ <span class="built_in">cd</span> logstash-5.6.0</div><div class="line">$ vim config/logstash.yml</div><div class="line"><span class="comment"># 启用转义符, 由于日志的字段不同，所以我需要先用"\t"分割，然后用" "分割，具体操作，下面有详细配置</span></div><div class="line">config.support_escapes: <span class="literal">true</span></div><div class="line"></div><div class="line">$ vim conf/logstash.conf</div><div class="line">input &#123;</div><div class="line">  file &#123;</div><div class="line">    <span class="comment">#path =&gt; "/var/log/xx/useract_server.log*"</span></div><div class="line">    <span class="comment"># 文件源</span></div><div class="line">    path =&gt; <span class="string">"/10.29.212.58/00-00-ac-1d-d4-3a/tmp/AppServer06-XX2/log/useract_server.log*"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">filter &#123;</div><div class="line">  grok &#123;</div><div class="line">    <span class="comment"># 匹配文件名</span></div><div class="line">    match =&gt; [<span class="string">"path"</span>, <span class="string">"(?&lt;filename&gt;useract_server.log.\d&#123;6&#125;-\d&#123;2&#125;$)"</span>]</div><div class="line">  &#125;</div><div class="line">  <span class="comment"># 分割后添加字段</span></div><div class="line">  mutate &#123;</div><div class="line">     split =&gt; [<span class="string">"message"</span>, <span class="string">"\t"</span>]</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"tmp"</span> =&gt; <span class="string">"%&#123;[message][0]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"accid"</span> =&gt; <span class="string">"%&#123;[message][1]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"user_control_obj_type"</span> =&gt; <span class="string">"%&#123;[message][2]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"charid"</span> =&gt; <span class="string">"%&#123;[message][3]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"char_name"</span> =&gt; <span class="string">"%&#123;[message][4]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"number_ip"</span> =&gt; <span class="string">"%&#123;[message][5]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"level"</span> =&gt; <span class="string">"%&#123;[message][6]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"zone_id"</span> =&gt; <span class="string">"%&#123;[message][7]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"one_level_camp"</span> =&gt; <span class="string">"%&#123;[message][8]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"map_name"</span> =&gt; <span class="string">"%&#123;[message][9]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"map_detail"</span> =&gt; <span class="string">"%&#123;[message][10]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"x_coord"</span> =&gt; <span class="string">"%&#123;[message][11]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"y_coord"</span> =&gt; <span class="string">"%&#123;[message][12]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"z_coord"</span> =&gt; <span class="string">"%&#123;[message][13]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"operation_type"</span> =&gt; <span class="string">"%&#123;[message][14]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"operation_way"</span> =&gt; <span class="string">"%&#123;[message][15]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"operation_detail"</span> =&gt; <span class="string">"%&#123;[message][16]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"cluster_server_id"</span> =&gt; <span class="string">"%&#123;[message][17]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_object_type"</span> =&gt; <span class="string">"%&#123;[message][18]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_object_id"</span> =&gt; <span class="string">"%&#123;[message][-5]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_object_name"</span> =&gt; <span class="string">"%&#123;[message][-4]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_object_detail"</span> =&gt; <span class="string">"%&#123;[message][-3]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_type"</span> =&gt; <span class="string">"%&#123;[message][-2]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"result_count"</span> =&gt; <span class="string">"%&#123;[message][-1]&#125;"</span></div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line">   mutate &#123;</div><div class="line">     split =&gt; [<span class="string">"tmp"</span>, <span class="string">" "</span>]</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"logdate"</span> =&gt; <span class="string">"%&#123;[tmp][0]&#125;"</span></div><div class="line">     &#125;</div><div class="line">     add_field =&gt; &#123;</div><div class="line">       <span class="string">"game_id"</span> =&gt; <span class="string">"%&#123;[tmp][2]&#125;"</span></div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line">  <span class="comment"># 转换字段类型</span></div><div class="line">  mutate &#123;</div><div class="line">    convert =&gt; &#123;</div><div class="line">      <span class="string">"accid"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"user_control_obj_type"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"charid"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"number_ip"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"level"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"zone_id"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"one_level_camp"</span> =&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"x_coord"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"y_coord"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"z_coord"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"cluster_server_id"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"result_object_type"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"result_object_id"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"result_type"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">      <span class="string">"result_count"</span>	=&gt; <span class="string">"integer"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment"># 日期格式</span></div><div class="line">  date &#123;</div><div class="line">    match =&gt; [<span class="string">"logdate"</span>, <span class="string">"yyMMdd-HH:mm:ss"</span>]</div><div class="line">    target =&gt; <span class="string">"logdate"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># 输出到es, 由于安装了x-pack插件，所以配置了用户和密码</span></div><div class="line">output &#123;</div><div class="line">  elasticsearch &#123;</div><div class="line">    hosts =&gt; [<span class="string">"127.0.0.1:9200"</span>]</div><div class="line">    user =&gt; <span class="string">"admin"</span></div><div class="line">    password =&gt; <span class="string">"xxxxxx"</span></div><div class="line">    <span class="comment"># 自定义索引名</span></div><div class="line">    index =&gt; <span class="string">"xx2-%&#123;filename&#125;"</span></div><div class="line">  &#125;</div><div class="line">  <span class="comment">#stdout &#123;</span></div><div class="line">  <span class="comment">#  codec =&gt; rubydebug</span></div><div class="line">  <span class="comment">#&#125;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment"># 启动服务</span></div><div class="line"></div><div class="line">$ bin/logstash <span class="_">-f</span> config/logstash.conf</div></pre></td></tr></table></figure>
+<h4 id="kibana配置"><a href="#kibana配置" class="headerlink" title="kibana配置"></a>kibana配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ tar xf kibana-5.6.0-linux-x86_64.tar.gz</div><div class="line">$ <span class="built_in">cd</span> <span class="built_in">cd</span> kibana-5.6.0-linux-x86_64</div><div class="line">$ vim config/kibana.yml</div><div class="line">server.host: 0.0.0.0</div><div class="line">elasticsearch.url: <span class="string">"http://127.0.0.1:9200"</span></div><div class="line"></div><div class="line"><span class="comment"># 启动服务</span></div><div class="line">$ bin/kibana</div></pre></td></tr></table></figure>
+<h4 id="安装x-pack插件"><a href="#安装x-pack插件" class="headerlink" title="安装x-pack插件"></a>安装x-pack插件</h4><p>由于安装太慢，所以这里翻墙后下载后，上传到服务器里</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget https://artifacts.elastic.co/downloads/kibana-plugins/x-pack/x-pack-5.6.0.zip</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：集群中的每台 Elasticsearch 都是需要安装的，  Kibana服务器上也同样需要安装</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ bin//elasticsearch-plugin install /usr/<span class="built_in">local</span>/src/x-pack-5.6.0.zip</div><div class="line"></div><div class="line">$ bin/kibana-plugin install /usr/<span class="built_in">local</span>/src/x-pack-5.6.0.zip</div></pre></td></tr></table></figure>
+<h3 id="页面设置"><a href="#页面设置" class="headerlink" title="页面设置"></a>页面设置</h3><p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lkvlcN6Fb9fMfE7ZbRKC9XcC-0Gp.jpeg" alt="file"></p>
+<p>登录账号默认用户<code>elastic</code>, 默认密码<code>changeme</code>,登录后建议修改密码。</p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lkU9rWE5ydCrouiT8V96YHAza85f.jpeg" alt="file"></p>
+<p>创建Index</p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/llc5laxnQxEqcFIYTnk1k2kVrv2c.jpeg" alt="file"></p>
+<p>发现数据</p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lmFHpZI9UsAI8NZIaBrrbkfXnWFl.jpeg" alt="file"></p>
+<h3 id="supervisord配置"><a href="#supervisord配置" class="headerlink" title="supervisord配置"></a>supervisord配置</h3><p>使用supervisord管理服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">$ yum install -y supervisord</div><div class="line"></div><div class="line"><span class="comment"># 配置</span></div><div class="line">$ vim /etc/supervisord.conf</div><div class="line"></div><div class="line">[program:logstash]</div><div class="line"><span class="built_in">command</span> = /usr/<span class="built_in">local</span>/src/logstash-5.6.0/bin/logstash <span class="_">-f</span> /usr/<span class="built_in">local</span>/src/logstash-5.6.0/config/logstash.conf -w 40 -b 2000</div><div class="line">autostart = <span class="literal">true</span></div><div class="line">autorestart = <span class="literal">true</span></div><div class="line">startsecs = 5</div><div class="line">startretries = 3</div><div class="line">user = root</div><div class="line">redirect_stderr = <span class="literal">true</span></div><div class="line">stdout_logfile = /var/<span class="built_in">log</span>/elk/logstash-std.log</div><div class="line">stderr_logfile = /var/<span class="built_in">log</span>/elk/logstash-err.log</div><div class="line"></div><div class="line">[program:elasticsearch]</div><div class="line"><span class="built_in">command</span>=/usr/<span class="built_in">local</span>/src/elasticsearch-5.6.0/bin/elasticsearch</div><div class="line">autostart = <span class="literal">true</span></div><div class="line">autorestart = <span class="literal">true</span></div><div class="line">startsecs = 5</div><div class="line">startretries = 3</div><div class="line">user = elk</div><div class="line">redirect_stderr = <span class="literal">true</span></div><div class="line">stdout_logfile = /var/<span class="built_in">log</span>/elk/elasticsearch-std.log</div><div class="line">stderr_logfile = /var/<span class="built_in">log</span>/elk/elasticsearch-err.log</div><div class="line"></div><div class="line">[program:kibana]</div><div class="line"><span class="built_in">command</span>=/usr/<span class="built_in">local</span>/src/kibana-5.6.0-linux-x86_64/bin/kibana</div><div class="line">autostart = <span class="literal">true</span></div><div class="line">autorestart = <span class="literal">true</span></div><div class="line">startsecs = 5</div><div class="line">startretries = 3</div><div class="line">user = root</div><div class="line">redirect_stderr = <span class="literal">true</span></div><div class="line">stdout_logfile = /var/<span class="built_in">log</span>/elk/kibana-std.log</div><div class="line">stderr_logfile = /var/<span class="built_in">log</span>/elk/kibana-err.log</div></pre></td></tr></table></figure>
+<p>启动服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ /etc/init.d/supervisord start</div><div class="line">$ supervisorctl status</div><div class="line">elasticsearch  RUNNING    pid 87134, uptime 4:31:22</div><div class="line">kibana             RUNNING    pid 87136, uptime 4:31:22</div><div class="line">logstash          RUNNING    pid 87135, uptime 4:31:22</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;下载安装包&quot;&gt;&lt;a href=&quot;#下载安装包&quot; class=&quot;headerlink&quot; title=&quot;下载安装包&quot;&gt;&lt;/a&gt;下载安装包&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.elastic.co/cn/downloads&quot;&gt;下载地址&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;当前版本使用的全部是 5.6.0&lt;/p&gt;
+&lt;h3 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h3&gt;&lt;h4 id=&quot;elasticsearch-配置&quot;&gt;&lt;a href=&quot;#elasticsearch-配置&quot; class=&quot;headerlink&quot; title=&quot;elasticsearch 配置&quot;&gt;&lt;/a&gt;elasticsearch 配置&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ tar xf elasticsearch-5.6.0.tar.gz&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt;  elasticsearch-5.6.0&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ vim config/jvm.options&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 根据自己的服务器的内存定义此大小&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-Xms32g&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;-Xmx32g&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.cenhq.com/categories/Linux/"/>
+    
+    
+      <category term="logstash" scheme="http://www.cenhq.com/tags/logstash/"/>
+    
+      <category term="elasticsearch" scheme="http://www.cenhq.com/tags/elasticsearch/"/>
+    
+      <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 GitHub Issues 搭建 hexo 评论系统</title>
+    <link href="http://www.cenhq.com/2017/07/25/using-github-issues-to-build-hexo-review-system/"/>
+    <id>http://www.cenhq.com/2017/07/25/using-github-issues-to-build-hexo-review-system/</id>
+    <published>2017-07-25T03:00:41.000Z</published>
+    <updated>2017-07-25T03:15:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Gitment</code> 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
+<p>本博客评论系统已迁移至 Gitment。虽然 Gitment 只能使用 GitHub 账号进行评论，但考虑到博客受众，这是可以接受的。</p>
+<a id="more"></a>
+<ul>
+<li><a href="#https://github.com/imsun/gitment">项目地址</a></li>
+<li><a href="#https://imsun.github.io/gitment/">示例页面</a></li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="安装Gitment"><a href="#安装Gitment" class="headerlink" title="安装Gitment"></a>安装Gitment</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save gitment</div></pre></td></tr></table></figure>
+<h4 id="注册OAuth-Application"><a href="#注册OAuth-Application" class="headerlink" title="注册OAuth Application"></a>注册OAuth Application</h4><p><a href="#https://github.com/settings/applications/new">点击此处</a> 来注册一个新的 <code>OAuth Application</code>。其他内容可以随意填写，但要确保填入正确的 <code>callback URL</code>（一般是评论页面对应的域名，如 <a href="http://www.cenhq.com）。" target="_blank" rel="external">http://www.cenhq.com）。</a></p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lufytVWddvvXAvXLrC9JksD8cjIB.jpeg" alt="file"></p>
+<p>你会得到一个 <code>client ID</code> 和一个 <code>client secret</code>，这个将被用于之后的用户登录。</p>
+<h4 id="引入Gitment"><a href="#引入Gitment" class="headerlink" title="引入Gitment"></a>引入Gitment</h4><p>将下面的代码添加到你的页面：</p>
+<blockquote>
+<p>我使用的主题是hexo，插入的文件是<code>themes/next/layout/_partials/comments.swig</code></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"container"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">  <span class="attr">id</span>: <span class="string">'页面 ID'</span>, <span class="comment">// 可选。默认为 location.href</span></div><div class="line">  owner: <span class="string">'你的 GitHub ID'</span>,</div><div class="line">  <span class="attr">repo</span>: <span class="string">'存储评论的 repo'</span>,</div><div class="line">  <span class="attr">oauth</span>: &#123;</div><div class="line">    <span class="attr">client_id</span>: <span class="string">'你的 client ID'</span>,</div><div class="line">    <span class="attr">client_secret</span>: <span class="string">'你的 client secret'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line">gitment.render(<span class="string">'container'</span>)</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="初始化评论"><a href="#初始化评论" class="headerlink" title="初始化评论"></a>初始化评论</h4><p>页面发布后，你需要访问页面并使用你的 <code>GitHub</code> 账号登录（请确保你的账号是第二步所填 <code>repo</code> 的 <code>owner</code>），点击初始化按钮。<br>之后其他用户即可在该页面发表评论。</p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lruREySo573TKL3_Vz93Cm1G0Wqg.jpeg" alt="file"></p>
+<p>测试后可在github issues中可见评论内容</p>
+<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/llkAeZwsO9_6mvk2xzv9T0FGp-Zq.jpeg" alt="file"></p>
+<h3 id="自定义主题"><a href="#自定义主题" class="headerlink" title="自定义主题"></a>自定义主题</h3><p>Gitment 很容易进行自定义，你可以写一份自定义的 CSS 或者使用一个新的主题。（主题可以改变 DOM 结构而自定义 CSS 不能）</p>
+<p>比如你可以通过自定义主题将评论框放在评论列表前面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> myTheme = &#123;</div><div class="line">  render(state, instance) &#123;</div><div class="line">    <span class="keyword">const</span> container = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">    container.lang = <span class="string">"en-US"</span></div><div class="line">    container.className = <span class="string">'gitment-container gitment-root-container'</span></div><div class="line">    container.appendChild(instance.renderHeader(state, instance))</div><div class="line">    container.appendChild(instance.renderEditor(state, instance))</div><div class="line">    container.appendChild(instance.renderComments(state, instance))</div><div class="line">    container.appendChild(instance.renderFooter(state, instance))</div><div class="line">    <span class="keyword">return</span> container</div><div class="line">  &#125;,</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  theme: myTheme,</div><div class="line">&#125;)</div><div class="line">gitment.render(<span class="string">'container'</span>)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Gitment&lt;/code&gt; 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。&lt;/p&gt;
+&lt;p&gt;本博客评论系统已迁移至 Gitment。虽然 Gitment 只能使用 GitHub 账号进行评论，但考虑到博客受众，这是可以接受的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://www.cenhq.com/categories/Hexo/"/>
+    
+    
+      <category term="Gitment" scheme="http://www.cenhq.com/tags/Gitment/"/>
+    
+      <category term="comment" scheme="http://www.cenhq.com/tags/comment/"/>
+    
+  </entry>
   
   <entry>
     <title>Laravel Passport 使用</title>
@@ -1164,162 +1268,6 @@ private function processData($arr1,$arr){
       <category term="ajax异步" scheme="http://www.cenhq.com/tags/ajax%E5%BC%82%E6%AD%A5/"/>
     
       <category term="ajax返回值" scheme="http://www.cenhq.com/tags/ajax%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>thinkphp页面显示权限控制</title>
-    <link href="http://www.cenhq.com/2016/12/08/thinkphp-page-access-control/"/>
-    <id>http://www.cenhq.com/2016/12/08/thinkphp-page-access-control/</id>
-    <published>2016-12-08T19:10:05.000Z</published>
-    <updated>2017-03-28T10:39:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>需求：报表生成后，需要发布报表浏览页，在发布的同时，需要设置权限；创建者有浏览该报表权限，所属部门有浏览权限，员工级别有浏览权限，只要包含其中就可；</p>
-<p>如图所示：</p>
-<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161208-0.png" alt=""><br><a id="more"></a><br>用户信息在session里保存，所以当创建报表是，获取用户信息，当发布报表时，写入用户信息和用户设置的权限到mongo库里</p>
-<p>下面是显示的操作方法</p>
-<p><pre class="lang:php decode:true ">//获取用户名,只显示当前用户的报表<br>$info = $_SESSION[‘info’][‘data’];<br>$map[‘user’] = $info[‘user_name’];<br>$map = $this-&gt;getAuthInfo($map);<br>$where[‘_complex’] = array(‘_logic’=&gt;”or”, array(‘user’=&gt;$map[‘user’]), array(‘dept’=&gt;$map[‘dept’]),array(‘level’=&gt;$map[‘level’]));<br>$data = $model-&gt;order(‘ym desc’)-&gt;where($where)-&gt;limit($Page-&gt;firstRow.’,’.$Page-&gt;listRows)-&gt;select();</pre></p>
-<p><pre class="lang:php decode:true ">private function getAuthInfo($map)<br>    //获取当前用户的部门和级别<br>        $info = $_SESSION[‘title’];<br>        //判断用户所属部门<br>        if($info[‘department’] == ‘技术服务部’)<br>            $map[‘dept’] = ‘jw’;<br>        elseif ($info[‘department’] == ‘手游服务部’)<br>            $map[‘dept’] = ‘sy’;<br>        elseif ($info[‘department’] == ‘端游服务部’)<br>            $map[‘dept’] = ‘dy’;<br>        elseif ($info[‘department’] == ‘监控服务部’)<br>            $map[‘dept’] = ‘jk’;<br>        else<br>            $map[‘dept’] = ‘all’;</pre></p>
-<pre><code>    //判断用户的级别
-    if($info[&apos;powerTitle&apos;] == &apos;员工&apos;)
-        $map[&apos;level&apos;] = &apos;staff&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;组长&apos;)
-        $map[&apos;level&apos;] = &apos;leader&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;主管&apos;)
-        $map[&apos;level&apos;] = &apos;competent&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;经理&apos;)
-        $map[&apos;level&apos;] = &apos;manager&apos;;
-    elseif ($info[&apos;powerTitle&apos;] == &apos;总监&apos;)
-        $map[&apos;level&apos;] = &apos;director&apos;;
-
-    return $map;
-}&lt;/pre&gt;
-</code></pre><p>显示效果如下：</p>
-<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161208-1.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;需求：报表生成后，需要发布报表浏览页，在发布的同时，需要设置权限；创建者有浏览该报表权限，所属部门有浏览权限，员工级别有浏览权限，只要包含其中就可；&lt;/p&gt;
-&lt;p&gt;如图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161208-0.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://www.cenhq.com/categories/PHP/"/>
-    
-    
-      <category term="mongo or查询" scheme="http://www.cenhq.com/tags/mongo-or%E6%9F%A5%E8%AF%A2/"/>
-    
-      <category term="_complex" scheme="http://www.cenhq.com/tags/complex/"/>
-    
-      <category term="_logic=&amp;gt;&quot;or&quot;" scheme="http://www.cenhq.com/tags/logic-gt-or/"/>
-    
-      <category term="报表浏览权限" scheme="http://www.cenhq.com/tags/%E6%8A%A5%E8%A1%A8%E6%B5%8F%E8%A7%88%E6%9D%83%E9%99%90/"/>
-    
-      <category term="权限控制" scheme="http://www.cenhq.com/tags/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql查询日期间隔自定义日期</title>
-    <link href="http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/"/>
-    <id>http://www.cenhq.com/2016/12/06/mysql-select-date-interval-custom-date/</id>
-    <published>2016-12-06T17:32:35.000Z</published>
-    <updated>2017-03-28T10:39:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。<br><a id="more"></a><br>这里要用到mysql函数，如下：</p>
-<p><pre class="lang:mysql decode:true ">DELIMITER $$<br>create function getTimeSortId(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10))<br>returns int(10)<br>begin<br>declare sortId int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end $$<br>DELIMITER ;<br></pre><br>解释下函数内容：</p>
-<p>getTimeSortId为函数，timetype : 日期类型，startTime ： 开始时间，usetime : 字段时间，splitNum : 间隔数；</p>
-<p>如果传递的参数为天，间隔数 - 转化为天的开始时间 % 间隔数 + 转化为天的字段时间 / 间隔数 = 排序ID</p>
-<p>下面周跟月就具体介绍了；</p>
-<p>具体运行如下：</p>
-<p><pre class="lang:mysql decode:true">select<br>  getTimeSortId(‘day’,from_unixtime(1470109260,’%y-%m-%d’),from_unixtime(createTime,’%y-%m-%d’),3) as sortId,<br>  min(from_unixtime(createTime,’%y-%m-%d’)) as mtime,<br>  count(*) from think_kf_chat_im_group<br>where createTime BETWEEN 1470109260 AND 1472442060<br>group by sortId;</pre><br><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-0.png" alt=""></p>
-<p>到数据库中运行，查看生成的语法</p>
-<p><pre class="lang:mysql decode:true ">CREATE DEFINER=<code>root</code>@<code>localhost</code> FUNCTION <code>getTimeSortId</code>(timetype varchar(20),startTime datetime,usetime datetime,splitNum int(10)) RETURNS int(10)<br>begin<br>declare sortId int;<br>declare totalDay int;<br>declare totalMonth int;<br>declare totalYear int;<br>set sortId = 0;<br>if timetype = “day” then<br>    set sortId = floor( (splitNum - to_days(startTime) % splitNum + to_days(usetime) )/splitNum );<br>end if;<br>if timetype = “week” then<br>    set sortId = floor((splitNum - floor((TO_DAYS(startTime) + 5 )/7) % splitNum + floor((TO_DAYS(usetime) + 5 )/7) )/splitNum);<br>end if;<br>if timetype = “month” then<br>    set sortId = floor((splitNum -  ( month(startTime) + year(startTime) <em> 12) % splitNum + ( month(usetime) + year(usetime) </em> 12) )/splitNum);<br>end if;<br>return sortId;<br>end;</pre><br>如果不是root用户的话，会有权限问题；</p>
-<p>我这里数据库有的不是root用户，所以要把这个函数放到php里定义成一个方法，然后调用生成sql语句来执行；</p>
-<p><pre class="lang:php decode:true ">/**</pre></p>
-<pre><code> * @param type day week month
- * @param startTime 开始时间,必须是时间戳
- * @param key 时间字段
- * @param asName 生成的ID
- * @param isTimestamp key是否为时间戳
- * @param echo $this-&amp;gt;getSortId(&quot;week&quot;, 1477929600, &quot;intitime&quot;, 2, &quot;sortId&quot;, false);
- */
-protected function getSortId($type, $startTime, $key, $splitNum, $asName = &quot;sortId&quot;, $isTimestamp = false)
-{
-    if ($isTimestamp) {
-        $key = &quot;FROM_UNIXTIME(&quot; . $key . &quot;)&quot;;
-    }
-
-    $startTime = &quot;FROM_UNIXTIME(&quot; . $startTime . &quot;)&quot;;
-
-    if ($type == &quot;day&quot;) {
-        $sql = &quot;floor( (&quot; . $splitNum . &quot; - to_days(&quot; . $startTime . &quot;) % &quot; . $splitNum . &quot; + to_days(&quot; . $key . &quot;) )/&quot; . $splitNum . &quot; ) as &quot; . $asName . &quot; &quot;;
-    } else if ($type == &quot;week&quot;) {
-        $sql = &quot;floor((&quot; . $splitNum . &quot; - floor((TO_DAYS(&quot; . $startTime . &quot;) + 5 )/7) % &quot; . $splitNum . &quot; + floor((TO_DAYS(&quot; . $key . &quot;) + 5 )/7) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
-    } else if ($type == &quot;month&quot;) {
-        $sql = &quot;floor((&quot; . $splitNum . &quot; -  ( month(&quot; . $startTime . &quot;) + year(&apos;&quot; . $startTime . &quot;&apos;) * 12) % &quot; . $splitNum . &quot; + ( month(&quot; . $key . &quot;) + year(&apos;&quot; . $key . &quot;&apos;) * 12) )/&quot; . $splitNum . &quot;) as &quot; . $asName . &quot; &quot;;
-    } else {
-        $sql = &quot;(0) as &quot; . $asName . &quot; &quot;;
-    }
-    return $sql;
-}&lt;/pre&gt;
-</code></pre><p>调用次方法来生成field</p>
-<p><pre class="lang:php decode:true ">/**</pre></p>
-<pre><code> * 根据日期间隔统计数据
- * @param $dateFormat int 间隔数字
- * @param $dateUtil string 间隔单位,如:天,周,月,年
- * @param $sTime int | datetime 开始时间
- * @param $dateField string 日期字段名
- * @param $opertion string 统计数量
- * @param $groupType string 日期类型
- * echo $this-&amp;gt;setIntervalTime(3,&apos;day&apos;,1477929600,&apos;createTime&apos;,&apos;count(*)&apos;,&apos;day&apos;);
- */
-private function setIntervalTime($dateFormat,$dateUtil,$sTime,$dateField,$opertion,$groupType,$isTimestamp = true)
-{
-    if(is_numeric($dateFormat) &amp;amp;&amp;amp; is_string($dateUtil)){
-        if(!is_int($sTime)){
-            $sTime =  strtotime($sTime);
-        }
-        $field = $this-&amp;gt;getSortId($dateUtil,$sTime,$dateField,$dateFormat,&quot;sortId&quot;,$isTimestamp) .
-            &quot;,min(date_format(&quot; .
-                ($isTimestamp ? &quot;from_unixtime(&quot; . $dateField . &quot;)&quot; : $dateField).
-            &quot;,&apos;&quot;.$this-&amp;gt;getGroupFormat($groupType).&quot;&apos;)) as mtime,&quot;.
-            $opertion.&quot; as c&quot;;
-    }else{
-        $this-&amp;gt;error(&apos;你输入的日期单位或日期格式不正确&apos;);
-        exit;
-    }
-    return $field;
-}&lt;/pre&gt;
-</code></pre><p>具体调用如下：</p>
-<p><pre class="lang:php decode:true ">$field = $this-&gt;setIntervalTime($dateFormat,$dateUnit,$sTime,’createTime’,’count(*)’,$groupType);<br>$where[‘createTime’] = array(‘between’,array($sTime,$eTime));<br>$model-&gt;field($field)-&gt;where($where)-&gt;group(‘sortId’)-&gt;select();</pre><br>获取的数据到通过highcharts到前端显示如下</p>
-<p><img src="http://blog.cenhq.com/wp-content/uploads/2016/12/QQ20161206-1.png" alt=""></p>
-<p>&nbsp;</p>
-<p>感谢同事鹏哥的帮助；大家有好的方法，求留言讨论；</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;需求：由于查询日期范围内数据，需要定义日期范围内数据的单位，比如从2016年11月1日到2016年12月10日，间隔为5天，也就是11月1日，11月6日，11月11日。。。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Dev" scheme="http://www.cenhq.com/categories/Dev/"/>
-    
-      <category term="Mysql" scheme="http://www.cenhq.com/categories/Dev/Mysql/"/>
-    
-      <category term="PHP" scheme="http://www.cenhq.com/categories/Dev/Mysql/PHP/"/>
-    
-    
-      <category term="mysql日期间隔查询" scheme="http://www.cenhq.com/tags/mysql%E6%97%A5%E6%9C%9F%E9%97%B4%E9%9A%94%E6%9F%A5%E8%AF%A2/"/>
-    
-      <category term="todays" scheme="http://www.cenhq.com/tags/todays/"/>
-    
-      <category term="天数排序" scheme="http://www.cenhq.com/tags/%E5%A4%A9%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
-    
-      <category term="自定义时间间隔" scheme="http://www.cenhq.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94/"/>
     
   </entry>
   

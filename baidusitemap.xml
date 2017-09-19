@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/09/19/elk-installation-configuration/</loc>
+    <lastmod>2017-09-19T07:44:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>ELK 安装配置</title>
+        <pubTime>2017-09-19T07:39:54.000Z</pubTime>
+        
+        <tag>logstash</tag>
+         
+        <tag>elasticsearch</tag>
+         
+        <tag>kibana</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2017/07/25/using-github-issues-to-build-hexo-review-system/</loc>
+    <lastmod>2017-07-25T03:15:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用 GitHub Issues 搭建 hexo 评论系统</title>
+        <pubTime>2017-07-25T03:00:41.000Z</pubTime>
+        
+        <tag>Gitment</tag>
+         
+        <tag>comment</tag>
+         
+         
+           
+             
+              <breadCrumb title="Hexo" url="http://www.cenhq.com/categories/Hexo/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2017/07/19/laravel-passport-usage/</loc>
     <lastmod>2017-07-19T05:33:40.000Z</lastmod>
     <data>
@@ -200,31 +246,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>php多维数组整理</title>
-        <pubTime>2016-11-29T16:15:08.000Z</pubTime>
-        
-        <tag>highcharts</tag>
-         
-        <tag>php</tag>
-         
-         
-           
-             
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2016/12/01/html-to-pdf-for-php/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -259,6 +280,31 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Lumen实现用户注册登录认证</title>
+        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
+        
+        <tag>access_token</tag>
+         
+        <tag>Api</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+          
+             
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/12/08/install-mongodb-enterprise-2-6/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -272,84 +318,6 @@
            
              
               <breadCrumb title="Mongo" url="http://www.cenhq.com/categories/Mongo/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>Ajax+setInterval实时更新</title>
-        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
-        
-        <tag>ajax</tag>
-         
-        <tag>setInterval</tag>
-         
-         
-           
-             
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>ajax作用域范围无法获取返回值</title>
-        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
-        
-        <tag>ajax作用域</tag>
-         
-        <tag>ajax同步</tag>
-         
-        <tag>ajax异步</tag>
-         
-        <tag>ajax返回值</tag>
-         
-         
-           
-             
-              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>Laravel 5.4 事件操作</title>
-        <pubTime>2017-03-22T05:18:14.000Z</pubTime>
-        
-        <tag>Events</tag>
-         
-        <tag>Listeners</tag>
-         
-        <tag>EventServiceProvider</tag>
-         
-         
-           
-             
-              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
           
         </display>
     </data>
@@ -386,24 +354,50 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2017/02/21/Lumen-user-register-and-login-auth/</loc>
+    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>Lumen实现用户注册登录认证</title>
-        <pubTime>2017-02-21T06:47:10.000Z</pubTime>
+        <title>codis集群搭建</title>
+        <pubTime>2015-09-15T17:40:24.000Z</pubTime>
         
-        <tag>access_token</tag>
+        <tag>codis</tag>
          
-        <tag>Api</tag>
+        <tag>redis-cli</tag>
          
          
            
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+              <breadCrumb title="Codis" url="http://www.cenhq.com/categories/Codis/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2016/12/16/ajax-unable-to-get-return-value/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>ajax作用域范围无法获取返回值</title>
+        <pubTime>2016-12-16T16:15:46.000Z</pubTime>
+        
+        <tag>ajax作用域</tag>
+         
+        <tag>ajax同步</tag>
+         
+        <tag>ajax异步</tag>
+         
+        <tag>ajax返回值</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
           
              
-              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/JavaScript/PHP/"/>
           
         </display>
     </data>
@@ -439,6 +433,58 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/03/22/laravel-event/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>Laravel 5.4 事件操作</title>
+        <pubTime>2017-03-22T05:18:14.000Z</pubTime>
+        
+        <tag>Events</tag>
+         
+        <tag>Listeners</tag>
+         
+        <tag>EventServiceProvider</tag>
+         
+         
+           
+             
+              <breadCrumb title="Laravel" url="http://www.cenhq.com/categories/Laravel/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>ELK中展示用户位置</title>
+        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
+        
+        <tag>kibana</tag>
+         
+        <tag>geoip</tag>
+         
+         
+           
+             
+              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
+          
+             
+              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
+          
+             
+              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/10/29/logstash-elasticsearch-kibana-analysis-system-build/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -446,11 +492,11 @@
         <title>搭建ELK(Logstash+Elasticsearch+Kibana)日志分析系统</title>
         <pubTime>2015-10-29T17:20:44.000Z</pubTime>
         
-        <tag>kibana</tag>
+        <tag>logstash</tag>
          
         <tag>elasticsearch</tag>
          
-        <tag>logstash</tag>
+        <tag>kibana</tag>
          
          
            
@@ -494,28 +540,6 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/09/15/codis-cluster-structures/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>codis集群搭建</title>
-        <pubTime>2015-09-15T17:40:24.000Z</pubTime>
-        
-        <tag>codis</tag>
-         
-        <tag>redis-cli</tag>
-         
-         
-           
-             
-              <breadCrumb title="Codis" url="http://www.cenhq.com/categories/Codis/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.cenhq.com/2017/03/03/lumen-form-validate/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -534,33 +558,6 @@
           
              
               <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/PHP/Lumen/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>lumen 队列发送邮件</title>
-        <pubTime>2017-03-16T02:34:44.000Z</pubTime>
-        
-        <tag>supervisord</tag>
-         
-        <tag>queue</tag>
-         
-        <tag>sendEmail</tag>
-         
-         
-           
-             
-              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/Lumen/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Lumen/PHP/"/>
           
         </display>
     </data>
@@ -638,27 +635,26 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/29/elk-shown-in-the-users-location/</loc>
+    <loc>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>ELK中展示用户位置</title>
-        <pubTime>2015-10-29T17:50:43.000Z</pubTime>
+        <title>lumen 队列发送邮件</title>
+        <pubTime>2017-03-16T02:34:44.000Z</pubTime>
         
-        <tag>geoip</tag>
+        <tag>supervisord</tag>
          
-        <tag>kibana</tag>
+        <tag>queue</tag>
+         
+        <tag>sendEmail</tag>
          
          
            
              
-              <breadCrumb title="Elasticsearch" url="http://www.cenhq.com/categories/Elasticsearch/"/>
+              <breadCrumb title="Lumen" url="http://www.cenhq.com/categories/Lumen/"/>
           
              
-              <breadCrumb title="Kibana" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/"/>
-          
-             
-              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Elasticsearch/Kibana/Logstash/"/>
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Lumen/PHP/"/>
           
         </display>
     </data>
@@ -723,23 +719,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
+    <loc>http://www.cenhq.com/2016/11/29/php-array-add-value/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>highcharts导出csv格式</title>
-        <pubTime>2016-09-27T10:56:17.000Z</pubTime>
+        <title>php多维数组整理</title>
+        <pubTime>2016-11-29T16:15:08.000Z</pubTime>
         
-        <tag>export-csv</tag>
-         
-        <tag>exporting</tag>
-         
         <tag>highcharts</tag>
+         
+        <tag>php</tag>
          
          
            
              
-              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
           
         </display>
     </data>
@@ -747,23 +744,24 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
+    <loc>http://www.cenhq.com/2016/09/20/ajax-setinterval/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>PHP数组分页</title>
-        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
+        <title>Ajax+setInterval实时更新</title>
+        <pubTime>2016-09-20T15:07:31.000Z</pubTime>
         
-        <tag>php</tag>
+        <tag>ajax</tag>
          
-        <tag>php_array</tag>
-         
-        <tag>show_array</tag>
+        <tag>setInterval</tag>
          
          
            
              
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
           
         </display>
     </data>
@@ -813,6 +811,30 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2016/09/12/php-array-page/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>PHP数组分页</title>
+        <pubTime>2016-09-12T13:52:29.000Z</pubTime>
+        
+        <tag>php</tag>
+         
+        <tag>php_array</tag>
+         
+        <tag>show_array</tag>
+         
+         
+           
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/PHP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/09/06/release-script-code/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -852,31 +874,6 @@
            
              
               <breadCrumb title="Scripts" url="http://www.cenhq.com/categories/Scripts/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/10/23/samba-service-build/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>samba服务搭建</title>
-        <pubTime>2015-10-23T16:47:50.000Z</pubTime>
-        
-        <tag>samba</tag>
-         
-        <tag>smbclient</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
-          
-             
-              <breadCrumb title="Samba" url="http://www.cenhq.com/categories/Linux/Samba/"/>
           
         </display>
     </data>
@@ -933,6 +930,31 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2015/10/23/samba-service-build/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>samba服务搭建</title>
+        <pubTime>2015-10-23T16:47:50.000Z</pubTime>
+        
+        <tag>samba</tag>
+         
+        <tag>smbclient</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.cenhq.com/categories/Linux/"/>
+          
+             
+              <breadCrumb title="Samba" url="http://www.cenhq.com/categories/Linux/Samba/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/09/17/the-second-edition-release-script-code/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -953,36 +975,6 @@
           
              
               <breadCrumb title="Svn" url="http://www.cenhq.com/categories/Scripts/Svn/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2017/02/04/thinkphp-data-cache/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>thinkphp数据缓存</title>
-        <pubTime>2017-02-04T14:34:07.000Z</pubTime>
-        
-        <tag>S方法</tag>
-         
-        <tag>thinkphp</tag>
-         
-        <tag>数据缓存</tag>
-         
-         
-           
-             
-              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
-          
-             
-              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
-          
-             
-              <breadCrumb title="Thinkphp" url="http://www.cenhq.com/categories/Dev/PHP/Thinkphp/"/>
           
         </display>
     </data>
@@ -1046,6 +1038,60 @@
 
     
   <url>
+    <loc>http://www.cenhq.com/2017/02/04/thinkphp-data-cache/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>thinkphp数据缓存</title>
+        <pubTime>2017-02-04T14:34:07.000Z</pubTime>
+        
+        <tag>S方法</tag>
+         
+        <tag>thinkphp</tag>
+         
+        <tag>数据缓存</tag>
+         
+         
+           
+             
+              <breadCrumb title="Dev" url="http://www.cenhq.com/categories/Dev/"/>
+          
+             
+              <breadCrumb title="PHP" url="http://www.cenhq.com/categories/Dev/PHP/"/>
+          
+             
+              <breadCrumb title="Thinkphp" url="http://www.cenhq.com/categories/Dev/PHP/Thinkphp/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2016/09/27/highcharts-export-csv/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>highcharts导出csv格式</title>
+        <pubTime>2016-09-27T10:56:17.000Z</pubTime>
+        
+        <tag>export-csv</tag>
+         
+        <tag>exporting</tag>
+         
+        <tag>highcharts</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://www.cenhq.com/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.cenhq.com/2015/10/16/wordpress-add-clustrmaps/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
@@ -1090,14 +1136,16 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/15/wordpress-add-suspended-the-index/</loc>
+    <loc>http://www.cenhq.com/2015/10/12/wp-postviews-method-of-use/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>wordpress添加悬浮文章索引</title>
-        <pubTime>2015-10-15T16:50:35.000Z</pubTime>
+        <title>WP-Postviews使用</title>
+        <pubTime>2015-10-12T17:59:31.000Z</pubTime>
         
         <tag>wordpress</tag>
+         
+        <tag>WP-PostViews</tag>
          
          
            
@@ -1110,16 +1158,14 @@
 
     
   <url>
-    <loc>http://www.cenhq.com/2015/10/12/wp-postviews-method-of-use/</loc>
+    <loc>http://www.cenhq.com/2015/10/15/wordpress-add-suspended-the-index/</loc>
     <lastmod>2017-03-28T10:39:18.000Z</lastmod>
     <data>
         <display>
-        <title>WP-Postviews使用</title>
-        <pubTime>2015-10-12T17:59:31.000Z</pubTime>
+        <title>wordpress添加悬浮文章索引</title>
+        <pubTime>2015-10-15T16:50:35.000Z</pubTime>
         
         <tag>wordpress</tag>
-         
-        <tag>WP-PostViews</tag>
          
          
            
@@ -1190,33 +1236,6 @@
           
              
               <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/PHP/Zabbix/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.cenhq.com/2015/11/16/zabbix-monitor-logstash-java/</loc>
-    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>zabbix监控logstash的java</title>
-        <pubTime>2015-11-16T18:00:11.000Z</pubTime>
-        
-        <tag>logstash</tag>
-         
-        <tag>JMX</tag>
-         
-        <tag>zabbix-java-gateway</tag>
-         
-         
-           
-             
-              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Logstash/"/>
-          
-             
-              <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Logstash/Zabbix/"/>
           
         </display>
     </data>
@@ -1296,6 +1315,33 @@
           
              
               <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Scripts/Zabbix/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.cenhq.com/2015/11/16/zabbix-monitor-logstash-java/</loc>
+    <lastmod>2017-03-28T10:39:18.000Z</lastmod>
+    <data>
+        <display>
+        <title>zabbix监控logstash的java</title>
+        <pubTime>2015-11-16T18:00:11.000Z</pubTime>
+        
+        <tag>logstash</tag>
+         
+        <tag>JMX</tag>
+         
+        <tag>zabbix-java-gateway</tag>
+         
+         
+           
+             
+              <breadCrumb title="Logstash" url="http://www.cenhq.com/categories/Logstash/"/>
+          
+             
+              <breadCrumb title="Zabbix" url="http://www.cenhq.com/categories/Logstash/Zabbix/"/>
           
         </display>
     </data>
