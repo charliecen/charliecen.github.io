@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cenhq.com/"/>
-  <updated>2017-11-07T08:35:50.874Z</updated>
+  <updated>2018-05-03T07:07:16.118Z</updated>
   <id>http://www.cenhq.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Logstash 过滤日志</title>
+    <link href="http://www.cenhq.com/2018/05/03/logstash-filter-log/"/>
+    <id>http://www.cenhq.com/2018/05/03/logstash-filter-log/</id>
+    <published>2018-05-03T07:07:16.121Z</published>
+    <updated>2018-05-03T07:07:16.118Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Logstash-过滤日志"><a href="#Logstash-过滤日志" class="headerlink" title="Logstash 过滤日志"></a>Logstash 过滤日志</h3><h4 id="输出匹配的内容"><a href="#输出匹配的内容" class="headerlink" title="输出匹配的内容"></a>输出匹配的内容</h4><p>配置文件如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">$ vim config/test.conf</div><div class="line"></div><div class="line">input &#123; </div><div class="line">    file &#123;</div><div class="line">        path =&gt; [<span class="string">"/var/log/test/test.log"</span>]</div><div class="line">        max_open_files =&gt; 20000</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">filter &#123;</div><div class="line">    grok &#123;</div><div class="line">        <span class="comment"># 添加标签</span></div><div class="line">        add_tag =&gt; [ <span class="string">"valid"</span> ]</div><div class="line">        <span class="comment"># 匹配"ERROR" 或者 "DEBUG"</span></div><div class="line">        match =&gt; [</div><div class="line">            <span class="string">"message"</span>   =&gt;  <span class="string">"ERROR"</span>,</div><div class="line">            <span class="string">"message"</span>   =&gt;  <span class="string">"DEBUG"</span></div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment"># 无效的删除</span></div><div class="line">    <span class="keyword">if</span> <span class="string">"valid"</span> not <span class="keyword">in</span> [tags] &#123;</div><div class="line">        drop &#123;&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">output &#123;</div><div class="line">    stdout &#123;</div><div class="line">        codec =&gt; rubydebug</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>测试如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">$ sudo <span class="built_in">echo</span> <span class="string">"180502-14:55:13 money[26]"</span> &gt;&gt; test.log</div><div class="line">$ sudo <span class="built_in">echo</span> <span class="string">"180502-14:55:13 ERROR:"</span> &gt;&gt; test.log</div><div class="line"></div><div class="line"><span class="comment"># 结果</span></div><div class="line"> bin/logstash <span class="_">-f</span> config/test.conf</div><div class="line">Sending Logstash<span class="string">'s logs to /charlie/elk/logstash-5.6.0/logs which is now configured via log4j2.properties</span></div><div class="line">[2018-05-03T14:39:39,138][INFO ][logstash.modules.scaffold] Initializing module &#123;:module_name=&gt;"fb_apache", :directory=&gt;"/charlie/elk/logstash-5.6.0/modules/fb_apache/configuration"&#125;</div><div class="line">[2018-05-03T14:39:39,161][INFO ][logstash.modules.scaffold] Initializing module &#123;:module_name=&gt;"netflow", :directory=&gt;"/charlie/elk/logstash-5.6.0/modules/netflow/configuration"&#125;</div><div class="line">[2018-05-03T14:39:40,656][INFO ][logstash.pipeline        ] Starting pipeline &#123;"id"=&gt;"main", "pipeline.workers"=&gt;4, "pipeline.batch.size"=&gt;125, "pipeline.batch.delay"=&gt;5, "pipeline.max_inflight"=&gt;500&#125;</div><div class="line">[2018-05-03T14:39:40,958][INFO ][logstash.pipeline        ] Pipeline main started</div><div class="line">[2018-05-03T14:39:41,049][INFO ][logstash.agent           ] Successfully started Logstash API endpoint &#123;:port=&gt;9600&#125;</div><div class="line">&#123;</div><div class="line">       "path" =&gt; "/var/log/test/test.log",</div><div class="line">    "logdate" =&gt; 2018-05-02T06:55:13.000Z,</div><div class="line">       "host" =&gt; "macmini-bbcdfa.ztgame.com",</div><div class="line">    "message" =&gt; [</div><div class="line">        [0] "180502-14:55:13",</div><div class="line">        [1] "ERROR:"</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="分割日志并去除无效的字段"><a href="#分割日志并去除无效的字段" class="headerlink" title="分割日志并去除无效的字段"></a>分割日志并去除无效的字段</h4><p>配置文件如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">$ vim config/test.conf</div><div class="line"></div><div class="line">input &#123;</div><div class="line">  file &#123;</div><div class="line">    path =&gt; [<span class="string">"/var/log/test/test.log"</span>]</div><div class="line">    max_open_files =&gt; 20000</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">filter &#123;</div><div class="line">    <span class="comment">#grok &#123;</span></div><div class="line">    <span class="comment">#  match =&gt; ["path", "/vol2\/(?&lt;game_name&gt;\w+|\w+\d+?)\/(?&lt;time&gt;\d&#123;6&#125;-\d&#123;2&#125;?)\/(?&lt;server_name&gt;\w+?)\-(?&lt;zone&gt;\w+\d+?)|\-(\.*)"]</span></div><div class="line">    <span class="comment">#  match =&gt; ["path", "/vol2\/(?&lt;game_name&gt;\w+|\w+\d+?)\/(?&lt;time&gt;\d&#123;6&#125;-\d&#123;2&#125;?)\/(?&lt;server_name&gt;\w+?)\-(?&lt;zone&gt;\w+\d+?)\-(?&lt;server_type&gt;\w+?)\/(?&lt;logname&gt;\w+?)\.(.*)"]</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line">    <span class="comment"># 丢弃日志</span></div><div class="line">    <span class="keyword">if</span> [logname] == <span class="string">"sobjscenesserver26"</span> &#123;</div><div class="line">        drop&#123;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment"># 匹配有效的字段</span></div><div class="line">    grok &#123;</div><div class="line">        add_tag =&gt; [ <span class="string">"valid"</span> ]</div><div class="line">        match =&gt; [</div><div class="line">            <span class="string">"message"</span>, <span class="string">"ERROR:"</span>,</div><div class="line">            <span class="string">"message"</span>, <span class="string">"DEBUG:"</span></div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">    <span class="comment"># 丢弃无效的日志</span></div><div class="line">    <span class="keyword">if</span> <span class="string">"valid"</span> not <span class="keyword">in</span> [tags] &#123;</div><div class="line">        drop &#123;  &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment"># 匹配以日期开头的日志</span></div><div class="line">    <span class="keyword">if</span> [message] =~ /^(\d&#123;6&#125;-\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;)/ &#123;</div><div class="line">        <span class="comment"># 以空格分割日志，并添加字段</span></div><div class="line">        mutate &#123;</div><div class="line">            split =&gt; [<span class="string">"message"</span>, <span class="string">" "</span>]</div><div class="line">            add_field =&gt; &#123;</div><div class="line">                <span class="string">"logdate"</span> =&gt; <span class="string">"%&#123;[message][0]&#125;"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment"># 数组迭代去除"|",覆盖到原数组</span></div><div class="line">        ruby &#123;</div><div class="line">            code =&gt; <span class="string">"</span></div><div class="line">                values = event.get('message')</div><div class="line">                #File.open('/charlie/elk/logstash-5.6.0/output.txt', 'w')  &#123; |file| file.write(values) &#125;</div><div class="line">                values.each do |v|</div><div class="line">                    if v == '|'</div><div class="line">                        values.delete(v)</div><div class="line">                    end</div><div class="line">                end</div><div class="line">                event.set('message', values)</div><div class="line">            "</div><div class="line">        &#125;</div><div class="line">        <span class="comment"># 去除无效字段</span></div><div class="line">        mutate &#123;</div><div class="line">            remove_field =&gt; [<span class="string">"@timestamp"</span>, <span class="string">"@version"</span>, <span class="string">"tags"</span>]</div><div class="line">        &#125;</div><div class="line">        <span class="comment"># 日期格式</span></div><div class="line">        date &#123;</div><div class="line">            match =&gt; [<span class="string">"logdate"</span>, <span class="string">"yyMMdd-HH:mm:ss"</span>]</div><div class="line">            target =&gt; <span class="string">"logdate"</span></div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        drop &#123;&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">output &#123;</div><div class="line">  stdout &#123;</div><div class="line">    codec =&gt; rubydebug</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试效果如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ sudo <span class="built_in">echo</span> <span class="string">"180502-14:55:13 ERROR: | aa bb cc | dd 0 |"</span> &gt;&gt; test.log</div><div class="line"></div><div class="line">&#123;</div><div class="line">       <span class="string">"path"</span> =&gt; <span class="string">"/var/log/test/test.log"</span>,</div><div class="line">    <span class="string">"logdate"</span> =&gt; 2018-05-02T06:55:13.000Z,</div><div class="line">       <span class="string">"host"</span> =&gt; <span class="string">"macmini-bbcdfa.ztgame.com"</span>,</div><div class="line">    <span class="string">"message"</span> =&gt; [</div><div class="line">        [0] <span class="string">"180502-14:55:13"</span>,</div><div class="line">        [1] <span class="string">"ERROR:"</span>,</div><div class="line">        [2] <span class="string">"aa"</span>,</div><div class="line">        [3] <span class="string">"bb"</span>,</div><div class="line">        [4] <span class="string">"cc"</span>,</div><div class="line">        [5] <span class="string">"dd"</span>,</div><div class="line">        [6] <span class="string">"0"</span></div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Logstash-过滤日志&quot;&gt;&lt;a href=&quot;#Logstash-过滤日志&quot; class=&quot;headerlink&quot; title=&quot;Logstash 过滤日志&quot;&gt;&lt;/a&gt;Logstash 过滤日志&lt;/h3&gt;&lt;h4 id=&quot;输出匹配的内容&quot;&gt;&lt;a href=&quot;#输出匹配的内容&quot; class=&quot;headerlink&quot; title=&quot;输出匹配的内容&quot;&gt;&lt;/a&gt;输出匹配的内容&lt;/h4&gt;&lt;p&gt;配置文件如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;32&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ vim config/test.conf&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;input &amp;#123; &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    file &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        path =&amp;gt; [&lt;span class=&quot;string&quot;&gt;&quot;/var/log/test/test.log&quot;&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        max_open_files =&amp;gt; 20000&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;filter &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    grok &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# 添加标签&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        add_tag =&amp;gt; [ &lt;span class=&quot;string&quot;&gt;&quot;valid&quot;&lt;/span&gt; ]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# 匹配&quot;ERROR&quot; 或者 &quot;DEBUG&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        match =&amp;gt; [&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &lt;span class=&quot;string&quot;&gt;&quot;message&quot;&lt;/span&gt;   =&amp;gt;  &lt;span class=&quot;string&quot;&gt;&quot;ERROR&quot;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &lt;span class=&quot;string&quot;&gt;&quot;message&quot;&lt;/span&gt;   =&amp;gt;  &lt;span class=&quot;string&quot;&gt;&quot;DEBUG&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;# 无效的删除&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;valid&quot;&lt;/span&gt; not &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; [tags] &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        drop &amp;#123;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;output &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    stdout &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        codec =&amp;gt; rubydebug&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="ELK" scheme="http://www.cenhq.com/categories/ELK/"/>
+    
+      <category term="Linux" scheme="http://www.cenhq.com/categories/ELK/Linux/"/>
+    
+    
+      <category term="logstash" scheme="http://www.cenhq.com/tags/logstash/"/>
+    
+      <category term="filter" scheme="http://www.cenhq.com/tags/filter/"/>
+    
+      <category term="ruby" scheme="http://www.cenhq.com/tags/ruby/"/>
+    
+      <category term="remove_field" scheme="http://www.cenhq.com/tags/remove-field/"/>
+    
+  </entry>
   
   <entry>
     <title>elasticsearch 按日期定时删除索引</title>
@@ -202,9 +242,9 @@
     
       <category term="elasticsearch" scheme="http://www.cenhq.com/tags/elasticsearch/"/>
     
-      <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
-    
       <category term="logstash" scheme="http://www.cenhq.com/tags/logstash/"/>
+    
+      <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
     
   </entry>
   
@@ -258,9 +298,9 @@
     
       <category term="elasticsearch" scheme="http://www.cenhq.com/tags/elasticsearch/"/>
     
-      <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
-    
       <category term="logstash" scheme="http://www.cenhq.com/tags/logstash/"/>
+    
+      <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
     
   </entry>
   
@@ -1102,80 +1142,6 @@ end</code></li>
       <category term="access_token" scheme="http://www.cenhq.com/tags/access-token/"/>
     
       <category term="Api" scheme="http://www.cenhq.com/tags/Api/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>thinkphp数据缓存</title>
-    <link href="http://www.cenhq.com/2017/02/04/thinkphp-data-cache/"/>
-    <id>http://www.cenhq.com/2017/02/04/thinkphp-data-cache/</id>
-    <published>2017-02-04T14:34:07.000Z</published>
-    <updated>2017-03-28T10:39:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；</p>
-<p>1.首先介绍数据缓存的用法</p>
-<p><pre class="lang:php decode:true ">// 缓存初始化<br>S(array(‘type’=&gt;’xcache’,’expire’=&gt;60));</pre><br>缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：<br><a id="more"></a></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expire</td>
-<td>缓存有效期(时间为秒)</td>
-</tr>
-<tr>
-<td>prefix</td>
-<td>缓存标识前缀</td>
-</tr>
-<tr>
-<td>type</td>
-<td>缓存类型</td>
-</tr>
-</tbody>
-</table>
-<p>系统目前已经支持的缓存类型包括：<code>Apachenote、Apc、Db、Eaccelerator、File、Memcache、Redis、Shmop、Sqlite、Wincache和Xcache</code>。</p>
-<p>如果S方法不传入type参数初始化的话，则读取配置文件中设置的<code>DATA_CACHE_TYPE</code>参数值作为默认类型。同样的道理，prefix参数如果没有传入会读取配置文件的<code>DATA_CACHE_PREFIX</code>参数值，expire参数没有传入则读取<code>DATA_CACHE_TIME</code>配置值作为默认。</p>
-<p>2.缓存设置</p>
-<p><pre class="lang:php decode:true ">// 设置缓存<br>S(‘name’,$value);<br>// 缓存数据300秒<br>S(‘name’,$value,300);<br>// 采用文件方式缓存数据300秒<br>S(‘name’,$value,array(‘type’=&gt;’file’,’expire’=&gt;300));</pre><br>3.缓存读取</p>
-<p><pre class="lang:php decode:true ">// 读取缓存<br>$value = S(‘name’);</pre><br>4.缓存删除</p>
-<p><pre class="lang:sh decode:true ">// 删除缓存<br>S(‘name’,null);</pre><br>5.对象方式缓存</p>
-<p><pre class="lang:php decode:true ">// 初始化缓存<br>$cache = S(array(‘type’=&gt;’xcache’,’prefix’=&gt;’think’,’expire’=&gt;600));<br>$cache-&gt;name = ‘value’; // 设置缓存<br>$value = $cache-&gt;name; // 获取缓存<br>unset($cache-&gt;name); // 删除缓存</pre><br>6.缓存队列</p>
-<p><pre class="lang:php decode:true ">//设置了length参数后，系统只会缓存最近的100条缓存数据。<br>S(array(‘type’=&gt;’xcache’,’length’=&gt;100,’expire’=&gt;60));</pre><br>7.具体操作，我的代码如下</p>
-<p><pre class="lang:php decode:true ">  public function test()<br>    {<br>        $cacheConfig = array(<br>            ‘type’ =&gt; ‘file’,<br>            ‘expire’ =&gt; 60,<br>            ‘prefix’ =&gt; ‘order_db<em>cache</em>‘<br>        );<br>        if(!$num = S(‘test’,’’,$cacheConfig)){<br>            sleep(10);<br>            $num = 11;<br>            S(‘test’,$num, $cacheConfig);<br>        }<br>        echo $num;</pre></p>
-<pre><code>}&lt;/pre&gt;
-</code></pre><p>8.访问该方法,生成缓存文件</p>
-<p><img src="/2017/02/04/thinkphp-data-cache/QQ20170204-0.png" alt=""></p>
-<p>第一次访问时间</p>
-<p><img src="/2017/02/04/thinkphp-data-cache/QQ20170204-1.png" alt=""></p>
-<p>第二次访问时间</p>
-<p><img src="/2017/02/04/thinkphp-data-cache/QQ20170204-2.png" alt=""></p>
-<p>说明已经使用上缓存了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;由于第一次打开页面会很慢，所以需要做个数据缓存。正好thinkphp框架有封装好的方法，这里说下如何操作的；&lt;/p&gt;
-&lt;p&gt;1.首先介绍数据缓存的用法&lt;/p&gt;
-&lt;p&gt;&lt;pre class=&quot;lang:php decode:true &quot;&gt;// 缓存初始化&lt;br&gt;S(array(‘type’=&amp;gt;’xcache’,’expire’=&amp;gt;60));&lt;/pre&gt;&lt;br&gt;缓存初始化可以支持的参数根据不同的缓存方式有所区别，常用的参数是：&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Dev" scheme="http://www.cenhq.com/categories/Dev/"/>
-    
-      <category term="PHP" scheme="http://www.cenhq.com/categories/Dev/PHP/"/>
-    
-      <category term="Thinkphp" scheme="http://www.cenhq.com/categories/Dev/PHP/Thinkphp/"/>
-    
-    
-      <category term="S方法" scheme="http://www.cenhq.com/tags/S%E6%96%B9%E6%B3%95/"/>
-    
-      <category term="thinkphp" scheme="http://www.cenhq.com/tags/thinkphp/"/>
-    
-      <category term="数据缓存" scheme="http://www.cenhq.com/tags/%E6%95%B0%E6%8D%AE%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
