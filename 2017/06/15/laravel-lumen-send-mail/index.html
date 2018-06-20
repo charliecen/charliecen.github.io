@@ -569,7 +569,21 @@
           
   <div class="comments" id="comments">
     
-        <div id="vcomments"></div>
+      <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+      <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+      <div id="comments"></div>
+      <script>
+        new Valine({
+          el: '#comments',
+          notify: false,
+          verify: false,
+          app_id: 'BEypaL7LaOVHY3z7R0JN410p-gzGzoHsz',
+          app_key: 'vnNkR6Dt0vtwFWaQjDRR8Q78',
+          placeholder: 'just go go',
+          path: window.location.pathname,
+          avatar: 'mm'
+        })
+      </script>
     
   </div> 
 
@@ -617,7 +631,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -635,7 +649,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">124</span>
+                <span class="site-state-item-count">126</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
