@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cenhq.com/"/>
-  <updated>2018-05-23T09:03:21.180Z</updated>
+  <updated>2018-06-20T05:46:27.235Z</updated>
   <id>http://www.cenhq.com/</id>
   
   <author>
@@ -17,22 +17,22 @@
   
   <entry>
     <title>解决 kibana 中地图显示问题</title>
-    <link href="http://www.cenhq.com/2018/05/23/solving-the-problem-of-map-display-in-kibana/"/>
-    <id>http://www.cenhq.com/2018/05/23/solving-the-problem-of-map-display-in-kibana/</id>
-    <published>2018-05-23T09:03:21.180Z</published>
-    <updated>2018-05-23T09:03:21.180Z</updated>
+    <link href="http://www.cenhq.com/2018/06/20/solving-the-problem-of-map-display-in-kibana/"/>
+    <id>http://www.cenhq.com/2018/06/20/solving-the-problem-of-map-display-in-kibana/</id>
+    <published>2018-06-19T21:46:08.000Z</published>
+    <updated>2018-06-20T05:46:27.235Z</updated>
     
     <content type="html"><![CDATA[<h3 id="解决-kibana-中地图显示问题"><a href="#解决-kibana-中地图显示问题" class="headerlink" title="解决 kibana 中地图显示问题"></a>解决 kibana 中地图显示问题</h3><p>报错内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">index pattern does not contain any of the following field types: geo_point</div></pre></td></tr></table></figure>
 <p>在使用 Kibana 生成地图相关视图的时候，发现上面 geoip 生成的数据类型不是 geo_point，而是:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">GET ga_zt2m_180522-15/_mapping</div><div class="line"></div><div class="line">&quot;location&quot;: &#123;</div><div class="line">    &quot;properties&quot;: &#123;</div><div class="line">        &quot;lat&quot;: &#123;</div><div class="line">            &quot;type&quot;: &quot;float&quot;</div><div class="line">        &#125;,</div><div class="line">        &quot;lon&quot;: &#123;</div><div class="line">            &quot;type&quot;: &quot;float&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">GET ga_zt2m_180522<span class="number">-15</span>/_mapping</div><div class="line"></div><div class="line"><span class="string">"location"</span>: &#123;</div><div class="line">    <span class="string">"properties"</span>: &#123;</div><div class="line">        <span class="string">"lat"</span>: &#123;</div><div class="line">            <span class="string">"type"</span>: <span class="string">"float"</span></div><div class="line">        &#125;,</div><div class="line">        <span class="string">"lon"</span>: &#123;</div><div class="line">            <span class="string">"type"</span>: <span class="string">"float"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">PUT _template/ga</div><div class="line">&#123;</div><div class="line">  &quot;index_patterns&quot;: &quot;ga*&quot;,</div><div class="line">  &quot;mappings&quot;: &#123;</div><div class="line">    &quot;doc&quot;: &#123;</div><div class="line">      &quot;dynamic&quot;: &quot;true&quot;,</div><div class="line">      &quot;properties&quot;: &#123;</div><div class="line">        &quot;geoip&quot;: &#123;</div><div class="line">          &quot;dynamic&quot;: true,</div><div class="line">          &quot;properties&quot;: &#123;</div><div class="line">            &quot;location&quot;: &#123;</div><div class="line">              &quot;type&quot;: &quot;geo_point&quot;</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">PUT _template/ga</div><div class="line">&#123;</div><div class="line">  <span class="string">"index_patterns"</span>: <span class="string">"ga*"</span>,</div><div class="line">  <span class="string">"mappings"</span>: &#123;</div><div class="line">    <span class="string">"doc"</span>: &#123;</div><div class="line">      <span class="string">"dynamic"</span>: <span class="string">"true"</span>,</div><div class="line">      <span class="string">"properties"</span>: &#123;</div><div class="line">        <span class="string">"geoip"</span>: &#123;</div><div class="line">          <span class="string">"dynamic"</span>: <span class="literal">true</span>,</div><div class="line">          <span class="string">"properties"</span>: &#123;</div><div class="line">            <span class="string">"location"</span>: &#123;</div><div class="line">              <span class="string">"type"</span>: <span class="string">"geo_point"</span></div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>查看:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;ga&quot;: &#123;</div><div class="line">    &quot;order&quot;: 0,</div><div class="line">    &quot;index_patterns&quot;: [</div><div class="line">      &quot;ga*&quot;</div><div class="line">    ],</div><div class="line">    &quot;settings&quot;: &#123;&#125;,</div><div class="line">    &quot;mappings&quot;: &#123;</div><div class="line">      &quot;doc&quot;: &#123;</div><div class="line">        &quot;dynamic&quot;: &quot;true&quot;,</div><div class="line">        &quot;properties&quot;: &#123;</div><div class="line">          &quot;geoip&quot;: &#123;</div><div class="line">            &quot;dynamic&quot;: true,</div><div class="line">            &quot;properties&quot;: &#123;</div><div class="line">              &quot;location&quot;: &#123;</div><div class="line">                &quot;type&quot;: &quot;geo_point&quot;</div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;aliases&quot;: &#123;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"ga"</span>: &#123;</div><div class="line">    <span class="string">"order"</span>: <span class="number">0</span>,</div><div class="line">    <span class="string">"index_patterns"</span>: [</div><div class="line">      <span class="string">"ga*"</span></div><div class="line">    ],</div><div class="line">    <span class="string">"settings"</span>: &#123;&#125;,</div><div class="line">    <span class="string">"mappings"</span>: &#123;</div><div class="line">      <span class="string">"doc"</span>: &#123;</div><div class="line">        <span class="string">"dynamic"</span>: <span class="string">"true"</span>,</div><div class="line">        <span class="string">"properties"</span>: &#123;</div><div class="line">          <span class="string">"geoip"</span>: &#123;</div><div class="line">            <span class="string">"dynamic"</span>: <span class="literal">true</span>,</div><div class="line">            <span class="string">"properties"</span>: &#123;</div><div class="line">              <span class="string">"location"</span>: &#123;</div><div class="line">                <span class="string">"type"</span>: <span class="string">"geo_point"</span></div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"aliases"</span>: &#123;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>但是已经存在的 index 的 _mapping 并不能改变，我们可以将 index 删除然后重新将日志导入，但更快的方式是使用 _reindex:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">POST _reindex</div><div class="line">&#123;</div><div class="line">  &quot;source&quot;: &#123;</div><div class="line">    &quot;index&quot;: &quot;ga_zt2m_180522-15&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;dest&quot;: &#123;</div><div class="line">    &quot;index&quot;: &quot;ga_zt2m_180522-15-new&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 删除旧的</div><div class="line">DELETE ga_zt2m_180522-15</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">POST _reindex</div><div class="line"></div><div class="line">&#123;</div><div class="line">  "source": &#123;</div><div class="line">    "index": "ga_zt2m_180522-15"</div><div class="line">  &#125;,</div><div class="line">  "dest": &#123;</div><div class="line">    "index": "ga_zt2m_180522-15-new"</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 删除旧的</div><div class="line">DELETE ga_zt2m_180522-15</div></pre></td></tr></table></figure>
 <p>创建地图</p>
 <p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lnVGe3rkV5KWw4114fjDgVZcJMhl.jpeg" alt="file"></p>
 ]]></content>
@@ -42,7 +42,7 @@
       &lt;h3 id=&quot;解决-kibana-中地图显示问题&quot;&gt;&lt;a href=&quot;#解决-kibana-中地图显示问题&quot; class=&quot;headerlink&quot; title=&quot;解决 kibana 中地图显示问题&quot;&gt;&lt;/a&gt;解决 kibana 中地图显示问题&lt;/h3&gt;&lt;p&gt;报错内容：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;index pattern does not contain any of the following field types: geo_point&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;在使用 Kibana 生成地图相关视图的时候，发现上面 geoip 生成的数据类型不是 geo_point，而是:&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;GET ga_zt2m_180522-15/_mapping&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;quot;location&amp;quot;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;quot;properties&amp;quot;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;quot;lat&amp;quot;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;quot;type&amp;quot;: &amp;quot;float&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;quot;lon&amp;quot;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &amp;quot;type&amp;quot;: &amp;quot;float&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;GET ga_zt2m_180522&lt;span class=&quot;number&quot;&gt;-15&lt;/span&gt;/_mapping&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;location&quot;&lt;/span&gt;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;properties&quot;&lt;/span&gt;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;lat&quot;&lt;/span&gt;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &lt;span class=&quot;string&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;float&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;lon&quot;&lt;/span&gt;: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            &lt;span class=&quot;string&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&quot;float&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -54,71 +54,6 @@
       <category term="kibana" scheme="http://www.cenhq.com/tags/kibana/"/>
     
       <category term="map" scheme="http://www.cenhq.com/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>x-pack-6.2.4 破解</title>
-    <link href="http://www.cenhq.com/2018/05/23/xpack-6-cracking/"/>
-    <id>http://www.cenhq.com/2018/05/23/xpack-6-cracking/</id>
-    <published>2018-05-23T09:03:03.633Z</published>
-    <updated>2018-05-23T09:03:03.633Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>由于从5.6.0升级到6.2.4后，<code>x-pack</code>需要重新修改过期时间</p>
-</blockquote>
-<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/elasticsearch-plugin install x-pack</div></pre></td></tr></table></figure>
-<h4 id="反编译文件"><a href="#反编译文件" class="headerlink" title="反编译文件"></a>反编译文件</h4><p>找出要反编译的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cp elasticsearch-6.2.4/plugins/x-pack/x-pack-core/x-pack-core-6.2.4.jar /opt/</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<ol>
-<li>解压文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /opt/ &amp;&amp; jar xf x-pack-core-6.2.4.jar</div></pre></td></tr></table></figure>
-<ol>
-<li>创建 java 文件</li>
-</ol>
-<p>LicenseVerifier 中有两个静态方法，这就是验证授权文件是否有效的方法，我们把它修改为全部返回true.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">$ vim LicenseVerifier.java</div><div class="line"></div><div class="line"><span class="keyword">package</span> org.elasticsearch.license;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.nio.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.security.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.xcontent.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.lucene.util.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.io.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LicenseVerifier</span></span></div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verifyLicense</span><span class="params">(<span class="keyword">final</span> License license, <span class="keyword">final</span> <span class="keyword">byte</span>[] encryptedPublicKeyData)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verifyLicense</span><span class="params">(<span class="keyword">final</span> License license)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>XPackBuild 中 最后一个静态代码块中 try的部分全部删除，这部分会验证jar包是否被修改</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">$ vim XPackBuild.java</div><div class="line"></div><div class="line"><span class="keyword">package</span> org.elasticsearch.xpack.core;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.io.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.net.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.nio.file.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.jar.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XPackBuild</span></span></div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> XPackBuild CURRENT;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String shortHash;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String date;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressForbidden</span>(reason = <span class="string">"looks up path of xpack.jar directly"</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">static</span> Path <span class="title">getElasticsearchCodebase</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> URL url = XPackBuild.class.getProtectionDomain().getCodeSource().getLocation();</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> PathUtils.get(url.toURI());</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">catch</span> (URISyntaxException bogus) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(bogus);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    XPackBuild(<span class="keyword">final</span> String shortHash, <span class="keyword">final</span> String date) &#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.shortHash = shortHash;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.date = date;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">shortHash</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.shortHash;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">date</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.date;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> &#123;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> Path path = getElasticsearchCodebase();</div><div class="line"></div><div class="line">        String shortHash = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        String date = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        Label_0157: &#123;</div><div class="line"></div><div class="line">            shortHash = <span class="string">"Unknown"</span>;</div><div class="line"></div><div class="line">            date = <span class="string">"Unknown"</span>;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        CURRENT = <span class="keyword">new</span> XPackBuild(shortHash, date);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>反编译</li>
-</ol>
-<p>利用 <a href="https://www.jetbrains.com/idea/download" target="_blank" rel="external">Intellij IDEA</a> 编译器插件 <a href="http://jd.benow.ca/" target="_blank" rel="external">jd-gui</a> 反编译这两个文件</p>
-<h4 id="替换文件"><a href="#替换文件" class="headerlink" title="替换文件"></a>替换文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ cp LicenseVerifier.class /opt/org/elasticsearch/license/LicenseVerifier.class</div><div class="line"></div><div class="line">$ cp XPackBuild.class /opt/org/elasticsearch/xpack/core/XPackBuild.class</div><div class="line"></div><div class="line"># 打包覆盖</div><div class="line">$ jar -cvf x-pack-core-6.2.4.jar /opt/*</div><div class="line"></div><div class="line"># 备份原文件</div><div class="line">$ cp x-pack-core-6.2.4.jar x-pack-core-6.2.4.jar.bak</div><div class="line"></div><div class="line"># 替换x-pack</div><div class="line">$ cp /opt/x-pack-core-6.2.4.jar x-pack-core-6.2.4.jar</div></pre></td></tr></table></figure>
-<blockquote>
-<p>替换完成后,我这里有报错，然后重启下elastcisearch 后就正常了。</p>
-</blockquote>
-<h4 id="导入lincense"><a href="#导入lincense" class="headerlink" title="导入lincense"></a>导入lincense</h4><p>如果没有注册过，请申请<a href="https://license.elastic.co/registration" target="_blank" rel="external">license</a> ,由于之前注册过，所以我直接导入就可以了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cat license.json</div><div class="line">&#123;&quot;license&quot;:&#123;&quot;uid&quot;:&quot;f5xywdf-SdeJVtJL...&quot;,&quot;type&quot;:&quot;platinum&quot;,&quot;issue_date_in_millis&quot;:1506643200000,&quot;expiry_date_in_millis&quot;:2535123399999,&quot;max_nodes&quot;:100,&quot;issued_to&quot;:&quot;charlie&quot;,&quot;issuer&quot;:&quot;Web Form&quot;,&quot;signature&quot;:&quot;AAAAAwAAAA3Wt...&quot;,&quot;start_date_in_millis&quot;:1506643200000&#125;&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>修改 <code>type</code> <code>expiry_date_in_millis</code> <code>start_date_in_millis</code></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ curl -XPUT -u user:pass &apos;http://localhost:9200/_xpack/license&apos; -H &quot;Content-Type: application/json&quot; -d @license.json</div><div class="line">&#123;</div><div class="line">    &quot;acknowledged&quot;:true,</div><div class="line">    &quot;license_status&quot;:&quot;valid&quot;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>刷新页面</p>
-<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/lo3N5pGFqHP0HHc_34H_laGFq4mL.jpeg" alt="file"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;由于从5.6.0升级到6.2.4后，&lt;code&gt;x-pack&lt;/code&gt;需要重新修改过期时间&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;安装插件&quot;&gt;&lt;a href=&quot;#安装插件&quot; class=&quot;headerlink&quot; title=&quot;安装插件&quot;&gt;&lt;/a&gt;安装插件&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ bin/elasticsearch-plugin install x-pack&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;反编译文件&quot;&gt;&lt;a href=&quot;#反编译文件&quot; class=&quot;headerlink&quot; title=&quot;反编译文件&quot;&gt;&lt;/a&gt;反编译文件&lt;/h4&gt;&lt;p&gt;找出要反编译的文件&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ cp elasticsearch-6.2.4/plugins/x-pack/x-pack-core/x-pack-core-6.2.4.jar /opt/&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="ELK" scheme="http://www.cenhq.com/categories/ELK/"/>
-    
-      <category term="Linux" scheme="http://www.cenhq.com/categories/ELK/Linux/"/>
-    
-    
-      <category term="x-pack" scheme="http://www.cenhq.com/tags/x-pack/"/>
-    
-      <category term="破解" scheme="http://www.cenhq.com/tags/%E7%A0%B4%E8%A7%A3/"/>
     
   </entry>
   
@@ -166,7 +101,7 @@
     <title>elasticsearch 按日期定时删除索引</title>
     <link href="http://www.cenhq.com/2017/11/07/elasticsearch-deletes-index-by-date/"/>
     <id>http://www.cenhq.com/2017/11/07/elasticsearch-deletes-index-by-date/</id>
-    <published>2017-11-07T08:31:26.000Z</published>
+    <published>2017-11-07T00:31:26.000Z</published>
     <updated>2017-11-07T08:35:50.874Z</updated>
     
     <content type="html"><![CDATA[<p>由于<code>elk</code>每天每时每刻都在创建索引文件，导致磁盘容量越来越小，所以要进行定期删除</p>
@@ -224,7 +159,7 @@
     <title>elasticsearch-5.6插件x-pack破解</title>
     <link href="http://www.cenhq.com/2017/10/16/elasticsearch-5-6-plug-in-xpack-cracking/"/>
     <id>http://www.cenhq.com/2017/10/16/elasticsearch-5-6-plug-in-xpack-cracking/</id>
-    <published>2017-10-16T03:37:50.000Z</published>
+    <published>2017-10-15T19:37:50.000Z</published>
     <updated>2017-10-16T05:12:45.477Z</updated>
     
     <content type="html"><![CDATA[<h3 id="创建-LicenseVerifier-java-文件"><a href="#创建-LicenseVerifier-java-文件" class="headerlink" title="创建 LicenseVerifier.java 文件"></a>创建 <code>LicenseVerifier.java</code> 文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$ cat LicenseVerifier.java</div><div class="line"><span class="keyword">package</span> org.elasticsearch.license;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.nio.*;</div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">import</span> java.security.*;</div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.xcontent.*;</div><div class="line"><span class="keyword">import</span> org.apache.lucene.util.*;</div><div class="line"><span class="keyword">import</span> org.elasticsearch.common.io.*;</div><div class="line"><span class="keyword">import</span> java.io.*;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LicenseVerifier</span></span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verifyLicense</span><span class="params">(<span class="keyword">final</span> License license, <span class="keyword">final</span> <span class="keyword">byte</span>[] encryptedPublicKeyData)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">verifyLicense</span><span class="params">(<span class="keyword">final</span> License license)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -271,7 +206,7 @@
     <title>ELK 使用中遇到的问题</title>
     <link href="http://www.cenhq.com/2017/10/16/problems-encountered-in-the-use-of-elk/"/>
     <id>http://www.cenhq.com/2017/10/16/problems-encountered-in-the-use-of-elk/</id>
-    <published>2017-10-16T03:32:54.000Z</published>
+    <published>2017-10-15T19:32:54.000Z</published>
     <updated>2017-10-16T07:10:32.674Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><h4 id="logstash-启动报错如下："><a href="#logstash-启动报错如下：" class="headerlink" title="logstash 启动报错如下："></a>logstash 启动报错如下：</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[2017-09-27T15:49:05,406][WARN ][logstash.inputs.file     ] failed to open /vol2/ZT2/170927-02/SessionServer-YP06/statobjscenesserver34.log.170927-02: Permission denied - /vol2/ZT2/170927-02/SessionServer-YP06/statobjscenesserver34.log.170927-02</div><div class="line">[2017-09-27T15:49:05,407][WARN ][logstash.inputs.file     ] failed to open /vol2/ZT2/170927-02/SessionServer-YP06/statobjsessionserver.log.170927-02: Permission denied - /vol2/ZT2/170927-02/SessionServer-YP06/statobjsessionserver.log.170927-02</div></pre></td></tr></table></figure>
@@ -359,7 +294,7 @@
     <title>ELK 安装配置</title>
     <link href="http://www.cenhq.com/2017/09/19/elk-installation-configuration/"/>
     <id>http://www.cenhq.com/2017/09/19/elk-installation-configuration/</id>
-    <published>2017-09-19T07:39:54.000Z</published>
+    <published>2017-09-18T23:39:54.000Z</published>
     <updated>2017-09-19T07:44:34.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p><a href="https://www.elastic.co/cn/downloads" target="_blank" rel="external">下载地址</a> </p>
@@ -415,7 +350,7 @@
     <title>使用 GitHub Issues 搭建 hexo 评论系统</title>
     <link href="http://www.cenhq.com/2017/07/25/using-github-issues-to-build-hexo-review-system/"/>
     <id>http://www.cenhq.com/2017/07/25/using-github-issues-to-build-hexo-review-system/</id>
-    <published>2017-07-25T03:00:41.000Z</published>
+    <published>2017-07-24T19:00:41.000Z</published>
     <updated>2017-07-25T03:15:06.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Gitment</code> 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
@@ -463,7 +398,7 @@
     <title>Laravel Passport 使用</title>
     <link href="http://www.cenhq.com/2017/07/19/laravel-passport-usage/"/>
     <id>http://www.cenhq.com/2017/07/19/laravel-passport-usage/</id>
-    <published>2017-07-19T13:32:01.000Z</published>
+    <published>2017-07-19T05:32:01.000Z</published>
     <updated>2017-07-19T05:33:40.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在 Laravel 中，实现基于传统表单的登陆和授权已经非常简单，但是如何满足 API 场景下的授权需求呢？在 API 场景里通常通过令牌来实现用户授权，而非维护请求之间的 Session 状态。现在 Laravel 项目中可以使用 Passport 轻而易举地实现 API 授权过程，通过 Passport 可以在几分钟之内为你的应用程序添加完整的 OAuth2 服务端实现。 Passport 基于<code>League OAuth2 server</code> 实现。<br><a id="more"></a></p>
@@ -517,7 +452,7 @@
     <title>MySQL 主从复制（内外网）</title>
     <link href="http://www.cenhq.com/2017/06/30/mysql-master-and-slave-replication/"/>
     <id>http://www.cenhq.com/2017/06/30/mysql-master-and-slave-replication/</id>
-    <published>2017-06-30T06:04:37.000Z</published>
+    <published>2017-06-29T22:04:37.000Z</published>
     <updated>2017-06-30T06:11:49.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://7xlxn7.com1.z0.glb.clouddn.com/ll7-S3ymCwBcfZ2a9rCCykTfm2Dk.jpeg" alt="file"></p>
@@ -578,7 +513,7 @@
     <title>Laravel/Lumen 5.4 发送邮件</title>
     <link href="http://www.cenhq.com/2017/06/15/laravel-lumen-send-mail/"/>
     <id>http://www.cenhq.com/2017/06/15/laravel-lumen-send-mail/</id>
-    <published>2017-06-15T07:47:51.000Z</published>
+    <published>2017-06-14T23:47:51.000Z</published>
     <updated>2017-06-15T07:53:45.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="首先注册邮箱"><a href="#首先注册邮箱" class="headerlink" title="首先注册邮箱"></a>首先注册邮箱</h3><p>这里使用163邮箱，个人邮箱需要开启smtp服务</p>
@@ -630,7 +565,7 @@
     <title>Laravel log 无法写入问题</title>
     <link href="http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/"/>
     <id>http://www.cenhq.com/2017/05/10/laravel-can-not-write-log/</id>
-    <published>2017-05-10T09:38:04.000Z</published>
+    <published>2017-05-10T01:38:04.000Z</published>
     <updated>2017-05-10T09:40:41.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>账号登录报500错误，也没有返回错误信息，没办法只能使用原始方法，到现在一行一行打印。到 <code>Log::info()</code> 后面就无法正常显示了，那么问题就找到了。</p>
@@ -676,7 +611,7 @@
     <title>Laravel 数组分页（带搜索功能）</title>
     <link href="http://www.cenhq.com/2017/04/24/laravel-array-use-paginate/"/>
     <id>http://www.cenhq.com/2017/04/24/laravel-array-use-paginate/</id>
-    <published>2017-04-24T03:27:32.000Z</published>
+    <published>2017-04-23T19:27:32.000Z</published>
     <updated>2017-04-24T03:37:26.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>由于数据是从mysql和mongodb里的两个表中取数据，并且根据两个表中的字段关联来获取数据，所有没有直接的sql获取。只有通过循环获取。然而获取的数据是数组，无法使用<code>laravel</code>自带的<code>paginate</code>分页方法。下面是解决办法：</p>
@@ -714,7 +649,7 @@
     <title>CentOS 7 安装配置Supervisor</title>
     <link href="http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/"/>
     <id>http://www.cenhq.com/2017/04/14/centos7-install-config-supervisor/</id>
-    <published>2017-04-14T06:17:54.000Z</published>
+    <published>2017-04-13T22:17:54.000Z</published>
     <updated>2017-04-14T06:29:20.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><a href="http://supervisord.org/" target="_blank" rel="external">Supervisor</a> 是用<code>Python</code>开发的一个<code>client/server</code>服务，是<code>Linux/Unix</code>系统下的一个进程管理工具，不支持Windows系统。它可以很方便的监听、启动、停止、重启一个或多个进程。用<code>Supervisor</code>管理的进程，当一个进程意外被杀死，<code>supervisort</code>监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写<code>shell</code>脚本来控制。</p>
@@ -800,7 +735,7 @@
     <title>lumen 部署到线上遇到的问题</title>
     <link href="http://www.cenhq.com/2017/04/14/lumen-deploy-problems-to-online/"/>
     <id>http://www.cenhq.com/2017/04/14/lumen-deploy-problems-to-online/</id>
-    <published>2017-04-14T06:14:56.000Z</published>
+    <published>2017-04-13T22:14:56.000Z</published>
     <updated>2017-04-14T06:20:50.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="lumen-默认的日志保存模式是single"><a href="#lumen-默认的日志保存模式是single" class="headerlink" title="lumen 默认的日志保存模式是single"></a>lumen 默认的日志保存模式是single</h3><p>也就是单文件模式</p>
@@ -840,7 +775,7 @@
     <title>Laravel 安装第三方包 Mongodb报错</title>
     <link href="http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/"/>
     <id>http://www.cenhq.com/2017/03/28/laravel-use-mongodb-error-info/</id>
-    <published>2017-03-28T10:03:19.000Z</published>
+    <published>2017-03-28T02:03:19.000Z</published>
     <updated>2017-03-28T10:39:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>由于项目使用mongodb数据库来存储数据，所以需要第三方包mongodb来配合；这里使用<code>composer</code>来安装。</p>
@@ -907,7 +842,7 @@ end</code></li>
     <title>Laravel 5.4 事件操作</title>
     <link href="http://www.cenhq.com/2017/03/22/laravel-event/"/>
     <id>http://www.cenhq.com/2017/03/22/laravel-event/</id>
-    <published>2017-03-22T05:18:14.000Z</published>
+    <published>2017-03-21T21:18:14.000Z</published>
     <updated>2017-03-28T10:39:18.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件。事件类 (Event) 类通常保存在 <code>app/Events</code> 目录下，而它们的监听类 (Listener) 类被保存在 <code>app/Listeners</code> 目录下。如果你在应用中看不到这些文件夹也不要担心，因为当你使用 Artisan 命令来生成事件和监听器时他们会被自动创建。</p>
@@ -955,7 +890,7 @@ end</code></li>
     <title>lumen 队列发送邮件</title>
     <link href="http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/"/>
     <id>http://www.cenhq.com/2017/03/16/lumen-queue-sendEmail/</id>
-    <published>2017-03-16T02:34:44.000Z</published>
+    <published>2017-03-15T18:34:44.000Z</published>
     <updated>2017-03-28T10:39:18.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Lumen 的队列服务为不同的队列后端系统提供了一套统一的 API 。队列允许你将一个耗时的任务进行延迟处理，例如像 e-mail 发送。这能让应用程序对页面的请求有更快的响应。</p>
@@ -1033,7 +968,7 @@ end</code></li>
     <title>lumen 头像上传</title>
     <link href="http://www.cenhq.com/2017/03/06/lumen-avatar-upload/"/>
     <id>http://www.cenhq.com/2017/03/06/lumen-avatar-upload/</id>
-    <published>2017-03-06T05:50:17.000Z</published>
+    <published>2017-03-05T21:50:17.000Z</published>
     <updated>2017-03-28T10:39:18.000Z</updated>
     
     <content type="html"><![CDATA[<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p><code>Lumen</code> 可以使用 <code>Illuminate\Http\Request</code> 实例中的 <code>file</code> 方法来获取上传文件。<code>file</code>方法返回的对象是 <code>Symfony\Component\HttpFoundation\File\UploadedFile</code> 类的实例，该类继承了 PHP 的 <code>SplFileInfo</code> 类，并提供了许多和文件交互的方法：<br></p>
@@ -1077,7 +1012,7 @@ end</code></li>
     <title>密码错误3次锁定账号</title>
     <link href="http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/"/>
     <id>http://www.cenhq.com/2017/03/03/after-locking-verity-password-three-times-failure/</id>
-    <published>2017-03-03T05:23:11.000Z</published>
+    <published>2017-03-02T21:23:11.000Z</published>
     <updated>2017-03-28T10:42:00.000Z</updated>
     
     <content type="html"><![CDATA[<h5 id="逻辑简介"><a href="#逻辑简介" class="headerlink" title="逻辑简介"></a>逻辑简介</h5><p>创建数据表</p>
@@ -1115,6 +1050,58 @@ end</code></li>
       <category term="lock-user" scheme="http://www.cenhq.com/tags/lock-user/"/>
     
       <category term="three-times" scheme="http://www.cenhq.com/tags/three-times/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>lumen表单验证</title>
+    <link href="http://www.cenhq.com/2017/03/03/lumen-form-validate/"/>
+    <id>http://www.cenhq.com/2017/03/03/lumen-form-validate/</id>
+    <published>2017-03-02T21:15:54.000Z</published>
+    <updated>2017-03-28T10:39:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>Lumen 提供了多种不同的处理方法来对应用程序传入的数据进行验证。默认情况下，Lumen 的基底控制器类使用了 ValidatesRequests trait，其提供了一种便利的方法来使用各种强大的验证规则验证传入的 HTTP 请求。</p>
+<p>Lumen 和 Laravel 验证功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 验证的使用，请参阅 Laravel 文档 。</p>
+<blockquote>
+<p>Lumen 与 Laravel 不同，表单请求验证需要Laravel支持。Lumen 可以使用<code>$this-validate</code>方法来验证。</p>
+<p>还有不同的是，Lumen 支持路由闭包的方式直接使用<code>validate</code>方法<br><a id="more"></a></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Http</span>\<span class="title">Request</span>;</div><div class="line"></div><div class="line">$app-&gt;post(<span class="string">'/user'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Request $request)</span> </span>&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;validate($request, [</div><div class="line">        <span class="string">'name'</span> =&gt; <span class="string">'required'</span>,</div><div class="line">        <span class="string">'email'</span> =&gt; <span class="string">'required|email|unique:users'</span></div><div class="line">    ]);</div><div class="line"></div><div class="line">    <span class="comment">// 存储用户...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>同样可以使用<code>Validator::make()</code> facade方法来验证</p>
+</blockquote>
+<h5 id="添加验证规则"><a href="#添加验证规则" class="headerlink" title="添加验证规则"></a>添加验证规则</h5><p>验证规则可以放在路由下，也可以放在<code>Controller</code>方法下；</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span><span class="params">(Request $request)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">$this</span>-&gt;validate($request, [</div><div class="line">        <span class="string">'title'</span> =&gt; <span class="string">'required|unique:posts|max:255'</span>,</div><div class="line">        <span class="string">'body'</span> =&gt; <span class="string">'required'</span>,</div><div class="line">    ]);</div><div class="line"></div><div class="line">    <span class="comment">// The blog post is valid, store in database...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如你所见，我们将本次 HTTP 请求及所需的验证规则传递至 validate 方法中。另外再提醒一次，如果验证失败，将会自动生成一个对应的响应。如果验证通过，那我们的控制器将会继续正常运行。</p>
+<p>本人使用验证规则放在<code>Model</code>中的方法里</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span><span class="params">($array = [<span class="string">'username'</span>, <span class="string">'email'</span>, <span class="string">'password'</span>, <span class="string">'mobile_no'</span>, <span class="string">'old_password'</span>])</span></span></div><div class="line">   &#123;</div><div class="line">       $rules =  [</div><div class="line">           <span class="string">'username'</span> =&gt;  <span class="string">'required|regex:/^[a-zA-Z][a-zA-Z0-9]&#123;5,11&#125;$/'</span>,</div><div class="line">           <span class="string">'email'</span> =&gt;  <span class="string">'required|email'</span>,</div><div class="line">           <span class="string">'password'</span>  =&gt; <span class="string">'required|min:6'</span>,</div><div class="line">           <span class="string">'old_password'</span>  =&gt; <span class="string">'required|min:6'</span>,</div><div class="line">           <span class="string">'mobile_no'</span> =&gt; <span class="string">'required|numeric|digits:11'</span>,</div><div class="line">       ];</div><div class="line">       <span class="keyword">foreach</span>($array <span class="keyword">as</span> $item)&#123;</div><div class="line">           $data[$item] =  $rules[$item];</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> $data;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>并且附上自定义错误信息</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">message</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>  [</div><div class="line">            <span class="string">'username.required'</span> =&gt; <span class="string">'请填写用户名'</span>,</div><div class="line">            <span class="string">'username.unique'</span> =&gt; <span class="string">'用户名已存在'</span>,</div><div class="line">            <span class="string">'username.regex'</span> =&gt; <span class="string">'用户名不合法'</span>,</div><div class="line">            <span class="string">'email.required'</span> =&gt; <span class="string">'请填写邮箱地址'</span>,</div><div class="line">            <span class="string">'email.unique'</span>    =&gt;  <span class="string">'邮箱名已存在'</span>,</div><div class="line">            <span class="string">'email.email'</span> =&gt;  <span class="string">'邮箱名不合法'</span>,</div><div class="line">            <span class="string">'password.required'</span>    =&gt;  <span class="string">'请填写密码'</span>,</div><div class="line">            <span class="string">'password.min'</span>  =&gt;  <span class="string">'密码至少需要 :min 位字符'</span>,</div><div class="line">            <span class="string">'mobile_no.required'</span>    =&gt;  <span class="string">'请填写手机号'</span>,</div><div class="line">            <span class="string">'mobile_no.unique'</span>  =&gt;  <span class="string">'手机号已存在'</span>,</div><div class="line">            <span class="string">'mobile_no.numeric'</span> =&gt;  <span class="string">'手机号必须为数字'</span>,</div><div class="line">            <span class="string">'mobile_no.digits'</span>  =&gt;  <span class="string">'手机号必须为 :digits 位'</span>,</div><div class="line">        ];</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="添加规则"><a href="#添加规则" class="headerlink" title="添加规则"></a>添加规则</h5><p>在基础类里添加验证方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Validator</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Http</span>\<span class="title">Request</span>;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ruleValidator</span><span class="params">(Request $request, $rule=[], $message=[])</span></span></div><div class="line">    &#123;</div><div class="line">        $validator = Validator::make($request-&gt;all(), $rule, $message);</div><div class="line"></div><div class="line">        <span class="keyword">if</span>($validator-&gt;fails())&#123;</div><div class="line">            <span class="keyword">foreach</span>($validator-&gt;errors()-&gt;getMessages() <span class="keyword">as</span> $message)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;formatOutput(<span class="number">1</span>, <span class="string">''</span>, $message[<span class="number">0</span>]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>具体操作则调用此方法，验证方式灵活</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$validator_user = <span class="keyword">$this</span>-&gt;ruleValidator($request, $user-&gt;rules([<span class="string">'username'</span>,<span class="string">'password'</span>]), $user-&gt;message());</div><div class="line">            <span class="keyword">if</span> ($validator_user)</div><div class="line">                <span class="keyword">return</span> $validator_user;</div></pre></td></tr></table></figure>
+<p>参考文档:<br><a href="https://lumen.laravel-china.org/docs/5.3/validation" target="_blank" rel="external">https://lumen.laravel-china.org/docs/5.3/validation</a><br><a href="https://www.kancloud.cn/iwzh/laravel-doc5_3/229847" target="_blank" rel="external">https://www.kancloud.cn/iwzh/laravel-doc5_3/229847</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h5&gt;&lt;p&gt;Lumen 提供了多种不同的处理方法来对应用程序传入的数据进行验证。默认情况下，Lumen 的基底控制器类使用了 ValidatesRequests trait，其提供了一种便利的方法来使用各种强大的验证规则验证传入的 HTTP 请求。&lt;/p&gt;
+&lt;p&gt;Lumen 和 Laravel 验证功能除了接下来会列出来的不同点以外，并没有太大区别，所以更多关于 Lumen 验证的使用，请参阅 Laravel 文档 。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lumen 与 Laravel 不同，表单请求验证需要Laravel支持。Lumen 可以使用&lt;code&gt;$this-validate&lt;/code&gt;方法来验证。&lt;/p&gt;
+&lt;p&gt;还有不同的是，Lumen 支持路由闭包的方式直接使用&lt;code&gt;validate&lt;/code&gt;方法&lt;br&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://www.cenhq.com/categories/PHP/"/>
+    
+      <category term="Lumen" scheme="http://www.cenhq.com/categories/PHP/Lumen/"/>
+    
+    
+      <category term="form-validate" scheme="http://www.cenhq.com/tags/form-validate/"/>
+    
+      <category term="validator" scheme="http://www.cenhq.com/tags/validator/"/>
     
   </entry>
   
